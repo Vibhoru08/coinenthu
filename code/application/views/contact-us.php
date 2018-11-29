@@ -1,0 +1,87 @@
+<div class="content-wrapper">
+	<div  class="bread_crumb">
+		<div class="container-fluid">
+			<section class="content-header">
+					<h1 class="text-right m_hide">
+					  &nbsp;
+					</h1>
+					<ol class="breadcrumb">
+					  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
+					  <li class="active">Contact Us</li>
+					</ol>
+			</section>
+		</div>
+	</div>
+        <div class="container">
+			<section class="content mar_b20">
+			<div class="row">
+					<div class="col-md-12">
+						<div class="box mar_b50  mar_t20 box_shadow overflow_hidden">
+							<div class="box-header with-border header_bg">
+								<h3 class="box-title">Contact Us</h3>
+							</div>
+							<div class="box-body">								
+								<div class="col-md-12">
+									<form id="cont_us_mail" name="cont_us_mail" method="POST" class="form-horizontal" 
+										data-fv-message="This value is not valid"
+										 onSubmit="contactMails();">
+										<div class="box-body">							
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 control-label">Subject</label>	
+												<div class="col-sm-5" >
+													<input type="text" class="form-control" id="message_sub" name="message_sub" placeholder="Subject" required data-fv-notempty-message="Subject required." data-fv-regexp="true"data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The first name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The first name must be less than 100 characters">				
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 control-label">Type</label>	
+												<div class="col-sm-5" placeholder="Type">
+													<select id="type" class="form-control" name="type" required data-fv-notempty-message="Subject type required.">									
+													<option value="">Select type</option>	
+													<option value="1">User issue</option>	
+													<option value="2">Digital Asset Related</option>	
+													<option value="3">ICO Related</option>	
+													<option value="4">Suggestions</option>	
+													<option value="5">Advertise with us</option>	
+													<option value="6">Other</option>	
+													
+													</select>	
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 control-label">Body</label>	
+												<div class="col-sm-5">
+													<textarea type="text" class="form-control" id="body" name="body" placeholder="Enter Your Message" required data-fv-notempty-message="Message Body required" ></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 control-label">Email</label>	
+												<div class="col-sm-5">
+													<input type="text" class="form-control" id="email" name="email" placeholder="Your Email" required data-fv-notempty-message="Email required" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<a href="<?php echo base_url();?>" class="btn btn-default">Cancel
+													</a>
+													<button type="submit" id="contactus" name="contactus" class="btn btn-danger">Send Message</button>
+												</div>
+											</div>
+											
+										</div><!-- /.box-body -->
+										<span style="text-align:center;" id="sucess_msg"></span>
+															
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			</section>
+		</div>
+			
+</div>
+<script> 
+	$(document).ready(function() {
+		$('#cont_us_mail').formValidation();
+	});
+</script>   
