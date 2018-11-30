@@ -1617,7 +1617,7 @@ a.ui-button:active,
 	  padding: 5px 12px !important;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0)
-{ 
+{
     .pagination_pad{
 	  padding: 4.5px 12px !important;
 	}
@@ -1800,7 +1800,7 @@ a.ui-button:active,
 
 /* footer Css */
 .sub_footer{
-	background-color:rgba(211, 211, 211, 0.9); 
+	background-color:rgba(211, 211, 211, 0.9);
 	border-top:1px solid #ccc;
 	padding:10px 0;
 }
@@ -1813,7 +1813,7 @@ a.ui-button:active,
 	color:#2b63d1
 }
 footer {
-	background-color:rgba(211, 211, 211, 0.5); 
+	background-color:rgba(211, 211, 211, 0.5);
 	/* padding-bottom:40px; */
 	border-top:1px solid #ccc;
 }
@@ -1844,7 +1844,7 @@ footer {
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#515965; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#515965;  font-size:12px;}
- 
+
  *=========================
   Icons
  ================= */
@@ -1925,38 +1925,38 @@ a.socialIcon:hover, .socialHoverClass {
 	transition: all 0.8s;
 }
 .icoFacebook{
- background-color: #3B5998;   
+ background-color: #3B5998;
 }
 .icoTwitter{
-	background-color: #33ccff; 
+	background-color: #33ccff;
 }
 .icoGoogle{
-	background-color: #BD3518; 
+	background-color: #BD3518;
 }
 .icon_market{
-	background-color: #f7941d; 
+	background-color: #f7941d;
 }
 .discord{
-	background-color: #7084cb; 
+	background-color: #7084cb;
 }
 .telegram{
-	background-color: #168bd9; 
+	background-color: #168bd9;
 }
 .github{
-	background-color: #333; 
+	background-color: #333;
 }
 .icoLinkedin{
-	background-color: #007bb7; 
+	background-color: #007bb7;
 }
 .github_c{
-	background-color: #57b73d; 
+	background-color: #57b73d;
 }
 .icoWhatsapp{
-	background-color: #00897b; 
+	background-color: #00897b;
 	color:#fff;
 	font-weight:bold;
 }
- 
+
 /* End */
 .address .fa{
 	color:#626060;
@@ -2110,7 +2110,7 @@ a.socialIcon:hover, .socialHoverClass {
     z-index: 3;
 }
 .hero h1 {
-    font-size: 6em;    
+    font-size: 6em;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -2119,18 +2119,18 @@ a.socialIcon:hover, .socialHoverClass {
 .fade-carousel .carousel-inner .item .hero {
     opacity: 0;
     -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s; 
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
 }
 .fade-carousel .carousel-inner .item.active .hero {
     opacity: 1;
     -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s;    
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
 }
 
 .brg_focus_n:focus{
@@ -2170,8 +2170,8 @@ a.socialIcon:hover, .socialHoverClass {
 	color:#fff;
 	font-size:30px;
 	margin:0 auto;
-	 text-shadow:1px 1px #888; 
-	background:rgba(0, 0, 0, .3); 
+	 text-shadow:1px 1px #888;
+	background:rgba(0, 0, 0, .3);
 }
 .content_w{
 	width:1002px;
@@ -2707,7 +2707,7 @@ a.socialIcon:hover, .socialHoverClass {
 	height:40px;
 	content:"";
 	border:none !important;
-	left:0;	
+	left:0;
 }
 .skin-blue .main-header .navbar .nav > li > a:hover:before {
 	position:absolute;
@@ -2873,7 +2873,7 @@ a.socialIcon:hover, .socialHoverClass {
 		padding:10px;
 		font-size:18px;
 		line-height:150%;
-		
+
 	}
 	.div1{
 		font-size:18px !important;
@@ -2954,7 +2954,7 @@ a.socialIcon:hover, .socialHoverClass {
 		margin-left:0;
 	}
 	.m_hide{
-		display:block !important;
+		display:none !important;
 	}
 	.div{
 		width:60%;
@@ -3001,7 +3001,7 @@ a.socialIcon:hover, .socialHoverClass {
 		z-index: 1000;
 	}
  }
- @media (max-width: 480px) { 
+ @media (max-width: 480px) {
  .mm_no_padding{
 		padding:0 7px;
 	}

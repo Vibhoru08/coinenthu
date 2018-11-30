@@ -12,7 +12,7 @@
 				<div class="content_w">
 				<p class="mar_b20"><img src="<?php echo base_url();?>asset/forntend/images/about_logo.png"></p>
 				Coinenthu is community-driven crypto reviews and rating platform. It allows the community to share their thoughts about various Cryptocurrencies.
-					<div class="mar_t40 m_hide"><a href="<?php echo base_url();?>digital-assets" class="btn btn-danger btn-lg font_s22 div">Digital Assets</a>
+					<div class="mar_t40 "><a href="<?php echo base_url();?>digital-assets" class="btn btn-danger btn-lg font_s22 div">Digital Assets</a>
 					<a href="<?php echo base_url();?>ico-tracker" class="btn btn-danger btn-lg font_s22 div" style="margin-left:20px">Upcoming ICOs</a></div>
 				</div>
 		</div>
