@@ -87,65 +87,7 @@
 							</div>
 						</div>
 					</div>
-					<!--<div class="col-md-3">
-					<div class="box overflow_hidden">
-						<div class="box-header with-border header_bg">
-							<h3 class="box-title">ICO Tracker</h3>
-						</div>
-						<div class="box-body no-padding">
-							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-						  <ol class="carousel-indicators">
-								<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner" role="listbox">
-								<div class="item active">
-									<div class="text-center">
-								  <img src="<?php // echo base_url()?>images/sm_slide1.png" class="img-responsive">
-								  </div>
-								</div>
-								<div class="item">
-									<div class="text-center">
-								  <img src="<?php // echo base_url()?>images/sm_slide1.png" class="img-responsive">
-								</div>
-								</div>
-								<div class="item">
-									<div class="text-center">
-								  <img src="<?php // echo base_url()?>images/sm_slide1.png" class="img-responsive">
-								</div>
-								</div>
-							</div>
-							 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						  </a>
-						  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						  </a>
-							</div>
-						</div>
-					</div>
-					<div class="box overflow_hidden">
-						<div class="box-header with-border header_bg">
-							<h3 class="box-title">Live Tickers  </h3>
-						</div>
-						<div class="box-body">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						</div>
-					</div>
-				</div>-->
-				<!--<div class="col-md-3">
-				<div class="box overflow_hidden ">
-					<div class="box-header with-border header_bg">
-						<h3 class="" style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Upcoming ICOs</h3>
-					</div>
-					<div class="box-body no-padding">
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					  <!-- Indicators -->
-						<!--<ol class="carousel-indicators">
+					
 						<?php
 						if(count($digitalAssetsImages) > 0)
 						{
@@ -213,29 +155,7 @@
 								?>
 						</div>
 						 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-						<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>-->
-					 <!-- </a>
-					  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-						<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>-->
-					  <!--</a>
-						</div>
-					</div>
-				</div>
-				<div class="box overflow_hidden">
-					<div class="box-header with-border header_bg pos_r">
-						<h3 style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Trending </h3>
-						<div style="position:absolute;top:12px;right:12px;"><a href="https://twitter.com/Investopedia" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false" > Blockopedia</a></div>
-					</div>
-					<div class="">
-						<div class="scroll twitter_feed">
-						<p><a class="twitter-timeline" href="https://twitter.com/Investopedia">Tweets by Investopedia</a> </p>
-						</div>
-					</div>
-				</div>
-			</div>-->
+						
 				</div>
 			</div>
 			</section>
@@ -306,7 +226,7 @@
 						$("#loadSuccess").html('Review successfully submitted.').css("color", "green");;
 						setTimeout(function(){
 							$("#loadSuccess").hide();
-							window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,"_");
+							window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_');
 						}, 2000);
 					}else if(data.output=='failed')
 					{
@@ -320,7 +240,7 @@
 	function redirectUrlMethod(){
 		var cm_unique_id = $('#cm_unique_id').val();
 		var cm_name = $('#company_name').val();
-		window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,"_");
+		window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_');
 	}
 	function countCharcter()
 	{
