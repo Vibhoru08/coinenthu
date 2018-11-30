@@ -2858,7 +2858,7 @@ a.socialIcon:hover, .socialHoverClass {
 		float:none !important;
 	}
 	.about_slider .carousel-indicators{
-		display:block;
+		display:none;
 	}
 	.brg_r{
 		border-right:none;
@@ -2916,6 +2916,7 @@ a.socialIcon:hover, .socialHoverClass {
 		margin:10px auto;
 	}
 	.logo_one .navbar-brand{
+    padding:10px;
 		height:40px;
 	}
 	.main-header{
@@ -2977,7 +2978,7 @@ a.socialIcon:hover, .socialHoverClass {
 		float:none !important;
 	}
 	.content{
-		margin-top: 20px;
+		margin-top: 10px;
 	}
 	.about_footer img{
 		margin-bottom:5px;
