@@ -1664,7 +1664,7 @@ function get_comdtls()
 				$('#toksupId').html(data.available_supply);
 				$('#curId').html('$'+data.price_usd);
 				$('#volId').html('$'+data.volume);
-				$('#chaId').html(data.percent_change_24h);
+				$('#chaId').html(data.percent_change_24h+'%');
 			}
 		});
 }
