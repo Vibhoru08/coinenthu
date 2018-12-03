@@ -582,7 +582,7 @@
 							   ?>
 							    <div class="arrow_down"><span class="caret"></span></div>
 							  </button>
-							  <ul class="dropdown-menu user_dropdown_t" role="menu">
+							  <ul class="dropdown-menu user_dropdown_t" role="menu" style="left:0px;">
 
 
 								<li><a onClick="fullViewFilter('likes',1);" href="javascript:void('0')">Up Votes</a></li>
