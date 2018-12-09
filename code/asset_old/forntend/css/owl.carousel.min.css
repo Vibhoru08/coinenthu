@@ -1,0 +1,11 @@
+.owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    -moz-backface-visibility: hidden
+}
+.owl-carousel .owl-item {
+    float: left;
+}
+#demos .owl-carousel {
+    margin: 2rem 0
+}
