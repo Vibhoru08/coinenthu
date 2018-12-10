@@ -2658,6 +2658,20 @@ a.socialIcon:hover, .socialHoverClass {
 .tmt20{
 	margin-top:15px !important;
 }
+.linear_color{
+  background-image: linear-gradient(to right, darkblue , purple);
+  height:10%;
+}
+.banner_margin{
+ margin:30px 0 0 0;
+}
+@media (max-width:768px){
+
+.banner_margin{
+ margin:20px 0 0 0;
+}
+
+}
 @media (max-width: 767px) {
 	.body_h{
 		overflow:hidden;

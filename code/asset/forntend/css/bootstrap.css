@@ -1608,7 +1608,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  width:95%;
+  width:100%;
 }
 .row {
   margin-right: -15px;
@@ -2914,6 +2914,13 @@ select[multiple].input-lg {
   margin-bottom: 10px;
   color: #737373;
 }
+@media (max-width: 768px){
+  #star-rating{
+    pointer-events: none !important;
+  }
+}
+
+
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;

@@ -4,9 +4,9 @@
 $viewTime = date('Ymd') .'_'. date('His');
 ?><?php // echo '<pre>';print_r($digitalAssetsImages);exit;?>
 <div class="content-wrapper">
-	
+
 	<!-- <div  style="border-bottom:1px solid #ddd"> -->
-	<div class="bread_crumb">
+	<!--<div class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -18,6 +18,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</ol>
 			</section>
 		</div>
+	</div> -->
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row justify-content-center">
+			<div class="col-4">
+				Digital Assets
+			</div>
+		</div>
+
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
@@ -32,10 +40,10 @@ $viewTime = date('Ymd') .'_'. date('His');
 					<div class="col-md-8 text-right msearch_bg mpad_b3">
 						<div class="select_style">
 							<form class="form-inline">
-							<div class="form-group">
-								<ul class="nav navbar-nav">
+							<div class="form-group"><nobr>
+								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right select_dropdown" id="change_u">
-								  Sort By &nbsp; <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" style="background:#fff;width:220px;text-align:left;padding:6px 19px;" id="filtername">
+								  Sort By &nbsp;<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" style="background:#fff;width:220px;text-align:left;padding:6px 19px;" id="filtername">
 								   Most reviewed<div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
@@ -46,7 +54,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 									<li><a onClick="filterCompanies('mcl','1');" href="javascript:void('0');">Market cap(Low to High)</a></li>
 								  </ul>
 								  </li>
-								</ul>
+								</ul></nobr>
 							</div>
 							</form>
 						</div>
@@ -93,7 +101,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 								<a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>" class="product-title"><?php echo $string; ?></a>
 								<span class="product-description">
 								<div>
-								
+
 
 									<input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 									<p>
@@ -104,7 +112,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 												}else{
 													$reviews = '0';
 												}
-												
+
 												echo $reviews; ?>  reviews
 										</span>
 									</p>
@@ -158,7 +166,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						}
 
 						?>
-							
+
 						</ol>
 						<div class="carousel-inner" role="listbox">
 							<?php
