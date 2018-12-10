@@ -1,10 +1,11 @@
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
 
-<footer>
+<footer >
  <div class="container-fluid pad_b30">
    <div class="row" >
      <div class="col-md-3 col-sm-6 paddingtop-bottom" style="margin-right:12.5%;">
        <h6 class="heading7">Navigation</h6>
+       <hr class="footer_hr">
        <ul class="footer-ul">
          <li><a href="<?php echo base_url();?>about-us">About </a></li>
          <li><a href="<?php echo base_url(); ?>add-digital-asset">Add Digital Asset </a></li>
@@ -15,6 +16,7 @@
      </div>
    <div class="col-md-3 col-sm-6 paddingtop-bottom footer_left" style="margin-right:12.5%;">
        <h6 class="heading7">Terms</h6>
+       <hr class="footer_hr">
        <ul class="footer-ul">
          <li><a href="<?php echo base_url();?>terms-of-use" >Terms & Conditions </a></li>
          <li><a href="<?php echo base_url();?>comments-policy" >Comments Policy </a></li>
@@ -25,6 +27,7 @@
    <!--<div class="col-md-1 m_hide">&nbsp;</div>-->
      <div class="col-md-3 col-sm-6 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
         <h6 class="heading7">Follow Us</h6>
+        <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
      <!--<li><a href="#" class="github" title="Github"><i class="fa fa-github"></i></a></li>-->
      <li><a href="https://twitter.com/coinenthu" class="icoTwitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
@@ -41,7 +44,7 @@
 
 
      <div class="input-group input-group-sm">
-               <input class="form-control" type="text" placeholder="Email" id="subemail" name="subemail">
+               <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                    <span class="input-group-btn">
                      <button type="button" class="btn btn-info btn-danger" onClick="subscriber();">Subscribe</button>
                    </span>
@@ -53,9 +56,10 @@
 
    </div>
  </div>
+ <hr style="width:97%;border:none;color:#ffff;height:1px;background-color: #fff;">
  <div class="sub_footer">
    <div class="container-fluid">
-   © 2018, Coinenthu. All Rights Reserved <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
+   © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
    </div>
  </div>
 
