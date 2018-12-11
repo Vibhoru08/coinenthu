@@ -7,10 +7,10 @@ $img =  base_url().'images/logo.png';;
 	// $page=basename($_SERVER['PHP_SELF']);
 	$page = $this->uri->segment(1);
 	if($page=="about-us" ){
-		$home="active";
+		$about="active";
 	}
 	if($page=="digital-assets" || $page == ""){
-		$about="active";
+		$assets="active";
 	}
 	if($page=="ico-tracker"){
 		$ico="active";
@@ -129,27 +129,30 @@ $img =  base_url().'images/logo.png';;
   <body class="hold-transition skin-blue fixed  layout-top-nav">
     <div class="wrapper">
       <header class="main-header">
+	   	  
 	    <nav class="navbar navbar-static-top">
-          <div class="container-fluid pos_r logo_one">
+		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
 			<a href="javascript:void(0);" onClick="return redirectPage('digi');" class="navbar-brand"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
             </div>
-            <div class="collapse navbar-collapse pull-right mmpull_right" id="navbar-collapse">
+            <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
               <ul class="nav navbar-nav">
-			   <li class="<?php echo $home;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">ABOUT</a></li>
-                <li class="<?php echo $about;?>">
-					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">DIGITAL ASSETS</a>
+			  <li class="<?php echo $home;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">Home</a></li> 
+			   <li class="<?php echo $about;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
+                <li class="<?php echo $assets;?>">
+					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
 				</li>
-                <li  class="dropdown mega-dropdown dropdown_hover <?php echo $ico;?> ">
-					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO TRACKER</a>
+                <li class="<?php echo $ico;?>">
+					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
 
 				</li>
-				<li class="dropdown mpull_right dropdown_hover" id="change_u">
-                  <a href="#" class="dropdown-toggle active_bg mobile_pad" data-toggle="dropdown" aria-expanded="true">
-				    <?php
+			  </ul>	
+				<!--<li class="dropdown mpull_right dropdown_hover" id="change_u">-->
+                  <!--<a href="#" class="dropdown-toggle active_bg mobile_pad" data-toggle="dropdown" aria-expanded="true">-->
+				   <?php/*
 					$styleWidth1 ="";
 					if(isset($_SESSION['profileImg']) && $_SESSION['profileImg']!=""){
 						if($_SESSION['profileImg'] != "" )
@@ -197,13 +200,13 @@ $img =  base_url().'images/logo.png';;
 
 						}
 
-					} ?>
-				  <span class="<?php echo $user_bg_ico; ?>">
+					} */?>
+				  <!--<span class="<?php/* echo $user_bg_ico; */?>">-->
 
 
-				  <img src="<?php echo $imagePath;?>" alt="<?php echo $title; ?>" class="user_w <?php echo $styleWidth1;?>" <?php echo $styleWidth; ?>/>
-				  </span></a>
-                  <ul class="dropdown-menu user_dropdown_t user_menu <?php echo $left_dm; ?>" role="menu" style="top:80%;">
+				  <!--<img src="<?php/* echo $imagePath;*/?>" alt="<?php/* echo $title; */?>" class="user_w <?php/* echo $styleWidth1;*/?>" <?php/* echo $styleWidth;*/ ?>/>
+				  </span></a>-->
+                  <!--<ul class="dropdown-menu user_dropdown_t user_menu <?php/* echo $left_dm; */?>" role="menu" style="top:80%;">-->
 					<?php
 						if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 							$urlDigtal = base_url().'add-digital-asset';
@@ -213,6 +216,7 @@ $img =  base_url().'images/logo.png';;
 							$urlIco    = base_url().'login';
 						}
 					?>
+					<ul class= "nav navbar-nav navbar-right">
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 						<li><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
 						<li><a href="<?php echo base_url();?>my-digital-assets">My ASSETS </a></li>
@@ -224,14 +228,12 @@ $img =  base_url().'images/logo.png';;
 					<?php } ?>
 						<li><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					<?php }else{?>
-						<li><a href="<?php echo base_url();?>login">LOGIN/REGISTER </a></li>
-						<li><a href="<?php echo base_url();?>add-digital-asset">ADD AN ASSET </a></li>
-						<li><a href="<?php echo base_url();?>add-ico-tracker">ADD AN ICO </a></li>
+						<li><a href="<?php echo base_url();?>login">Login</a></li>
+						<li><a href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
+						
 					<?php } ?>
-                  </ul>
-				</li>
+                  
               </ul>
             </div>
-          </div>
-        </nav>
-      </header>
+          </nav>
+	</header>
