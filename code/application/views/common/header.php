@@ -139,7 +139,7 @@ $img =  base_url().'images/logo.png';;
               </button>
             </div>
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav margin-left">
 			  <li class="<?php echo $home;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">Home</a></li> 
 			   <li class="<?php echo $about;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
                 <li class="<?php echo $assets;?>">
