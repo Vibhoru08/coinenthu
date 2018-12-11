@@ -21,7 +21,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div> -->
 	<div class="container-fluid banner_margin linear_color">
 		<div class="row mar_t80 mar_b80">
-			<div class="col-sm-5 col-sm-offset-4 col-xs-6 col-xs-offset-1 text-center">
+			<div class="col-sm-5 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
 				DIGITAL ASSETS
 				<hr style="width:10%;border:1px solid #ffff">
 				<div class="noirpro_light">
@@ -35,14 +35,21 @@ $viewTime = date('Ymd') .'_'. date('His');
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-6">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header">
 				<div class="row">
 					<div class="col-md-4 msearch_bg mpad_b10">
-						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search Assets">
+						<div class = "row">
+						<div class = "col-md-10">
+						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Digital Assets">
+						</div>
+						<div class = "col-md-1">
+						<img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button">
+						</div>
+						</div>
 					</div>
-					<div class="col-md-8 text-right msearch_bg mpad_b3">
+					<div class="col-md-8 msearch_bg mpad_b3">
 						<div class="select_style">
 							<form class="form-inline">
 							<div class="form-group"><nobr>
@@ -67,13 +74,17 @@ $viewTime = date('Ymd') .'_'. date('His');
 				</div>
 				</div>
 			</div>
+</div>
+</div>
+<div class = "row">
+	<div class = "col-md-6">
 			<input type="hidden" id="totcntcompanies" value="<?php echo $totCntDigitals; ?>" />
-			<input type="hidden" id="limitpage"  value="12" />
-			<input type="hidden" id="offsetpage" value="12" />
+			<input type="hidden" id="limitpage"  value="6" />
+			<input type="hidden" id="offsetpage" value="6" />
 			<input type="hidden" id="pageMode" value="digital" />
 			<div class="row company_list">
 				<?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -134,7 +145,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 				<span id="loadingData"></span>
 			</div>
 			<!--<div id="loadingHash" class="text-center font_s22 mar_t20 mm_bttom hide"><i class="fa fa-spinner" aria-hidden="true"></i> Loading </div>-->
-			<?php if($totCntDigitals > 12){?>
+			<?php if($totCntDigitals > 6){?>
 			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-danger">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
 			<span id="m_hide"><br/></span>
 			<?php } ?>
