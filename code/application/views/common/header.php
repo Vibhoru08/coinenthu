@@ -129,7 +129,7 @@ $img =  base_url().'images/logo.png';;
   <body class="hold-transition skin-blue fixed  layout-top-nav">
     <div class="wrapper">
       <header class="main-header">
-	   	  
+
 	    <nav class="navbar navbar-static-top">
 		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
@@ -140,16 +140,16 @@ $img =  base_url().'images/logo.png';;
             </div>
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
               <ul class="nav navbar-nav margin-left">
-			  <li class="<?php echo $home;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">Home</a></li> 
-			   <li class="<?php echo $about;?>"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
-                <li class="<?php echo $assets;?>">
+			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">Home</a></li>
+			   <li class="<?php echo $about;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
+                <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
 				</li>
-                <li class="<?php echo $ico;?>">
+                <li class="<?php echo $ico;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
 
 				</li>
-			  </ul>	
+			  </ul>
 				<!--<li class="dropdown mpull_right dropdown_hover" id="change_u">-->
                   <!--<a href="#" class="dropdown-toggle active_bg mobile_pad" data-toggle="dropdown" aria-expanded="true">-->
 				   <?php/*
@@ -218,21 +218,21 @@ $img =  base_url().'images/logo.png';;
 					?>
 					<ul class= "nav navbar-nav navbar-right">
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-						<li><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
-						<li><a href="<?php echo base_url();?>my-digital-assets">My ASSETS </a></li>
-						<li><a href="<?php echo $urlDigtal; ?>">ADD AN ASSET </a></li>
-						<li><a href="<?php echo base_url();?>my-ico-trackers">My ICOS </a></li>
-						<li><a href="<?php echo $urlIco; ?>">ADD AN ICO </a></li>
+						<li class="h_hover"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
+						<li class="h_hover"><a href="<?php echo base_url();?>my-digital-assets">My ASSETS </a></li>
+						<li class="h_hover"><a href="<?php echo $urlDigtal; ?>">ADD AN ASSET </a></li>
+						<li class="h_hover"><a href="<?php echo base_url();?>my-ico-trackers">My ICOS </a></li>
+						<li class="h_hover"><a href="<?php echo $urlIco; ?>">ADD AN ICO </a></li>
 					<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal"){?>
 						<li><a href="<?php echo base_url();?>change-password">CHANGE PASSWORD</a></li>
 					<?php } ?>
 						<li><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					<?php }else{?>
 						<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
-						<li class = "signup_box"><a href="<?php echo base_url();?>add-digital-asset"><span style="border: 2px solid #00FFFF;border-radius:9%;padding:6px 20px 8px 20px;">Signup</span></a></li>
-						
+						<li class = "signup_box" ><a style="border: 2px solid #00FFFF;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
+
 					<?php } ?>
-                  
+
               </ul>
             </div>
           </nav>
