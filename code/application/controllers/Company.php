@@ -1154,7 +1154,7 @@
 				$uuid = $this->session->userdata('user_id');
 				$data = array();
 				$cm_cpid  = 1;
-				$limit    = 12;
+				$limit    = 6;
 				$offset   = 0;
 				$oderBy  = "cm_overallrating";
 				$ascDesc = "desc";
@@ -1178,7 +1178,7 @@
 				$uuid = $this->session->userdata('user_id');
 				$data = array();
 				$cm_cpid  = 2;
-				$limit    = 12;
+				$limit    = 6;
 				$offset   = 0;
 				// $oderBy  = "cm_overallrating";
 				// $ascDesc = "desc";
@@ -1203,7 +1203,7 @@
 		public function digitalAssets(){
 			$data = array();
 			$cm_cpid  = 1;
-			$limit    = 12;
+			$limit    = 6;
 			$offset   = 0;
 			$checkQuery = 'mydigital';
 			$uuid = "";
@@ -1223,7 +1223,7 @@
 		public function icoTracker(){
 			$data = array();
 			$cm_cpid = 2;
-			$limit   = 12;
+			$limit   = 6;
 			$offset  = 0;
 			// $oderBy  = "cm_overallrating";
 			// $ascDesc = "desc";
@@ -1335,7 +1335,7 @@
 				if(sizeof($getCompanies)>0){
 					$checkRecords =1;
 					foreach($getCompanies as $key=>$value){
-						$html .='<div class="col-md-4">
+						$html .='<div class="col-md-5 col-md-offset-1">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">

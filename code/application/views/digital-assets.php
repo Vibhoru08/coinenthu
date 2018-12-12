@@ -34,22 +34,22 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row">
-			<div class="col-md-6">
+		<div class="row mar_b80 mar_t40">
+			<div class="col-md-12">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header">
 				<div class="row">
-					<div class="col-md-4 msearch_bg mpad_b10">
+					<div class="col-md-4 col-md-offset-1 msearch_bg mpad_b10">
 						<div class = "row">
-						<div class = "col-md-10">
+						<div class = "col-md-8">
 						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Digital Assets">
 						</div>
-						<div class = "col-md-1">
-						<img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button">
+						<div class = "col-md-2 pad_l0" style = "height:34px;width:34px;background-color:grey;border-radius:8%;">
+						<img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
 						</div>
 						</div>
 					</div>
-					<div class="col-md-8 msearch_bg mpad_b3">
+					<div class="col-md-5  msearch_bg mpad_b3 pad_l0">
 						<div class="select_style">
 							<form class="form-inline">
 							<div class="form-group"><nobr>
@@ -77,14 +77,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 </div>
 </div>
 <div class = "row">
-	<div class = "col-md-6">
+	<div class = "col-md-8">
 			<input type="hidden" id="totcntcompanies" value="<?php echo $totCntDigitals; ?>" />
 			<input type="hidden" id="limitpage"  value="6" />
 			<input type="hidden" id="offsetpage" value="6" />
 			<input type="hidden" id="pageMode" value="digital" />
 			<div class="row company_list">
 				<?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
-					<div class="col-md-6">
+					<div class="col-md-5 col-md-offset-1">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
