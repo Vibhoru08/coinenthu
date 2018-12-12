@@ -261,6 +261,102 @@ th {
   }
 }
 @font-face {
+  font-family:'NoirPro Regular';
+  src: url('../fonts/NoirPro-Regular.eot');
+  src: url('../fonts/NoirPro-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Regular.woff2') format('woff2'),
+       url('../fonts/NoirPro-Regular.woff') format('woff'),
+       url('../fonts/NoirPro-Regular.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro Bold';
+  src: url('../fonts/NoirPro-Bold.eot');
+  src: url('../fonts/NoirPro-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Bold.woff2') format('woff2'),
+       url('../fonts/NoirPro-Bold.woff') format('woff'),
+       url('../fonts/NoirPro-Bold.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro BoldItalic';
+  src: url('../fonts/NoirPro-BoldItalic.eot');
+  src: url('../fonts/NoirPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-BoldItalic.woff2') format('woff2'),
+       url('../fonts/NoirPro-BoldItalic.woff') format('woff'),
+       url('../fonts/NoirPro-BoldItalic.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro Heavy';
+  src: url('../fonts/NoirPro-Heavy.eot');
+  src: url('../fonts/NoirPro-Heavy.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Heavy.woff2') format('woff2'),
+       url('../fonts/NoirPro-Heavy.woff') format('woff'),
+       url('../fonts/NoirPro-Heavy.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro HeavyItalic';
+  src: url('../fonts/NoirPro-HeavyItalic.eot');
+  src: url('../fonts/NoirPro-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-HeavyItalic.woff2') format('woff2'),
+       url('../fonts/NoirPro-HeavyItalic.woff') format('woff'),
+       url('../fonts/NoirPro-HeavyItalic.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro Italic';
+  src: url('../fonts/NoirPro-Italic.eot');
+  src: url('../fonts/NoirPro-Italic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Italic.woff2') format('woff2'),
+       url('../fonts/NoirPro-Italic.woff') format('woff'),
+       url('../fonts/NoirPro-Italic.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro Light';
+  src: url('../fonts/NoirPro-Light.eot');
+  src: url('../fonts/NoirPro-Light.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Light.woff2') format('woff2'),
+       url('../fonts/NoirPro-Light.woff') format('woff'),
+       url('../fonts/NoirPro-Light.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro LightItalic';
+  src: url('../fonts/NoirPro-LightItalic.eot');
+  src: url('../fonts/NoirPro-LightItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-LightItalic.woff2') format('woff2'),
+       url('../fonts/NoirPro-LightItalic.woff') format('woff'),
+       url('../fonts/NoirPro-LightItalic.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro Medium';
+  src: url('../fonts/NoirPro-Medium.eot');
+  src: url('../fonts/NoirPro-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-Medium.woff2') format('woff2'),
+       url('../fonts/NoirPro-Medium.woff') format('woff'),
+       url('../fonts/NoirPro-Medium.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro MediumItalic';
+  src: url('../fonts/NoirPro-MediumItalic.eot');
+  src: url('../fonts/NoirPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-MediumItalic.woff2') format('woff2'),
+       url('../fonts/NoirPro-MediumItalic.woff') format('woff'),
+       url('../fonts/NoirPro-MediumItalic.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro SemiBold';
+  src: url('../fonts/NoirPro-SemiBold.eot');
+  src: url('../fonts/NoirPro-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-SemiBold.woff2') format('woff2'),
+       url('../fonts/NoirPro-SemiBold.woff') format('woff'),
+       url('../fonts/NoirPro-SemiBold.otf') format("opentype");
+}
+@font-face {
+  font-family:'NoirPro SemiBoldItalic';
+  src: url('../fonts/NoirPro-SemiBoldItalic.eot');
+  src: url('../fonts/NoirPro-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/NoirPro-SemiBoldItalic.woff2') format('woff2'),
+       url('../fonts/NoirPro-SemiBoldItalic.woff') format('woff'),
+       url('../fonts/NoirPro-SemiBoldItalic.otf') format("opentype");
+}
+@font-face {
   font-family: 'Glyphicons Halflings';
 
   src: url('../fonts/glyphicons-halflings-regular.eot');
@@ -4309,7 +4405,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .container-fluid > .navbar-collapse {
     margin-right: 0;
     margin-left: 100px!important;
-  } 
+  }
 }
 .navbar-static-top {
   z-index: 999;

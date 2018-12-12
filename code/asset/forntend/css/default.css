@@ -1612,7 +1612,7 @@ a.ui-button:active,
 	margin-top:10px;
 }
 .mar_left10{
-	margin-left:10px;
+	margin-left:10px !important;
 }
 .starrr{
 	margin-top:5px;
@@ -1805,15 +1805,15 @@ a.ui-button:active,
 
 /* footer Css */
 .sub_footer{
-	background-color:#000033;;
+	background-color:#000046;
 	border-top: none;
 	padding:10px 0;
-  font-family: NoirPro;
+  font-family: NoirPro Light;
   letter-spacing: 1px;
   color:#ffffff;
 }
 .sub_footer a{
-	margin-left:20px;
+	margin-left:2px;
 	display:inline-block;
 	color:#ffffff;
 }
@@ -1826,10 +1826,10 @@ a.ui-button:active,
   border:1.5px solid #ffffff;
 }
 footer {
-	background-color:#000033;
+	background-color:#000046 ;
 	/* padding-bottom:40px; */
 	border-top:1px solid #ccc;
-  font-family: NoirPro;
+  font-family: NoirPro SemiBold;
   letter-spacing: 1px;
 }
 .footerleft { margin-top:40px;}
@@ -1837,7 +1837,7 @@ footer {
 .footerleft p { color:#ffffff; font-size:12px !important; margin-bottom:15px;}
 .footerleft p i { width:20px; color:#999;}
 .paddingtop-bottom {  margin-top:40px;}
-.footer-ul { list-style-type:none;  padding-left:0px; margin-left:2px;color:#ffffff;}
+.footer-ul { list-style-type:none;font-family:NoirPro Light;  padding-left:0px; margin-left:2px;color:#ffffff;}
 .footer-ul li { line-height:29px; font-size:14px;}
 .footer-ul li a { color:#ffffff; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
 .footer-ul i { margin-right:10px;}
@@ -1873,7 +1873,7 @@ ul.social-network {
 }
 ul.social-network li {
 	display: inline-block;
-	margin: 4px 2px;
+	margin: 4px 1%;
 }
 /* footer social icons */
 .social-network a.icoRss:hover {
@@ -1901,11 +1901,22 @@ ul.social-network li {
 a.socialIcon:hover, .socialHoverClass {
 	color:#44BCDD;
 }
-
+#subemail{
+  font-family: NoirPro Light;
+  margin-right:10px;
+}
+@media (min-width:768px) and (max-width:820px){
+  #subemail{
+    padding-left:1px;
+}
+}
+.NoirProLight{
+font-family: NoirPro Light;
+}
 .social-circle li a {
 	display:inline-block;
 	position:relative;
-	margin:0 auto 0 auto;
+	margin:0 10px 0 auto;
 	-moz-border-radius:50%;
 	-webkit-border-radius:50%;
 	border-radius:50%;
@@ -1919,7 +1930,6 @@ a.socialIcon:hover, .socialHoverClass {
 	line-height:22px;
 	text-align: center;
 }
-
 .social-circle li a:hover i, .triggeredHover {
 	-moz-transform: rotate(360deg);
 	-webkit-transform: rotate(360deg);
@@ -1940,10 +1950,11 @@ a.socialIcon:hover, .socialHoverClass {
 	transition: all 0.8s;
 }
 .icoFacebook{
- background-color: #3B5998;
+ background-color: #ffff;
+ color:#1546a5;
 }
 .icoTwitter{
-	background-color: #33ccff;
+	background-color: transparent ;
 }
 .icoGoogle{
 	background-color: #BD3518;
@@ -1955,13 +1966,14 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: #7084cb;
 }
 .telegram{
-	background-color: #168bd9;
+	background-color: transparent ;
+  color:#1546a5;
 }
 .github{
 	background-color: #333;
 }
 .icoLinkedin{
-	background-color: #007bb7;
+	background-color: #ffff;
 }
 .github_c{
 	background-color: #57b73d;
@@ -2690,6 +2702,26 @@ font-family: NoirPro;
 }
 .banner_margin{
  margin:30px 0 0 0;
+}
+.banner_desc{
+  font-family:NoirPro Light ;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.53;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+}
+.banner_head{
+  font-family:NoirPro SemiBold;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  color: #ffffff;
 }
 @media (max-width:768px){
 

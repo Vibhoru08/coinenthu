@@ -3,7 +3,7 @@
 <footer >
  <div class="container-fluid pad_b30">
    <div class="row" >
-     <div class="col-md-3 col-sm-6 paddingtop-bottom" style="margin-right:12.5%;">
+     <div class="col-md-4 col-sm-4 paddingtop-bottom">
        <h6 class="heading7">Navigation</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
@@ -14,7 +14,7 @@
          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#suggestions">Suggest us</a></li>
        </ul>
      </div>
-   <div class="col-md-3 col-sm-6 paddingtop-bottom footer_left" style="margin-right:12.5%;">
+   <div class="col-md-4 col-sm-3 paddingtop-bottom footer_left">
        <h6 class="heading7">Terms</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
@@ -25,7 +25,7 @@
      </div>
 
    <!--<div class="col-md-1 m_hide">&nbsp;</div>-->
-     <div class="col-md-3 col-sm-6 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
+     <div class="col-md-4 col-sm-5 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
         <h6 class="heading7">Follow Us</h6>
         <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
@@ -36,17 +36,17 @@
 
      <!--<li><a href="https://Coinenthu.slack.com/shared_invite/MTgyMDI4MDM3NjM5LTE0OTQzODMzNzgtZGEyMjc0ODBhNQ" target="_blank" class="icoGoogle" title="Slack"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/slack_ie11.png"/></i></a></li>
      <li><a href="#" class="icon_market" title="Coinmarketcap"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/bitcoin.png"/></i></a></li>-->
-     <li><a href="https://www.linkedin.com/company/Coinenthu/" class="icoLinkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-     <li><a href="https://www.facebook.com/Coinenthu"  target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+     <li><a href="https://www.linkedin.com/company/Coinenthu/" class="icoLinkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin" style="color:#000046;"></i></a></li>
+     <li><a href="https://www.facebook.com/Coinenthu"  target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook" style="color:#000046;"></i></a></li>
      <!--<li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>-->
      </ul>
-     <p class="mar_t20">&nbsp;info@coinenthu.com</p>
+     <p class="mar_t20 NoirProLight">&nbsp;info@coinenthu.com</p>
 
 
      <div class="input-group input-group-sm">
                <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                    <span class="input-group-btn">
-                     <button type="button" class="btn btn-info btn-danger" onClick="subscriber();">Subscribe</button>
+                     <button type="button" class="btn btn-info btn-danger mar_left10" onClick="subscriber();">Subscribe</button>
                    </span>
      </div>
      <span id="successMsg" ></span>
@@ -59,7 +59,7 @@
  <hr style="width:97%;border:none;color:#ffff;height:1px;background-color: #fff;">
  <div class="sub_footer">
    <div class="container-fluid">
-   © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
+   © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions.</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
    </div>
  </div>
 

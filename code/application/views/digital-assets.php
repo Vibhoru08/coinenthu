@@ -21,10 +21,10 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div> -->
 	<div class="container-fluid banner_margin linear_color">
 		<div class="row mar_t80 mar_b80">
-			<div class="col-sm-5 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center">
+			<div class="col-sm-5 col-sm-offset-4 col-xs-6 col-xs-offset-3 text-center banner_head">
 				DIGITAL ASSETS
 				<hr style="width:10%;border:1px solid #ffff">
-				<div class="noirpro_light">
+				<div class="banner_desc">
 				Let’s not invest blindly, get the correct information on your Digital Assets.
 				<div>Search for them.</div>
 			</div>
