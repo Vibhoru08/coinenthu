@@ -3663,14 +3663,14 @@ tbody.collapse.in {
 }
 .caret {
   display: inline-block;
-  width: 0;
-  height: 0;
+  width: 0px;
+  height: 0px;
   margin-left: 2px;
   vertical-align: middle;
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  border-top: 6px dashed;
+  border-top: 6px solid \9;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
 }
 .dropup,
 .dropdown {
@@ -3682,13 +3682,13 @@ tbody.collapse.in {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -1px;
   z-index: 1000;
   display: none;
   float: left;
   min-width: 160px;
   padding: 5px 0;
-  margin: 2px 0 0;
+  margin: 0 0 0;
   font-size: 14px;
   text-align: left;
   list-style: none;
@@ -4508,14 +4508,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   } */
 }
 @media (max-width: 767px) {
+
+  }
   .navbar-nav .open .dropdown-menu {
     position: static;
     float: none;
-    left:50px;
+    left:0px;
     width: auto;
     margin-top: 0;
     background-color: transparent;
-    border: 0;
+    border:none!important;
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -4548,8 +4550,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    margin-top:15px;
+    margin-bottom:15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }
 .navbar-form {
