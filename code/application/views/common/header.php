@@ -228,8 +228,8 @@ $img =  base_url().'images/logo.png';;
 					<?php } ?>
 						<li><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					<?php }else{?>
-						<li><a href="<?php echo base_url();?>login">Login</a></li>
-						<li><a href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
+						<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
+						<li class = "signup_box"><a href="<?php echo base_url();?>add-digital-asset"><span style="border: 2px solid #00FFFF;border-radius:9%;padding:6px 20px 8px 20px;">Signup</span></a></li>
 						
 					<?php } ?>
                   
