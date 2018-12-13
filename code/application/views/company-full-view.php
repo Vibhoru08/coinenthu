@@ -1,5 +1,15 @@
 <div class="content-wrapper">
-	<div  class="bread_crumb">
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+			<div class="col-xs-12 text-center banner_head">
+				CRYPTO REVIEWS
+				<hr style="width:5%;border:1px solid #ffff">
+				<div class="banner_desc">
+			</div>
+			</div>
+		</div>
+	</div>
+	<!--<div  class="bread_crumb">
 	<div class="container-fluid">
 		<section class="content-header">
 				<h1 class="text-right m_hide">
@@ -26,7 +36,7 @@
 				</ol>
 		</section>
 	</div>
-	</div>
+</div>-->
 	<div class="container-fluid">
 		<section class="content mar_t40 mar_b40">
 			<div class="box mar_b5 sorting box_shadow overflow_hidden">
