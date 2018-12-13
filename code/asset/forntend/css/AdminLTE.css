@@ -2215,15 +2215,30 @@ a:focus {
   display: block;
 }
 .select_dropdown{
-  border:1px solid #ddd;
+  background-color: #f2f2f2;
+  border:0;
   font-size:16px;
   width:231px;
   padding-left:10px;
       cursor: pointer;
 }
-.for-border{
+.for-border::before{
+  position:absolute;
+  left:180px;
+  height: 31px;
   padding:6px 0 8px 0;
   border-right:2px solid #ddd;
+  content:"";
+}
+@media(max-width:768px){
+  .for-border::before{
+    position:absolute;
+    left:195px;
+    height: 31px;
+    padding:6px 0 8px 0;
+    border-right:2px solid #ddd;
+    content:"";
+  }
 }
 .no-border{
 border:none;
@@ -2264,6 +2279,16 @@ border:none;
 .btn-info:active,
 .btn-info.hover {
   background-color: #00acd6;
+}
+.btn-custom{
+  background-color: #8e44ad;
+  border-color: #8e44ad;
+  color:#ffff;
+}
+.btn-custom:hover,
+.btn-custom:active{
+  background-color: #c7081f;
+  color:#fff;
 }
 .btn-danger {
   background-color: #d50922;

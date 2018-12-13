@@ -30,7 +30,6 @@ $viewTime = date('Ymd') .'_'. date('His');
 			</div>
 			</div>
 		</div>
-
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
@@ -44,7 +43,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
 						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Digital Assets">
 						</div>
-						<div class = "col-md-2 col-sm-1  col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:grey;border-radius:8%;">
+						<div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:grey;border-radius:8%;">
 						<img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
 						</div>
 						</div>
@@ -57,7 +56,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 							<div class="form-group"><nobr>
 								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right select_dropdown" id="change_u"><span class="for-border">
-								  Sort By<button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="background:#fff;text-align:left;padding:6px 13px;" id="filtername">
+								  Sort By<button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								   Most reviewed</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
@@ -150,7 +149,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 			</div>
 			<!--<div id="loadingHash" class="text-center font_s22 mar_t20 mm_bttom hide"><i class="fa fa-spinner" aria-hidden="true"></i> Loading </div>-->
 			<?php if($totCntDigitals > 6){?>
-			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-danger">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
+			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>

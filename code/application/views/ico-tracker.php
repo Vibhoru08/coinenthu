@@ -3,9 +3,22 @@
 $viewTime = date('Ymd') .'_'. date('His');
 ?>
  <div class="content-wrapper">
-	
+
 	<!-- <div  style="border-bottom:1px solid #ddd"> -->
-	<div class="bread_crumb">
+  <div class="container-fluid banner_margin linear_color">
+    <div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+      <div class="col-xs-12 text-center banner_head">
+        ICO TRACKER
+        <hr style="width:5%;border:1px solid #ffff">
+        <div class="banner_desc">
+        Let’s not invest blindly, get the correct information on your ICO TRACKERS.
+        <div>Search for them.</div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+	<!--<div class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -17,51 +30,66 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</ol>
 			</section>
 		</div>
-	</div>
+	</div> -->
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row">
-			<div class="col-md-9">
+		<div class="row mar_b80 mar_t40">
+			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
-				<div class="box-header">
+				<div class="box-header pad_0">
 				<div class="row">
-					<div class="col-md-4 msearch_bg mpad_b10">
+					<div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg pad_0">
+            <div class = "row s_width">
+						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
 						<input class="form-control brg_focus_n" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search ICOs">
 					</div>
-					<div class="col-md-8 text-right msearch_bg mpad_b3">
+          <div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:grey;border-radius:8%;">
+          <img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
+          </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" >
+          <div class="row">
+            <div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 centered ">
 						<div class="select_style">
 							<form class="form-inline">
 							<div class="form-group">
 								<ul class="nav navbar-nav">
 								 <li class="dropdown mpull_right select_dropdown" id="change_u">
-								  Sort By &nbsp; <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" style="background:#fff;width:232px;text-align:left;padding:6px 19px;" id="filtername">
+								  Sort By &nbsp; <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								 Ending soon<div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:232px">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:231px">
 									<li><a onClick="filterCompanies('rating','2');" href="javascript:void('0');">Highest rating</a></li>
 									<li><a onClick="filterCompanies('viewed','2');" href="javascript:void('0');">Most reviewed</a></li>
 									<li><a onClick="filterCompanies('mch','2');" href="javascript:void('0');">Market cap(High to Low)</a></li>
 									<li><a onClick="filterCompanies('mcl','2');" href="javascript:void('0');">Market cap(Low to High)</a></li>
-									
+
 									<li><a onClick="filterCompanies('edtA','2');" href="javascript:void('0');">Ending soon</a></li>
 								 </ul>
 								  </li>
 								</ul>
 							</div>
 							</form>
-						</div>
+            </div>
 					</div>
 				</div>
 				</div>
+				</div>
+				</div>
 			</div>
+</div>
+</div>
+<div class = "row">
+	<div class = "col-md-8">
 			<input type="hidden" id="totcntcompanies" value="<?php echo $totCntIcos; ?>" />
 			<input type="hidden" id="limitpage"  value="12" />
 			<input type="hidden" id="offsetpage" value="12" />
 			<input type="hidden" id="pageMode" value="icos" />
 			<div class="row company_list">
 			<?php if(sizeof($icoTrackers)>0){ foreach($icoTrackers as $key=>$value){?>
-				<div class="col-md-4">
+				<div class="col-md-5 col-md-offset-1">
 					<ul class="products-list product-list-in-box">
 						<li class="item center">
 						<div class="product_zorder">
@@ -89,7 +117,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						  ?>
 							<a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id;?>" class="product-title"><?php echo  $string; ?></a>
 							<span class="product-description">
-								
+
 							<div>
 								<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 								<p><span class="">
@@ -99,7 +127,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 								}else{
 									$reviews = '0';
 								}
-								
+
 								 echo $reviews; ?>  reviews</span></p>
 							</div>
 							</span>
@@ -114,7 +142,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 				<span id="loadingData"></span>
 			</div>
 			<?php if($totCntIcos > 12){?>
-			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-danger">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
+			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>

@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-	<div  class="bread_crumb">
+	<!--<div  class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -11,9 +11,9 @@
 					</ol>
 			</section>
 		</div>
-	</div>
+	</div>-->
 	<div class="container">
-			<section class="content mar_b20">
+			<section class="content mar_b20 mar_t80">
 				<div class="row">
 					<div class="col-md-2">&nbsp;</div>
 						<div class="col-md-8">

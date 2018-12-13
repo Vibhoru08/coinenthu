@@ -2192,11 +2192,11 @@ font-family: NoirPro Light;
 	margin-bottom:50px;
 }
 .about {
-	margin-top:50px;
+	margin-top:-80px;
 }
 .about h2{
 	font-size:24px;
-	color:#fff;
+	color:#404852;
 	/* margin-top:50px; */
 }
 .brg_r{
@@ -2253,7 +2253,7 @@ font-family: NoirPro Light;
 	border-bottom:1px solid #ddd;
 }
 .about_bg{
-	background:#061a3f;
+	background:#fff;
 }
 .slider_grid{
 	border-bottom:1px solid #ddd;
@@ -2753,13 +2753,14 @@ font-family: NoirPro;
 }
 @media(min-width:990px) and (max-width:1199px){
   .ss_width{
-    width:250px;
+    width:247px;
   }
   .a_width{
     width:220px;
   }
+
 }
-@media(min-width:768px) and (max-width:989px){
+@media(min-width:768px) and (max-width:990px){
   .ss_width{
     width:220px;
     margin-right:10px;

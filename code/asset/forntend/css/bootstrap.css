@@ -4511,12 +4511,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
   }
   .navbar-nav .open .dropdown-menu {
-    position: static;
+    position: absolute;
     float: none;
     left:0px;
     width: auto;
     margin-top: 0;
-    background-color: transparent;
+    background-color: #f2f2f2;
     border:none!important;
     -webkit-box-shadow: none;
             box-shadow: none;

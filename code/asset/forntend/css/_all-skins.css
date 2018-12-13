@@ -40,7 +40,8 @@
 	left:13px;
 	border-radius:2px;
 }
-.skin-blue .main-header .navbar .nav > li > a:active:before,.skin-blue .main-header .navbar .nav > .active > a:before{
+
+.skin-blue .main-header .navbar .nav > li.h_hover > a:active:before,.skin-blue .main-header .navbar .nav > .active > a:before{
 	position:absolute;
 	top:0px;
 	background:transparent;
