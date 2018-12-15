@@ -14,7 +14,7 @@
             </div>
             <div class = "row text-center mar_t30 mar_b50">
                 <div class="col-sm-5 col-sm-offset-3 col-xs-5 col-xs-offset-2">
-                    <input class="form-control1 form-control mar_r10" type="text" onkeyup="sreachterm();" type="text" name="searchhome" id="searchhome" placeholder="Search for your Digital Assets and ICOs">
+                    <input class="form-control1 form-control mar_r10" type="text" onkeyup="sreachterm();" name="searchhome" id="searchhome" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;&nbsp;Search for your Digital Assets and ICOs" style="font-family:NoirPro, FontAwesome;font-size: 16px;font-weight: 300;font-style: italic;color: #231f20;" />
                 </div>
                 <div class = "col-sm-2 col-xs-2" style = "width:150px;">
                     <button class="btn btn-success" type = "button" style = "width:100%">Search</button>

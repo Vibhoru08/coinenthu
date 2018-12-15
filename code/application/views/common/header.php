@@ -99,10 +99,7 @@ $img =  base_url().'images/logo.png';
 	<!--[if IE 11]> <link rel="stylesheet" media="print" title="Print" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><![endif]-->
 <!--[if lte IE 10]> <link rel="stylesheet" media="print" title="Print" type="text/css" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><![endif]-->
 <!--[if !IE]>--><link rel="stylesheet" media="print" title="Print" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><!--<![endif]-->
-
 	<script src="<?php echo base_url();?>asset/forntend/js/slim-min.js"></script>
-
-
 	<script src="<?php echo base_url();?>js/jquery.js"></script>
 <script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/jquery.cookie.js"></script>
