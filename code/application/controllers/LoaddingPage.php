@@ -16,8 +16,13 @@ class LoaddingPage extends MY_Controller {
 	}*/
 	public function index()
 	{		
-		$redirectUrl = base_url().'digital-assets';
+		$redirectUrl = base_url().'home';
 		redirect($redirectUrl);		
+	}
+	public function Home()
+	{
+		$data = array();
+		$this->show('home',$data);
 	}
 	public function aboutUs()
 	{

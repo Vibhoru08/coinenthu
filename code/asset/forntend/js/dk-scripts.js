@@ -1,15 +1,19 @@
 var d = new Date();
 var time = d.getTime();
 function redirectPage(pageName){
-	if(pageName=='abt'){
-		window.location = baseUrl + 'about-us';
+	if(pageName=='home'){
+		window.location = baseUrl + 'home';
+	}else if(pageName=='abt'){
+        window.location = baseUrl + 'about-us';
+        localStorage.setItem('type','viewed');
+		localStorage.setItem('page_name',1);
 	}else if(pageName=='digi'){
 		window.location = baseUrl + 'digital-assets';
 		localStorage.setItem('type','viewed');
-		localStorage.setItem('page_name',1);
+		localStorage.setItem('page_name',2);
 	}else if(pageName=='ico'){
 		localStorage.setItem('type','edtA');
-		localStorage.setItem('page_name',2);
+		localStorage.setItem('page_name',3);
 		window.location = baseUrl + 'ico-tracker';
 	}
 }
@@ -297,7 +301,7 @@ function filterCompanies(type,pagemode) {
 	localStorage.setItem('type',type);
 	localStorage.setItem('page_name',pagemode);
 	$("#offsetpage").val(1);
-    $("#limitpage").val(12);
+    $("#limitpage").val(6);
     if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
         var filterTitle = 'Most reviewed';
         $("#filter_id").val(1);
@@ -367,7 +371,7 @@ function filterCompanies(type,pagemode) {
                 setTimeout(function() {
                     $(".company_list").html(data.resData);
                     $('#loadingHash1').show();
-                    if (data.cnt > 12) {
+                    if (data.cnt > 6) {
                         $('#loadingHash1').show();
                         $('#loadingHash1').removeClass('mm_bttom hide');
                     }
@@ -454,7 +458,7 @@ function sreachterm() {
                 if (data.output == 'success') {
                     setTimeout(function() {
                         $(".company_list").html(data.resData);
-                        if (data.cnt > 12) {
+                        if (data.cnt > 6) {
                             $('#loadingHash1').show();
                             $('#loadingHash1').removeClass('mm_bttom hide');
                         }

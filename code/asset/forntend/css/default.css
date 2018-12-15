@@ -1378,6 +1378,21 @@ a.ui-button:active,
 .mar_b60{
   margin-bottom:60px;
 }
+.mar_l10{
+  margin-left:10px;		
+}
+.mar_l20{
+  margin-left:20px;		
+}
+.mar_l30{
+  margin-left:30px;		
+}
+.mar_l40{
+  margin-left:40px;		
+}  
+.mar_l100{
+  margin-left:100px;	
+}
 .pad_0{
   padding:0;
 }
@@ -2739,6 +2754,10 @@ font-family: NoirPro;
   line-height: normal;
   letter-spacing: 0.6px;
   color: #ffffff;
+}
+.home_desc{
+	font-size:20px;
+	font-family:Arial;
 }
 @media (min-width:1200px){
   .s_width{

@@ -3,13 +3,16 @@ ini_set('display_errors', '0');
 $viewTime = date('Ymd') .'_'. date('His');
 $title = 'Coinenthu.com – Community based crypto reviews!';
 $desc = 'Coinenthu is a platform that allows anyone from a newbie to an expert to explore existing and upcoming blockchain projects';
-$img =  base_url().'images/logo.png';;
+$img =  base_url().'images/logo.png';
 	// $page=basename($_SERVER['PHP_SELF']);
 	$page = $this->uri->segment(1);
+	if($page=="home" || $page == ""){
+		$home = "active";
+	}
 	if($page=="about-us" ){
 		$about="active";
 	}
-	if($page=="digital-assets" || $page == ""){
+	if($page=="digital-assets"){
 		$assets="active";
 	}
 	if($page=="ico-tracker"){
@@ -140,7 +143,7 @@ $img =  base_url().'images/logo.png';;
             </div>
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
               <ul class="nav navbar-nav margin-left">
-			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">Home</a></li>
+			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
 			   <li class="<?php echo $about;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
                 <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>

@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['default_controller']        = 'LoaddingPage';
+$route['home']                      = 'LoaddingPage/Home';
 $route['about-us']        			= 'LoaddingPage/aboutUs';
 $route['login']                     = 'Login';
 $route['change-password']           = 'User/changePassword';
