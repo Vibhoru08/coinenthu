@@ -1,14 +1,37 @@
 <div class="content-wrapper">
-	<div class="container-fluid banner_margin linear_color">
-		<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+	<div class="container-fluid banner_margin linear_color banner-asset-margin">
+		<div class="row mmar_t40 mmar_b10 mar_t110 mar_b110">
 			<div class="col-xs-12 text-center banner_head">
-				CRYPTO REVIEWS
+			<?php echo strtoupper($companyview['company_name']);?> REVIEWS
 				<hr style="width:5%;border:1px solid #ffff">
-				<div class="banner_desc">
-			</div>
 			</div>
 		</div>
 	</div>
+	<?php if($companyview['company_picture']!=""){
+								//print_r($companyview['cm_ctid']);exit;
+								if($companyview['cm_ctid'] == 2){ ?>
+									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$companyview['company_picture'].''; ?>" class="img-rounded asset-image"/>
+							<?php }else if($companyview['cm_ctid'] == 1){
+							if($companyview['company_picture']!="" && substr( $companyview['company_picture'], 0, 4 ) === "digi"){ ?>
+									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+								<?php }else if(substr( $companyview['company_picture'], 0, 3 ) === "ico"){?>
+									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+								<?php } else if($companyview['company_picture']!=""){
+					$srcc= base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'];
+									if (@getimagesize($srcc)){
+								?>
+									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+								<?php }else{ ?>
+										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded asset-image"/>
+									<?php }?>
+								<?php } else { ?>
+									<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded asset-image"/>
+								<?php } ?>
+
+							<?php }	}
+							else { ?>
+							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded asset-image"/>
+							<?php } ?>
 	<!--<div  class="bread_crumb">
 	<div class="container-fluid">
 		<section class="content-header">
@@ -16,27 +39,271 @@
 				  &nbsp;
 				</h1>
 				<ol class="breadcrumb">
-				  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-				  <?php if(isset($companyview['cm_ctid']) && $companyview['cm_ctid']==2){
+				  <li><a href="</*?php echo base_url();?*/>"><i class="fa fa-dashboard"></i> Home</a></li>
+				  </*?php if(isset($companyview['cm_ctid']) && $companyview['cm_ctid']==2){
 					if($companyview['companyOwner']==1){
-				  ?>
-					<li class=""><a href="<?php echo base_url();?>my-ico-trackers">My ICO Trackers</a></li>
-					<?php }else{ ?>
-					<li class=""><a href="<?php echo base_url();?>ico-tracker">ICO Tracker</a></li>
-					<?php } ?>
-				  <?php } else{
+				  ?*/>
+					<li class=""><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICO Trackers</a></li>
+					</*?php }else{ ?*/>
+					<li class=""><a href="</*?php echo base_url();?*/>ico-tracker">ICO Tracker</a></li>
+					</*?php } ?*/>
+				  </*?php } else{
 					if($companyview['companyOwner']==1){
-				  ?>
-					<li class=""><a href="<?php echo base_url();?>my-digital-assets">My Digital Assets</a></li>
-					<?php }else{ ?>
-					<li class=""><a href="<?php echo base_url();?>digital-assets">Digital Assets</a></li>
-					<?php } ?>
-				  <?php } ?>
-				  <li class="active"><?php echo ucfirst($companyview['company_name']);?></li>
+				  ?*/>
+					<li class=""><a href="</*?php echo base_url();?*/>my-digital-assets">My Digital Assets</a></li>
+					</*?php }else{ ?*/>
+					<li class=""><a href="</*?php echo base_url();?*/>digital-assets">Digital Assets</a></li>
+					</*?php } ?*/>
+				  </*?php } ?*/>
+				  <li class="active"></*?php echo ucfirst($companyview['company_name']);?*/></li>
 				</ol>
 		</section>
 	</div>
 </div>-->
+    <div class = "container-fluid mar_b400">
+		<div class ="row">
+			<div class="col-md-3 col-md-offset-1 asset-boxes text-center">
+			Hello
+			</div>
+			<div class = "col-md-7 mar_l30">
+				<div class= "row asset-boxes asset-padding text-justify">
+				<p><?php echo ucfirst($companyview['company_desc']); ?></p>
+				</div>
+				<div class= "row" style="padding:40px 0px 40px 0px;">
+					<ul class="nav navbar-nav" style="float:right;">
+							<li class="dropdown mpull_right select_dropdown ma_dw" id="change_u">
+		 					&nbsp; <button class="btn btn-default dropdown-toggle review_dw" type="button" data-toggle="dropdown" aria-expanded="true" id="filtername">
+		   					<?php
+		   						if($companyview['results_type'] == 'likes')
+		   							{
+			   							echo 'Up Votes';
+		   							}else if($companyview['results_type'] == 'dislikes')
+		   							{
+										echo 'Down Votes';
+		   							}else if($companyview['results_type'] == 'oldest')
+		   							{
+										echo 'Oldest';
+		   							}else if($companyview['results_type'] == 'newlist')
+		   							{
+										echo 'Newest';
+		   							}else{
+
+			   							echo 'Up Votes';
+		   							}
+		   					?>
+							<div class="arrow_down"><span class="caret"></span></div>
+		  					</button>
+		  					<ul class="dropdown-menu user_dropdown_t" role="menu" style="left:0px;">
+								<li><a onClick="fullViewFilter('likes',1);" href="javascript:void('0')">Up Votes</a></li>
+								<li><a onClick="fullViewFilter('dislikes',1);" href="javascript:void('0')">Down Votes</a></li>
+								<li><a onClick="fullViewFilter('oldest',1);" href="javascript:void('0')">Oldest</a></li>
+								<li><a onClick="fullViewFilter('newlist',1);" href="javascript:void('0')">Newest</a></li>
+		  					</ul>
+							</li>
+					</ul>
+			    </div>
+                <div class = "row asset-boxes asset-padding">
+				    <?php if(sizeof($companyview['reviews'])>0){foreach($companyview['reviews'] as $cr=>$review){				   
+				    
+								if($review->u_username!=""){
+									$u_username = ucfirst($review->u_username);
+								}else if($review->u_firstname!=""){
+									$u_username = ucfirst($review->u_firstname);
+								}else{
+									$u_username = "Guest User";
+								}
+					?>
+					<div class = "col-md-2">
+						<?php if($review->u_picture!=""){ ?>
+						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
+						<?php }else if($review->u_social_pic!=""){ ?>
+						<img class="img-circle review-image" src="<?php echo $review->u_social_pic; ?>" alt="<?php echo $u_username; ?>">
+						<?php }else{?>
+						<img class="img-circle review-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
+						<?php } ?>
+					</div>
+					<div class = "col-md-9">
+						<div class = "row" style="padding-left:30px;padding-top:15px;">
+							<span class="pull-right">
+									<?php
+									if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
+										$uid = $_SESSION['user_id'];
+									}else{
+										$uid = "";
+									}
+									?>
+									<?php
+										if($uid!=""){
+											if($uid == $review->re_uid){
+									?>
+									<a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit Review</span></a>
+									<?php } } ?>
+							</span>
+							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
+							<?php echo 'By'.' '.$u_username; ?><br/>
+							<?php
+									$old_date = Date_create($review->re_createdat);
+									$new_date = Date_format($old_date, "d/m/Y");
+									echo $new_date;
+
+									if($review->re_likes_cnt!="" && $review->re_likes_cnt!=0){
+										$re_likes_cnt = $review->re_likes_cnt;
+									}else{
+										$re_likes_cnt = 0;
+									}
+									if($review->re_dislike_cnt!="" && $review->re_dislike_cnt!=0){
+										$re_dislike_cnt = $review->re_dislike_cnt;
+									}else{
+										$re_dislike_cnt = 0;
+									}
+							?>
+										
+						</div>
+						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
+						<?php
+							$string = strip_tags($review->re_decript);
+							if (strlen($string) > 150) {
+
+								$stringCut = substr($string, 0, 150);
+								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$review->re_id.');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
+							}
+
+						?>
+							<span id="spanLess_<?php echo $review->re_id; ?>" style="overflow-wrap: break-word;"><?php echo $string; ?></span>
+							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
+						</div>
+						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
+							<?php
+							if($uid!=""){
+								if($uid == $review->re_uid){
+							?>
+							<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<?php } else { ?>
+								<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
+							<?php
+									$reportedStatus = checkUserReport($uid,$review->re_id);
+							?>
+							<?php if($reportedStatus==1){ ?>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
+							<?php }else{ ?>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
+							<?php } ?>
+							<?php }} ?>
+							<span class="pull-right" style="margin-top:7.5px;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
+								echo " Reply . ";
+							}else{
+								echo " Replies . ";
+							} ?><?php echo $re_likes_cnt; ?><?php if($re_likes_cnt == 1){
+								echo " Like . ";
+							}else{
+								echo " Likes . ";
+							} ?><?php echo $re_dislike_cnt;?><?php if($re_dislike_cnt == 1){
+								echo " Dislike";
+							}else{
+								echo " Dislikes";
+							} ?></span>
+						</div>
+						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
+						<div class = "row">
+					        <?php
+								if($reviewReplay->u_username!=""){
+									$u_username = ucfirst($reviewReplay->u_username);
+								}else if($reviewReplay->u_firstname!=""){
+									$u_username = ucfirst($reviewReplay->u_firstname);
+								}else{
+									$u_username = "Guest User";
+								}
+							?>
+							<div class = "col-md-2">
+							        <?php if($reviewReplay->u_picture!=""){ ?>
+									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reviewReplay->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
+									<?php }else if($reviewReplay->u_social_pic!=""){ ?>
+									<img class="img-circle reply-image" src="<?php echo $reviewReplay->u_social_pic; ?>" alt="<?php echo $u_username; ?>">
+									<?php }else{?>
+									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
+									<?php } ?>
+							</div>
+							<div class = "col-md-9">
+								<div class = "row" style="padding-top:5px;padding-bottom:15px;">
+									<?php echo 'By'.' '.$u_username; ?><br/>
+									<?php
+											$old_date = Date_create($reviewReplay->crr_createdat);
+											$new_date = Date_format($old_date, "d/m/Y");
+											echo $new_date;
+											if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
+												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
+											}else{
+												$crr_likes_cnt = 0;
+											}
+											if($reviewReplay->crr_dislike_cnt!="" && $reviewReplay->crr_dislike_cnt!=0){
+												$crr_dislike_cnt = $reviewReplay->crr_dislike_cnt;
+											}else{
+												$crr_dislike_cnt = 0;
+											}
+
+								    ?>
+								</div>
+								<div class = "row" style="margin-bottom:15px;">
+									<?php
+
+									$stringReply = strip_tags($reviewReplay->crr_decript);
+									if (strlen($stringReply) > 150) {
+
+									$stringCut = substr($stringReply, 0, 150);				
+									$stringReply = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readReplyMoreSpan('.$reviewReplay->crr_id.');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
+									}
+									?>
+									<span id="replyspanLess_<?php echo $reviewReplay->crr_id; ?>" style="overflow-wrap: break-word;"><?php echo $stringReply; ?>
+									</span>
+									<span id="replyexpandSpan_<?php echo $reviewReplay->crr_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$reviewReplay->crr_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?>
+								    </span>
+								</div>
+								<div class = "row" style="padding-bottom:15px">
+									<?php
+											if($uid!=""){
+												if($uid == $reviewReplay->crr_uid){
+									?>
+									<button id="reply_reply_pop" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
+									<?php } else{ ?>
+										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+									</button>
+									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span> 
+									</button>
+									<?php
+									$reportedReplyStatus = checkUserReplyReport($uid,$reviewReplay->crr_id);
+									?>
+									<?php if($reportedReplyStatus==1){ ?>
+									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+									<?php }else{ ?>
+									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
+									<?php } ?>	
+									<?php }} ?>	
+									<span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
+									<?php if ($crr_likes_cnt == 1){
+										echo " Like";	
+									} else {
+										echo " Likes";
+									}?>
+									</span>	
+								</div>
+													
+							</div>
+						</div>
+						<?php }} ?>		
+					</div>
+					<?php }} ?> 									   
+				</div>
+ 			</div>				
+		</div>					
+	</div>
+
+
+
+
+
+
 	<div class="container-fluid">
 		<section class="content mar_t40 mar_b40">
 			<div class="box mar_b5 sorting box_shadow overflow_hidden">
@@ -682,7 +949,7 @@
 							  <div class="mar_t15">
 							  <div class="pull-left">
 								<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_like"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><?php echo $re_likes_cnt; ?></button>
-								<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i> <?php echo $re_dislike_cnt; ?></button>
+								
 								<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
 								?>
@@ -1459,11 +1726,11 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 					}else{
 						if(typeMode=='review'){
 							if(type=='like'){
-								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
+								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
 							}else{
-								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
+								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
 							}
 						}else if(typeMode=='replies'){
 							if(type=='like'){
@@ -1474,6 +1741,15 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
 							}
 						}
+						/*}else if(typeMode=='replies'){
+							if(type=='like'){
+								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+							}else{
+								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+							}
+						}*/
 					}
 				}else if(data.output=='fail'){
 					$("#confirmation_modal_pop").modal('hide');

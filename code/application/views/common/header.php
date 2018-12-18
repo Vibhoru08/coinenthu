@@ -217,16 +217,16 @@ $img =  base_url().'images/logo.png';
 						}
 					?>
 					<ul class= "nav navbar-nav navbar-right">
-					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-						<li class="h_hover"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
-						<li class="h_hover"><a href="<?php echo base_url();?>my-digital-assets">My ASSETS </a></li>
-						<li class="h_hover"><a href="<?php echo $urlDigtal; ?>">ADD AN ASSET </a></li>
-						<li class="h_hover"><a href="<?php echo base_url();?>my-ico-trackers">My ICOS </a></li>
-						<li class="h_hover"><a href="<?php echo $urlIco; ?>">ADD AN ICO </a></li>
+					<!--<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
+						<li class="h_hover"><a href="</*?php echo base_url();?*/>edit-profile">MY PROFILE</a></li>
+						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
+						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
+						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
+						<li class="h_hover"><a href="</*?php echo $urlIco; ?*/>">ADD AN ICO </a></li>-->
 					<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal"){?>
-						<li><a href="<?php echo base_url();?>change-password">CHANGE PASSWORD</a></li>
+						<li class = "signup_box"><a href="<?php echo base_url();?>change-password">CHANGE PASSWORD</a></li>
 					<?php } ?>
-						<li><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
+						<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					<?php }else{?>
 						<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
 						<li class = "signup_box" ><a style="border: 2px solid #00FFFF;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>

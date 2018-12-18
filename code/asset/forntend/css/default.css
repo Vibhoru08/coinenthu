@@ -1355,7 +1355,10 @@ a.ui-button:active,
   margin-top:80px;
 }
 .mar_b5{
-	margin-bottom:5px;
+  margin-bottom:5px;
+}
+.mar_t110{
+  margin-top:110px;		
 }
 .mar_b6{
 	margin-bottom:6px;
@@ -1377,6 +1380,12 @@ a.ui-button:active,
 }
 .mar_b60{
   margin-bottom:60px;
+}
+.mar_b110{
+  margin-bottom:110px;	
+}
+.mar_b400{
+  margin-bottom:400px;	
 }
 .mar_b120{
   margin-bottom:120px;		
@@ -2765,8 +2774,52 @@ font-family: NoirPro;
  padding:15px;
  background-color:#f9f9f9;			
 }
+.asset-image{
+ position:absolute;
+ left:14.5%;
+ top:41%;
+ height:185px;
+ border:15px solid #f9f9f9;  	
+}
+.asset-boxes{
+ background-color: #f9f9f9;
+ border-radius:2%;	
+}
+.review-image{
+ height:100px;	
+}
+.reply-image{
+ height:50px;	
+}
+.asset-padding{
+ padding:25px 30px 17px 30px;	
+}
+.like-button-text{
+ margin-left:8px;
+}
+.dislike-button-text{
+ margin-left:8px;	
+}
+.reply-button-text{
+ margin-left:8px;	
+}
+.report-button-text{
+ margin-left:8px;	
+}
+.r-report-button-text{
+ margin-left:4px;	
+}
+.r-like-button-text{
+ margin-left:4px;	
+}
+.r-dislike-button-text{
+ margin-left:4px;	
+}
 .banner_margin{
  margin:30px 0 0 0;
+}
+.banner-asset-margin{
+ margin-bottom:130px;	
 }
 .banner_desc{
   font-family:NoirPro Light ;
