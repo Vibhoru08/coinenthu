@@ -217,8 +217,8 @@ $img =  base_url().'images/logo.png';
 						}
 					?>
 					<ul class= "nav navbar-nav navbar-right">
-					<!--<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-						<li class="h_hover"><a href="</*?php echo base_url();?*/>edit-profile">MY PROFILE</a></li>
+					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
+						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>edit-profile">MY PROFILE</a></li>
 						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>

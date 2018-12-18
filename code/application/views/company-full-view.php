@@ -174,7 +174,8 @@
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
 							<?php
-							if($uid!=""){
+							if(isset($_SESSION['user_id']))
+							{
 								if($uid == $review->re_uid){
 							?>
 							<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
@@ -190,6 +191,17 @@
 							<?php }else{ ?>
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php } ?>
+							<?php }}else{ ?>
+							<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
+							<?php
+									$reportedStatus = checkUserReport($uid,$review->re_id);
+							?>
+							<?php if($reportedStatus==1){ ?>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
+							<?php }else{ ?>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
 							<span class="pull-right" style="margin-top:7.5px;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
 								echo " Reply . ";
@@ -262,7 +274,7 @@
 								</div>
 								<div class = "row" style="padding-bottom:15px">
 									<?php
-											if($uid!=""){
+											if(isset($_SESSION['user_id'])){
 												if($uid == $reviewReplay->crr_uid){
 									?>
 									<button id="reply_reply_pop" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
@@ -279,6 +291,18 @@
 									<?php }else{ ?>
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
 									<?php } ?>	
+									<?php }}else{ ?>
+									<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+									</button>
+									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span> 
+									</button>
+									<?php
+									$reportedReplyStatus = checkUserReplyReport($uid,$reviewReplay->crr_id);
+									?>
+									<?php if($reportedReplyStatus==1){ ?>
+									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+									<?php }else{ ?>
+									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
 									<?php }} ?>	
 									<span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
 									<?php if ($crr_likes_cnt == 1){
