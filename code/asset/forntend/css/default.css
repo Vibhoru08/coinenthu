@@ -2723,6 +2723,10 @@ font-family: NoirPro Light;
 	transform:rotate(180deg);
 	margin-left:4px;
 }
+.terms_of_use{
+  background-color: silver;
+  color:black;
+}
 .terms_of_use h4{
 	margin-top:30px;
 }

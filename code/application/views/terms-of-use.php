@@ -1,5 +1,13 @@
 <div class="content-wrapper">
-<div  class="bread_crumb">
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+			<div class="col-xs-12 text-center banner_head">
+				TERMS AND CONDITIONS
+				<hr style="width:5%;border:1px solid #ffff">
+			</div>
+		</div>
+	</div>
+<!--<div  class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -11,8 +19,8 @@
 					</ol>
 			</section>
 		</div>
-	</div>
-<div class="container terms_of_use mar_b50">
+	</div> -->
+<div class="container terms_of_use mar_b50 mar_t40">
     <h3>Terms of use</h3>
     <p style="font-weight:500">Last revised on November 1st, 2018. Effective November 1st, 2018</p>
     <p>Hello Coinenthu users, we want you to know your rights and our rights and
@@ -290,7 +298,7 @@
         <div class="padd_e">
             <h4>Changes to this user agreement</h4>
             <p>This user agreement is the entire agreement between you and us
-                concerning Coinenthu. It supersedes all prior or contemporaneous agreements between you and 
+                concerning Coinenthu. It supersedes all prior or contemporaneous agreements between you and
                 us. We may modify this user agreement at any time. If we make changes to this agreement that
                 materially affect your rights, we will provide advance notice. By continuing to use Coinenthu
                 after a change to this agreement, you agree to those changes.</p>
