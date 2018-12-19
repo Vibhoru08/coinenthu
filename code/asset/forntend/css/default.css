@@ -1358,7 +1358,7 @@ a.ui-button:active,
   margin-bottom:5px;
 }
 .mar_t110{
-  margin-top:110px;		
+  margin-top:110px;
 }
 .mar_b6{
 	margin-bottom:6px;
@@ -1382,28 +1382,28 @@ a.ui-button:active,
   margin-bottom:60px;
 }
 .mar_b110{
-  margin-bottom:110px;	
+  margin-bottom:110px;
 }
 .mar_b400{
-  margin-bottom:400px;	
+  margin-bottom:400px;
 }
 .mar_b120{
-  margin-bottom:120px;		
+  margin-bottom:120px;
 }
 .mar_l10{
-  margin-left:10px;		
+  margin-left:10px;
 }
 .mar_l20{
-  margin-left:20px;		
+  margin-left:20px;
 }
 .mar_l30{
-  margin-left:30px;		
+  margin-left:30px;
 }
 .mar_l40{
-  margin-left:40px;		
-}  
+  margin-left:40px;
+}
 .mar_l100{
-  margin-left:100px;	
+  margin-left:100px;
 }
 .mar_r65{
   margin-right:65px;
@@ -2222,7 +2222,7 @@ font-family: NoirPro Light;
 	margin-bottom:50px;
 }
 .about {
-	margin-top:-250px;
+	margin-top:-150px;
 }
 .about h2{
 	font-size:24px;
@@ -2749,77 +2749,80 @@ font-family: NoirPro;
 }
 .new_boxes{
   width:100%;
-  background-color: #f9f9f9; 	
+  background-color: #f9f9f9;
 }
 @media(max-width:992px){
+  .about_box_image{
+    left:40% !important;
+  }
   .new_boxes{
 	  margin-bottom:90px;
-	  
-  }	
+
+  }
   .mar_r65{
 	  margin-right:0px;
-  }	
+  }
 }
 .box_padding{
- padding-top:120px;	
+ padding-top:120px;
  padding-right:40px;
  padding-left:30px;
- padding-bottom:30px;	
+ padding-bottom:30px;
 }
 .about_box_image{
- position:absolute;
- bottom:81%;
- left:35%;
+ position:relative;
+ margin-top:-250px;
+ left:20%;
  border:4px solid white;
  padding:15px;
- background-color:#f9f9f9;			
+ background-color:#f9f9f9;
 }
 .asset-image{
  position:absolute;
  left:14.5%;
  top:41%;
  height:185px;
- border:15px solid #f9f9f9;  	
+ border:15px solid #f9f9f9;
 }
 .asset-boxes{
  background-color: #f9f9f9;
- border-radius:2%;	
+ border-radius:2%;
 }
 .review-image{
- height:100px;	
+ height:100px;
 }
 .reply-image{
- height:50px;	
+ height:50px;
 }
 .asset-padding{
- padding:25px 30px 17px 30px;	
+ padding:25px 30px 17px 30px;
 }
 .like-button-text{
  margin-left:8px;
 }
 .dislike-button-text{
- margin-left:8px;	
+ margin-left:8px;
 }
 .reply-button-text{
- margin-left:8px;	
+ margin-left:8px;
 }
 .report-button-text{
- margin-left:8px;	
+ margin-left:8px;
 }
 .r-report-button-text{
- margin-left:4px;	
+ margin-left:4px;
 }
 .r-like-button-text{
- margin-left:4px;	
+ margin-left:4px;
 }
 .r-dislike-button-text{
- margin-left:4px;	
+ margin-left:4px;
 }
 .banner_margin{
  margin:30px 0 0 0;
 }
 .banner-asset-margin{
- margin-bottom:130px;	
+ margin-bottom:130px;
 }
 .banner_desc{
   font-family:NoirPro Light ;
