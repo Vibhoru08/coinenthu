@@ -1655,7 +1655,7 @@ a.ui-button:active,
 }
 .company_list .product-info{
 	margin-left:0;
-	text-align:center;
+	text-align:left;
 	margin-top:10px;
 }
 .mar_left10{
@@ -2486,7 +2486,7 @@ font-family: NoirPro Light;
 	float:left;
 }
 .company_img_width{
-	overflow:hidden;
+	overflow:visible;
 	text-align:center;
 }
 .imag_widthfull{
@@ -2768,6 +2768,14 @@ font-family: NoirPro;
  padding-right:40px;
  padding-left:30px;
  padding-bottom:30px;
+}
+.digital_box_image{
+  position:relative;
+  margin-top:-50px;
+  left:-10%;
+  border:4px solid white;
+  padding:15px;
+  background-color:#f9f9f9;
 }
 .about_box_image{
  position:relative;

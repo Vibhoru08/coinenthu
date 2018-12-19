@@ -87,30 +87,30 @@ $viewTime = date('Ymd') .'_'. date('His');
 			<input type="hidden" id="pageMode" value="digital" />
 			<div class="row company_list">
 				<?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
-					<div class="col-md-5 col-md-offset-1">
+					<div class="col-md-5 col-md-offset-1 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
 							  <div class="product-img company_img_width">
 								<a href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>">
 									<?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
-										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive" >
+										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
 									<?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
-										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive" >
+										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
 									<?php } else if($value->cm_picture!=""){
 						$srcc= base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
 										if (@getimagesize($srcc)){
 									?>
-										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive" >
+										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
 									<?php }else{ ?>
-											<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive" >
+											<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
 										<?php }?>
 									<?php } else { ?>
-										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive" >
+										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
 									<?php } ?>
 								</a>
 							  </div>
-							  <div class="product-info">
+							  <div class="product-info text-left">
 							  <?php
 								  $string = strip_tags($value->cm_name);
 								  if (strlen($string) > 18) {

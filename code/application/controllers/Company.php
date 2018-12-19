@@ -1128,7 +1128,7 @@
 		public function writeAreview(){
 			$data = array();
 			$cm_name_initial = str_replace("_"," ",$this->uri->segment(2));
-			
+
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login', 'refresh');
 			}else{
@@ -1335,7 +1335,7 @@
 				if(sizeof($getCompanies)>0){
 					$checkRecords =1;
 					foreach($getCompanies as $key=>$value){
-						$html .='<div class="col-md-5 col-md-offset-1">
+						$html .='<div class="col-md-5 col-md-offset-1 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1343,38 +1343,38 @@
 							  if($value->cm_picture!=""){
 								  if($value->cm_ctid == 1){
 									 if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive"></a>';
+										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive"></a>';
+										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if($value->cm_picture!=""){
 					$srcc = base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive"></a>';
+											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive"></a>';
+											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}
 									 }else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive"></a>';
+										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}else if($value->cm_ctid == 2){
 									if($value->cm_picture!=""){
 										$srcc = base_url().'asset/img/companies/icotracker/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive"></a>';
+											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
 										}else{
 											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
-											class="img-responsive"></a>';
+											class="img-responsive  img-circle digital_box_image"></a>';
 										}
 									}else{
 										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
-										class="img-responsive"></a>';
+										class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}
 							  }else{
-								$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive"></a>';
+								$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 							  }
 						$html.='</div>
-							  <div class="product-info">';
+							  <div class="product-info text-left">';
 					   $string = strip_tags($value->cm_name);
 						  if (strlen($string) > 18) {
 							  $string = substr($string, 0, 18).'...';

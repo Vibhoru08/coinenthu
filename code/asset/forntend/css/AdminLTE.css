@@ -2601,6 +2601,7 @@ border:none;
  * ------------------------
  */
 .products-list {
+  background-color: #f9f9f9;
   list-style: none;
   margin: 0;
   padding: 0;
