@@ -1335,7 +1335,38 @@
 				if(sizeof($getCompanies)>0){
 					$checkRecords =1;
 					foreach($getCompanies as $key=>$value){
-						$html .='<div class="col-md-5 col-md-offset-1 mar_t80">
+						$data = array();
+						$capDtls = $this->getCompDtlsApi($value->cm_name);
+						if(count($capDtls) > 0 && isset($capDtls[0]['name']))
+					{
+						// $data['cm_marketcap'] = 'Market Cap : '.$capDtls[0]['market_cap_usd'].'<br/>'.'Current Price : '.$capDtls[0]['price_usd'].'<br/>'.'24 hr Volume : '.$capDtls[0]['24h_volume_usd'].'<br/>'.'%Change(24hr) : '.$capDtls[0]['percent_change_24h'];
+						$data['cm_marketcap'] 		= $capDtls[0]['market_cap_usd'];
+						$data['price_usd'] 			= $capDtls[0]['price_usd'];
+						$data['24h_volume_usd'] 	= $capDtls[0]['24h_volume_usd'];
+						$data['percent_change_24h'] = $capDtls[0]['percent_change_24h'];
+						$data['available_supply'] 	= $capDtls[0]['available_supply'];
+						$data['total_supply'] 		= $capDtls[0]['total_supply'];
+						$data['api_data'] 			= '1';
+					}
+					else if(isset($value->cm_marketcap) && $value->cm_marketcap != ""){
+						$data['cm_marketcap'] = $value->cm_marketcap;
+						$data['price_usd'] 			= '';
+						$data['24h_volume_usd'] 	= '';
+						$data['percent_change_24h'] = '';
+						$data['available_supply']   = $value->cm_tokens_available_crowd_sale;
+						$data['total_supply']       = $value->cm_total_token_supply;
+						$data['api_data'] 			= '0';
+					}else{
+						$data['cm_marketcap'] = '';
+						$data['price_usd'] 			= '';
+						$data['24h_volume_usd'] 	= '';
+						$data['percent_change_24h'] = '';
+						$data['available_supply'] = '';
+						$data['total_supply'] = '';
+
+						$data['api_data'] 			= '';
+					}						
+						$html .='<div class="col-md-5 col-md-offset-1 mar_t80" style = "min-height:317px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1379,13 +1410,31 @@
 						  if (strlen($string) > 18) {
 							  $string = substr($string, 0, 18).'...';
 						  }
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title">'.$string.'</a>';
+						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title">'.$string.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
 						$html.='<div>';
+						
+						if($value->cm_ctid == 1){
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Market Cap : <span style = "color:blue;">$'.number_format($value->cm_marketcap).'</span><br/>';
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Current Price :<span style = "color:blue;">$'.$data['price_usd'].'</span><br/>';
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> 24 Hr Volume :<span style = "color:blue;">$'.number_format($data['24h_volume_usd']).'</span><br/>';
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Change (24 Hr) :<span style = "color:blue;"> '.$data['percent_change_24h'].'%</span><br/>';	
+						}else{
+						$string = strip_tags($value->cm_decript);
+							if (strlen($string) > 100) {
 
-						 $html.='<input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+								$stringCut = substr($string, 0, 100);
+								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+							}	
+						$html.='<span style="color:blue;">'.ucfirst($string).'</span><br>';
+						
+						}							
+						$html.='<br/><a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						$html.='<hr>';
+						
+						 
 
 							if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
 								$cm_totalviews = $value->cm_totalviews;
@@ -1393,12 +1442,21 @@
 								$cm_totalviews = '0';
 							}
 							//$html.=$cm_totalviews. ' Reviews';
-							$html.='<p><span class="">'.$cm_totalviews. ' Reviews </span></p>';
+							if ($cm_totalviews == 1){
+								$review_s = 'review'; 
+							}
+							else{
+								$review_s = 'reviews';
+							}
+							$html.='<i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{
 								$cMOvrlRtng = 0;
 							}
+							*/ 
+							$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;"><button class = "pull-right btn btn-default" style="color:orange;">View Reviews</button></a>';
+							/*
 
 							$html.='&nbsp;'.number_format($cMOvrlRtng, 1, '.', '').'&nbsp;';
 							$html.='</span></strong><span class="grey small">/</span><span class="grey small">10</span></div>';
