@@ -133,7 +133,7 @@ $img =  base_url().'images/logo.png';
 	    <nav class="navbar navbar-static-top">
 		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
-			<a href="javascript:void(0);" onClick="return redirectPage('digi');" class="navbar-brand"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
+			<a href="javascript:void(0);" onClick="return redirectPage('digi');" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -218,8 +218,8 @@ $img =  base_url().'images/logo.png';
 					?>
 					<ul class= "nav navbar-nav navbar-right">
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>edit-profile">MY PROFILE</a></li>
-						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
+						<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
+						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlIco; ?*/>">ADD AN ICO </a></li>-->

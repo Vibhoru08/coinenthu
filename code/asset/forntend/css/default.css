@@ -1351,6 +1351,9 @@ a.ui-button:active,
 .mar_t70{
 	margin-top:70px;
 }
+.mar_t86{
+	margin-top:86px;
+}
 .mar_t80{
   margin-top:80px;
 }
@@ -2776,6 +2779,18 @@ font-family: NoirPro;
  padding-right:40px;
  padding-left:30px;
  padding-bottom:30px;
+} 
+.upcoming_box_padding{
+ padding-top:5px;
+ padding-right:20px;
+ padding-left:20px;
+ padding-bottom:20px;
+}
+.twitter_box_padding{
+ padding-top:5px;
+ padding-right:10px;
+ padding-left:10px;
+ padding-bottom:10px;	
 }
 .digital_box_image{
   position:relative;

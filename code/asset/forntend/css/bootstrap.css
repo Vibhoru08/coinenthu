@@ -1700,7 +1700,7 @@ pre code {
   }
 }
 .container-fluid {
-  padding : 20px 15px 20px 15px;
+  padding : 10px 15px 0px 15px;
   margin-right: auto;
   margin-left: auto;
   width:100%;
@@ -4455,6 +4455,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 18px 15px;
   font-size: 18px;
   line-height: 20px;
+}
+.navbar-brand-logo{
+  padding: 18px 0px!important;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {

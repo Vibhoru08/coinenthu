@@ -146,20 +146,19 @@ $viewTime = date('Ymd') .'_'. date('His');
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>
-			<div class="col-md-3">
-				<div class="box overflow_hidden right_box_mar_t11">
-					<div class="box-header with-border header_bg">
-						<h3 class="" style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Upcoming Events</h3>
+			<div class="col-md-3 mar_t86">
+				<div class="new_boxes upcoming_box_padding">
+					<div class = "text-center">
+						<h4>UPCOMING EVENTS</h4>
 					</div>
-					<div class="box-body no-padding">
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<div>
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					  <!-- Indicators -->
 						<ol class="carousel-indicators">
 						<?php
-							if(count($icoImages) > 0)
-							{
-								foreach($icoImages as $key=>$value)
+						if(count($digitalAssetsImages) > 0)
+						{
+							foreach($digitalAssetsImages as $key=>$value)
 								{
 									if($key == 0)
 									{
@@ -171,18 +170,19 @@ $viewTime = date('Ymd') .'_'. date('His');
 								<li data-target="#carousel-example-generic" data-slide-to="<?php echo $key; ?>" class="<?php echo $active; ?>"></li>
 								<?php
 								}
-							}else{?>
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						}else{?>
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<?php
+						}
 
-							<?php
-							}
 						?>
+
 						</ol>
 						<div class="carousel-inner" role="listbox">
 							<?php
-							if(count($icoImages) > 0){
-								foreach($icoImages as $key=>$value)
+							if(count($digitalAssetsImages) > 0){
+								foreach($digitalAssetsImages as $key=>$value)
 								{
 									$active ="";
 									if($key == 0){
@@ -204,8 +204,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 							  </div>
 							</div>
 							<?php }
-							}else{
-							?>
+							}else{	?>
 							<div class="item active">
 								<div class="text-center">
 									<a href="#" target="_blank"><img src="<?php echo base_url();?>images/architecture.jpg" style="width:100%" class="img-responce"></a>
@@ -216,9 +215,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 									<a href="#" target="_blank"><img src="<?php echo base_url();?>images/bannerrrrjpg.jpg" style="width:100%" class="img-responce"></a>
 								</div>
 							</div>
-							<?php
-							}
-							?>
+							<?php }?>
 						</div>
 						 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 						<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -231,13 +228,9 @@ $viewTime = date('Ymd') .'_'. date('His');
 						</div>
 					</div>
 				</div>
-				<div class="box overflow_hidden">
-					<div class="box-header with-border header_bg">
-						<h3 style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Trending</h3>
-						<div style="position:absolute;top:12px;right:12px;"><a href="https://twitter.com/Coinenthu" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false" > Coinenthu</a></div>
-					</div>
-					<div class="">
+				<div class="box overflow_hidden mar_t40 new_boxes twitter_box_padding text-center">
+					<h4>TRENDING</h4>
+				     <div class="">
 						<div class="scroll twitter_feed">
 						<p><a class="twitter-timeline" href="https://twitter.com/Coinenthu">Tweets by Coinenthu</a> </p>
 						</div>

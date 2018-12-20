@@ -153,14 +153,13 @@ $viewTime = date('Ymd') .'_'. date('His');
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>
-			<div class="col-md-3">
-				<div class="box overflow_hidden right_box_mar_t11">
-					<div class="box-header with-border header_bg">
-						<h3 class="" style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Upcoming Events</h3>
+			<div class="col-md-3 mar_t86">
+				<div class="new_boxes upcoming_box_padding">
+					<div class = "text-center">
+						<h4>UPCOMING EVENTS</h4>
 					</div>
-					<div class="box-body no-padding">
-						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<div>
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					  <!-- Indicators -->
 						<ol class="carousel-indicators">
 						<?php
@@ -236,13 +235,9 @@ $viewTime = date('Ymd') .'_'. date('His');
 						</div>
 					</div>
 				</div>
-				<div class="box overflow_hidden">
-					<div class="box-header with-border header_bg pos_r">
-						<h3 style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Trending </h3>
-						<div style="position:absolute;top:12px;right:12px;"><a href="https://twitter.com/Coinenthu" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false" > Coinenthu</a></div>
-					</div>
-					<div class="">
+				<div class="box overflow_hidden mar_t40 new_boxes twitter_box_padding text-center">
+					<h4>TRENDING</h4>
+				     <div class="">
 						<div class="scroll twitter_feed">
 						<p><a class="twitter-timeline" href="https://twitter.com/Coinenthu">Tweets by Coinenthu</a> </p>
 						</div>
@@ -251,7 +246,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 			</div>
 		</div>
 	  </section>
-	  <div class="mar_b40"></div>
+	  <div class="mar_b120"></div>
 	</div>
     </div>
 <script>
