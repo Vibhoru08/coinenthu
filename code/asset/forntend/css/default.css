@@ -2815,6 +2815,24 @@ font-family: NoirPro;
  height:185px;
  border:15px solid #f9f9f9;
 }
+.review-asset-image{
+ position:relative;
+ left:14.5%;
+ margin-top:-80px;
+ height:160px;
+ border:3px solid #f9f9f9;	
+}
+@media(max-width:768px){
+.review-asset-image{
+ height:100px!important;
+ margin-top:-50px!important;	 
+ }	
+}
+@media(max-width:768px){
+ .asset-image{
+ margin-top:-90px!important;	 
+ }	
+}
 .asset-boxes{
   font-family: NoirPro Light;
   font-size: 15px;
@@ -3069,7 +3087,6 @@ a.left_panel_desc{
 		position:relative;
 	}
 	.msearch_bg:after{
-		background: #eee none repeat scroll 0 0;
 		content: "";
 		height: 1px;
 		left: -18px;

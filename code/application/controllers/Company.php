@@ -1140,6 +1140,7 @@
 						$data['cm_ctid']      = $details->cm_ctid;
 						$data['cm_unique_id'] = $details->cm_unique_id;
 						$data['cm_name'] 	  = $cm_name_initial;
+						$data['company_picture'] = $details->cm_picture;
 					}
 				}
 
