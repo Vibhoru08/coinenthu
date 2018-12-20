@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color banner-asset-margin">
-		<div class="row mmar_t40 mmar_b10 mar_t110 mar_b110">
+		<div class="row mmar_t40 mmar_b10 mar_t110 mar_b80">
 			<div class="col-xs-12 text-center banner_head">
 			<?php echo strtoupper($companyview['company_name']);?> REVIEWS
 				<hr style="width:5%;border:1px solid #ffff">
@@ -64,13 +64,13 @@
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 asset-boxes text-center">
 				<div>
-					<h3><?php echo strtoupper($companyview['company_name']);?></h3>
+					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?></h3>
 					<p style="margin:0px 0px 5px;">
-						<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $companyview['cm_overallrating']; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true"> 
+						<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $companyview['cm_overallrating']; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 						<span>
 						<?php if($companyview['cm_totalviews']!="") { echo $companyview['cm_totalviews']. ' reviews'; } ?>
 						</span>
-								
+
 					</p>
 					<p>
 					<?php
@@ -90,9 +90,12 @@
 						<span><a style = "text-decoration:underline;" href="<?php echo $webSiteUrl; ?>"
 						<?php echo $target;?>>View Site</a></span>
 					</p>
-					<a href="javascript:void(0)" onclick="ReviewAllow();" class="btn btn-danger btn-review">Leave a Review</a>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+					<a href="javascript:void(0)" onclick="ReviewAllow();" class="col-xs-12 btn btn-danger btn-review">Leave a Review</a>
 				</div>
-				<hr>
+			</div>
+				</div>
 				<?php
 						if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != "" && $companyview['cm_ico_end_date'] >= date('Y-m-d') && $companyview['cm_ctid'] == 2){
 						?>
@@ -141,7 +144,7 @@
 						</div>
 						<?php }else{ ?><h4 id="demo" style="display:none;"></h4><?php } ?>
 						<?php if($companyview['cm_marketcap'] != "" && $companyview['cm_marketcap'] != "0") { ?>
-						<div class="mar_t10 market_value_count">
+						<div class="mar_t10 market_value_count text-left mar_t40">
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
@@ -175,12 +178,12 @@
 
 						</div>
 						<?php } ?>
-				
-				
+
+
 				<?php if($companyview['cot_name'] != "") { ?>
-					<div class="mar_t10">
+					<div class="mar_t40 text-left">
 					<hr>
-						<h4 class="no-margin pad_b5">Founding Team </h4>
+						<h4 class="no-margin asset-heading pad_b5">Founding Team </h4>
 							<?php if(sizeof($companyview['cot_name'])>0) {
 							$arraySize = count($companyview['cot_name']);
 							$i=1;
@@ -194,7 +197,7 @@
 								if($profileUrl == "")
 								{
 							?>
-							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($foundTeam).$comma; ?></a>
+							<a class="left_panel_desc" href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($foundTeam).$comma; ?></a>
 							<span id='clik_url'></span>
 								<?php }else {
 									if (strpos($profileUrl, 'http') !== false) {
@@ -203,17 +206,17 @@
 										$cUrl = '//'.$profileUrl;
 									}
 								?>
-								<a href="<?php echo $cUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($foundTeam).$comma; ?></a>
+								<a class="left_panel_desc" href="<?php echo $cUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($foundTeam).$comma; ?></a>
 								<?php } ?>
 							<?php  $i++; } } else{ echo "No Founding Team"; } ?>
 					</div>
 					<?php } ?>
-				
-				
+
+
 				<?php if($companyview['adt_name'] != "") { ?>
-					<div class="mar_t10">
+					<div class="mar_t40 text-left">
 					<hr>
-						<h4 class="no-margin pad_b5">Advisory Team </h4>
+						<h4 class="no-margin asset-heading pad_b5">Advisory Team </h4>
 							<?php if(sizeof($companyview['adt_name'])>0) {
 							$arraySize = count($companyview['adt_name']);
 							$i=1;
@@ -227,7 +230,7 @@
 								if($adtprofileUrl == "")
 								{
 							?>
-							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
+							<a class="left_panel_desc" href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
 							<span id='clik_url'></span>
 								<?php }else {
 									if (strpos($adtprofileUrl, 'http') !== false) {
@@ -236,12 +239,12 @@
 										$adUrl = '//'.$adtprofileUrl;
 									}
 								?>
-								<a href="<?php echo $adUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
+								<a class="left_panel_desc" href="<?php echo $adUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
 								<?php } ?>
 							<?php  $i++; } } else{ echo "No Advisory Team"; } ?>
 					</div>
 					<?php } ?>
-				
+
 				<?php if($companyview['resource_name'] != "") { ?>
 						<div class="mar_t10">
 						<hr>
@@ -326,7 +329,7 @@
 							<div class="mailston_bg" style="border-left:1px solid #f7e3bb"><?php echo $milestones; ?></div></div>
 							<?php } $i++; } } else{ echo "No Milestones Box "; } ?>
 						</div>
-						<?php } ?>			
+						<?php } ?>
 			</div>
 			<div class = "col-md-7 mar_l30">
 				<div class= "row asset-boxes asset-padding text-justify">
@@ -366,8 +369,8 @@
 					</ul>
 			    </div>
                 <div class = "row asset-boxes asset-padding">
-				    <?php if(sizeof($companyview['reviews'])>0){foreach($companyview['reviews'] as $cr=>$review){				   
-				    
+				    <?php if(sizeof($companyview['reviews'])>0){foreach($companyview['reviews'] as $cr=>$review){
+
 								if($review->u_username!=""){
 									$u_username = ucfirst($review->u_username);
 								}else if($review->u_firstname!=""){
@@ -403,7 +406,7 @@
 									<?php } } ?>
 							</span>
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
-							<?php echo 'By'.' '.$u_username; ?><br/>
+							<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
 							<?php
 									$old_date = Date_create($review->re_createdat);
 									$new_date = Date_format($old_date, "d/m/Y");
@@ -420,7 +423,7 @@
 										$re_dislike_cnt = 0;
 									}
 							?>
-										
+
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
 						<?php
@@ -466,7 +469,7 @@
 							<?php }else{ ?>
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
-							<span class="pull-right" style="margin-top:7.5px;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
+							<span class="pull-right" style="font-size:12px;color:#e43d78;margin-top:7.5px;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
 								echo " Reply . ";
 							}else{
 								echo " Replies . ";
@@ -502,7 +505,7 @@
 							</div>
 							<div class = "col-md-9">
 								<div class = "row" style="padding-top:5px;padding-bottom:15px;">
-									<?php echo 'By'.' '.$u_username; ?><br/>
+									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
 									<?php
 											$old_date = Date_create($reviewReplay->crr_createdat);
 											$new_date = Date_format($old_date, "d/m/Y");
@@ -526,7 +529,7 @@
 									$stringReply = strip_tags($reviewReplay->crr_decript);
 									if (strlen($stringReply) > 150) {
 
-									$stringCut = substr($stringReply, 0, 150);				
+									$stringCut = substr($stringReply, 0, 150);
 									$stringReply = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readReplyMoreSpan('.$reviewReplay->crr_id.');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
 									}
 									?>
@@ -544,7 +547,7 @@
 									<?php } else{ ?>
 										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
 									</button>
-									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span> 
+									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
 									</button>
 									<?php
 									$reportedReplyStatus = checkUserReplyReport($uid,$reviewReplay->crr_id);
@@ -553,11 +556,11 @@
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
 									<?php }else{ ?>
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
-									<?php } ?>	
+									<?php } ?>
 									<?php }}else{ ?>
 									<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
 									</button>
-									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span> 
+									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
 									</button>
 									<?php
 									$reportedReplyStatus = checkUserReplyReport($uid,$reviewReplay->crr_id);
@@ -566,28 +569,28 @@
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
 									<?php }else{ ?>
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
-									<?php }} ?>	
+									<?php }} ?>
 									<span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
 									<?php if ($crr_likes_cnt == 1){
-										echo " Like";	
+										echo " Like";
 									} else {
 										echo " Likes";
 									}?>
-									</span>	
+									</span>
 								</div>
-													
+
 							</div>
 						</div>
-						<?php }} ?>		
+						<?php }} ?>
 					</div>
 					<?php }}else{ ?>
 					<div>
 						There are no reviews available.
 					</div>
-					<?php } ?>	 									   
+					<?php } ?>
 				</div>
- 			</div>				
-		</div>					
+ 			</div>
+		</div>
 	</div>
 
 
@@ -1240,7 +1243,7 @@
 							  <div class="mar_t15">
 							  <div class="pull-left">
 								<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_like"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><?php echo $re_likes_cnt; ?></button>
-								
+
 								<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
 								?>

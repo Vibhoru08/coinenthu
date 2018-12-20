@@ -1357,6 +1357,9 @@ a.ui-button:active,
 .mar_b5{
   margin-bottom:5px;
 }
+.mar_b80{
+  margin-bottom:80px;
+}
 .mar_t110{
   margin-top:110px;
 }
@@ -2086,9 +2089,10 @@ font-family: NoirPro Light;
 	background:#fff;
 }
 .btn_dislike{
-	color:#888;
-	background:#fff;
-	border:1px solid #fff;
+  font-size:12px;
+	color:#404852;
+	background:#f9f9f9;
+	border:1px solid #f9f9f9;
 }
 .comment_date{
 	position:relative;
@@ -2790,15 +2794,56 @@ font-family: NoirPro;
  background-color:#f9f9f9;
 }
 .asset-image{
- position:absolute;
+ position:relative;
  left:14.5%;
- top:41%;
+ margin-top:-260px;
  height:185px;
  border:15px solid #f9f9f9;
 }
 .asset-boxes{
- background-color: #f9f9f9;
- border-radius:2%;
+  font-family: NoirPro Light;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: #404852;
+  background-color: #f9f9f9;
+  border-radius:2%;
+}
+h3.company_name{
+  font-family: NoirPro SemiBold;
+  font-size: 22px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #404852;
+}
+h4.asset-heading{
+  font-family: NoirPro Medium;
+  font-size: 19px;
+ font-weight: 500;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: normal;
+ letter-spacing: normal;
+ text-align: left;
+ color: #404852;
+}
+a.left_panel_desc{
+  font-family: NoirPro Light;
+ font-size: 15px;
+ font-weight: 300;
+ font-style: normal;
+ font-stretch: normal;
+ line-height: 1.67;
+ letter-spacing: normal;
+ text-align: left;
+ color: #404852;
 }
 .review-image{
  height:100px;

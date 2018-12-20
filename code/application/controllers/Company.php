@@ -1365,8 +1365,8 @@
 						$data['total_supply'] = '';
 
 						$data['api_data'] 			= '';
-					}						
-						$html .='<div class="col-md-5 col-md-offset-1 mar_t80" style = "min-height:317px;">
+					}
+						$html .='<div class="col-md-5 col-md-offset-1 mar_t80" style = "min-height:454px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1415,26 +1415,26 @@
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
 						$html.='<div>';
-						
+
 						if($value->cm_ctid == 1){
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Market Cap : <span style = "color:blue;">$'.number_format($value->cm_marketcap).'</span><br/>';
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Current Price :<span style = "color:blue;">$'.$data['price_usd'].'</span><br/>';
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> 24 Hr Volume :<span style = "color:blue;">$'.number_format($data['24h_volume_usd']).'</span><br/>';
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Change (24 Hr) :<span style = "color:blue;"> '.$data['percent_change_24h'].'%</span><br/>';	
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Change (24 Hr) :<span style = "color:blue;"> '.$data['percent_change_24h'].'%</span><br/>';
 						}else{
 						$string = strip_tags($value->cm_decript);
 							if (strlen($string) > 100) {
 
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-							}	
+							}
 						$html.='<span style="color:blue;">'.ucfirst($string).'</span><br>';
-						
-						}							
+
+						}
 						$html.='<br/><a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 						$html.='<hr>';
-						
-						 
+
+
 
 							if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
 								$cm_totalviews = $value->cm_totalviews;
@@ -1443,7 +1443,7 @@
 							}
 							//$html.=$cm_totalviews. ' Reviews';
 							if ($cm_totalviews == 1){
-								$review_s = 'review'; 
+								$review_s = 'review';
 							}
 							else{
 								$review_s = 'reviews';
@@ -1454,7 +1454,7 @@
 							}else{
 								$cMOvrlRtng = 0;
 							}
-							*/ 
+							*/
 							$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;"><button class = "pull-right btn btn-default" style="color:orange;">View Reviews</button></a>';
 							/*
 
