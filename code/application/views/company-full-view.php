@@ -63,7 +63,270 @@
     <div class = "container-fluid mar_b400">
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 asset-boxes text-center">
-			Hello
+				<div>
+					<h3><?php echo strtoupper($companyview['company_name']);?></h3>
+					<p style="margin:0px 0px 5px;">
+						<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $companyview['cm_overallrating']; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true"> 
+						<span>
+						<?php if($companyview['cm_totalviews']!="") { echo $companyview['cm_totalviews']. ' reviews'; } ?>
+						</span>
+								
+					</p>
+					<p>
+					<?php
+							if($companyview['cm_siteurl']!=""){
+								$webSiteUrl = $companyview['cm_siteurl'];
+								$target = "target='_blank'";
+								if (strpos($webSiteUrl, 'http') !== false) {
+									$webSiteUrl = $webSiteUrl;
+								}else{
+									$webSiteUrl = '//'.$webSiteUrl;
+								}
+							}else{
+								$webSiteUrl = "#";
+								$target = "";
+							}
+					?>
+						<span><a style = "text-decoration:underline;" href="<?php echo $webSiteUrl; ?>"
+						<?php echo $target;?>>View Site</a></span>
+					</p>
+					<a href="javascript:void(0)" onclick="ReviewAllow();" class="btn btn-danger btn-review">Leave a Review</a>
+				</div>
+				<hr>
+				<?php
+						if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != "" && $companyview['cm_ico_end_date'] >= date('Y-m-d') && $companyview['cm_ctid'] == 2){
+						?>
+						<div class="mar_t10">
+							<?php
+								$options = array();
+								$optt    = '';
+								$optEnd  = '';
+								foreach (range(0,23) as $fullhour)
+								{
+								   $parthour = $fullhour > 12 ? $fullhour - 12 : $fullhour;
+								   $sufix = $fullhour > 11 ? " PM" : " AM";
+									if($parthour == '0')
+									{
+										$partHr = '12';
+									}else{
+
+										$partHr = $parthour;
+									}
+								   $options["$fullhour:00"] = $partHr.":00".$sufix;
+								   $options["$fullhour:30"] = $partHr.":30".$sufix;
+								}
+								foreach($options as $k=>$opt)
+								{
+									if($companyview['cm_ico_start_time'] == $k)
+									{
+										$optt = $opt;
+									}
+								}
+								foreach($options as $k=>$opt)
+								{
+									if($companyview['cm_ico_end_time'] == $k)
+									{
+										$optEnd = $opt;
+									}
+								}
+								$originalDateS = $companyview['cm_ico_start_date'];
+								$newDateS = date("d/m/Y", strtotime($originalDateS));
+								$originalDateE = $companyview['cm_ico_end_date'];
+								$newDateE = date("d/m/Y", strtotime($originalDateE));
+							?>
+
+							<h4> Start Date :  <?php echo $newDateS; ?> <?php if($optt!=""){ echo ' - '.$optt; } ?> </h4>
+							<h4>End Date &nbsp;    :  <?php echo $newDateE; ?> <?php if($optEnd!=""){ echo ' - '.$optEnd; } ?></h4>
+							<h4 id="demo"></h4>
+						</div>
+						<?php }else{ ?><h4 id="demo" style="display:none;"></h4><?php } ?>
+						<?php if($companyview['cm_marketcap'] != "" && $companyview['cm_marketcap'] != "0") { ?>
+						<div class="mar_t10 market_value_count">
+						<?php
+							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
+							{?>
+							<div class="" style="margin-left:-8px"><table class="table">
+								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+								<?php if($companyview['cm_ctid'] == 2){ ?>
+								<tr><td><h4 class="no-margin">Total token supply </h4></td><td ><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="tokId"><?php echo  number_format($companyview['total_supply']); ?></a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4> </td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="toksupId"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
+								<?php } ?>
+								<?php if($companyview['cm_ctid'] != 2){ ?>
+								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
+								<?php } ?>
+								</table></div>
+							<?php
+							}else if(isset($companyview['api_data']) && $companyview['api_data'] == 0)
+							{?><div class="" style="margin-left:-8px"><table class="table">
+								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+								<?php if($companyview['cm_ctid'] == 2){ ?>
+								<tr><td><h4 class="no-margin">Total token supply  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['total_supply']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4></td><td><h4 class="no-margin"> <a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
+								<?php } ?>
+								<!--<h4 class="no-margin pad_b5">Market Cap : $<a href="javascript:void('')" style="cursor :default"><?php // echo  $companyview['cm_marketcap']; ?> </a></h4>-->
+								</table></div>
+							<?php
+
+							}
+
+						?>
+
+						</div>
+						<?php } ?>
+				
+				
+				<?php if($companyview['cot_name'] != "") { ?>
+					<div class="mar_t10">
+					<hr>
+						<h4 class="no-margin pad_b5">Founding Team </h4>
+							<?php if(sizeof($companyview['cot_name'])>0) {
+							$arraySize = count($companyview['cot_name']);
+							$i=1;
+							foreach($companyview['cot_name'] as $key=>$foundTeam){
+								$profileUrl ="";
+								if($companyview['cot_profile_url'][$key]!=""){
+									$profileUrl = $companyview['cot_profile_url'][$key];
+									$target = "target='_blank'";
+								}
+								$comma = ($i<$arraySize) ? ", " : "";
+								if($profileUrl == "")
+								{
+							?>
+							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($foundTeam).$comma; ?></a>
+							<span id='clik_url'></span>
+								<?php }else {
+									if (strpos($profileUrl, 'http') !== false) {
+										$cUrl = $profileUrl;
+									}else{
+										$cUrl = '//'.$profileUrl;
+									}
+								?>
+								<a href="<?php echo $cUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($foundTeam).$comma; ?></a>
+								<?php } ?>
+							<?php  $i++; } } else{ echo "No Founding Team"; } ?>
+					</div>
+					<?php } ?>
+				
+				
+				<?php if($companyview['adt_name'] != "") { ?>
+					<div class="mar_t10">
+					<hr>
+						<h4 class="no-margin pad_b5">Advisory Team </h4>
+							<?php if(sizeof($companyview['adt_name'])>0) {
+							$arraySize = count($companyview['adt_name']);
+							$i=1;
+							foreach($companyview['adt_name'] as $key=>$advisoryTeam){
+								$adtprofileUrl ="";
+								if($companyview['adt_profile_url'][$key]!=""){
+									$adtprofileUrl = $companyview['adt_profile_url'][$key];
+									$target = "target='_blank'";
+								}
+								$comma = ($i<$arraySize) ? ", " : "";
+								if($adtprofileUrl == "")
+								{
+							?>
+							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
+							<span id='clik_url'></span>
+								<?php }else {
+									if (strpos($adtprofileUrl, 'http') !== false) {
+										$adUrl = $adtprofileUrl;
+									}else{
+										$adUrl = '//'.$adtprofileUrl;
+									}
+								?>
+								<a href="<?php echo $adUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($advisoryTeam).$comma; ?></a>
+								<?php } ?>
+							<?php  $i++; } } else{ echo "No Advisory Team"; } ?>
+					</div>
+					<?php } ?>
+				
+				<?php if($companyview['resource_name'] != "") { ?>
+						<div class="mar_t10">
+						<hr>
+						<h4 class="no-margin pad_b5">Resources </h4>
+							<?php if(sizeof($companyview['resource_name'])>0) {
+							$arraySize = count($companyview['resource_name']);
+							$i=1;
+							foreach($companyview['resource_name'] as $key=>$resource){
+								$rsrcprofileUrl ="";
+								if($companyview['resource_url'][$key]!=""){
+									$rsrcprofileUrl = $companyview['resource_url'][$key];
+									$target = "target='_blank'";
+								}
+								$comma = ($i<$arraySize) ? ", " : "";
+								if($rsrcprofileUrl == "")
+								{
+							?>
+							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($resource).$comma; ?></a>
+							<span id='clik_url'></span>
+								<?php }else {
+
+								if (strpos($rsrcprofileUrl, 'http') !== false) {
+										$rUrl = $rsrcprofileUrl;
+									}else{
+										$rUrl = '//'.$rsrcprofileUrl;
+									}
+								?>
+								<a href="<?php echo $rUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($resource).$comma; ?></a>
+								<?php } ?>
+							<?php  $i++; } } else{ echo "No Resources"; } ?>
+						</div>
+						<?php } ?>
+						<?php if($companyview['cm_ctid'] == 2 && $companyview['escrow_name'] !="") { ?>
+						<div class="mar_t10">
+						<hr>
+						<h4 class="no-margin pad_b5">Escrow Details</h4>
+							<!--<p><?php // echo $companyview['cm_escrow']; ?></p>-->
+							<?php if(sizeof($companyview['escrow_name'])>0) {
+							$arraySize = count($companyview['escrow_name']);
+							$i=1;
+							foreach($companyview['escrow_name'] as $key=>$escrowDtls){
+								$adtprofileUrl ="";
+								if($companyview['escrow_url'][$key]!=""){
+									$adtprofileUrl = $companyview['escrow_url'][$key];
+									$target = "target='_blank'";
+								}
+								$comma = ($i<$arraySize) ? ", " : "";
+								if($adtprofileUrl == "")
+								{
+							?>
+							<a href="javascript:void(0);" onClick="checkedUrl();" ><?php echo ucfirst($escrowDtls).$comma; ?></a>
+							<span id='clik_url'></span>
+								<?php }else {
+								if (strpos($adtprofileUrl, 'http') !== false) {
+										$esUrl = $adtprofileUrl;
+									}else{
+										$esUrl = '//'.$adtprofileUrl;
+									}
+								?>
+								<a href="<?php echo $esUrl; ?>" <?php echo $target;?> ><?php echo ucfirst($escrowDtls).$comma; ?></a>
+								<?php } ?>
+							<?php  $i++; } } else{ echo "No Escrow Details"; } ?>
+						</div>
+						<?php } ?>
+						<?php if($companyview['ms_title'] != "") { ?>
+						<div class="mar_t10">
+						<hr>
+						<h4 class="no-margin pad_b10">Milestones</h4>
+							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
+							if($i==1){
+								$mar_t10 = '';
+							}else{
+								$mar_t10 = 'mar_t10';
+							}
+							if($companyview['ms_id'][$key]==1){ ?>
+								<div class="btn_like pos_r <?php echo $mar_t10; ?>" style="padding:10px;">
+								<div class="fa fa-check-circle-o ok_g" aria-hidden="true"
+								title="Completed"></div> <div class="mailston_bg"><?php echo ucfirst($milestones); ?></div></div>
+							<?php }else{ ?>
+							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px;">
+							<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30" title="Pending"></div>
+							<div class="mailston_bg" style="border-left:1px solid #f7e3bb"><?php echo $milestones; ?></div></div>
+							<?php } $i++; } } else{ echo "No Milestones Box "; } ?>
+						</div>
+						<?php } ?>			
 			</div>
 			<div class = "col-md-7 mar_l30">
 				<div class= "row asset-boxes asset-padding text-justify">
@@ -317,7 +580,11 @@
 						</div>
 						<?php }} ?>		
 					</div>
-					<?php }} ?> 									   
+					<?php }}else{ ?>
+					<div>
+						There are no reviews available.
+					</div>
+					<?php } ?>	 									   
 				</div>
  			</div>				
 		</div>					
