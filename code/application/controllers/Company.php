@@ -1418,7 +1418,7 @@
 						$html.='<div>';
 
 						if($value->cm_ctid == 1){
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Market Cap : <span style = "color:blue;">$'.number_format($value->cm_marketcap).'</span><br/>';
+						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Market Cap : <span style = "color:blue;">$'.number_format($data['cm_marketcap']).'</span><br/>';
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Current Price :<span style = "color:blue;">$'.$data['price_usd'].'</span><br/>';
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> 24 Hr Volume :<span style = "color:blue;">$'.number_format($data['24h_volume_usd']).'</span><br/>';
 						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Change (24 Hr) :<span style = "color:blue;"> '.$data['percent_change_24h'].'%</span><br/>';
@@ -2214,8 +2214,21 @@
 			}
 		}
 		private function getCompDtlsApi($company)
-		{
-			$url = "https://api.coinmarketcap.com/v1/ticker/".$company."/";
+		{   $name_error_coins = array("37","42","49","58","56","74","195","79","84","87","110","117","118","121","124","136","141","155","163","166","168","183","199","201","203","219","243","385","388","391","123","176");
+			$result = $this->Companies_model->getcompanyinfobyname($company);
+			if (count($result)>0){
+				foreach($result as $key=>$value){
+					$company_id = $value->cm_id;
+					if(in_array($company_id,$name_error_coins)){
+						$cm_api_name = $value->cm_apiname;
+					}
+					else{
+						$cm_api_name = $company;
+					}
+				}
+			}
+			 
+			$url = "https://api.coinmarketcap.com/v1/ticker/".$cm_api_name."/";
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -2266,10 +2279,16 @@
 				$companies = $this->Companies_model->getCompanies(1);
 				$i=0;
 				$cnt = 0;
+				$name_error_coins = array("37","42","49","58","56","74","195","79","84","87","110","117","118","121","124","136","141","155","163","166","168","183","199","201","203","219","243","385","388","391","123","176");
 				foreach($companies as $key=>$comp) {
 					$companyId = $comp->cm_id;
 					$data = Array();
-					$compnyName = $comp->cm_name;
+                    if(in_array($companyId,$name_error_coins)){
+						$compnyName = $comp->cm_apiname;
+					}
+					else{
+						$compnyName = $comp->cm_name;
+					}
 					echo "CompanyName: ".$compnyName.' --- update is waiting. <br/>';
 					$url = "https://api.coinmarketcap.com/v1/ticker/".$compnyName."/";
 					$ch = curl_init();
