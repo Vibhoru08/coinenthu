@@ -7,6 +7,8 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+	<div class="text-center col-md-3 col-md-offset-1">
 	<?php if($companyview['company_picture']!=""){
 								//print_r($companyview['cm_ctid']);exit;
 								if($companyview['cm_ctid'] == 2){ ?>
@@ -32,6 +34,8 @@
 							else { ?>
 							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded asset-image"/>
 							<?php } ?>
+						</div>
+					</div>
 	<!--<div  class="bread_crumb">
 	<div class="container-fluid">
 		<section class="content-header">
@@ -60,10 +64,10 @@
 		</section>
 	</div>
 </div>-->
-    <div class = "container-fluid mar_b400">
+    <div class = "container-fluid mar_b400 mar_tn10">
 		<div class ="row">
-			<div class="col-md-3 col-md-offset-1 asset-boxes text-center">
-				<div>
+			<div class="col-md-3 col-md-offset-1 asset-boxes text-left">
+				<div class="text-center">
 					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?></h3>
 					<p style="margin:0px 0px 5px;">
 						<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $companyview['cm_overallrating']; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -144,7 +148,7 @@
 						</div>
 						<?php }else{ ?><h4 id="demo" style="display:none;"></h4><?php } ?>
 						<?php if($companyview['cm_marketcap'] != "") { ?>
-						<div class="mar_t10 market_value_count text-left mar_t40">
+						<div class="mar_t10 market_value_count mar_t40">
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
@@ -184,7 +188,7 @@
 
 
 				<?php if($companyview['cot_name'] != "") { ?>
-					<div class="mar_t40 text-left">
+					<div class="mar_t40">
 					<hr>
 						<h4 class="no-margin asset-heading pad_b5">Founding Team </h4>
 							<?php if(sizeof($companyview['cot_name'])>0) {
@@ -217,7 +221,7 @@
 
 
 				<?php if($companyview['adt_name'] != "") { ?>
-					<div class="mar_t40 text-left">
+					<div class="mar_t40 ">
 					<hr>
 						<h4 class="no-margin asset-heading pad_b5">Advisory Team </h4>
 							<?php if(sizeof($companyview['adt_name'])>0) {
@@ -315,7 +319,7 @@
 						<?php if($companyview['ms_title'] != "") { ?>
 						<div class="mar_t10">
 						<hr>
-						<h4 class="no-margin pad_b10">Milestones</h4>
+						<h4 class="no-margin asset-heading pad_b10">Milestones</h4>
 							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
 							if($i==1){
 								$mar_t10 = '';
