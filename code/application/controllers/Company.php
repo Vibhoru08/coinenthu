@@ -2233,7 +2233,13 @@
 				$companyId = $_POST['companyId'];
 				$data = Array();
 				$comp = $this->Companies_model->getcompanyUniqueId($companyId);
-				$compnyName = $comp->cm_name;
+				$name_error_coins = array("37","42","49","58","56","74","195","79","84","87","110","117","118","121","124","136","141","155","163","166","168","183","199","201","203","219","243","385","388","391","123","176");
+				if(in_array($companyId, $name_error_coins)){
+					$compnyName = $comp->cm_apiname;
+				}
+				else{
+					$compnyName = $comp->cm_name;
+				}	
 				$url = "https://api.coinmarketcap.com/v1/ticker/".$compnyName."/";
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
