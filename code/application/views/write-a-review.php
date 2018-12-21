@@ -31,16 +31,16 @@
 							<?php }	}
 							else { ?>
 							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
-							<?php } ?>		
+							<?php } ?>
 	  <div class = "container-fluid mar_b400 mar_t50">
 			<div class = "row">
-					<div class = "col-md-4 col-md-offset-1 mar_b50 text-left">
+					<div class = "col-md-4 col-md-offset-1 mar_b10 text-left review_head">
 								<span><h3>Your review will help others make the right decision!</h3></span>
 								<hr align="left" style="width:10%;border:4px solid black;">
 					</div>
-					<div class = "row">			
+					<div class = "row">
 						<div class = "col-md-7 col-md-offset-1">
-								<div class = "new_boxes upcoming_box_padding">	
+								<div class = "new_boxes upcoming_box_padding">
 									<form class="form-horizontal mandatory" id="wirte_review" name="wirte_review" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="insertWriteaReview();">
 									<label for="inputEmail3" class="control-label">Rate The Asset</label>
 										<select id="star-rating" name="star-rating" class="form-control" required data-fv-notempty-message="The rating is required">
@@ -67,14 +67,14 @@
 									 <label>
 										  Please do not use derogatory terminology. Try to back your facts with relevant reference links. This is not a place to spread fake news.We hope that you will support us. Please
 										  refer <a href="<?php echo base_url();?>comments-policy">our comments policy</a><br/>
-											<span style = "float:right">I AGREE<input required data-fv-notempty-message="Please agree to our terms" type="checkbox" id="agree_check" name="agree_check"></span> 
+											<span style = "float:right;font-family:NoirPro Semibold;font-weight:600;">I AGREE&nbsp;&nbsp;<input required data-fv-notempty-message="Please agree to our terms" type="checkbox" id="agree_check" name="agree_check"></span>
 										</label>
 									</div>
 									<span id="loadSuccess"  style="float:left;display:none">Submitting...</span>
 									<button type="submit" class="btn btn-primary pull-right mar_t20">SUBMIT</button>
 								</form>
 								</div>
-									
+
 						</div>
 						<div class = "col-md-3">
 						<div class="new_boxes upcoming_box_padding">
@@ -158,12 +158,12 @@
 						</div>
 					</div>
 				</div>
-						</div>						
+						</div>
 					</div>
-			</div>									
+			</div>
 		</div>
-		
-		
+
+
 		<div class="container">
 			<section class="content mar_b20 mar_t50">
 			<div class="row">

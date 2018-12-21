@@ -6,6 +6,11 @@
  * URL: https://github.com/geminilabs/star-rating.js
  * License: MIT
  */
+ .gl-star-rating{
+   background-color: white;
+   border-radius: 2px;
+   pading:2px;
+ }
 .gl-star-rating[data-star-rating] {
   position: relative;
   display: block;

@@ -2827,6 +2827,20 @@ font-family: NoirPro;
  height:162px;
  border:15px solid #f9f9f9;
 }
+.review_head{
+  font-family: NoirPro SemiBold;
+  font-weight:600;
+  color:black;
+}
+#agree_check{
+  vertical-align: middle;
+  margin:0;
+}
+.control-label{
+  font-family:NoirPro SemiBold;
+  margin-top:20px;
+  margin-bottom:10px!important;
+}
 .review-asset-image{
  position:relative;
  left:14.5%;

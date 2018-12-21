@@ -152,28 +152,28 @@
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
-							<div class="" style="margin-left:-8px"><table class="table">
-								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+							<div class="" style="margin-left:-8px;"><table class="table">
+								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<?php if($companyview['cm_ctid'] == 2){ ?>
-								<tr><td><h4 class="no-margin">Total token supply </h4></td><td ><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="tokId"><?php echo  number_format($companyview['total_supply']); ?></a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4> </td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="toksupId"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Total token supply </h4></td><td ><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="tokId"><?php echo  number_format($companyview['total_supply']); ?></a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4> </td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="toksupId"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
 								<?php } ?>
 								<?php if($companyview['cm_ctid'] != 2){ ?>
-								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
 								<?php } ?>
 								</table></div>
 							<?php
 							}else if(isset($companyview['api_data']) && $companyview['api_data'] == 0)
 							{?><div class="" style="margin-left:-8px"><table class="table">
-								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
+								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
 								<?php if($companyview['cm_ctid'] == 2){ ?>
-								<tr><td><h4 class="no-margin">Total token supply  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['total_supply']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4></td><td><h4 class="no-margin"> <a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Total token supply  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['total_supply']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Tokens offered in ICO </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['available_supply']); ?> </a></h4></td></tr>
 								<?php } ?>
 								<!--<h4 class="no-margin pad_b5">Market Cap : $<a href="javascript:void('')" style="cursor :default"><?php // echo  $companyview['cm_marketcap']; ?> </a></h4>-->
 								</table></div>

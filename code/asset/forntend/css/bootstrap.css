@@ -3016,7 +3016,7 @@ select[multiple].input-lg {
   color: #737373;
 }
 @media (max-width: 768px){
-  #star-rating{
+  .gl-star-rating{
     pointer-events: none !important;
   }
 }
