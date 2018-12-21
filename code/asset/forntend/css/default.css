@@ -1485,6 +1485,7 @@ a.ui-button:active,
 }
 .pos_r{
 	position:relative;
+  padding-top:0;
 }
 .md_pn_btns{
 	position:absolute;
@@ -3347,8 +3348,11 @@ a.left_panel_desc{
 	.mmpull_right{
 		float:none !important;
 	}
+  .mmar_t10{
+    margin-top:10px;
+  }
 	.content{
-		margin-top: 10px;
+		margin-top: -8px;
 	}
 	.about_footer img{
 		margin-bottom:5px;

@@ -1,14 +1,14 @@
 <div class = "content-wrapper" style="min-height:0!important;">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color">
-            <div class = "row text-center mar_t80">
-                <div class = "col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 banner_head">
+            <div class = "row text-center mar_t80 mmar_t10">
+                <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_head">
                     COMMUNITY BASED CRYPTO REVIEWS
                     <hr style="width:5%;border:1px solid #ffff">
                 </div>
             </div>
             <div class = "row text-center">
-                <div class = "col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 banner_desc">
+                <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_desc">
                     Let's not invest blindly, get the correct information on your Cryptos.<br/> Search for them.
                 </div>
             </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class= "row text-center mar_t70">
-            <div class = "col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+            <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                 <p class = "home_desc">
                     Come here and discover the Cryptos you are interested about!<br/>
                     Some of the most reviewed Cryptos and ICOs are:
