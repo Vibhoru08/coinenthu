@@ -3,18 +3,18 @@
 <footer >
  <div class="container-fluid pad_b30">
    <div class="row" >
-     <div class="col-md-4 col-sm-4 paddingtop-bottom">
+     <div class="col-md-3 col-sm-3 col-sm-offset-1 paddingtop-bottom">
        <h6 class="heading7">Navigation</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
-         <li><a href="<?php echo base_url();?>about-us">About </a></li>
+         <li><a href="<?php echo base_url();?>about-us">About Us </a></li>
          <li><a href="<?php echo base_url(); ?>add-digital-asset">Add Digital Asset </a></li>
          <li><a href="<?php echo base_url(); ?>add-ico-tracker">Add ICO </a></li>
      <li><a href="<?php echo base_url(); ?>contact-us">Contact us</a></li>
          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#suggestions">Suggest us</a></li>
        </ul>
      </div>
-   <div class="col-md-4 col-sm-3 paddingtop-bottom footer_left">
+   <div class="col-md-3 col-sm-3 paddingtop-bottom footer_left">
        <h6 class="heading7">Terms</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
@@ -25,7 +25,7 @@
      </div>
 
    <!--<div class="col-md-1 m_hide">&nbsp;</div>-->
-     <div class="col-md-4 col-sm-5 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
+     <div class="col-md-3 col-sm-5 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
         <h6 class="heading7">Follow Us</h6>
         <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
@@ -46,7 +46,7 @@
      <div class="input-group input-group-sm">
                <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                    <span class="input-group-btn">
-                     <button type="button" class="btn btn-info btn-danger mar_left10" onClick="subscriber();">Subscribe</button>
+                     <button type="button" class="btn btn-info btn-cstm mar_left10" onClick="subscriber();">Subscribe</button>
                    </span>
      </div>
      <span id="successMsg" ></span>
@@ -56,11 +56,15 @@
 
    </div>
  </div>
- <hr style="width:97%;border:none;color:#ffff;height:1px;background-color: #fff;">
+ <hr style="width:84%;border:none;color:#ffff;height:1px;background-color: #fff;">
  <div class="sub_footer">
    <div class="container-fluid">
+     <div class="row">
+       <div class="col-sm-offset-1">
    © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions.</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
    </div>
+ </div>
+</div>
  </div>
 
 </footer>

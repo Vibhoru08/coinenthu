@@ -4459,6 +4459,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand-logo{
   padding: 18px 0px!important;
 }
+.navbar-brand-logo >img{
+  height:85px;
+  width:222px;
+}
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
@@ -4566,8 +4570,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav > li > a {
     margin-top:15px;
     margin-bottom:15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 .navbar-form {

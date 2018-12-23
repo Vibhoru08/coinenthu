@@ -7,7 +7,8 @@
   /* border-top: 1px solid #1c1d1f; */
 }
 .skin-blue .main-header .navbar .nav > li > a {
-  color: #515965;
+  color: #404852;
+  border-radius: 10px;
 }
 .skin-blue .main-header .navbar .nav > li > a:hover,
 .skin-blue .main-header .navbar .nav > li > a:active,
@@ -17,47 +18,47 @@
 .skin-blue .main-header .navbar .nav .open > a:focus,
 .skin-blue .main-header .navbar .nav > .active > a {
   background: transparent;
-  color: #1546a5;
+  color: #8e44ad;
 }
 .skin-blue .main-header .navbar .nav > li.h_hover:last-child > a:hover:before {
 	position:absolute;
-	top:0px;
+	top:-7px;
 	background:transparent;
 	width:80%;
 	height:40px;
 	content:"";
-	border-bottom:2px solid #1546a5;
+	border-bottom:2px solid #8e44ad;
 	left:13px;
 }
 .skin-blue .main-header .navbar .nav > li.h_hover > a:hover:before {
 	position:absolute;
-  top:0px;
+	top:-7px;
   background:transparent;
   width:80%;
   height:40px;
   content:"";
-	border-bottom:2px solid #1546a5;
+	border-bottom:2px solid #8e44ad;
 	left:13px;
 	border-radius:2px;
 }
 
 .skin-blue .main-header .navbar .nav > li.h_hover > a:active:before,.skin-blue .main-header .navbar .nav > .active > a:before{
 	position:absolute;
-	top:0px;
+	top:-7px;
 	background:transparent;
 	width:80%;
 	height:40px;
 	content:"";
 	left:13px;
-	border-bottom:2px solid #1546a5;
+	border-bottom:2px solid #8e44ad;
 	border-radius:2px;
 }
 
 .skin-blue .main-header .navbar .nav > li.signup_box:last-child > a:hover{
-	border:2px solid pink !important;
+	border:2px solid #8e44ad !important;
 }
 .skin-blue .main-header .navbar .nav > li.signup_box > a:hover{
-	border:2px solid pink;
+	border:2px solid #8e44ad;
 }
 .skin-blue .main-header .navbar .sidebar-toggle {
   color: #ffffff;

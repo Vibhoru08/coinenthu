@@ -2287,10 +2287,16 @@ border:none;
 .btn-info.hover {
   background-color: #00acd6;
 }
+.btn-cstm{
+background-color: #e31c77;
+border-color: #e31c77;
+border-radius:10px!important;
+}
 .btn-custom{
   background-color: #8e44ad;
   border-color: #8e44ad;
   color:#ffff;
+  border-radius:10px!important;
 }
 .btn-custom:hover,
 .btn-custom:active{

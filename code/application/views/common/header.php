@@ -139,7 +139,7 @@ $img =  base_url().'images/logo.png';
               </button>
             </div>
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
-              <ul class="nav navbar-nav margin-left">
+              <ul class="nav navbar-nav mar_t5 margin-left">
 			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
 			   <li class="<?php echo $about;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
                 <li class="<?php echo $assets;?> h_hover">
@@ -216,7 +216,7 @@ $img =  base_url().'images/logo.png';
 							$urlIco    = base_url().'login';
 						}
 					?>
-					<ul class= "nav navbar-nav navbar-right">
+					<ul class= "nav navbar-nav mar_t5 navbar-right">
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 						<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
 						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
@@ -229,7 +229,7 @@ $img =  base_url().'images/logo.png';
 						<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					<?php }else{?>
 						<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
-						<li class = "signup_box" ><a style="border: 2px solid #00FFFF;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
+						<li class = "signup_box" ><a style="border: 2px solid #8e44ad;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
 
 					<?php } ?>
 

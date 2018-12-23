@@ -1366,6 +1366,9 @@ a.ui-button:active,
 .mar_b80{
   margin-bottom:80px;
 }
+.mar_b90{
+  margin-bottom:90px;
+}
 .mar_t110{
   margin-top:110px;
 }
@@ -1893,12 +1896,12 @@ footer {
 .logofooter { margin-bottom:10px; font-size:25px; color:#515965; font-weight:700;}
 .footerleft p { color:#ffffff; font-size:12px !important; margin-bottom:15px;}
 .footerleft p i { width:20px; color:#999;}
-.paddingtop-bottom {  margin-top:40px;}
+.paddingtop-bottom {  margin-top:40px;padding:0;}
 .footer-ul { list-style-type:none;font-family:NoirPro Light;  padding-left:0px; margin-left:2px;color:#ffffff;}
 .footer-ul li { line-height:29px; font-size:14px;}
 .footer-ul li a { color:#ffffff; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
 .footer-ul i { margin-right:10px;}
-.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#2b63d1; }
+.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ffff;text-decoration: underline;}
 .social:hover {
      -webkit-transform: scale(1.1);
      -moz-transform: scale(1.1);
@@ -2765,8 +2768,11 @@ font-family: NoirPro;
 .footer_color{
 
 }
+.signup_box > a{
+  border:2px solid transparent;
+}
 .linear_color{
-  background-image: linear-gradient(to right, darkblue , purple);
+  background-image: linear-gradient(to right, #000046 , #8e44ad);
   height:10%;
   color:#ffff;
 }
