@@ -3145,9 +3145,11 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
+/*  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+*/
+border:none!important;
 }
 /*.btn:hover,
 .btn:focus,
@@ -3691,6 +3693,7 @@ tbody.collapse.in {
   outline: 0;
 }
 .dropdown-menu {
+  left:0;
   position: absolute;
   top: 100%;
   right: -1px;
@@ -3698,19 +3701,19 @@ tbody.collapse.in {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
+  padding: 0 0;
   margin: 0 0 0;
   font-size: 14px;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #f2f2f2;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, .15);
+  border: 1px solid #f2f2f2;
+  border: 1px solid #f2f2f2;
   border-radius: 2px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .dropdown-menu.pull-right {
   right: 0;
