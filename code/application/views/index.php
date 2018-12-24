@@ -1,4 +1,4 @@
-	<div class="content-wrapper about_bg text_color" style="min-height:0!important;">
+	<div class="content about_bg text_color">
 		<section class="content" >
 			<div class="container-fluid banner_margin linear_color">
 				<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">

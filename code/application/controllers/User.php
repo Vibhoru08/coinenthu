@@ -214,6 +214,16 @@
 				$this->show('edit-profile',$data);
 			}
 		}
+		public function showProfile(){
+			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
+				redirect('login','refresh');
+			}else{
+				$data = array();
+				$u_uid = $_SESSION["user_id"];
+				$data['userinfo'] = $this->User_model->getUserDetails($u_uid);
+				$this->show('display-profile',$data);
+			}
+		}
 		public function upload_profile_image(){
 			$fileExtentios 	= explode(".", $_POST['imageName']);
 			$extention 		= end($fileExtentios);

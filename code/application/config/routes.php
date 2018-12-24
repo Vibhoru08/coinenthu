@@ -73,6 +73,7 @@ $route['my-ico-trackers']           = 'Company/myIcoTrackers';
 $route['my-digital-assets']         = 'Company/myCompaniesList';
 $route['add-digital-asset']         = 'Company/addDigitalAsset';
 $route['edit-profile']              = 'User/editProfile';
+$route['display-profile']           = 'User/showProfile';
 $route['social-sign-in/(:any)']     = 'Login/socialSignIn';
 $route['twitter-login-auth/(:any)'] = 'Login/twitterLoginAuth';
 $route['subscribe']     			= 'Careers/addEmail';
