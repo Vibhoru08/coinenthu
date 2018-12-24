@@ -1337,36 +1337,30 @@
 					$checkRecords =1;
 					foreach($getCompanies as $key=>$value){
 						$data = array();
-						$capDtls = $this->getCompDtlsApi($value->cm_name);
-						if(count($capDtls) > 0 && isset($capDtls[0]['name']))
-					{
-						// $data['cm_marketcap'] = 'Market Cap : '.$capDtls[0]['market_cap_usd'].'<br/>'.'Current Price : '.$capDtls[0]['price_usd'].'<br/>'.'24 hr Volume : '.$capDtls[0]['24h_volume_usd'].'<br/>'.'%Change(24hr) : '.$capDtls[0]['percent_change_24h'];
-						$data['cm_marketcap'] 		= $capDtls[0]['market_cap_usd'];
-						$data['price_usd'] 			= $capDtls[0]['price_usd'];
-						$data['24h_volume_usd'] 	= $capDtls[0]['24h_volume_usd'];
-						$data['percent_change_24h'] = $capDtls[0]['percent_change_24h'];
-						$data['available_supply'] 	= $capDtls[0]['available_supply'];
-						$data['total_supply'] 		= $capDtls[0]['total_supply'];
-						$data['api_data'] 			= '1';
-					}
-					else if(isset($value->cm_marketcap) && $value->cm_marketcap != ""){
-						$data['cm_marketcap'] = $value->cm_marketcap;
-						$data['price_usd'] 			= '';
-						$data['24h_volume_usd'] 	= '';
-						$data['percent_change_24h'] = '';
-						$data['available_supply']   = $value->cm_tokens_available_crowd_sale;
-						$data['total_supply']       = $value->cm_total_token_supply;
-						$data['api_data'] 			= '0';
-					}else{
-						$data['cm_marketcap'] = '';
-						$data['price_usd'] 			= '';
-						$data['24h_volume_usd'] 	= '';
-						$data['percent_change_24h'] = '';
-						$data['available_supply'] = '';
-						$data['total_supply'] = '';
-
-						$data['api_data'] 			= '';
-					}
+						$company_id = $value->cm_id;
+						$company_reviews = $this->Companies_model->assetLastReview($company_id);
+						$total_likes_count = 0;
+						$total_dislikes_count = 0;
+						foreach($company_reviews->result_array() as $row){
+							if(isset($row['re_likes_cnt'])){
+								$re_likes_cnt = $row['re_likes_cnt'];
+							}
+							else{
+								$re_likes_cnt = 0;
+							}
+							$total_likes_count = $total_likes_count + $re_likes_cnt;
+							
+							if(isset($row['re_dislike_cnt'])){
+								$re_dislikes_cnt = $row['re_dislike_cnt'];
+							}
+							else{
+								$re_dislikes_cnt = 0;
+							}
+							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
+						}
+						$last_review = $company_reviews->last_row('array');
+						$last_review_userid = $last_review['re_uid'];
+						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
 						$html .='<div class="col-md-5 col-md-offset-1 mar_t80" style = "min-height:454px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
@@ -1407,21 +1401,26 @@
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-					   $string = strip_tags($value->cm_name);
-						  if (strlen($string) > 18) {
-							  $string = substr($string, 0, 18).'...';
-						  }
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title">'.$string.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
 						$html.='<div>';
 
-						if($value->cm_ctid == 1){
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Market Cap : <span style = "color:blue;">$'.number_format($data['cm_marketcap']).'</span><br/>';
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Current Price :<span style = "color:blue;">$'.$data['price_usd'].'</span><br/>';
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> 24 Hr Volume :<span style = "color:blue;">$'.number_format($data['24h_volume_usd']).'</span><br/>';
-						$html.='<i class="fa fa-caret-right" aria-hidden="true"></i> Change (24 Hr) :<span style = "color:blue;"> '.$data['percent_change_24h'].'%</span><br/>';
+						if(isset($last_review)){
+						$html.='<br/><div>'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';	
+						if($last_review_details->u_about != ""){
+							$html.='<div>'.ucfirst($last_review_details->u_about).'</div><br/>';
+						}else{
+							$html.='<br/><br/>';
+						}
+                        $string = strip_tags($last_review['re_decript']);
+							if (strlen($string) > 100) {
+
+								$stringCut = substr($string, 0, 100);
+								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+							}
+						$html.='<div>'.ucfirst($string).'</div><br/>';
 						}else{
 						$string = strip_tags($value->cm_decript);
 							if (strlen($string) > 100) {
@@ -1444,12 +1443,24 @@
 							}
 							//$html.=$cm_totalviews. ' Reviews';
 							if ($cm_totalviews == 1){
-								$review_s = 'review';
+								$review_s = 'Review';
 							}
 							else{
-								$review_s = 'reviews';
+								$review_s = 'Reviews';
 							}
-							$html.='<i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span>';
+							if ($total_likes_count == 1){
+								$like_s = 'Like';
+							}
+							else{
+								$like_s = 'Likes';
+							}	
+							if ($total_dislikes_count == 1){
+									$dislike_s = 'Dislike';
+							}
+							else{
+									$dislike_s = 'Dislikes';
+							}	
+							$html.='<i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{

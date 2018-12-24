@@ -37,6 +37,13 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function assetLastReview($company_id){
+		$this->db->select('*');
+		$this->db->from('bop_company_reviews');
+		$this->db->where('re_cmid',$company_id);
+		$query = $this->db->get();
+		return $query;
+	}
 	public function getLastReply($date,$hour,$minute,$post){
 		$this->db->select('*');
         $this->db->from('bop_company_review_replies');
