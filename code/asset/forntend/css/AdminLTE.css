@@ -2235,7 +2235,7 @@ a:focus {
 }
 .for-border::before{
   position:absolute;
-  left:180px;
+  left:190px;
   height: 31px;
   padding:6px 0 8px 0;
   border-right:2px solid #ddd;
@@ -2262,7 +2262,7 @@ border:none;
 .btn-default:hover,
 .btn-default:active,
 .btn-default.hover {
-  background-color: #e7e7e7;
+  background-color: #f4f4f4;
 }
 .btn-primary {
   background-color: #1546a5;
@@ -2276,7 +2276,7 @@ border:none;
 .btn-home{
   background-color: #e31c77;
   border-color: #e31c77;
-  color:white;  
+  color:white;
 }
 .btn-success {
   background-color: #00a65a;

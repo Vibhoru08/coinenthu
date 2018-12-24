@@ -50,14 +50,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</div>
 					<div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" >
 						<div class="row">
-							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 centered ">
+							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 pad_0 centered ">
 						<div class="select_style">
 							<form class="form-inline">
 							<div class="form-group"><nobr>
 								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right select_dropdown" id="change_u"><span class="for-border">
-								  Sort By<button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
-								   Most reviewed</span><div class="arrow_down"><span class="caret"></span></div>
+								  <span id="sort_by">Sort By</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
+								  Most reviewed</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
 								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:231px">
