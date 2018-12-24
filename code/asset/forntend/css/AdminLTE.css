@@ -1247,7 +1247,7 @@ a:focus {
    color: #231f20;
  }
 .form-control {
-  border-radius: 0;
+  border-radius: 10px;
   box-shadow: none;
   border-color: #d2d6de;
 }
@@ -1528,6 +1528,10 @@ a:focus {
  * Component: Box
  * --------------
  */
+ .no_box_shadow{
+   border:none!important;
+   box-shadow: none!important;
+ }
 .box {
   position: relative;
   border-radius: 3px;
@@ -2299,9 +2303,11 @@ border-radius:10px!important;
   border-radius:10px!important;
 }
 .btn-custom:hover,
+.btn-custom:visited,
+.btn-custom:focus,
 .btn-custom:active{
-  background-color: #c7081f;
-  color:#fff;
+  background-color: #8e44ad;
+  color:#fff!important;
 }
 .btn-danger {
   background-color: #d50922;
@@ -2614,6 +2620,7 @@ border-radius:10px!important;
  * ------------------------
  */
 .products-list {
+  border-radius: 10px;
   background-color: #f9f9f9;
   list-style: none;
   margin: 0;

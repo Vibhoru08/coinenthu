@@ -3,7 +3,8 @@
 <footer >
  <div class="container-fluid pad_b30">
    <div class="row" >
-     <div class="col-md-3 col-sm-3 col-sm-offset-1 paddingtop-bottom">
+     <div class="col-xs-10 col-xs-offset-1 pad_0">
+     <div class="col-md-4 col-xs-6 paddingtop-bottom">
        <h6 class="heading7">Navigation</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
@@ -14,7 +15,8 @@
          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#suggestions">Suggest us</a></li>
        </ul>
      </div>
-   <div class="col-md-3 col-sm-3 paddingtop-bottom footer_left">
+     <div class="col-md-8 col-xs-6">
+   <div class="col-md-6 col-sm-12 paddingtop-bottom footer_left">
        <h6 class="heading7">Terms</h6>
        <hr class="footer_hr">
        <ul class="footer-ul">
@@ -25,7 +27,7 @@
      </div>
 
    <!--<div class="col-md-1 m_hide">&nbsp;</div>-->
-     <div class="col-md-3 col-sm-5 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
+     <div class="col-md-6 col-sm-12 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
         <h6 class="heading7">Follow Us</h6>
         <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
@@ -52,11 +54,16 @@
      <span id="successMsg" ></span>
 
      </div>
-
-
    </div>
+   </div>
+   </div>
+   <div class="row">
+     <div class="col-xs-10 col-xs-offset-1 pad_0 mar_t30">
+   <hr style="border:none;color:#ffff;height:1px;background-color: #fff;margin-bottom:0px;">
+  </div>
+</div>
  </div>
- <hr style="width:84%;border:none;color:#ffff;height:1px;background-color: #fff;">
+
  <div class="sub_footer">
    <div class="container-fluid">
      <div class="row">

@@ -1728,14 +1728,14 @@ a.ui-button:active,
           transform-origin: center;
 }
 .center::before {
-  border-top: 1px solid #1546a5;
-  border-bottom: 1px solid #1546a5;
+  border-top: none;
+  border-bottom: none;
   -webkit-transform: scale3d(0, 1, 1);
           transform: scale3d(0, 1, 1);
 }
 .center::after {
-  border-left: 1px solid #1546a5;
-  border-right: 1px solid #1546a5;
+  border-left: none;
+  border-right: none;
   -webkit-transform: scale3d(1, 0, 1);
           transform: scale3d(1, 0, 1);
 }
@@ -2423,10 +2423,10 @@ font-family: NoirPro Light;
 	margin-top:30px;
 }
 .footer_left{
-	padding-left:50px
+	padding-left:0px
 }
 .footer_leftt{
-	padding-left:120px
+	padding-left:0px
 }
 .review_dw{
 	background:#fff;
@@ -2768,12 +2768,16 @@ font-family: NoirPro;
 .signup_box > a{
   border:2px solid transparent;
 }
+#searchterms{
+  border:2px solid #e31c77;
+}
 .linear_color{
   background-image: linear-gradient(to right, #000046 , #8e44ad);
   height:10%;
   color:#ffff;
 }
 .new_boxes{
+  border-radius: 10px;
   width:100%;
   background-color: #f9f9f9;
 }
@@ -2809,7 +2813,7 @@ font-family: NoirPro;
 }
 .digital_box_image{
   position:relative;
-  margin-top:-50px;
+  margin-top:-90px;
   left:-10%;
   border:4px solid white;
   padding:15px;
