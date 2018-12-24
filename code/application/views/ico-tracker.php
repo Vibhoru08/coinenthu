@@ -9,7 +9,7 @@ $viewTime = date('Ymd') .'_'. date('His');
     <div class="row mmar_t40 mmar_b10 mar_t80 mar_b90">
       <div class="col-xs-12 text-center banner_head">
         ICO TRACKER
-        <hr style="width:5%;border:1px solid #ffff">
+        <hr style="width:5%;border:2px solid #ffff">
         <div class="banner_desc">
         Let’s not invest blindly, get the correct information on your ICO TRACKERS.
         <div>Search for them.</div>
@@ -43,9 +43,9 @@ $viewTime = date('Ymd') .'_'. date('His');
 						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
 						<input class="form-control brg_focus_n" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search ICOs">
 					</div>
-          <!--<div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:grey;border-radius:8%;">
+          <div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:#e31c77;border-radius:10px;">
           <img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
-        </div> -->
+        </div>
           </div>
         </div>
         <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" >
@@ -228,7 +228,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						</div>
 					</div>
 				</div>
-				<div class="box overflow_hidden mar_t40 new_boxes twitter_box_padding text-center">
+				<div class="box overflow_hidden mar_t40 new_boxes no_box_shadow twitter_box_padding text-center">
 					<h4>TRENDING</h4>
 				     <div class="">
 						<div class="scroll twitter_feed">

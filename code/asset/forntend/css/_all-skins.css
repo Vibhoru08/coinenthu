@@ -18,7 +18,7 @@
 .skin-blue .main-header .navbar .nav .open > a:focus,
 .skin-blue .main-header .navbar .nav > .active > a {
   background: transparent;
-  color: #8e44ad;
+  color: #404852;
 }
 .skin-blue .main-header .navbar .nav > li.h_hover:last-child > a:hover:before {
 	position:absolute;

@@ -2183,7 +2183,7 @@ a:focus {
  * -----------------
  */
 .btn {
-  border-radius: 2px;
+  border-radius: 10px;
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid transparent;
@@ -2272,6 +2272,11 @@ border:none;
 .btn-primary:active,
 .btn-primary.hover {
   background-color: #1b51ba;
+}
+.btn-home{
+  background-color: #e31c77;
+  border-color: #e31c77;
+  color:white;  
 }
 .btn-success {
   background-color: #00a65a;
@@ -2645,14 +2650,14 @@ border-radius:10px!important;
 }
 .products-list .product-img {
   float: left;
-  width:160px;
-  height:160px;
+  width:150px;
+  height:150px;
   /* border:1px solid #eee; */
   padding:4px;
 }
 .products-list .product-img img {
-  /* width: 50px; */
-  /* height: 50px; */
+   width: 96px;
+   height: 96px;
 }
 .products-list .product-info {
   margin-left: 110px;

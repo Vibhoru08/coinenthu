@@ -1,7 +1,7 @@
 <div class = "content-wrapper" style="min-height:0!important;">
     <section class = "content">
-        <div class = "container-fluid banner_margin linear_color">
-            <div class = "row text-center mar_t80 mmar_t10">
+        <div class = "container-fluid banner_margin linear_color_home">
+            <div class = "row text-center mar_t40 mmar_t10">
                 <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_head">
                     COMMUNITY BASED CRYPTO REVIEWS
                     <hr style="width:5%;border:1px solid #ffff">
@@ -17,7 +17,7 @@
                     <input class="form-control1 form-control mar_r10 searchhome" type="text" onkeyup="sreachterm();" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;&nbsp;Search for your Digital Assets and ICOs"  />
                 </div>
                 <div class = "col-sm-2 col-xs-2" style = "width:150px;">
-                    <button class="btn btn-success" type = "button" style = "width:100%">Search</button>
+                    <button class="btn btn-home" type = "button" style = "width:100%">Search</button>
                 </div>
             </div>
         </div>
