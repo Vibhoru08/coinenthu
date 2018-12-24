@@ -48,11 +48,13 @@ function userProfileUpdate() {
         var fname = $("#p_u_firstname").val();
         var lname = $("#p_u_lastname").val();
         var uname = $("#p_u_username").val();
+        var about = $("#p_u_about").val();
         var uImage = $('#userhidImage').val();
         var form_data = new FormData();
         form_data.append('u_firstname', fname);
         form_data.append('u_lastname', lname);
         form_data.append('u_username', uname);
+        form_data.append('u_about', about);
         form_data.append('u_picture', uImage);
         $('#loadAddUser').show();
         $.ajax({

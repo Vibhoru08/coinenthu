@@ -275,6 +275,11 @@ class User_model extends CI_Model
 		}else{
 			$u_username  = "";
 		}
+		if(isset($post['u_about']) && $post['u_about']!=""){
+			$u_about  = $post['u_about'];
+		}else{
+			$u_about  = "";
+		}
 		if(isset($post['u_picture']) && $post['u_picture']!=""){
 			$userPic  = $post['u_picture'];
 		}else{
@@ -283,7 +288,8 @@ class User_model extends CI_Model
 		$data = array(
             'u_firstname'  => $u_firstname,
             'u_lastname'   => $u_lastname,
-            'u_username'   => $u_username,
+			'u_username'   => $u_username,
+			'u_about'      => $u_about,
             'u_picture'    => $userPic,
             'u_modifiedat' => date('Y-m-d H:i:s'),
         );

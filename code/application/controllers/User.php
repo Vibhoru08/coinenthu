@@ -185,6 +185,7 @@
 					$u_firstname = $_POST['u_firstname'];
 					$u_lastname  = $_POST['u_lastname'];
 					$u_username  = $_POST['u_username'];
+					$u_about = $_POST['u_about'];
 					$u_picture   = $_POST['u_picture'];
 					$uid = $_SESSION["user_id"];
 					$updateResults = $this->User_model->updateProfile($uid,$_POST);

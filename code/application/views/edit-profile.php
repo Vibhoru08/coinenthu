@@ -75,6 +75,13 @@
 										</div>
 									  </div>
 									  <div class="form-group">
+										<label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">About<span class="mstar"></span></label>
+										<div class="col-sm-9">
+										  <input type="text" class="form-control"
+										  id="p_u_about" name="p_u_about" placeholder="Something about yourself" value="<?php echo $userinfo->u_about; ?>">
+										</div>
+									  </div>
+									  <div class="form-group">
 										<label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">Email</label>
 										<div class="col-sm-9">
 										  <input value="<?php echo $userinfo->u_email; ?>" readonly type="text" class="form-control"
