@@ -141,8 +141,7 @@ $img =  base_url().'images/logo.png';
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
               <ul class="nav navbar-nav mar_t5 margin-left">
 			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
-			   <li class="<?php echo $about;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('abt');">About Us</a></li>
-                <li class="<?php echo $assets;?> h_hover">
+			   <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
 				</li>
                 <li class="<?php echo $ico;?> h_hover">
