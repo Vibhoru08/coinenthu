@@ -50,8 +50,6 @@ else {
 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
 					$(this).toggleClass('open');
 						$('#sort_by').hide();
-						var x = $('.req_value').text();
-						console.log(x+" x");
 			},
 			function() {
 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).hide();
