@@ -1782,7 +1782,7 @@ a:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  padding: 10px;
+  padding: 20px;
 }
 .no-header .box-body {
   border-top-right-radius: 3px;
@@ -2299,7 +2299,17 @@ border:none;
 .btn-cstm{
 background-color: #e31c77;
 border-color: #e31c77;
+color:#ffff;
+width:229px;
+margin:auto;
 border-radius:10px!important;
+}
+.btn-cstm:hover,
+.btn-cstm:visited,
+.btn-cstm:focus,
+.btn-cstm:active{
+  background-color: #e31c77;
+  color:#fff!important;
 }
 .btn-custom{
   background-color: #8e44ad;

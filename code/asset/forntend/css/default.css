@@ -2842,9 +2842,10 @@ font-family: NoirPro;
   background-color:#f9f9f9;
 }
 .about_box_image{
+  width:116px;
+  height:116px;
  position:relative;
  margin-top:-250px;
- left:20%;
  border:4px solid white;
  padding:15px;
  background-color:#f9f9f9;
@@ -2876,7 +2877,7 @@ font-family: NoirPro;
 }
 .control-label{
   font-family:NoirPro SemiBold;
-  margin-top:20px;
+  margin-top:0px;
   margin-bottom:10px!important;
 }
 .review-asset-image{

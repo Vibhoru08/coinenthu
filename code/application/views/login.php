@@ -63,7 +63,7 @@
 													  <p class="help-block"></p>
 												  </div>
 
-												  <input type="submit" class="btn btn-custom btn-block" style="margin-top:80px;" id="logBtn" value="Login" name="logBtn">
+												  <input type="submit" class="btn btn-custom btn-block" style="margin-top:60px;" id="logBtn" value="Login" name="logBtn">
 											  </form>
 										  </div>
 									  </div>

@@ -11,8 +11,8 @@
 					</div>
 				</div>
 				<div class="row text-center mar_b40">
-				 <div class=""><a href="<?php echo base_url();?>digital-assets" class="btn btn-custom btn-lg font_s22 div">Digital Assets</a>
-				   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-custom btn-lg font_s22 div" style="margin-left:20px">Upcoming ICOs</a></div>
+				 <div class=""><a href="<?php echo base_url();?>digital-assets" class="btn btn-cstm btn-lg font_s22 div">Digital Assets</a>
+				   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:20px">Upcoming ICOs</a></div>
 				 </div>
        </div>
 			</div>
@@ -53,20 +53,26 @@
 				<div class = "row mar_t80">
 				<div class ="col-md-3 col-md-offset-1 mar_r65 col-xs-10 col-xs-offset-1">
 				<div class = "new_boxes text-justify box_padding">
-				<img src = "<?php echo base_url().'asset/img/gear.png'; ?>" alt= "settings icon" class="img-circle about_box_image">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				<div class="text-center"><img src = "<?php echo base_url().'asset/img/gear.png'; ?>" alt= "settings icon" class="img-circle about_box_image text-center">
+				</div>
+				<div class="mar_tn10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				</div>
 				</div>
 				</div>
 				<div class ="col-md-3 col-md-offset-0 mar_r65 col-xs-10 col-xs-offset-1">
 				<div class = "new_boxes text-justify box_padding">
-				<img src = "<?php echo base_url().'asset/img/checklist.png'; ?>" alt= "checklist icon" class="img-circle about_box_image">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				<div class="text-center"><img src = "<?php echo base_url().'asset/img/checklist.png'; ?>" alt= "checklist icon" class="img-circle about_box_image">
+				</div>
+				<div class="mar_tn10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				</div>
 				</div>
 				</div>
 				<div class ="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1">
 				<div class = "new_boxes text-justify box_padding">
-				<img src = "<?php echo base_url().'asset/img/badge.png'; ?>" alt= "checklist icon" class="img-circle about_box_image">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				<div class="text-center"><img src = "<?php echo base_url().'asset/img/badge.png'; ?>" alt= "checklist icon" class="img-circle about_box_image">
+			  </div>
+			  <div class="mar_tn10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad consequat. sequat.
+				</div>
 				</div>
 				</div>
 				</div>
