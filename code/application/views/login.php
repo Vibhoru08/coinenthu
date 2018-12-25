@@ -12,18 +12,30 @@
 			</section>
 		</div>
 	</div>-->
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row mmar_t40 mmar_b10 mar_t70 mar_b80">
+			<div class="col-xs-12 text-center banner_head">
+				LOGIN/SIGNUP
+				<hr style="width:5%;border:2px solid #ffff">
+				<div class="banner_desc">
+				<div></div>
+			</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
-			<section class="content mar_b20 mar_t80">
+			<section class="content mar_b20 mar_t10">
 				<div class="row">
 					<div class="col-md-2">&nbsp;</div>
 						<div class="col-md-8">
-							<div class="box mar_b50 mar_t50 box_shadow overflow_hidden">
-								<div class="box-header with-border header_bg">
+							<div class="box mar_b50 mar_t50 overflow_hidden">
+							<!--<div class="box-header with-border header_bg">
 									<h3 class="box-title">Login/Register</h3>
-								</div>
+								</div>-->
 								<div class="box-body">
 									<div class="row mar_t10">
 									  <div class="col-md-6">
+											<div class="col-xs-10 well_bg_none"><h3 class="box-title">Login</h3><hr class="col-xs-1" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
 										  <div class="well no-marginv well_bg_none">
 											  <form id="loginForm" name="loginForm" method="POST"data-fv-message="This value is not valid"
 											  data-fv-icon-valid="glyphicon"
@@ -51,13 +63,14 @@
 													  <p class="help-block"></p>
 												  </div>
 
-												  <input type="submit" class="btn btn-danger btn-block" style="margin-top:54px;" id="logBtn" value="Login" name="logBtn">
+												  <input type="submit" class="btn btn-custom btn-block" style="margin-top:80px;" id="logBtn" value="Login" name="logBtn">
 											  </form>
 										  </div>
 									  </div>
-									  <div class="col-md-6 mbrgt pos_r" style="border-left:1px solid #ddd;">
+									  <div class="col-md-6 mbrgt pos_r" style="border-left:2px solid white;">
+										<div class="col-xs-10 well_bg_none"><h3 class="box-title">Register</h3><hr class="col-xs-1" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
 										<div class="well no-margin well_bg_none">
-											<div class="ligin_pos_ab"><span>OR</span></div>
+											<!--<div class="ligin_pos_ab"><span>OR</span></div>-->
 											  <form id="regForm" name="regForm" method="POST" data-fv-message="This value is not valid"
 											  data-fv-icon-valid="glyphicon"
 											  data-fv-icon-invalid="glyphicon"
@@ -92,12 +105,16 @@
 												  <span id="loadingmine" class="hide">Loading...</span>
 												  <span style="color:red" id="emailverified" class="hide">Email already exists. </span>
 												  <span style="color:red" id="usernameverified" class="hide">Username already exists. </span>
-												  <button type="submit" class="btn btn-primary btn-block">Register</button>
+												  <button type="submit" class="btn btn-custom btn-block">Register</button>
 											  </form>
 										  </div>
 									  </div>
 									  <div class="clearfix"></div>
-
+										<div class="col-md-12 text-center mar_t20 socila_img" style="padding-bottom:3px;">
+																				 <a  onclick="fbLogin();" href="javascript:void(0)" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
+																				  <a href="javascript:void(0);" id="bopTLogin" class="button twitter"><span><i class="fa fa-twitter"></i></span><p>Twitter</p></a>
+																				  <a href="javascript:void(0);" id="gplus" class="button google-plus"><span><i class="fa fa-google-plus"></i></span><p>Google+</p></a>
+																			</div>
 								  </div>
 								</div>
 							</div>

@@ -3637,7 +3637,7 @@ fieldset[disabled] .btn-link:focus {
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
-  width: 100%;
+  width: 229px;
 }
 .fade {
   opacity: 0;

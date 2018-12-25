@@ -1373,7 +1373,7 @@ a.ui-button:active,
   margin-top:110px;
 }
 .mar_t140{
-  margin-top:140px;  	
+  margin-top:140px;
 }
 .mar_b6{
 	margin-bottom:6px;
@@ -1418,13 +1418,13 @@ a.ui-button:active,
   margin-left:40px;
 }
 .mar_l70{
-  margin-left:70px;	
+  margin-left:70px;
 }
 .mar_l100{
   margin-left:100px;
 }
 .mar_l120{
-  margin-left:120px;	
+  margin-left:120px;
 }
 .mar_r65{
   margin-right:65px;
@@ -1979,6 +1979,12 @@ a.socialIcon:hover, .socialHoverClass {
     padding-left:1px;
 }
 }
+.NoirProMedium{
+  font-family: NoirPro Medium;
+}
+.NoirProSemiBold{
+  font-family: NoirPro SemiBold;
+}
 .NoirProLight{
 font-family: NoirPro Light;
 }
@@ -2416,7 +2422,7 @@ font-family: NoirPro Light;
 	margin-top:-3.6%;
 }
 .socila_img{
-	border-top:1px solid #ddd;
+	border-top:1px solid white;
 	padding-top:25px;
 }
 .socila_img img{
@@ -2752,8 +2758,9 @@ font-family: NoirPro Light;
 	margin-left:4px;
 }
 .terms_of_use{
-  background-color: silver;
+  background-color: #f9f9f9;
   color:black;
+  border-radius: 10px;
 }
 .terms_of_use h4{
 	margin-top:30px;
@@ -2855,7 +2862,7 @@ font-family: NoirPro;
  padding:0;
  position:relative;
  margin-top:-79.5px;
- height:130px;		
+ height:130px;
 
 }
 .review_head{

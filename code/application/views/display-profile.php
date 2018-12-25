@@ -4,7 +4,7 @@
             <div class="row mmar_t40 mmar_b10 mar_t140 mar_b10">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
-						<hr style="width:5%;border:1px solid #ffff">
+						<hr style="width:5%;border:2px solid #ffff">
                         <div class = "mar_t50 text-left row">
                             <div class = "col-md-2 mar_l120">
                             <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
@@ -65,7 +65,7 @@
                 }
                 ?>
             </div>
-        </div>  
+        </div>
         <div class = "row">
                 <div class ="col-md-8">
                 </div>
@@ -152,6 +152,6 @@
 					</div>
 				</div>
                 </div>
-        </div>  
-    </section>   
-</div>    
+        </div>
+    </section>
+</div>

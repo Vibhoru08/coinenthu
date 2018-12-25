@@ -1534,12 +1534,12 @@ a:focus {
  }
 .box {
   position: relative;
-  border-radius: 3px;
-  background: #ffffff;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+  border: none;
   margin-bottom: 20px;
   width: 100%;
-  box-shadow: 0 0 2px 0 #ccc;
+  box-shadow: none;
 }
 .box.box-primary {
   border-top-color: #3c8dbc;
@@ -2306,6 +2306,8 @@ border-radius:10px!important;
   border-color: #8e44ad;
   color:#ffff;
   border-radius:10px!important;
+  width:229px;
+  margin:auto;
 }
 .btn-custom:hover,
 .btn-custom:visited,

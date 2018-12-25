@@ -1349,7 +1349,7 @@
 								$re_likes_cnt = 0;
 							}
 							$total_likes_count = $total_likes_count + $re_likes_cnt;
-							
+
 							if(isset($row['re_dislike_cnt'])){
 								$re_dislikes_cnt = $row['re_dislike_cnt'];
 							}
@@ -1401,16 +1401,16 @@
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
-						$html.='<div>';
+						$html.='<div class="row">';
 
 						if(isset($last_review)){
-						$html.='<br/><div>'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';	
+						$html.='<div class="col-xs-12 NoirProMedium">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';
 						if($last_review_details->u_about != ""){
-							$html.='<div>'.ucfirst($last_review_details->u_about).'</div><br/>';
+							$html.='<div class="col-xs-12">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{
 							$html.='<br/><br/>';
 						}
@@ -1420,7 +1420,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<div>'.ucfirst($string).'</div><br/>';
+						$html.='<div class="col-xs-12" style="height:63px;">'.ucfirst($string).'</div>';
 						}else{
 						$string = strip_tags($value->cm_decript);
 							if (strlen($string) > 100) {
@@ -1428,11 +1428,11 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<span style="color:blue;">'.ucfirst($string).'</span><br>';
+						$html.='<span class="col-xs-12" style="height:63px;">'.ucfirst($string).'</span><br>';
 
 						}
-						$html.='<br/><a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
-						$html.='<hr>';
+						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						$html.='<hr class="col-xs-12">';
 
 
 
@@ -1453,21 +1453,21 @@
 							}
 							else{
 								$like_s = 'Likes';
-							}	
+							}
 							if ($total_dislikes_count == 1){
 									$dislike_s = 'Dislike';
 							}
 							else{
 									$dislike_s = 'Dislikes';
-							}	
-							$html.='<i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span>';
+							}
+							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span></div></div>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{
 								$cMOvrlRtng = 0;
 							}
 							*/
-							$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;"><button class = "pull-right btn btn-default" style="color:orange;">View Reviews</button></a>';
+							$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;"><button class = "pull-right btn btn-default" style="color:orange;display:none;">View Reviews</button></a>';
 							/*
 
 							$html.='&nbsp;'.number_format($cMOvrlRtng, 1, '.', '').'&nbsp;';
@@ -2238,7 +2238,7 @@
 					}
 				}
 			}
-			 
+
 			$url = "https://api.coinmarketcap.com/v1/ticker/".$cm_api_name."/";
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -2263,7 +2263,7 @@
 				}
 				else{
 					$compnyName = $comp->cm_name;
-				}	
+				}
 				$url = "https://api.coinmarketcap.com/v1/ticker/".$compnyName."/";
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
