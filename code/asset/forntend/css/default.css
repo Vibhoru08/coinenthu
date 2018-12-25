@@ -1372,6 +1372,9 @@ a.ui-button:active,
 .mar_t110{
   margin-top:110px;
 }
+.mar_t140{
+  margin-top:140px;  	
+}
 .mar_b6{
 	margin-bottom:6px;
 }
@@ -1414,8 +1417,14 @@ a.ui-button:active,
 .mar_l40{
   margin-left:40px;
 }
+.mar_l70{
+  margin-left:70px;	
+}
 .mar_l100{
   margin-left:100px;
+}
+.mar_l120{
+  margin-left:120px;	
 }
 .mar_r65{
   margin-right:65px;
@@ -2834,12 +2843,20 @@ font-family: NoirPro;
  background-color:#f9f9f9;
 }
 .asset-image{
-  width:162px;
-  padding:0;
+ width:162px;
+ padding:0;
  position:relative;
  margin-top:-260px;
  height:162px;
  border:15px solid #f9f9f9;
+}
+.profile-image{
+ width:130px;
+ padding:0;
+ position:relative;
+ margin-top:-79.5px;
+ height:130px;		
+
 }
 .review_head{
   font-family: NoirPro SemiBold;

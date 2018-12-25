@@ -220,6 +220,34 @@
 			}else{
 				$data = array();
 				$u_uid = $_SESSION["user_id"];
+				$user_review_details = $this->Companies_model->userReviews($u_uid);
+				$no_of_reviews = $user_review_details->num_rows();
+				$total_review_upvotes = 0;
+				$total_reply_upvotes = 0;
+				foreach($user_review_details->result_array() as $row){
+					if(isset($row['re_likes_cnt'])){
+						$review_likes_cnt = $row['re_likes_cnt'];
+					}
+					else{
+						$review_likes_cnt = 0;
+					}
+					$total_review_upvotes = $total_review_upvotes + $review_likes_cnt;
+				}
+				$user_reply_details = $this->Companies_model->userReplies($u_uid);
+				$no_of_replies = $user_reply_details->num_rows();
+				foreach($user_reply_details->result_array() as $row){
+					if(isset($row['crr_likes_cnt'])){
+						$reply_likes_cnt = $row['crr_likes_cnt'];
+					}
+					else{
+						$reply_likes_cnt = 0;
+					}
+					$total_reply_upvotes = $total_reply_upvotes + $reply_likes_cnt;
+				}
+				$total_upvotes = $total_review_upvotes + $total_reply_upvotes;
+				$data['nore'] = $no_of_replies;
+				$data['nou'] = $total_upvotes;
+				$data['nor'] = $no_of_reviews;
 				$data['userinfo'] = $this->User_model->getUserDetails($u_uid);
 				$this->show('display-profile',$data);
 			}
