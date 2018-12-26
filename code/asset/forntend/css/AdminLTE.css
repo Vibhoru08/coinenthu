@@ -371,7 +371,7 @@ a:focus {
   color: #424242;
   border: 0;
   margin: 0;
-  padding: 15px 15px;
+  padding: 15px 30px;
 }
 @media (max-width: 991px) {
   .navbar-custom-menu .navbar-nav > li {
@@ -2308,8 +2308,9 @@ border-radius:10px!important;
 .btn-cstm:visited,
 .btn-cstm:focus,
 .btn-cstm:active{
-  background-color: #e31c77;
+  background-color: #e31c77!important;
   color:#fff!important;
+  border-color: #e31c77!important;
 }
 .btn-custom{
   background-color: #8e44ad;

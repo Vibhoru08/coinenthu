@@ -3,6 +3,34 @@ $(document).ready(function(){
 		$('body').toggleClass('body_h');
 	});
 
+	$(window).resize(function(){
+		var y=window.matchMedia("(max-width: 990px)");
+		if (y.matches){
+			$(".mob_register").addClass('register_design');
+			$(".mob_s_register").hide();
+			$(".socila_img").hide();
+
+			$(".mob_login").click(function(){
+				$(".mob_login").removeClass('login_design');
+				$(".mob_register").addClass('register_design');
+				$(".mob_s_login").fadeIn();
+				$(".mob_s_register").hide();
+				$(".socila_img").hide();
+			});
+
+			$(".mob_register").click(function(){
+				$(".mob_register").removeClass('register_design');
+				$(".mob_login").addClass('login_design');
+				$(".mob_s_login").hide();
+				$(".mob_s_register").fadeIn();
+				$(".socila_img").fadeIn();
+			});
+		}
+		else{
+			$(".mob_s_register").show();
+			$(".socila_img").show();
+		}
+	});
 
     $(".dropdown_hover").hover(
         function() {
@@ -15,9 +43,31 @@ $(document).ready(function(){
         }
     );
 
+var y=window.matchMedia("(max-width: 990px)");
+if (y.matches){
+	$(".mob_register").addClass('register_design');
+	$(".mob_s_register").hide();
+	$(".socila_img").hide();
+
+	$(".mob_login").click(function(){
+		$(".mob_login").removeClass('login_design');
+		$(".mob_register").addClass('register_design');
+		$(".mob_s_login").fadeIn();
+		$(".mob_s_register").hide();
+		$(".socila_img").hide();
+	});
+
+	$(".mob_register").click(function(){
+		$(".mob_register").removeClass('register_design');
+		$(".mob_login").addClass('login_design');
+		$(".mob_s_login").hide();
+		$(".mob_s_register").fadeIn();
+		$(".socila_img").fadeIn();
+	});
+}
 
 
-var x = window.matchMedia("(max-width: 767px)")
+var x = window.matchMedia("(max-width: 767px)");
 
 if (x.matches) {
 	  $(".select_dropdown").click(

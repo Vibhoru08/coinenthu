@@ -23,19 +23,30 @@
 			</div>
 		</div>
 	</div>
+	<div class="row mobile_login NoirProSemiBold big_hide text-center">
+		<div class="col-xs-12">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_login">
+				LOGIN
+			</div>
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_register">
+				SIGNUP
+			</div>
+		</div>
+	</div>
 	<div class="container">
-			<section class="content mar_b20 mar_t10">
+			<section class="content mar_b20 mar_t10 mmar_t0">
 				<div class="row">
 					<div class="col-md-2">&nbsp;</div>
 						<div class="col-md-8">
-							<div class="box mar_b50 mar_t50 overflow_hidden">
+							<div class="box mar_b50 mar_t50 mmar_t10 overflow_hidden">
 							<!--<div class="box-header with-border header_bg">
 									<h3 class="box-title">Login/Register</h3>
 								</div>-->
+
 								<div class="box-body">
 									<div class="row mar_t10">
-									  <div class="col-md-6">
-											<div class="col-xs-10 well_bg_none"><h3 class="box-title">Login</h3><hr class="col-xs-1" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
+									  <div class="col-md-6 mob_s_login">
+											<div class="col-xs-12 col-md-10 well_bg_none"><h3 class="box-title m_hide">Login</h3><hr class="col-xs-1 m_hide" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
 										  <div class="well no-marginv well_bg_none">
 											  <form id="loginForm" name="loginForm" method="POST"data-fv-message="This value is not valid"
 											  data-fv-icon-valid="glyphicon"
@@ -67,8 +78,8 @@
 											  </form>
 										  </div>
 									  </div>
-									  <div class="col-md-6 mbrgt pos_r" style="border-left:2px solid white;">
-										<div class="col-xs-10 well_bg_none"><h3 class="box-title">Register</h3><hr class="col-xs-1" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
+									  <div class="col-md-6 mbrgt pos_r mob_s_register" style="border-left:2px solid white;">
+										<div class="col-xs-12 col-md-10 well_bg_none"><h3 class="box-title m_hide">Register</h3><hr class="col-xs-1 m_hide" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
 										<div class="well no-margin well_bg_none">
 											<!--<div class="ligin_pos_ab"><span>OR</span></div>-->
 											  <form id="regForm" name="regForm" method="POST" data-fv-message="This value is not valid"

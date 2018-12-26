@@ -1987,6 +1987,7 @@ a.socialIcon:hover, .socialHoverClass {
 }
 .NoirProLight{
 font-family: NoirPro Light;
+color:#fff;
 }
 .social-circle li a {
 	display:inline-block;
@@ -2887,6 +2888,32 @@ font-family: NoirPro;
  height:160px;
  border:3px solid #f9f9f9;
 }
+.login_design{
+  background-color: #f9f9f9;
+  border:1px solid #bfbfbf;
+  border-left:none;
+  border-top:none;
+  -webkit-transition: all 0.2s ease-in 0;
+	-moz-transition: all 0.2s ease-in 0;
+	-o-transition: all 0.2s ease-in 0;
+	-ms-transition: all 0.2s ease-in 0;
+	transition: all 0.2s ease-in 0;
+}
+.register_design{
+  background-color: #f9f9f9;
+  border:1px solid #bfbfbf;
+  border-right:none;
+  border-top:none;
+  -webkit-transition: all 0.2s ease-in 0;
+	-moz-transition: all 0.2s ease-in 0;
+	-o-transition: all 0.2s ease-in 0;
+	-ms-transition: all 0.2s ease-in 0;
+	transition: all 0.2s ease-in 0;
+}
+.mar_login{
+margin:0 -15%;
+}
+
 @media(max-width:768px){
 .review-asset-image{
  height:100px!important;
@@ -2894,6 +2921,21 @@ font-family: NoirPro;
  }
 }
 @media(max-width:990px){
+  .mmar_t0{
+    margin-top:0px;
+  }
+  .mmar_t10{
+    margin-top:10px;
+  }
+  .mobile_login{
+    font-size:24px;
+  }
+  .mar_xs_20{
+    margin-top:20px!important;
+  }
+  .m_hide{
+    display: none!important;
+  }
   .asset-image{
     left:0;
   }
@@ -3027,6 +3069,11 @@ a.left_panel_desc{
   }
   .a_width{
     width:251px;
+  }
+}
+@media(min-width:991px){
+  .big_hide{
+    display: none!important;
   }
 }
 @media(min-width:990px) and (max-width:1199px){
@@ -3312,13 +3359,14 @@ a.left_panel_desc{
 		padding-left:15px;
 	}
 	.fixed .content-wrapper, .fixed .right-side{
-		padding-top:40px;
+		padding-top:0px;
 	}
 	.mtop_30{
 		margin-top:0;
 	}
 	.logo_one img{
-		width:150px;
+		width:170px;
+    height:65px;
 	}
 	.content_w{
 		width:100%;
@@ -3326,7 +3374,7 @@ a.left_panel_desc{
 	}
 	.logo_one .navbar-brand{
     padding:10px;
-		height:40px;
+		height:55px;
 	}
 	.main-header{
 		max-height:40px
@@ -3400,8 +3448,8 @@ a.left_panel_desc{
 		margin: 20px auto;
 	}
 	.mbrgt{
-		border-top:1px solid #ccc;
-		margin-top:25px;
+		border-top:none;
+		margin-top:0;
 	}
 	.mbrgt .mar_t50{
 		margin-top:20px;

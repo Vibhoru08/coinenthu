@@ -27,7 +27,7 @@
      </div>
 
    <!--<div class="col-md-1 m_hide">&nbsp;</div>-->
-     <div class="col-md-6 col-sm-12 paddingtop-bottom socila_links footerleft social_icons text-left footer_leftt">
+     <div class="col-md-6 col-sm-12 paddingtop-bottom mar_xs_20 socila_links footerleft social_icons text-left footer_leftt">
         <h6 class="heading7">Follow Us</h6>
         <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
@@ -42,10 +42,10 @@
      <li><a href="https://www.facebook.com/Coinenthu"  target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook" style="color:#000046;"></i></a></li>
      <!--<li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>-->
      </ul>
-     <p class="mar_t20 NoirProLight">&nbsp;info@coinenthu.com</p>
+     <p class="mar_t20 NoirProLight m_hide">&nbsp;info@coinenthu.com</p>
 
 
-     <div class="input-group input-group-sm">
+     <div class="input-group input-group-sm m_hide">
                <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                    <span class="input-group-btn">
                      <button type="button" class="btn btn-info btn-cstm mar_left10" onClick="subscriber();">Subscribe</button>
@@ -55,6 +55,19 @@
 
      </div>
    </div>
+   <div class="col-xs-12 pad_0 mar_t20 text-center big_hide">
+     <hr style="border:none;color:#ffff;height:1px;background-color: #fff;margin-bottom:0px;">
+   <p class="mar_t30 NoirProLight">&nbsp;info@coinenthu.com</p>
+
+
+   <div class="input-group input-group-sm">
+             <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
+                 <span class="input-group-btn">
+                   <button type="button" class="btn btn-info btn-cstm mar_left10" onClick="subscriber();">Subscribe</button>
+                 </span>
+   </div>
+   <span id="successMsg" ></span>
+ </div>
    </div>
    </div>
    <div class="row">
@@ -67,7 +80,7 @@
  <div class="sub_footer">
    <div class="container-fluid">
      <div class="row">
-       <div class="col-sm-offset-1">
+       <div class="col-xs-offset-1 col-xs-10 pad_0">
    © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions.</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
    </div>
  </div>
