@@ -139,16 +139,7 @@ $img =  base_url().'images/logo.png';
               </button>
             </div>
             <div class="collapse navbar-collapse pull-left mmpull_right" id="navbar-collapse">
-              <ul class="nav navbar-nav mar_t5 margin-left">
-			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
-			   <li class="<?php echo $assets;?> h_hover">
-					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
-				</li>
-                <li class="<?php echo $ico;?> h_hover">
-					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
 
-				</li>
-			  </ul>
 				<!--<li class="dropdown mpull_right dropdown_hover" id="change_u">-->
                   <!--<a href="#" class="dropdown-toggle active_bg mobile_pad" data-toggle="dropdown" aria-expanded="true">-->
 				   <?php/*
@@ -233,6 +224,16 @@ $img =  base_url().'images/logo.png';
 					<?php } ?>
 
               </ul>
+							<ul class="nav navbar-nav mar_t5 margin-left">
+			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
+			   <li class="<?php echo $assets;?> h_hover">
+					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
+				</li>
+                <li class="<?php echo $ico;?> h_hover">
+					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
+
+				</li>
+			  </ul>
             </div>
           </nav>
 	</header>

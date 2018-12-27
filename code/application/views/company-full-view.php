@@ -524,6 +524,59 @@
 
 								    ?>
 								</div>
+
+
+
+
+
+
+
+								<div class="" id="replypopup_m" style="display:none;">
+								   <form  onSubmit="wirteareplySubmit();"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
+								   <div class="">
+								     <input type="hidden" id="crr_reid" name="crr_reid" value="">
+								     <div class="form-group">
+								       <label for="inputEmail3" class="col-sm-4 control-label no_padding_label validate_c">Reply<span class="mstar" style="color:red;"> *</span></label>
+								       <div class="col-sm-7" >
+								         <textarea class="form-control" rows="2" id="crr_decript" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2();"></textarea>
+								         <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
+								         <span id="errorNotes" style="color:#a94442;"></span>
+								       </div>
+								     </div>
+								   </div>
+								   <div class="">
+								     <span id="successmessage" style="color:green"></span>
+								     <span class="vwdTitleError" style="color:#a94442;"></span>
+								       <span id="tp7" style="display:none;">
+								       <svg width='20px' height='20px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#f9f9f9 " fill="none" stroke-width="10" stroke-linecap="round"></circle><circle cx="50" cy="50" r="40" stroke="#00a7af " fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="2s" repeatCount="indefinite" values="200.8 50.19999999999999;1 250;200.8 50.19999999999999"></animate></circle></svg>
+								     </span>
+								     <button type="submit" class="btn btn-primary btn-sm">Save</button>
+								   </div>
+								   </form>
+								 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 								<div class = "row" style="margin-bottom:15px;">
 									<?php
 
@@ -1743,7 +1796,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			success: function(data){
 				if(data.output < 5)
 				{
-					$("#replypopup_modal").modal('show');
+					$("#replypopup_m").show();
 				}else{
 					alert('You cannot add more than 5 replies in a minute.');
 				}

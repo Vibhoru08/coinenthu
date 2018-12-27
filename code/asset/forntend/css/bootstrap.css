@@ -2754,8 +2754,10 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
+  margin-top: 0;
   margin-left: -20px;
+  height:20px;
+  width:20px;
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -3149,7 +3151,6 @@ select[multiple].input-lg {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 */
-border:none!important;
 }
 /*.btn:hover,
 .btn:focus,
@@ -4562,7 +4563,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-nav {
-    float: left;
+    float: right;
     margin: 0px 0px 0px 0px;
   }
   .margin-left{

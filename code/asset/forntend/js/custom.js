@@ -6,9 +6,15 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		var y=window.matchMedia("(max-width: 990px)");
 		if (y.matches){
-			$(".mob_register").addClass('register_design');
+			if( $("#mob_register").hasClass("register_design") ){
+			$(".mob_login").removeClass('login_design');
+			$(".mob_s_login").fadeIn();
 			$(".mob_s_register").hide();
 			$(".socila_img").hide();
+		}else if( $("#mob_login").hasClass("login_design") ){
+			$(".mob_register").removeClass('register_design');
+			$(".mob_s_login").hide();
+		}
 
 			$(".mob_login").click(function(){
 				$(".mob_login").removeClass('login_design');
@@ -29,6 +35,7 @@ $(document).ready(function(){
 		else{
 			$(".mob_s_register").show();
 			$(".socila_img").show();
+			$(".mob_s_login").show();
 		}
 	});
 

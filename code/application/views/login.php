@@ -25,10 +25,10 @@
 	</div>
 	<div class="row mobile_login NoirProSemiBold big_hide text-center">
 		<div class="col-xs-12">
-			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_login">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_login" id="mob_login">
 				LOGIN
 			</div>
-			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_register">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_register" id="mob_register">
 				SIGNUP
 			</div>
 		</div>
@@ -36,8 +36,8 @@
 	<div class="container">
 			<section class="content mar_b20 mar_t10 mmar_t0">
 				<div class="row">
-					<div class="col-md-2">&nbsp;</div>
-						<div class="col-md-8">
+					<div class="col-md-1">&nbsp;</div>
+						<div class="col-md-10">
 							<div class="box mar_b50 mar_t50 mmar_t10 overflow_hidden">
 							<!--<div class="box-header with-border header_bg">
 									<h3 class="box-title">Login/Register</h3>
@@ -68,13 +68,13 @@
 												  <div id="loading" class="hide">Loading..</div>
 												  <div class="checkbox">
 													  <label>
-														  <input name="remember" id="remember" type="checkbox"> Remember Login
-													  </label>   &nbsp;&nbsp;&nbsp;| &nbsp;
-													   <a style="color:#424242" href="<?php echo base_url();?>forgot-password"> Forgot Password</a>
+														  <input name="remember" id="remember" type="checkbox">&nbsp; Remember Login
+													  </label>   &nbsp;&nbsp;&nbsp; &nbsp;
+													   <a class="forgot_password" href="<?php echo base_url();?>forgot-password"> Forgot Password</a>
 													  <p class="help-block"></p>
 												  </div>
 
-												  <input type="submit" class="btn btn-custom btn-block" style="margin-top:60px;" id="logBtn" value="Login" name="logBtn">
+												  <input type="submit" class="btn btn-custom btn-block" style="margin-top:54px;" id="logBtn" value="Login" name="logBtn">
 											  </form>
 										  </div>
 									  </div>
@@ -130,7 +130,7 @@
 								</div>
 							</div>
 						</div>
-					<div class="col-md-2">&nbsp;</div>
+					<div class="col-md-1">&nbsp;</div>
 				</div>
 			</section>
 		</div>
