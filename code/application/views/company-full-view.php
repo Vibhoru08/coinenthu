@@ -68,7 +68,25 @@
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 asset-boxes text-left">
 				<div class="text-center">
-					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?></h3>
+					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt" onclick="shareCoin();"></i></div>
+						<ul class="social_share social-network social-circle sharing_img">
+						<?php
+						$whatsappLink = base_url().'company-full-view/'.$cm_name;
+						?>
+							<li><a href="<?php echo "https://twitter.com/intent/tweet?url=".$shareUrl."&via=". $shareVia."&text=". $shareText; ?>" target='_blank' class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li>
+							<a href="<?php echo "https://www.facebook.com/sharer/sharer.php?u=" .$shareUrl; ?>" target='_blank' class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+							</li>
+							<li><a href="<?php echo "https://plus.google.com/share?url=". $shareUrl; ?>" target='_blank' class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+							<li>
+							<!--<a target="_blank" href="https://web.whatsapp.com/send?text=<?php // echo $whatsappLink; ?>" data-action="share/whatsapp/share" title="Whatsapp" class="icoWhatsapp"><i class="fa fa-whatsapp" ></i></a>-->
+							<a data-text="<?php echo $companyview['company_name']; ?>" data-link="http://Coinenthu.com/company-full-view/<?php echo $companyview['cm_unique_id'];?>"class="icoWhatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+							</li>
+						</ul>
+					</h3>
+
+
+
 					<p style="margin:0px 0px 5px;">
 						<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $companyview['cm_overallrating']; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 						<span>
@@ -1509,6 +1527,24 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 <input type="hidden" id="timeDate1" name="timeDate1" value="<?php print date("F d, Y H:i:s",strtotime(date('Y-m-d H:i:s'))); ?>">
 
 <script>
+	function shareCoin(){
+		//document.getElementById(".social_share").style.display = "inline";
+		if ($('.social_share').hasClass("clicked-once")) {
+        // already been clicked once, hide it
+				$(".social_share").css({"display":"none"});
+        $('.social_share').removeClass("clicked-once");
+    }
+    else {
+        // first time this is clicked, mark it
+        $('.social_share').addClass("clicked-once");
+				$(".social_share").css({"display":"inline", WebkitTransition : 'display 10s',
+		    MozTransition    : 'display 10s',
+		    MsTransition     : 'display 10s',
+		    OTransition      : 'display 10s',
+		    transition       : 'all 10s ease-in-out 10s'});
+		}
+
+		}
 	function newPopup(url) {
 
 		popupWindow = window.open(
