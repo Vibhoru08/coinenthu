@@ -504,7 +504,7 @@
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
 						<div class="row" id="replypopup_m" style="">
-									 <form  onSubmit="wirteareplySubmit();"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
+									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-md-11">
 										 <input type="hidden" id="crr_reid" name="crr_reid" value="">
 										 <div class="form-group">
@@ -1758,7 +1758,8 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}, 1000);
 		}
 	}
-	function wirteareplySubmit(){
+	function wirteareplySubmit(re_id){
+		replyMessage(re_id);
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage").html('');
 		if($("#hid_sessionid").val()!=""){
