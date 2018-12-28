@@ -427,9 +427,8 @@
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
 							<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
 							<?php
-									$old_date = Date_create($review->re_createdat);
-									$new_date = Date_format($old_date, "d/m/Y");
-									echo $new_date;
+									$old_date = timeago($review->re_createdat);
+									echo $old_date;
 
 									if($review->re_likes_cnt!="" && $review->re_likes_cnt!=0){
 										$re_likes_cnt = $review->re_likes_cnt;
@@ -526,9 +525,8 @@
 								<div class = "row" style="padding-top:5px;padding-bottom:15px;">
 									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
 									<?php
-											$old_date = Date_create($reviewReplay->crr_createdat);
-											$new_date = Date_format($old_date, "d/m/Y");
-											echo $new_date;
+											$old_date = timeago($reviewReplay->crr_createdat);
+											echo $old_date;
 											if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
 												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
 											}else{
@@ -1278,9 +1276,8 @@
 								<a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit Review</span></a>
 								<?php } } ?> &nbsp;&nbsp;&nbsp;
 								<?php
-									$old_date = Date_create($review->re_createdat);
-									$new_date = Date_format($old_date, "d/m/Y");
-									echo $new_date;
+									$old_date = timeago($review->re_createdat);
+									echo $old_date;
 
 									if($review->re_likes_cnt!="" && $review->re_likes_cnt!=0){
 										$re_likes_cnt = $review->re_likes_cnt;
@@ -1425,9 +1422,8 @@
 										<?php echo $u_username; ?>
 										<span class="text-muted pull-right comment_date">
 										<?php
-											$old_date = Date_create($reviewReplay->crr_createdat);
-											$new_date = Date_format($old_date, "d/m/Y");
-											echo $new_date;
+											$old_date = timeago($reviewReplay->crr_createdat);
+											echo $old_date;
 											if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
 												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
 											}else{
