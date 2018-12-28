@@ -502,12 +502,22 @@
 								echo " Dislikes";
 							} ?></span>
 						</div>
+						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
 						<div class="row" id="replypopup_m" style="">
 									 <form  onSubmit="wirteareplySubmit();"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-md-11">
 										 <input type="hidden" id="crr_reid" name="crr_reid" value="">
 										 <div class="form-group">
-											 <label for="inputEmail3" class="col-sm-2 control-label no_padding_label validate_c">yahan image daalde<span class="mstar" style="color:red;"> *</span></label>
+											 <label for="inputEmail3" class="col-sm-2 control-label no_padding_label validate_c"><?php
+                if(isset($companyview['user_profile_info']->u_picture) && $companyview['user_profile_info']->u_picture!=""){
+		            $imagepath = base_url().'asset/img/users/'.$companyview['user_profile_info']->u_picture.'?id='.$viewTime;
+		        }else if(isset($companyview['user_profile_info']->u_social_pic) && $companyview['user_profile_info']->u_social_pic!=""){
+		            $imagepath = $companyview['user_profile_info']->u_social_pic;
+		        }else{
+			        $imagepath = base_url().'asset/img/alt.jpg';
+		        }
+		    ?>
+		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
 											 <div class="col-sm-10" >
 												 <textarea class="form-control" rows="2" id="crr_decript" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2();"></textarea>
 												 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
@@ -525,6 +535,7 @@
 									 </div>
 									 </form>
 								 </div>
+								<?php }?>
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
 						<div class = "row">
 					        <?php

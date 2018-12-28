@@ -376,6 +376,10 @@
 				$results_type = 'likes';
 			} */
 			// $cm_unique_id = $this->uri->segment(2);
+			if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){
+				$user_id = $this->session->userdata['user_id'];
+				$data['user_profile_info'] = $this->User_model->getUserDetails($user_id);
+			}
 			$results      = $this->Companies_model->getcompanyinfobyname($cm_name);
 			if(count($results) > 0){
 				foreach($results as $key=>$details)
