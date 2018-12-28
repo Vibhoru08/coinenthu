@@ -54,6 +54,24 @@ class User_model extends CI_Model
 		$this->db->where('bop_job_status !=',2);
 		return $this->db->count_all_results();
 	}
+	public function myProfileReview($user_id){
+		$this->db->select('*');
+		$this->db->from('bop_company_reviews');
+		$this->db->join('bop_compaines','bop_compaines.cm_id = bop_company_reviews.re_cmid','LEFT');
+		$this->db->where('bop_company_reviews.re_uid', $user_id);
+		$query = $this->db->get();
+		return $query->result();	
+	}
+	public function myProfileReplies($reviewid){
+		$this->db->select('*');
+        $this->db->from('bop_company_review_replies');
+		$this->db->join('bop_users', 'bop_users.u_uid = bop_company_review_replies.crr_uid','LEFT');
+		$this->db->where('bop_company_review_replies.crr_reid',$reviewid);
+		$this->db->where('bop_company_review_replies.crr_status',1);
+		$this->db->where('bop_users.u_status',1);
+		$query = $this->db->get();
+		return $query->result();	
+	}
 	public function getSearchcareers($limit,$offset){
 		$this->db->select('*');
 		$this->db->from('bop_careers');

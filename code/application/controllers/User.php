@@ -218,6 +218,7 @@
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login','refresh');
 			}else{
+				$this->load->helper(array('common'));
 				$data = array();
 				$u_uid = $_SESSION["user_id"];
 				$user_review_details = $this->Companies_model->userReviews($u_uid);
@@ -249,6 +250,16 @@
 				$data['nou'] = $total_upvotes;
 				$data['nor'] = $no_of_reviews;
 				$data['userinfo'] = $this->User_model->getUserDetails($u_uid);
+				$data['reviews'] = array();
+				$data['replies'] = array();
+				$reviewlist = $this->User_model->myProfileReview($u_uid);
+				foreach($reviewlist as $cr=>$review){
+					$data['reviews'][$cr] = $review;
+					$data['replies'][$review->re_id] = $this->User_model->myProfileReplies($review->re_id);
+					foreach($data['replies'][$review->re_id] as $crr=>$reply){
+						$data['replies'][$review->re_id][$crr] = $reply;
+					}
+				}
 				$this->show('display-profile',$data);
 			}
 		}
