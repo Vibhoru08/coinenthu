@@ -387,7 +387,7 @@
 							</li>
 					</ul>
 			    </div>
-                <div class = "row asset-boxes asset-padding">
+                <div class = "row asset-boxes ">
 				    <?php if(sizeof($companyview['reviews'])>0){foreach($companyview['reviews'] as $cr=>$review){
 
 								if($review->u_username!=""){
@@ -398,6 +398,7 @@
 									$u_username = "Guest User";
 								}
 					?>
+					<div class="row border_bottom asset-padding">
 					<div class = "col-md-2">
 						<?php if($review->u_picture!=""){ ?>
 						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
@@ -425,10 +426,10 @@
 									<?php } } ?>
 							</span>
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
-							<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
+							<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
 							<?php
 									$old_date = timeago($review->re_createdat);
-									echo $old_date;
+									echo '<div class="time_stamp">'.$old_date.'</div>';
 
 									if($review->re_likes_cnt!="" && $review->re_likes_cnt!=0){
 										$re_likes_cnt = $review->re_likes_cnt;
@@ -501,6 +502,29 @@
 								echo " Dislikes";
 							} ?></span>
 						</div>
+						<div class="row" id="replypopup_m" style="">
+									 <form  onSubmit="wirteareplySubmit();"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
+									 <div class="col-md-11">
+										 <input type="hidden" id="crr_reid" name="crr_reid" value="">
+										 <div class="form-group">
+											 <label for="inputEmail3" class="col-sm-2 control-label no_padding_label validate_c">yahan image daalde<span class="mstar" style="color:red;"> *</span></label>
+											 <div class="col-sm-10" >
+												 <textarea class="form-control" rows="2" id="crr_decript" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2();"></textarea>
+												 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
+												 <span id="errorNotes" style="color:#a94442;"></span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="col-md-1">
+										 <span id="successmessage" style="color:green"></span>
+										 <span class="vwdTitleError" style="color:#a94442;"></span>
+											 <span id="tp7" style="display:none;">
+											 <svg width='20px' height='20px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#f9f9f9 " fill="none" stroke-width="10" stroke-linecap="round"></circle><circle cx="50" cy="50" r="40" stroke="#00a7af " fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="2s" repeatCount="indefinite" values="200.8 50.19999999999999;1 250;200.8 50.19999999999999"></animate></circle></svg>
+										 </span>
+										 <button type="submit" class="btn btn-primary btn-sm">Save</button>
+									 </div>
+									 </form>
+								 </div>
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
 						<div class = "row">
 					        <?php
@@ -523,10 +547,10 @@
 							</div>
 							<div class = "col-md-9">
 								<div class = "row" style="padding-top:5px;padding-bottom:15px;">
-									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?><br/>
+									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
 									<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
-											echo $old_date;
+											echo '<div class="time_stamp">'.$old_date.'</div>';
 											if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
 												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
 											}else{
@@ -547,7 +571,7 @@
 
 
 
-								
+
 
 
 
@@ -625,36 +649,15 @@
 									}?>
 									</span>
 								</div>
-								
+
 
 							</div>
 						</div>
 						<?php }} ?>
-						<div class="" id="replypopup_m" style="display:none;">
-								   <form  onSubmit="wirteareplySubmit();"  class="form-horizontal" id="replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
-								   <div class="">
-								     <input type="hidden" id="crr_reid" name="crr_reid" value="">
-								     <div class="form-group">
-								       <label for="inputEmail3" class="col-sm-4 control-label no_padding_label validate_c">Reply<span class="mstar" style="color:red;"> *</span></label>
-								       <div class="col-sm-7" >
-								         <textarea class="form-control" rows="2" id="crr_decript" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2();"></textarea>
-								         <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
-								         <span id="errorNotes" style="color:#a94442;"></span>
-								       </div>
-								     </div>
-								   </div>
-								   <div class="">
-								     <span id="successmessage" style="color:green"></span>
-								     <span class="vwdTitleError" style="color:#a94442;"></span>
-								       <span id="tp7" style="display:none;">
-								       <svg width='20px' height='20px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#f9f9f9 " fill="none" stroke-width="10" stroke-linecap="round"></circle><circle cx="50" cy="50" r="40" stroke="#00a7af " fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="2s" repeatCount="indefinite" values="200.8 50.19999999999999;1 250;200.8 50.19999999999999"></animate></circle></svg>
-								     </span>
-								     <button type="submit" class="btn btn-primary btn-sm">Save</button>
-								   </div>
-								   </form>
-								 </div>
+
 
 					</div>
+				</div>
 					<?php }}else{ ?>
 					<div>
 						There are no reviews available.
@@ -1279,7 +1282,7 @@
 								<?php } } ?> &nbsp;&nbsp;&nbsp;
 								<?php
 									$old_date = timeago($review->re_createdat);
-									echo $old_date;
+									echo '<div class="time_stamp">'.$old_date.'</div>';
 
 									if($review->re_likes_cnt!="" && $review->re_likes_cnt!=0){
 										$re_likes_cnt = $review->re_likes_cnt;
@@ -1425,7 +1428,7 @@
 										<span class="text-muted pull-right comment_date">
 										<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
-											echo $old_date;
+											echo '<div class="time_stamp">'.$old_date.'</div>';
 											if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
 												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
 											}else{

@@ -14,7 +14,7 @@
 			</div>
         </div>
         <div class="row">
-	        <div class="text-right col-md-3">
+	        <div class="text-left col-md-offset-1 col-md-3 pad_0">
             <?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -67,35 +67,35 @@
             </div>
         </div>
         <div class = "row mar_t110">
-                <div class ="col-md-6 col-md-offset-2">
+                <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding">
 						<div class = "col-md-2 text-center">
 							<div>
-							<?php	
+							<?php
 							if($review->cm_picture!=""){
 								  if($review->cm_ctid == 1){
 									 if($review->cm_picture!="" && substr( $review->cm_picture, 0, 4 ) === "digi"){?>
 										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$review->cm_picture?>" alt="Coinenthu" class="img-responsive profile_box_image">
-									 <?php 	
+									 <?php
 									 }else if(substr( $review->cm_picture, 0, 3 ) === "ico"){?>
 										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$review->cm_picture; ?>" alt="Coinenthu" class="img-responsive profile_box_image">
-									 <?php	
+									 <?php
 									 }else if($review->cm_picture!=""){
 					              $srcc = base_url().'asset/img/companies/digitalasset/'.$review->cm_picture;
 										if(@getimagesize($srcc)){?>
 											<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$review->cm_picture; ?>" alt="Coinenthu" class="img-responsive profile_box_image">
-										
+
 									<?php
 								}else{
 									?>
 											<img src="<?php echo base_url().'images/Felix_the_Cat.jpg'; ?>" alt="Coinenthu" class="img-responsive profile_box_image">
-									<?php	
+									<?php
 										}
 									 }else{
 										 ?>
 										<img src="<?php echo base_url().'images/Felix_the_Cat.jpg'; ?>" alt="Coinenthu" class="img-responsive profile_box_image">
-                                    <?php									
+                                    <?php
 									}
 								}else if($review->cm_ctid == 2){
 									if($review->cm_picture!=""){
@@ -104,7 +104,7 @@
 											<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$review->cm_picture;?>" alt="Coinenthu" class="img-responsive profile_box_image">
 										<?php
 										}else{
-										?>	
+										?>
 											<img src="<?php echo base_url().'images/Felix_the_Cat.jpg';?>" alt="Coinenthu" class="img-responsive profile_box_image">
 										<?php
 										}
@@ -117,19 +117,19 @@
 							  }else{
 								  ?>
 								<img src="<?php echo base_url().'images/Felix_the_Cat.jpg';?>" alt="Coinenthu" class="img-responsive profile_box_image">
-							<?php  
+							<?php
 							}?>
 							</div>
-                            <div>
+                            <div class="time_stamp">
 							<?php
 									$old_date = timeago($review->re_createdat);
 									echo $old_date;
-							?>		
+							?>
 							</div>
 							<div>
 								You Rated<br>
 								<?php echo $review->re_rating; ?>&nbsp;<i class="fa fa-star" aria-hidden="true"></i>
-							</div>	 
+							</div>
 						</div>
 						<div class = "col-md-10">
 							<div>
@@ -137,8 +137,8 @@
 								Delete
 							</span>
 								<h4><?php echo $review->cm_name; ?></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-							
-							</div>	
+
+							</div>
 							<hr>
 							<div>
 								<p><?php echo $review->re_decript; ?></p>
@@ -157,7 +157,7 @@
 										$re_dislike_cnt = 0;
 									}
 							?>
-							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span><span style="float:right;"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class ="fa fa-reply" aria-hidden="true"></i></span>			
+							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span><span style="float:right;"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class ="fa fa-reply" aria-hidden="true"></i></span>
 							</div>
 							<?php if(sizeof($replies[$review->re_id] > 0)){foreach($replies[$review->re_id] as $crr=>$reply){ ?>
 							<div class = "row mar_t20">
@@ -172,11 +172,11 @@
 									</div>
 									<div class = "col-md-10">
 									<p>
-									<span style="float:right;"><?php
-									 	
+									<span class="time_stamp" style="float:right;"><?php
+
 										 $old_date = timeago($reply->crr_createdat);
 										 echo $old_date;
-								 
+
 									?></span>
 									<?php
 										if($reply->u_username!=""){
@@ -205,7 +205,7 @@
 											}else{
 												$crr_dislike_cnt = 0;
 											}
-									?>		
+									?>
 										<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
 										<span style="float:right;font-size:13px;"><?php
 											if($reply->crr_uid == $userinfo->u_uid){
@@ -213,12 +213,12 @@
 											}
 										?></span>
 									</p>
-									</div>                                         
+									</div>
 							</div>
 							<?php
 							}}
 							?>
-						</div>		
+						</div>
 					</div>
 					<p style="float:right;padding:5px 15px 0px 0px;">
                     <a href = "<?php echo base_url().'company-full-view/'.str_replace(" ","_",$review->cm_name); ?>" title = "<?php echo $review->cm_name; ?>">Go To Asset<i class="fa fa-arrow-right mar_l10" aria-hidden="true"></i></a>

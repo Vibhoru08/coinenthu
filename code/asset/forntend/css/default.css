@@ -2846,8 +2846,15 @@ font-family: NoirPro;
  padding-left:30px;
  padding-bottom:30px;
 }
+.border_bottom{
+  border-bottom:1px solid #bfbfbf;
+}
+.time_stamp{
+  font-size:10px;
+  font-family:NoirPro Light;
+}
 .upcoming_box_padding{
- padding-top:5px;
+ padding-top:20px;
  padding-right:20px;
  padding-left:20px;
  padding-bottom:20px;
@@ -2872,7 +2879,7 @@ font-family: NoirPro;
   padding:5px;
   background-color:#f9f9f9;
  }
-  
+
 .about_box_image{
   width:116px;
   height:116px;
@@ -3039,6 +3046,8 @@ a.left_panel_desc{
 }
 .asset-padding{
  padding:25px 30px 17px 30px;
+ margin-left: 0;
+ margin-right: 0;
 }
 .like-button-text{
  margin-left:8px;
