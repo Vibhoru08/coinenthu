@@ -956,16 +956,16 @@ function GetMoreCompaniesLoad()
      }
    });
  <?php } ?>
- function countCharcter2()
+ function countCharcter2(id)
  {
-   var textLength = $('#crr_decript').val().length;
+   var textLength = $('#crr_decript'+id).val().length;
    var FinalLength = parseInt(1000)-parseInt(textLength);
    if(parseInt(FinalLength) >=1){
-     $('#r_char_cnt').show();
-     $('#review_char_count').html(FinalLength);
+     $('#r_char_cnt'+id).show();
+     $('#review_char_count'+id).html(FinalLength);
    }else{
-     $('#r_char_cnt').hide();
-     $('#review_char_count').html('');
+     $('#r_char_cnt'+id).hide();
+     $('#review_char_count'+id).html('');
    }
  }
  function countCharcter1()
@@ -988,6 +988,10 @@ function GetMoreCompaniesLoad()
    $('#subemail_error').html('');
  });
  } */
+
+   
+
+
  </script>
 
  </body>

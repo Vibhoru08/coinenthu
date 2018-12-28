@@ -3686,6 +3686,19 @@ tbody.collapse.in {
   border-right: 6px solid transparent;
   border-left: 6px solid transparent;
 }
+.caret-up {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 0;
+  border-top: 0;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-bottom: 6px dashed;
+  border-bottom: 6px dashed \9;
+  }
 .dropup,
 .dropdown {
   position: relative;
@@ -4481,6 +4494,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-left: -15px;
   }
 }
+.navbar1-toggle{
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
 .navbar-toggle {
   position: relative;
   float: right;
@@ -4556,6 +4581,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-image: none;
   }
 }
+
 @media (min-width : 1300px){
   .margin-left{
     margin : 0px 0px 0px 300px !important;
@@ -4565,6 +4591,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav {
     float: right;
     margin: 0px 0px 0px 0px;
+  }
+  .margin-right{
+    margin:0px 120px 0px 0px!important;
   }
   .margin-left{
     margin: 0px 0px 0px 50px;
@@ -6645,6 +6674,9 @@ button.close {
 }
 .carousel-caption .btn {
   text-shadow: none;
+}
+.fa-share_style{
+color:#8e44ad;
 }
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,

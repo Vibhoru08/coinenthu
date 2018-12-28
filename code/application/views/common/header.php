@@ -123,8 +123,8 @@ $img =  base_url().'images/logo.png';
 	<script async src="<?php echo base_url(); ?>js/twitter.js" charset="utf-8"></script>
 	<script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="<?php base_url(); ?>asset/ckeditor/style/format.css">
- 
-	<script> var baseUrl      = '<?php echo base_url(); ?>';$(document).ready(function() {
+
+<script> var baseUrl      = '<?php echo base_url(); ?>';$(document).ready(function() {
     FastClick.attach(document.body);
 });	</script>
   </head>
@@ -208,7 +208,12 @@ $img =  base_url().'images/logo.png';
 							$urlIco    = base_url().'login';
 						}
 					?>
-					<ul class= "nav navbar-nav mar_t5 navbar-right">
+					<div class="dropdown mar_t10 float_right mar_r30 p_hover">
+					<button type="button" class="dropdown-toggle nav_user" data-toggle="dropdown" style="position:relative;">
+						<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret"></span></button>
+
+
+					<ul class= "dropdown-menu ul_left_m">
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 						<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
 						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
@@ -226,7 +231,8 @@ $img =  base_url().'images/logo.png';
 					<?php } ?>
 
               </ul>
-							<ul class="nav navbar-nav mar_t5 margin-left">
+						</div>
+							<ul class="nav navbar-nav mar_t5 margin-right">
 			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
 			   <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>

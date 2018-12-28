@@ -1324,6 +1324,9 @@ a.ui-button:active,
 .mar_0{
   margin:0;
 }
+.mar_r30{
+  margin-right:30px;
+}
 .mar_t5{
 	margin-top:5px;
 }
@@ -1335,6 +1338,9 @@ a.ui-button:active,
 }
 .mar_t20{
 	margin-top:20px;
+}
+.mar_t25{
+  margin-top:25px;
 }
 .mar_t30{
 	margin-top:30px;
@@ -2502,6 +2508,29 @@ color:#fff;
 .nav > li > a{
 	margin-left: 8px;
 }
+.nav_user{
+  border:none;
+  background-color: transparent;
+  padding:5px;
+}
+.user_icon{
+  font-size:24px;
+  color:#fff;
+  background-color: black;
+  padding:8px;
+  border-radius: 50%;
+}
+.float_right{
+  float:right;
+}
+.ul_left_m{
+  min-width:auto;
+  font-size:14px;
+  position:absolute;
+  right:0px;
+	top:100% !important;
+  left:auto;
+}
 .left_m{
 	right:-8px;
 	top:100% !important;
@@ -2811,6 +2840,17 @@ font-family: NoirPro;
   background-color: #ffff;
   border-radius: 10px;
   border:1px solid #8e44ad;
+}
+.profile_desx{
+  margin-left: 10px;
+  margin-top: -90.5px;
+  color:#ffff;
+}
+.like_upvote{
+  padding:20px 0 20px 0;
+  margin-top: 90px;
+  border-top: 1px solid  #bfbfbf;
+  border-bottom: 1px solid  #bfbfbf;
 }
 .linear_color{
   background-image: linear-gradient(to right, #000046 , #8e44ad);
@@ -3124,6 +3164,9 @@ a.left_panel_desc{
     width:220px;
   }
 
+}
+.pad_l25{
+  padding-left: 25px;
 }
 @media(min-width:768px) and (max-width:990px){
   .ss_width{

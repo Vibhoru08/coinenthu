@@ -102,6 +102,23 @@ if (x.matches) {
 	});
 }
 else {
+	$(".p_hover").hover(
+			function() {
+					$('.ul_left_m').show();
+					$(".nav_user").html('<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret-up"></span>');
+			},
+			function() {
+					$('.ul_left_m').hide();
+					$(".nav_user").html('<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret "></span>');
+			}
+	);
+	$(".p_hover").bind('click', function(){
+	// $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+			$('.ul_left_m').hide();
+	});
+
+
+
 	$(".select_dropdown").hover(
 			function() {
 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();

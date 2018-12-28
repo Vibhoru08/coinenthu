@@ -14,7 +14,7 @@
 			</div>
         </div>
         <div class="row">
-	        <div class="text-left col-md-offset-1 col-md-3 pad_0">
+	        <div class="text-left col-md-offset-1 col-md-1 pad_l0">
             <?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -26,11 +26,13 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-2">
+            <div class = "col-md-2 profile_desx">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
             </div>
-            <div class = "text-center col-md-2 mar_l70">
-                <?php echo $nor; ?><br/>
+          <br>
+          <div class="row like_upvote">
+            <div class = "text-center col-md-4">
+                <?php echo $nor; ?>&nbsp;
                 <i class="fa fa-commenting" aria-hidden="true"></i>
                 <?php
                 if ($nor == 1){
@@ -41,8 +43,8 @@
                 }
                 ?>
             </div>
-            <div class = "text-center col-md-2">
-                <?php echo $nore; ?><br/>
+            <div class = "text-center col-md-4">
+                <?php echo $nore; ?>&nbsp;
                 <i class="fa fa-reply" aria-hidden="true"></i>
                 <?php
                 if ($nore == 1){
@@ -53,8 +55,8 @@
                 }
                 ?>
             </div>
-            <div class = "text-center col-md-2">
-                <?php echo $nou; ?><br/>
+            <div class = "text-center col-md-4">
+                <?php echo $nou; ?>&nbsp;
                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                 <?php
                 if ($nou == 1){
@@ -64,6 +66,7 @@
                     echo "Upvotes";
                 }
                 ?>
+              </div>
             </div>
         </div>
         <div class = "row mar_t110">

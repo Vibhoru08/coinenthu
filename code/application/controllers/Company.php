@@ -102,10 +102,12 @@
 		}
 		public function replySaveMethod(){
 			if($this->session->userdata('user_id')!=""){
-				if(isset($_POST['crr_reid']) && $_POST['crr_reid']!=""){
+				 $crr_reid="crr_reid".$review->re_id;
+				 $crr_decript="crr_decript".$review->re_id;
+				if(isset($_POST[$crr_reid]) && $_POST[$crr_reid]!=""){
 					$uid           = $this->session->userdata('user_id');
-					$crr_reid      = $_POST['crr_reid'];
-					$crr_decript   = $_POST['crr_decript'];
+					$crr_reid      = $_POST[$crr_reid];
+					$crr_decript   = $_POST[$crr_decript];
 					// $checkReplyRes = $this->Companies_model->checkReviewReply($uid,$crr_reid);
 					// if(isset($checkReplyRes->crr_id) && $checkReplyRes->crr_id!=""){
 						// $crr_id = $checkReplyRes->crr_id;
@@ -1135,9 +1137,9 @@
 			$this->load->library('ckeditor');
 			$this->load->library('ckfinder');
 			$this->ckeditor->basePath = base_url().'asset/ckeditor/';
-			       
+
 			//Add Ckfinder to Ckeditor
-			$this->ckfinder->SetupCKEditor($this->ckeditor,'../../asset/ckfinder/'); 
+			$this->ckfinder->SetupCKEditor($this->ckeditor,'../../asset/ckfinder/');
 
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login', 'refresh');
