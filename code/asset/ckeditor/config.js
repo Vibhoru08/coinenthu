@@ -1,34 +1,38 @@
 /**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-	CKEDITOR.editorConfig = function( config ) {
-		// Define changes to default configuration here. For example:
-		// config.language = 'fr';
-		// config.uiColor = '#AADC6E';
-		config.removeButtons = 'Source,Iframe,Save,NewPage,DocProps,Preview,Print,Templates,document,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,Strike,Subscript,Superscript,RemoveFormat,Outdent,Indent,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Anchor,CreatePlaceholder,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,InsertPre,Styles,Format,Font,FontSize,TextColor,BGColor,UIColor,Maximize,ShowBlocks,button1,button2,button3,oembed,MediaEmbed,About,Scayt,Language,CopyFormatting,ImageButton';
-		// config.extraPlugins = 'imageuploader';
-		// alert( CKEDITOR_BASEPATH );
-		// config.filebrowserImageUploadUrl = CKEDITOR_BASEPATH + '/plugins/imageuploader/imgbrowser.php';
-	};
-	CKEDITOR.on('dialogDefinition', function(ev) {
-		// Take the dialog name and its definition from the event data.
-		var dialogName = ev.data.name;
-		var dialogDefinition = ev.data.definition;
+CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here.
+	// For complete reference see:
+	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
-		// Check if the definition is from the dialog we're
-		// interested in (the 'link' dialog).
-		if (dialogName == 'link') {
-			//Remove the 'Upload' and 'Advanced' tabs from the 'Link' dialog.
-			// dialogDefinition.removeContents('upload');
-			// dialogDefinition.removeContents('advanced');
-			// dialogDefinition.removeContents('target');
+	// The toolbar groups arrangement, optimized for two toolbar rows.
+	config.toolbarGroups = [
+		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+		{ name: 'links' },
+		{ name: 'insert' },
+		{ name: 'forms' },
+		{ name: 'tools' },
+		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'others' },
+		'/',
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+		{ name: 'styles' },
+		{ name: 'colors' },
+		{ name: 'about' }
+	];
 
-			// Get a reference to the "Target" tab and set default to '_blank'
-			var targetTab = dialogDefinition.getContents('target');
-			var targetField = targetTab.get('linkTargetType');
-			targetField['default'] = '_blank';
-		}
-	});
+	// Remove some buttons provided by the standard plugins, which are
+	// not needed in the Standard(s) toolbar.
+	config.removeButtons = 'Underline,Subscript,Superscript';
 
+	// Set the most common block elements.
+	config.format_tags = 'p;h1;h2;h3;pre';
+
+	// Simplify the dialog windows.
+	config.removeDialogTabs = 'image:advanced;link:advanced';
+};

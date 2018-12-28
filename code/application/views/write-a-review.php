@@ -61,7 +61,7 @@
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $cm_unique_id; ?>">
 									<input type="hidden" name="company_name" id="company_name" value="<?php echo $cm_name; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
-										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea>
+										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo $page_content->message1; ?></textarea>
 									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
 									 <div class = "mar_t30" style= "border:1px solid black;border-radius:10px;padding:10px 10px 10px 10px;">
 									 <label>
@@ -386,6 +386,7 @@
         </div>
     </div>
 <script>
+ CKEDITOR.replace('re_decript');
 	$(document).ready(function() {
 		$('.gl-star-rating-tex').text('Rate me');
 		$('#wirte_review').formValidation();

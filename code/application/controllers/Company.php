@@ -1128,6 +1128,12 @@
 		public function writeAreview(){
 			$data = array();
 			$cm_name_initial = str_replace("_"," ",$this->uri->segment(2));
+			$this->load->library('ckeditor');
+			$this->load->library('ckfinder');
+			$this->ckeditor->basePath = base_url().'asset/ckeditor/';
+			       
+			//Add Ckfinder to Ckeditor
+			$this->ckfinder->SetupCKEditor($this->ckeditor,'../../asset/ckfinder/'); 
 
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login', 'refresh');
