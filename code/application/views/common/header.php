@@ -208,13 +208,14 @@ $img =  base_url().'images/logo.png';
 							$urlIco    = base_url().'login';
 						}
 					?>
+					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 					<div class="dropdown mar_t10 float_right mar_r30 p_hover">
 					<button type="button" class="dropdown-toggle nav_user" data-toggle="dropdown" style="position:relative;">
 						<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret"></span></button>
 
 
 					<ul class= "dropdown-menu ul_left_m">
-					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
+
 						<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
 						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
@@ -224,14 +225,16 @@ $img =  base_url().'images/logo.png';
 						<li class = "signup_box"><a href="<?php echo base_url();?>change-password">CHANGE PASSWORD</a></li>
 					<?php } ?>
 						<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
+					</ul>
+				</div>
 					<?php }else{?>
+						<ul class="nav navbar-nav navbar-right l_hover">
 						<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
 						<li class = "signup_box" ><a style="border: 2px solid #8e44ad;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
-
+					</ul>
 					<?php } ?>
 
-              </ul>
-						</div>
+
 							<ul class="nav navbar-nav mar_t5 margin-right">
 			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
 			   <li class="<?php echo $assets;?> h_hover">
@@ -242,6 +245,26 @@ $img =  base_url().'images/logo.png';
 
 				</li>
 			  </ul>
+				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
+				<ul class= "nav navbar-nav mar_t5 pm_hover">
+
+					<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
+					<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
+					<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
+					<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
+					<li class="h_hover"><a href="</*?php echo $urlIco; ?*/>">ADD AN ICO </a></li>-->
+				<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal"){?>
+					<li class = "signup_box"><a href="<?php echo base_url();?>change-password">CHANGE PASSWORD</a></li>
+				<?php } ?>
+					<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
+				</ul>
+			</div>
+				<?php }else{?>
+					<ul class="nav navbar-nav navbar-right lm_hover">
+					<li class = "signup_box"><a href="<?php echo base_url();?>login">Login</a></li>
+					<li class = "signup_box" ><a style="border: 2px solid #8e44ad;" href="<?php echo base_url();?>add-digital-asset">Signup</a></li>
+				</ul>
+				<?php } ?>
             </div>
           </nav>
 	</header>

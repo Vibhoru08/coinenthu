@@ -4477,6 +4477,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 0 0px!important;
   overflow:hidden;
 }
+@media(min-width:768px) and (max-width:990px){
+  .container-fluid > .navbar-collapse{
+  margin-right:0px!important;
+  margin-left:0px!important;
+  padding-right:0!important;
+  padding-left:0!important;
+  }
+}
 .navbar-brand-logo >img{
   height:85px;
   width:222px;
@@ -4555,8 +4563,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: none !important;
   } */
 }
-@media (max-width: 767px) {
-
+@media (max-width: 768px) {
+.l_hover{
+  display:none;
+}
   }
   .navbar-nav .open .dropdown-menu {
     position: absolute;
@@ -4587,13 +4597,24 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin : 0px 0px 0px 300px !important;
   }
 }
+@media(min-width:768px) and (max-width:990px){
+  .margin-right{
+    margin:5px 0px 0px 0px!important;
+  }
+  .navbar-nav {
+    right:0;
+    float: left!important;
+    margin: 0px 0px 0px 0px!important;
+  }
+}
+
 @media (min-width: 768px) {
+  .lm_hover{
+  display:none;
+  }
   .navbar-nav {
     float: right;
     margin: 0px 0px 0px 0px;
-  }
-  .margin-right{
-    margin:0px 120px 0px 0px!important;
   }
   .margin-left{
     margin: 0px 0px 0px 50px;
@@ -4606,6 +4627,19 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom:15px;
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+}
+@media(max-width:990px){
+  .p_hover{
+    display:none;
+  }
+}
+@media(min-width:990px){
+  .pm_hover{
+    display:none;
+  }
+  .margin-right{
+    margin:5px 120px 0px 0px!important;
   }
 }
 .navbar-form {

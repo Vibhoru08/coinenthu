@@ -403,6 +403,7 @@ a:focus {
     float: right;
   }
 }
+
 @media (max-width: 1600px) {
   .navbar-collapse.pull-left {
     float: none!important;
@@ -412,6 +413,11 @@ a:focus {
     position: absolute;
     top: 0;
     right: 40px;
+  }
+}
+@media(min-width:768px) and (max-width:990px){
+  .navbar-collapse.pull-left {
+    float: right!important;
   }
 }
 /*

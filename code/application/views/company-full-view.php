@@ -504,7 +504,7 @@
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
 						<div class="row" id="replypopup_m" style="">
-									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
+									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-md-11">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
@@ -1576,9 +1576,14 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 		setInterval(get_comdtls, 10000);
 		$('.caption').hide();
 		$('.clear-rating').hide();
-		$('#replypopup').formValidation();
+		$('.replypopup').formValidation();
 		$('#reviewReport').formValidation();
 		$('#replyreplypopup').formValidation();
+	/*	$("textarea").focus(function(){
+			debugger;
+			var id = $('form').attr('id');
+			$(id).formValidation();
+		});*/
 	});
 	function reviewReportMethod(re_id,type,checkUser){
 		$("#change_btn_name").html('Cancel');
@@ -1758,18 +1763,23 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}, 1000);
 		}
 	}
+
 	function wirteareplySubmit(re_id){
 		debugger;
-		replyMessage(re_id);
+		$('#replypopup'+re_id).formValidation();
+			console.log($('#replypopup'+re_id).formValidation());
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage"+re_id).html('');
 		if($("#hid_sessionid").val()!=""){
 debugger;
 			$('#common_modal_pop').modal('hide');
 debugger;
+		  var reply='#replypopup'+re_id;
+		  console.log(reply);
 			$('#replypopup'+re_id).formValidation().on('success.form.fv', function(e) {
 debugger;
 				e.stopImmediatePropagation();
+				debugger;
 				var crr_reid    = $("#crr_reid"+re_id).val();
 				var crr_decript = $("#crr_decript"+re_id).val();
 				var url = baseUrl+'Company/replySaveMethod?expireTime='+time;
@@ -1820,7 +1830,9 @@ debugger;
 								$('#common_modal_pop').modal('show');
 							}, 2000);
 						}
-					}
+					},error:function(jqXHR){
+		        console.log('ERROR: ' + jqXHR.status);
+		    }
 				});
 				e.preventDefault();
 			});
@@ -1836,6 +1848,8 @@ debugger;
 	}
 	function replyMessage(re_id){
 		debugger;
+		$('#replypopup'+re_id).formValidation();
+		console.log($('#replypopup'+re_id).formValidation());
 		$("#change_btn_name").html('Cancel');
 		$("#review_char_count"+re_id).html('1000');
 		$("#successmessage"+re_id).html('');
@@ -1849,15 +1863,23 @@ debugger;
 			cache       : false,
 			data        : {userId:userId,re_id:re_id},
 			dataType	: "json",
+			beforeSend: function(xhr) {
+
+	 },
 			success: function(data){
+				console.log(data.output);
 				if(data.output < 5)
 				{
 					debugger;
+					console.log("S");
 				//	$("#crr_decript"+re_id).show();
 				}else{
 					alert('You cannot add more than 5 replies in a minute.');
 				}
-			}
+			},
+			error:function(jqXHR){
+        console.log('ERROR: ' + jqXHR.status);
+    }
 		});
 
 
