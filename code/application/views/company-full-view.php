@@ -68,8 +68,8 @@
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 asset-boxes text-left">
 				<div class="text-center">
-					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt" onclick="shareCoin();"></i></div>
-						<ul class="social_share social-network social-circle sharing_img">
+					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i></div>
+						<ul class="social_share social-network social-circle sharing_img sharing_img_new">
 						<?php
 						$whatsappLink = base_url().'company-full-view/'.$cm_name;
 						?>
@@ -113,15 +113,16 @@
 						<?php echo $target;?>>View Site</a></span>
 					</p>
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1">
-					<a href="javascript:void(0)" onclick="ReviewAllow();" class="col-xs-12 btn btn-danger btn-review">Leave a Review</a>
+						<div class="col-xs-12 pad_0">
+					<a href="javascript:void(0)" onclick="ReviewAllow();" class="col-xs-12 btn btn-cstm btn-review">Leave a Review</a>
 				</div>
 			</div>
 				</div>
 				<?php
 						if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != "" && $companyview['cm_ico_end_date'] >= date('Y-m-d') && $companyview['cm_ctid'] == 2){
 						?>
-						<div class="mar_t10">
+						<div class="mar_t40">
+						<hr>
 							<?php
 								$options = array();
 								$optt    = '';
@@ -265,7 +266,7 @@
 					<?php } ?>
 
 				<?php if($companyview['resource_name'] != "") { ?>
-						<div class="mar_t10">
+						<div class="mar_t40">
 						<hr>
 						<h4 class="no-margin pad_b5">Resources </h4>
 							<?php if(sizeof($companyview['resource_name'])>0) {
@@ -297,7 +298,7 @@
 						</div>
 						<?php } ?>
 						<?php if($companyview['cm_ctid'] == 2 && $companyview['escrow_name'] !="") { ?>
-						<div class="mar_t10">
+						<div class="mar_t40">
 						<hr>
 						<h4 class="no-margin pad_b5">Escrow Details</h4>
 							<!--<p><?php // echo $companyview['cm_escrow']; ?></p>-->
@@ -329,7 +330,7 @@
 						</div>
 						<?php } ?>
 						<?php if($companyview['ms_title'] != "") { ?>
-						<div class="mar_t10">
+						<div class="mar_t40">
 						<hr>
 						<h4 class="no-margin asset-heading pad_b10">Milestones</h4>
 							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
@@ -349,6 +350,109 @@
 							<?php } $i++; } } else{ echo "No Milestones Box "; } ?>
 						</div>
 						<?php } ?>
+						<div class="mar_t40 text-center">
+							<hr>
+							<ul class="social-network social-circle social_brg_b pad_0">
+								<?php
+									/* if($companyview['cm_facebook']!=""){
+										$facebookUrl = $companyview['cm_facebook'];
+										$target = "target='_blank'";
+									}*/
+
+									$target = "target='_blank'";
+								?>
+								<?php if($companyview['cm_github'] != "") {
+								$URL = $companyview['cm_github'];
+								$githubWeblink =   $URL;
+								if(strpos($githubWeblink, "http") !== false){
+									$githubWeblink =   $URL;
+								}
+								else {
+									$githubWeblink = "//".$githubWeblink;
+								}
+								?>
+								<li><a href="<?php echo $githubWeblink; ?>" <?php echo $target;?> class="github_c" title="Github"><i class="fa fa-github" ></i></a></li>
+								<?php } ?>
+								<?php
+								if($companyview['cm_twitter'] != "") {
+								$URL = $companyview['cm_twitter'];
+								$twitterWeblink =   $URL;
+								if(strpos($twitterWeblink, "http") !== false){
+									$twitterWeblink =   $URL;
+								}
+								else {
+									$twitterWeblink = "//".$twitterWeblink;
+								}
+								?>
+								<li><a href="<?php echo $twitterWeblink; ?>" <?php echo $target;?> class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<?php } ?>
+								<?php if($companyview['cm_telegram'] != "") {
+								$URL = $companyview['cm_telegram'];
+								$telegramWeblink =   $URL;
+								if(strpos($telegramWeblink, "http") !== false){
+									$telegramWeblink =   $URL;
+								}
+								else {
+									$telegramWeblink = "//".$telegramWeblink;
+								}
+								?>
+								<li><a href="<?php echo $telegramWeblink; ?>" <?php echo $target;?> class="icoLinkedin" title="Telegram"><i class="fa "><img style="margin-top:-3px;margin-left:0;width:12px" src="<?php echo base_url();?>asset/forntend/images/telegram.png"/></i></a></li>
+								<?php } ?>
+								<?php
+								if($companyview['cm_discord'] != "") {
+								$URL = $companyview['cm_discord'];
+								$discordWeblink =   $URL;
+								if(strpos($discordWeblink, "http") !== false){
+									$discordWeblink =   $URL;
+								}
+								else {
+									$discordWeblink = "//".$discordWeblink;
+								}
+								?>
+								<li><a href="<?php echo $discordWeblink; ?>" <?php echo $target;?> class="discord" title="Discord"><i class="fa "><img style="margin-top: -3px;margin-left: 0px;" src="<?php echo base_url();?>asset/forntend/images/discord.png"/></i></a></li>
+								<?php } ?>
+
+								<?php if($companyview['cm_slack'] != "") {
+								$URL = $companyview['cm_slack'];
+								$slackWeblink =   $URL;
+								if(strpos($slackWeblink, "http") !== false){
+									$slackWeblink =   $URL;
+								}
+								else {
+									$slackWeblink = "//".$slackWeblink;
+								}
+								?>
+								<li><a href="<?php echo $slackWeblink; ?>" <?php echo $target;?> class="icoGoogle" title="Slack"><i class="fa "><img style="margin-top:-3px;margin-left:0" src="<?php echo base_url();?>/asset/forntend/images/slack_ie11.png"/></i></a></li>
+								<?php } ?>
+								<?php if($companyview['cm_coinmarket_cap'] != "") {
+								$URL = $companyview['cm_coinmarket_cap'];
+								$coinmarketWeblink =   $URL;
+								if(strpos($coinmarketWeblink, "http") !== false){
+									$coinmarketWeblink =   $URL;
+								}
+								else {
+									$coinmarketWeblink = "//".$coinmarketWeblink;
+								}
+								?>
+								<li><a href="<?php echo $coinmarketWeblink; ?>" <?php echo $target;?> class="icon_market" title="Coinmarketcap"><i class="fa "><img style="margin-top:-3px;margin-left:0;width:13px" src="<?php echo base_url();?>asset/forntend/images/coinmarket.png"/></i></a></li>
+								<?php } ?>
+								<?php if($companyview['cm_facebook'] != "") {
+								$URL = $companyview['cm_facebook'];
+								$fbWeblink =   $URL;
+								if(strpos($fbWeblink, "http") !== false){
+									$fbWeblink =   $URL;
+								}
+								else {
+									$fbWeblink = "//".$fbWeblink;
+								}
+								?>
+								<li><a href="<?php echo $fbWeblink; ?>" <?php echo $target;?> class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<?php } ?>
+
+								<!--<li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+								<li><a <?php echo $target;?> href="<?php echo $linkedinUrl; ?>" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>-->
+							</ul>
+						</div>
 			</div>
 			<div class = "col-md-7 mar_l30">
 				<div class= "row asset-boxes asset-padding text-justify">
@@ -387,7 +491,7 @@
 							</li>
 					</ul>
 			    </div>
-                <div class = "row asset-boxes ">
+                <div class = "row asset-boxes reviews_lastborder pad_0">
 				    <?php if(sizeof($companyview['reviews'])>0){foreach($companyview['reviews'] as $cr=>$review){
 
 								if($review->u_username!=""){
@@ -398,7 +502,7 @@
 									$u_username = "Guest User";
 								}
 					?>
-					<div class="row border_bottom asset-padding">
+					<div class="row border_bottom asset-padding mar_0">
 					<div class = "col-md-2">
 						<?php if($review->u_picture!=""){ ?>
 						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
@@ -557,7 +661,7 @@
 									<?php } ?>
 							</div>
 							<div class = "col-md-9">
-								<div class = "row" style="padding-top:5px;padding-bottom:15px;">
+								<div class = "row" style="padding-top:5px;padding-bottom:5px;">
 									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
 									<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
@@ -605,7 +709,7 @@
 
 
 
-								<div class = "row" style="margin-bottom:15px;">
+								<div class = "row" style="margin-bottom:0px;">
 									<?php
 
 									$stringReply = strip_tags($reviewReplay->crr_decript);
@@ -620,7 +724,7 @@
 									<span id="replyexpandSpan_<?php echo $reviewReplay->crr_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$reviewReplay->crr_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?>
 								    </span>
 								</div>
-								<div class = "row" style="padding-bottom:15px">
+								<div class = "row" style="padding-bottom:5px">
 									<?php
 											if(isset($_SESSION['user_id'])){
 												if($uid == $reviewReplay->crr_uid){

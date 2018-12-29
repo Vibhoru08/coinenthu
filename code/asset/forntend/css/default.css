@@ -2830,6 +2830,9 @@ font-family: NoirPro;
     float: right;
     padding-right: 10px;
 }
+.share_icon{
+  color:#8e44ad;
+}
 .social_share{
   display: none;
   position:absolute;
@@ -2888,6 +2891,7 @@ font-family: NoirPro;
 }
 .border_bottom{
   border-bottom:1px solid #bfbfbf;
+  padding-top:10px;
 }
 .time_stamp{
   font-size:10px;
@@ -3033,6 +3037,9 @@ margin:0 -15%;
  margin-top:-90px!important;
  }
 }
+.reviews_lastborder>.border_bottom:last-child{
+  border-bottom:none;
+}
 .asset-boxes{
   font-family: NoirPro Light;
   font-size: 15px;
@@ -3043,7 +3050,7 @@ margin:0 -15%;
   letter-spacing: normal;
   color: #404852;
   background-color: #f9f9f9;
-  border-radius:2%;
+  border-radius:10px;
 }
 h3.company_name{
   font-family: NoirPro SemiBold;
@@ -3086,8 +3093,7 @@ a.left_panel_desc{
 }
 .asset-padding{
  padding:25px 30px 17px 30px;
- margin-left: 0;
- margin-right: 0;
+
 }
 .like-button-text{
  margin-left:8px;
@@ -3200,7 +3206,7 @@ a.left_panel_desc{
 }
 @media (max-width: 767px) {
 	.body_h{
-		overflow:hidden;
+		overflow:auto;
 	}
 	.navbar-nav .open .dropdown-menu{
 		position:relative;
@@ -3224,6 +3230,9 @@ a.left_panel_desc{
 	.sharing_img{
 		display:block;
 	}
+  .sharing_img_new{
+    display:none;
+  }
 	.social_brg_b{
 		border-bottom: 1px solid #ccc;
 		margin-bottom: 20px;

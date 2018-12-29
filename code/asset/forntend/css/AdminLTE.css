@@ -2303,6 +2303,8 @@ border:none;
   background-color: #00acd6;
 }
 .btn-cstm{
+  float:none;
+  
 background-color: #e31c77;
 border-color: #e31c77;
 color:#ffff;
