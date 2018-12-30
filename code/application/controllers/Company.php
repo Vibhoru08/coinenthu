@@ -102,12 +102,10 @@
 		}
 		public function replySaveMethod(){
 			if($this->session->userdata('user_id')!=""){
-				$crr_reid="crr_reid".$review->re_id;
-				 $crr_decript="crr_decript".$review->re_id;
-				if(isset($_POST[$crr_reid]) && $_POST[$crr_reid]!=""){
+				if(isset($_POST["crr_reid"]) && $_POST["crr_reid"]!=""){
 					$uid           = $this->session->userdata('user_id');
-					$crr_reid      = $_POST[$crr_reid];
-					$crr_decript   = $_POST[$crr_decript];
+					$crr_reid      = $_POST["crr_reid"];
+					$crr_decript   = $_POST["crr_decript"];
 					// $checkReplyRes = $this->Companies_model->checkReviewReply($uid,$crr_reid);
 					// if(isset($checkReplyRes->crr_id) && $checkReplyRes->crr_id!=""){
 						// $crr_id = $checkReplyRes->crr_id;
@@ -115,6 +113,7 @@
 						// echo json_encode(array('status'=>TRUE,'output'=>'success'));
 					// }else{
 						$crr_id = '';
+
 						$checkRes = $this->Companies_model->getCheckReviewReply($uid,$crr_reid,$crr_decript,$crr_id);
 						if(count($checkRes)>0){
 							echo json_encode(array('status'=>TRUE,'output'=>'exists'));

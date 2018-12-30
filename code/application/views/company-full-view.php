@@ -1871,19 +1871,14 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 	function wirteareplySubmit(re_id){
 		debugger;
 		$('#replypopup'+re_id).formValidation();
-			console.log($('#replypopup'+re_id).formValidation());
+		replyMessage(re_id);
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage"+re_id).html('');
 		if($("#hid_sessionid").val()!=""){
-debugger;
 			$('#common_modal_pop').modal('hide');
-debugger;
 		  var reply='#replypopup'+re_id;
-		  console.log(reply);
 			$('#replypopup'+re_id).formValidation().on('success.form.fv', function(e) {
-debugger;
 				e.stopImmediatePropagation();
-				debugger;
 				var crr_reid    = $("#crr_reid"+re_id).val();
 				var crr_decript = $("#crr_decript"+re_id).val();
 				var url = baseUrl+'Company/replySaveMethod?expireTime='+time;
@@ -1895,8 +1890,7 @@ debugger;
 					data        : {crr_reid:crr_reid,crr_decript:crr_decript},
 					dataType	: "json",
 					success: function(data){
-						debugger;
-						$("#tp7").hide();
+						$("#tp7"+re_id).hide();
 						console.log(data.output);
 						if(data.output=='success'){
 							$("#successmessage"+re_id).html('Reply successfully saved').css('color','green');
@@ -1934,7 +1928,11 @@ debugger;
 								$('#common_modal_pop').modal('show');
 							}, 2000);
 						}
-					},error:function(jqXHR){
+					},error:function(jqXHR,textStatus, errorThrown){
+						console.log( jqXHR);
+							console.log( textStatus);
+								console.log(errorThrown);
+							console.log(jqXHR.output);
 		        console.log('ERROR: ' + jqXHR.status);
 		    }
 				});
@@ -1951,7 +1949,6 @@ debugger;
 		}
 	}
 	function replyMessage(re_id){
-		debugger;
 		$('#replypopup'+re_id).formValidation();
 		console.log($('#replypopup'+re_id).formValidation());
 		$("#change_btn_name").html('Cancel');
@@ -1959,7 +1956,6 @@ debugger;
 		$("#successmessage"+re_id).html('');
 		$("#crr_reid"+re_id).val(re_id);
 		if($("#hid_sessionid").val()!=""){
-debugger;
 			var userId = $("#hid_sessionid").val();
 			$.ajax({
 			type 		: "POST",
@@ -1974,7 +1970,6 @@ debugger;
 				console.log(data.output);
 				if(data.output < 5)
 				{
-					debugger;
 					console.log("S");
 				//	$("#crr_decript"+re_id).show();
 				}else{
@@ -2115,6 +2110,9 @@ debugger;
 			dataType	: "json",
 			success: function(data){
 				console.log(data.output);
+				console.log(data.resData);
+				console.log(data.repliesCntt);
+
 				if(data.output=='success'){
 					setTimeout(function(){
 						if(data.resData != ""){
