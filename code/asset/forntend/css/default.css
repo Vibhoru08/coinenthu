@@ -1438,6 +1438,14 @@ a.ui-button:active,
 .pad_0{
   padding:0;
 }
+@media(max-width:768px){
+  .pad_m0{
+    padding:0;
+  }
+  .pad_t7{
+    padding-top:7px;
+  }
+}
 .pad_t5{
 	padding-top:5px;
 }

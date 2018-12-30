@@ -3,6 +3,57 @@ $(document).ready(function(){
 		$('body').toggleClass('body_h');
 	});
 
+	// if menu is open then true, if closed then false
+	// we start with false
+	var open = false;
+	// just a function to print out message
+	function isOpen(){
+			if(open)
+				 return "menu is open";
+			else
+				 return "menu is closed";
+	}
+	// on each click toggle the "open" variable
+	$("#type").on("click", function() {
+				open = !open;
+				if(isOpen()=="menu is open"){
+					$("#type").css("border-radius","10px 10px 0 0");
+				}else if(isOpen()=="menu is closed"){
+					$("#type").css("border-radius","10px 10px 10px 10px");
+				}
+				console.log(isOpen());
+	});
+	// on each blur toggle the "open" variable
+	// fire only if menu is already in "open" state
+	$("#type").on("blur", function() {
+				if(open){
+					 open = !open;
+					 if(isOpen()=="menu is open"){
+	 					$("#type").css("border-radius","10px 10px 0 0");
+	 				}else if(isOpen()=="menu is closed"){
+	 					$("#type").css("border-radius","10px 10px 10px 10px");
+	 				}
+
+				}
+	});
+	// on ESC key toggle the "open" variable only if menu is in "open" state
+	$(document).keyup(function(e) {
+			if (e.keyCode == 27) {
+				if(open){
+					 open = !open;
+					 if(isOpen()=="menu is open"){
+	 					$("#type").css("border-radius","10px 10px 0 0");
+	 				}else if(isOpen()=="menu is closed"){
+	 					$("#type").css("border-radius","10px 10px 10px 10px");
+	 				}
+
+				}
+			}
+	});
+
+
+
+
 	$(window).resize(function(){
 		var y=window.matchMedia("(max-width: 990px)");
 		if (y.matches){
@@ -14,6 +65,10 @@ $(document).ready(function(){
 		}else if( $("#mob_login").hasClass("login_design") ){
 			$(".mob_register").removeClass('register_design');
 			$(".mob_s_login").hide();
+		}else{
+			$(".mob_register").addClass('register_design');
+			$(".mob_s_register").hide();
+			$(".socila_img").hide();
 		}
 
 			$(".mob_login").click(function(){

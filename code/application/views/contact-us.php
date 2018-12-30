@@ -40,16 +40,22 @@
 										 onSubmit="contactMails();">
 										<div class="box-body">
 											<div class="form-group">
-												<label for="inputPassword3" class="col-sm-2 control-label">Subject</label>
-												<div class="col-sm-5" >
-													<input type="text" class="form-control" id="message_sub" name="message_sub" placeholder="Subject" required data-fv-notempty-message="Subject required." data-fv-regexp="true"data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The first name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The first name must be less than 100 characters">
+												<label for="inputPassword3" class="col-sm-2 col-xs-3 pad_t7 pad_m0 control-label"> Your Email</label>
+												<div class="col-sm-7 col-md-6 col-xs-9 pad_m0">
+													<input type="text" class="form-control" id="email" name="email" placeholder="abc@gmail.com" required data-fv-notempty-message="Email required" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="Not A Valid Email">
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="inputPassword3" class="col-sm-2 control-label">Type</label>
-												<div class="col-sm-5" placeholder="Type">
+												<label for="inputPassword3" class="col-sm-2 col-xs-3 pad_t7 pad_m0 control-label">Subject</label>
+												<div class="col-sm-7 col-md-6 col-xs-9 pad_m0" >
+													<input type="text" class="form-control" id="message_sub" name="message_sub" placeholder="Type the Subject" required data-fv-notempty-message="Subject required." data-fv-regexp="true"data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The first name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The first name must be less than 100 characters">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputPassword3" class="col-sm-2 col-xs-3 pad_t7 pad_m0 control-label">Type</label>
+												<div class="col-sm-7 col-md-6 col-xs-9 pad_m0 ty" placeholder="Select the type from dropdown">
 													<select id="type" class="form-control" name="type" required data-fv-notempty-message="Subject type required.">
-													<option value="">Select type</option>
+													<option value="">Select the type from dropdown</option>
 													<option value="1">User issue</option>
 													<option value="2">Digital Asset Related</option>
 													<option value="3">ICO Related</option>
@@ -61,19 +67,14 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="inputPassword3" class="col-sm-2 control-label">Body</label>
-												<div class="col-sm-5">
-													<textarea type="text" class="form-control" id="body" name="body" placeholder="Enter Your Message" required data-fv-notempty-message="Message Body required" ></textarea>
+												<label for="inputPassword3" class="col-sm-2 col-xs-3 pad_t7 pad_m0 control-label">Body</label>
+												<div class="col-sm-7 col-md-6 col-xs-9 pad_m0">
+													<textarea rows="5" type="text" class="form-control" id="body" name="body" placeholder="Enter Your Message" required data-fv-notempty-message="Message Body required" ></textarea>
 												</div>
 											</div>
+
 											<div class="form-group">
-												<label for="inputPassword3" class="col-sm-2 control-label">Email</label>
-												<div class="col-sm-5">
-													<input type="text" class="form-control" id="email" name="email" placeholder="Your Email" required data-fv-notempty-message="Email required" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-10">
+												<div class="col-sm-offset-2 col-sm-10 col-xs-9 col-xs-offset-3">
 													<a href="<?php echo base_url();?>" class="btn btn-default">Cancel
 													</a>
 													<button type="submit" id="contactus" name="contactus" class="btn btn-custom">Send</button>
