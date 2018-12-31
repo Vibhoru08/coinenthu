@@ -559,7 +559,7 @@
 
 						?>
 							<span id="spanLess_<?php echo $review->re_id; ?>" style="overflow-wrap: break-word;"><?php echo $string; ?></span>
-							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
+							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
 							<?php
@@ -642,6 +642,7 @@
 								<?php }?>
 								<div id="repliesDiv_<?php echo $review->re_id; ?>">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
+
 						<div class = "row">
 					        <?php
 								if($reviewReplay->u_username!=""){
@@ -710,7 +711,7 @@
 
 
 
-								<div class = "row" style="margin-bottom:0px;">
+								<div id="review_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin-bottom:0px;">
 									<?php
 
 									$stringReply = strip_tags($reviewReplay->crr_decript);
@@ -725,12 +726,15 @@
 									<span id="replyexpandSpan_<?php echo $reviewReplay->crr_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$reviewReplay->crr_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?>
 								    </span>
 								</div>
+									 <span id="r_char_cnt<?php echo $reviewReplay->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reviewReplay->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
 								<div class = "row" style="padding-bottom:5px">
 									<?php
 											if(isset($_SESSION['user_id'])){
 												if($uid == $reviewReplay->crr_uid){
 									?>
-									<button id="reply_reply_pop" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
+									<label  id="save<?php echo $reviewReplay->crr_id; ?>" for="submit-form<?php echo $reviewReplay->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</label>
+									<!--<button id="save<?php //echo $reviewReplay->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
+									<button id="reply_reply_pop<?php echo $reviewReplay->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
 									<?php } else{ ?>
 										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
 									</button>
@@ -769,11 +773,12 @@
 
 							</div>
 						</div>
-						<?php }} ?>
 
-					</div>						
+						<?php }} ?></div>
+
 					</div>
-				</div>
+					</div>
+
 					<?php }}else{ ?>
 					<div>
 						There are no reviews available.
@@ -1798,16 +1803,19 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}, 1000);
 		}
 	}
-	function wirteareplyreplySubmit(){
+	function wirteareplyreplySubmit(crr_id){
+		console.log("data.oddddutput");
+		debugger;
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage").html('');
 		if($("#hid_sessionid").val()!=""){
 			$('#common_modal_pop').modal('hide');
-			$('#replyreplypopup').formValidation().on('success.form.fv', function(e) {
+			console.log("data.output");
+			$('#form_decript'+crr_id).formValidation().on('success.form.fv', function(e) {
+				console.log("data.8output");
 				e.stopImmediatePropagation();
-				var crr_id       			= $("#crr_id").val();
 				var crr_replyReviewId       = $("#crr_replyReviewId").val();
-				var crrr_decript = $("#crrr_decript").val();
+				var crrr_decript = $("#res_decript"+crr_id).val();
 				var url = baseUrl+'Company/replyReplies?expireTime='+time;
 				$("#tp9").show();
 				$.ajax({
@@ -2006,8 +2014,29 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 				success: function(data){
 					console.log(data.output);
 					if(data.output=='success'){
+						$("#reply_reply_pop"+crr_id).fadeOut();
+						setTimeout(function(){
+							$("#save"+crr_id)
+  							.css('opacity', 0)
+  							.slideDown('slow')
+  							.animate(
+    									{ opacity: 1 },
+    									{ queue: false, duration: 'fast' }
+  											);
+					//	$("#save"+crr_id).fadeIn();
+						$("#review_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
 						$("#crrr_decript").val(data.crr_decript);
-						$("#replyreplypopup_modal").modal('show');
+						$("#save"+crr_id).val(crr_id);
+							$("#submit-form").attr('id',   "submit-form"+crr_id);
+						$("#form_decript").attr('id',   "form_decript"+crr_id);
+						$("#res_decript").attr('id',   "res_decript"+crr_id);
+							$("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
+							$("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
+						$("#res_decript"+crr_id).val(data.crr_decript);
+						$("#form_decript"+crr_id).formValidation();
+						$("#res_decript"+crr_id).focus();
+					//	$("#replyreplypopup_modal").modal('show');
+				},0 );
 					}
 				}
 			});
@@ -2021,6 +2050,18 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
 			}, 1000);
+		}
+	}
+	function countCharcter(crr_id)
+	{
+		var textLength = $('#res_decript'+crr_id).val().length;
+		var FinalLength = parseInt(1000)-parseInt(textLength);
+		if(parseInt(FinalLength) >=1){
+			$('#r_char_cnt'+crr_id).show();
+			$('#review_char_count'+crr_id).html(FinalLength);
+		}else{
+			$('#r_char_cnt'+crr_id).hide();
+			$('#review_char_count'+crr_id).html('');
 		}
 	}
 	function fullViewFilter(typeee,Pagee){

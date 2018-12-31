@@ -32,7 +32,7 @@
           <br>
           <div class="row like_upvote">
             <div class = "text-center col-md-4">
-                <?php echo $nor; ?>&nbsp;
+                <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
                 <i class="fa fa-commenting" aria-hidden="true"></i>
 				<?php
                 if ($nor == 1){
@@ -326,7 +326,6 @@ function deleteComment(id){
 function confirmDeleteActions(){
 
   var Id= $("#delete_button").val();
-  console.log(Id);
   $.ajax({
   type 		: "POST",
   url			: baseUrl+'Company/deleteComment',
@@ -334,12 +333,14 @@ function confirmDeleteActions(){
   data        : {Id:Id},
   dataType	: "json",
   success: function(data){
-    console.log(data);
     if(data.output=='success')
     {
       $("#delete_confirmation_modal_pop").modal('hide');
 	  $("#"+ Id).hide();
 	  $("#nor").html(data.no_of_replies);
+    var no_rev=parseInt(($("#no_rev").text())) - 1;
+    $("#no_rev").html(no_rev);
+
     }
     else if(data.output=='fail'){
         $("#delete_confirmation_modal_pop").modal('hide');

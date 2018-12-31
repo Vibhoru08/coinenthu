@@ -386,7 +386,6 @@
         </div>
     </div>
 <script>
-debugger;
 
 	$(document).ready(function() {
 
@@ -406,7 +405,7 @@ debugger;
 
 									 // Add the subsequent id:
 									 if ( !element.attributes.id )
-											 element.attributes.id = 'paragraph_';
+											// element.attributes.id = 'paragraph_';
 							 }
 					 }
 			 });
