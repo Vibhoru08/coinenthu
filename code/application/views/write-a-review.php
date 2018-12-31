@@ -61,7 +61,7 @@
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $cm_unique_id; ?>">
 									<input type="hidden" name="company_name" id="company_name" value="<?php echo $cm_name; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
-										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo $page_content->message1; ?></textarea>
+										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea>
 									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
 									 <div class = "mar_t30" style= "border:1px solid black;border-radius:10px;padding:10px 10px 10px 10px;">
 									 <label>
@@ -386,8 +386,33 @@
         </div>
     </div>
 <script>
- CKEDITOR.replace('re_decript');
+debugger;
+
 	$(document).ready(function() {
+
+		CKEDITOR.replace('re_decript', {
+			 on: {
+				 instanceReady: function() {
+			 this.dataProcessor.htmlFilter.addRules({
+					 elements: {
+							 p: function( element ) {
+									 // If there's no class, assing the custom one:
+									 if ( !element.attributes.class )
+											 element.attributes.class = 'pClass';
+
+									 // It there's some other class, append the custom one:
+									 else if ( !element.attributes.class.match( pClassRegexp ) )
+											 element.attributes.class += ' ' + 'pClass';
+
+									 // Add the subsequent id:
+									 if ( !element.attributes.id )
+											 element.attributes.id = 'paragraph_';
+							 }
+					 }
+			 });
+	 }
+}
+});
 		$('.gl-star-rating-tex').text('Rate me');
 		$('#wirte_review').formValidation();
 
@@ -427,10 +452,12 @@
 	function insertWriteaReview(){
 		$('#wirte_review').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
+			debugger;
 			var re_agree = 0;
 			var re_cmid      = $('#re_cmid').val();
 			var re_rating    = $('#re_rating').val();
-			var re_decript   = $('#re_decript').val();
+			var re_decript   = CKEDITOR.instances['re_decript'].getData();
+			console.log(re_decript);
 			var cm_unique_id = $('#cm_unique_id').val();
 			var cm_name = $('#company_name').val();
 			if($('#agree_check').prop('checked')) {
