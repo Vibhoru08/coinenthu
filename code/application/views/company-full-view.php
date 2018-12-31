@@ -642,6 +642,7 @@
 								<?php }?>
 								<div id="repliesDiv_<?php echo $review->re_id; ?>">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
+
 						<div class = "row">
 					        <?php
 								if($reviewReplay->u_username!=""){
@@ -769,7 +770,8 @@
 
 							</div>
 						</div>
-						<?php }} ?>
+
+						<?php }} ?></div>
 
 					</div>						
 					</div>
