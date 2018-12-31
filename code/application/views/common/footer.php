@@ -396,7 +396,7 @@
      <div class="form-group">
        <label for="inputEmail3" class="col-sm-3 control-label">&nbsp;&nbsp;</label>
        <div class="col-sm-8">
-       <p id="confirmation_delete_message"></p>
+       <p id="confirmation_delete_message">Are You Sure You Want to Delete your Review?</p>
        </div>
      </div>
      <input type="hidden" name="hidcmid" id="hidcmid">
@@ -407,7 +407,7 @@
      <div class="modal-footer">
    <span id="successfullDelete" style="color:green"></span>
        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-       <button type="button" class="btn btn-primary" onClick="confirmDeleteActions();">Ok</button>
+       <button id="delete_button" type="button" class="btn btn-primary" onClick="confirmDeleteActions();" value="">Ok</button>
      </div>
    </div>
  </div>
@@ -989,7 +989,7 @@ function GetMoreCompaniesLoad()
  });
  } */
 
-   
+
 
 
  </script>

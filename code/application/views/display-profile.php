@@ -136,7 +136,7 @@
 						</div>
 						<div class = "col-md-10">
 							<div>
-							<span style="float:right;">
+							<span style="float:right;" onclick="deleteComment('<?php echo $review->re_id; ?>');">
 								Delete
 							</span>
 								<h4><?php echo $review->cm_name; ?></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -144,7 +144,7 @@
 							</div>
 							<hr>
 							<div>
-								<p><?php echo $review->re_decript; ?></p>
+								<p class="<?php echo $review->re_id; ?>" id="<?php echo $review->re_id; ?>"><?php echo $review->re_decript; ?></p>
 							</div>
 							<hr>
 							<div>
@@ -317,3 +317,41 @@
         </div>
     </section>
 </div>
+<script>
+function deleteComment(id){
+  if($("#hid_sessionid").val()!=""){
+  $("#delete_confirmation_modal_pop").modal('show');
+  $("#delete_button").val(id);
+}else{
+  alert('Login Required');
+}
+}
+function confirmDeleteActions(){
+
+  var Id= $("#delete_button").val();
+  console.log(Id);
+  $.ajax({
+  type 		: "POST",
+  url			: baseUrl+'Company/deleteComment',
+  cache       : false,
+  data        : {Id:Id},
+  dataType	: "json",
+  success: function(data){
+    console.log(data);
+    if(data.output=='success')
+    {
+      $("#delete_confirmation_modal_pop").modal('hide');
+    }
+    else if(data.output=='fail'){
+        $("#delete_confirmation_modal_pop").modal('hide');
+      setTimeout(function(){
+        $("#common_heading").html('Warning Message');
+        $("#common_message").html('Login required');
+        $('#common_modal_pop').modal('show');
+                  }, 2000);
+                }
+
+            }
+          });
+        }
+</script>

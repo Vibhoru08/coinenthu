@@ -67,6 +67,25 @@
 				}
 			}
 		}
+		public function deleteComment(){
+			if($this->session->userdata('user_id') == "")
+			{
+				echo json_encode(array('status'=>TRUE,'output'=>'fail','loginrequired'=>'1'));exit;
+			}else{
+				if(isset($_POST['Id']) && $_POST['Id']!=""){
+
+
+
+					
+					echo json_encode(array('status'=>TRUE,'output'=>'success'));
+				}
+			}
+
+
+
+
+		}
+
 		public function reportSaveMethod(){
 			if($this->session->userdata('user_id') == "")
 			{
