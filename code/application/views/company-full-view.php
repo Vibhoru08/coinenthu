@@ -559,7 +559,7 @@
 
 						?>
 							<span id="spanLess_<?php echo $review->re_id; ?>" style="overflow-wrap: break-word;"><?php echo $string; ?></span>
-							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
+							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
 							<?php
@@ -642,7 +642,6 @@
 								<?php }?>
 								<div id="repliesDiv_<?php echo $review->re_id; ?>">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
-
 						<div class = "row">
 					        <?php
 								if($reviewReplay->u_username!=""){
@@ -770,8 +769,7 @@
 
 							</div>
 						</div>
-
-						<?php }} ?></div>
+						<?php }} ?>
 
 					</div>						
 					</div>

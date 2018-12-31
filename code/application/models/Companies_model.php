@@ -77,6 +77,16 @@ class Companies_model extends CI_Model
 		$this->db->where('re_id', $re_id);
         $this->db->delete('bop_company_reviews');
 	}
+	public function deleteReview($review_id){
+		$this->db->where('re_id', $review_id);
+		$this->db->delete('bop_company_reviews');
+        return 1;  
+	}
+	public function deleteReviewReply($review_id){
+		$this->db->where('crr_reid',$review_id);
+		$this->db->delete('bop_company_review_replies');
+		return 1;
+	}
 	public function deleteReplyStatus($crr_id,$statusMode){
 		$this->db->where('crr_id', $crr_id);
         $this->db->delete('bop_company_review_replies');

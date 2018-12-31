@@ -73,11 +73,15 @@
 				echo json_encode(array('status'=>TRUE,'output'=>'fail','loginrequired'=>'1'));exit;
 			}else{
 				if(isset($_POST['Id']) && $_POST['Id']!=""){
-
-
-
-					
-					echo json_encode(array('status'=>TRUE,'output'=>'success'));
+					$review_id = $_POST['Id'];
+					$statusReview = $this->Companies_model->deleteReview($review_id);
+					$statusReply = $this->Companies_model->deleteReviewReply($review_id);
+					if($statusReview == 1 && $statusReply == 1){
+						echo json_encode(array('status'=>TRUE,'output'=>'success'));
+					}
+					else{
+						echo json_encode(array('status'=>TRUE,'output'=>'fail'));
+					}	
 				}
 			}
 
