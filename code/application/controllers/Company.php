@@ -73,11 +73,14 @@
 				echo json_encode(array('status'=>TRUE,'output'=>'fail','loginrequired'=>'1'));exit;
 			}else{
 				if(isset($_POST['Id']) && $_POST['Id']!=""){
+					$user_id = $this->session->userdata('user_id');
 					$review_id = $_POST['Id'];
 					$statusReview = $this->Companies_model->deleteReview($review_id);
 					$statusReply = $this->Companies_model->deleteReviewReply($review_id);
+					$no_of_replies_details = $this->Companies_model->userReplies($user_id);
+					$no_of_replies = $no_of_replies_details->num_rows();
 					if($statusReview == 1 && $statusReply == 1){
-						echo json_encode(array('status'=>TRUE,'output'=>'success'));
+						echo json_encode(array('status'=>TRUE,'output'=>'success','no_of_replies'=>$no_of_replies));
 					}
 					else{
 						echo json_encode(array('status'=>TRUE,'output'=>'fail'));

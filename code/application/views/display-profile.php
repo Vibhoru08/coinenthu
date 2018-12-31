@@ -34,7 +34,7 @@
             <div class = "text-center col-md-4">
                 <?php echo $nor; ?>&nbsp;
                 <i class="fa fa-commenting" aria-hidden="true"></i>
-                <?php
+				<?php
                 if ($nor == 1){
                     echo "Review";
                 }
@@ -42,11 +42,11 @@
                     echo "Reviews";
                 }
                 ?>
-            </div>
+		   </div>
             <div class = "text-center col-md-4">
-                <?php echo $nore; ?>&nbsp;
+                <span id = "nor"><?php echo $nore; ?></span>&nbsp;
                 <i class="fa fa-reply" aria-hidden="true"></i>
-                <?php
+				<?php
                 if ($nore == 1){
                     echo "Reply";
                 }
@@ -54,7 +54,7 @@
                     echo "Replies";
                 }
                 ?>
-            </div>
+			</div>
             <div class = "text-center col-md-4">
                 <?php echo $nou; ?>&nbsp;
                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -72,7 +72,7 @@
         <div class = "row mar_t110">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
-					<div class = "row new_boxes upcoming_box_padding">
+					<div class = "row new_boxes upcoming_box_padding" id="<?php echo $review->re_id; ?>">
 						<div class = "col-md-2 text-center">
 							<div>
 							<?php
@@ -136,10 +136,10 @@
 						</div>
 						<div class = "col-md-10">
 							<div>
-							<span style="float:right;" onclick="deleteComment('<?php echo $review->re_id; ?>');">
+							<a style="float:right;" onclick="deleteComment('<?php echo $review->re_id; ?>');">
 								Delete
-							</span>
-								<h4><?php echo $review->cm_name; ?></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
+							</a>
+								<h4><a href = "<?php echo base_url().'company-full-view/'.str_replace(" ","_",$review->cm_name); ?>" title = "<?php echo $review->cm_name; ?>"><?php echo $review->cm_name; ?></a></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 
 							</div>
 							<hr>
@@ -223,9 +223,6 @@
 							?>
 						</div>
 					</div>
-					<p style="float:right;padding:5px 15px 0px 0px;">
-                    <a href = "<?php echo base_url().'company-full-view/'.str_replace(" ","_",$review->cm_name); ?>" title = "<?php echo $review->cm_name; ?>">Go To Asset<i class="fa fa-arrow-right mar_l10" aria-hidden="true"></i></a>
-					</p>
 					<div class="mar_b80"></div>
 					<?php
 					}}
@@ -341,6 +338,8 @@ function confirmDeleteActions(){
     if(data.output=='success')
     {
       $("#delete_confirmation_modal_pop").modal('hide');
+	  $("#"+ Id).hide();
+	  $("#nor").html(data.no_of_replies);
     }
     else if(data.output=='fail'){
         $("#delete_confirmation_modal_pop").modal('hide');
