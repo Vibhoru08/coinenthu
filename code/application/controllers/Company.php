@@ -395,7 +395,7 @@
 					$data['cm_uid']       = $details->cm_uid;
 					$data['cm_ctid']      = $details->cm_ctid;
 					$data['cm_overallrating'] = $details->cm_overallrating;
-					$data['cm_totalviews']    = $details->cm_totalviews;
+					$data['cm_totalviews']    = $this->Companies_model->count_reviews($details->cm_id);
 					/* $data['cm_totalviews']    = $this->Companies_model->record_count($details->cm_id);
 					//company rating
 					$getCRRating = $this->Companies_model->getCompanyRwRating($details->cm_id);

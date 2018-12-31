@@ -1854,6 +1854,16 @@ class Companies_model extends CI_Model
 		return $query->num_rows();
 
 	}
+	public function count_reviews($cmid) {
+
+		$this->db->select('*');
+        $this->db->from('bop_company_reviews');
+		$this->db->where('bop_company_reviews.re_cmid',$cmid);
+		$this->db->where('bop_company_reviews.re_status',1);
+		$query = $this->db->get();
+		return $query->num_rows();
+
+	}
 	public function deleteCompanyLists($cm_id,$cm_uid){
 		$this->db->where('cm_id', $cm_id);
 		$this->db->where('cm_uid', $cm_uid);
