@@ -662,8 +662,8 @@
 									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 									<?php } ?>
 							</div>
-							<div class = "col-md-9">
-								<div class = "row" style="padding-top:5px;padding-bottom:5px;">
+							<div class = "col-md-10">
+								<div class = "row mar_0" style="padding-top:5px;padding-bottom:5px;">
 									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
 									<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
@@ -711,7 +711,7 @@
 
 
 
-								<div id="replyreview_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin-bottom:0px;">
+								<div id="replyreview_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin:0px;">
 									<?php
 
 									$stringReply = strip_tags($reviewReplay->crr_decript);
