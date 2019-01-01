@@ -13,6 +13,8 @@
 					</div>
 			</div>
         </div>
+        <input type="hidden" id="hid_sessionid" name="hid_sessionid" value="<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){ echo $_SESSION['user_id']; }else{}?>">
+        <input type="hidden" id="hid_filter" name="hid_filter" value="1">
         <div class="row">
 	        <div class="text-left col-md-offset-1 col-md-1 pad_l0">
             <?php
@@ -72,9 +74,11 @@
         <div class = "row mar_t110">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
-					<div class = "row new_boxes upcoming_box_padding" id="<?php echo $review->re_id; ?>">
+					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">
 						<div class = "col-md-2 text-center">
 							<div>
+                <input type="hidden" id="hid_cmid<?php echo $review->re_id; ?>" name="hid_cmid" value="<?php echo $review->re_cmid; ?>">
+                <input type="hidden" id="hid_cmname" name="hid_cmname" value="<?php echo $review->cm_name; ?>">
 							<?php
 							if($review->cm_picture!=""){
 								  if($review->cm_ctid == 1){
@@ -162,8 +166,10 @@
 							?>
 							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span><span style="float:right;"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class ="fa fa-reply" aria-hidden="true"></i></span>
 							</div>
+              <div id="repliesDiv_<?php echo $review->re_id; ?>">
 							<?php if(sizeof($replies[$review->re_id] > 0)){foreach($replies[$review->re_id] as $crr=>$reply){ ?>
-							<div class = "row mar_t20">
+
+              <div class = "row mar_t20" id="individualReplies_<?php echo $reply->crr_id; ?>">
 									<div class = "col-md-2">
 									<?php if($reply->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reply->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
@@ -193,24 +199,68 @@
 									?><br style="margin-bottom:0px;">
 									<span style= "font-size:11px;"><?php echo $reply->u_about; ?></span>
 									</p>
-									<p>
+									<p id="replyreview_<?php echo $reply->crr_id; ?>">
 									<?php echo $reply->crr_decript; ?>
 									</p>
+                  <span id="r_char_cnt<?php echo $reply->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reply->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
+               <div class = "row" style="padding-bottom:5px">
+                 <?php
+                 	$uid = $_SESSION['user_id'];
+                     if(isset($_SESSION['user_id'])){
+                       if($uid == $reply->crr_uid){
+                 ?>
+                 <label  id="save<?php echo $reply->crr_id; ?>" for="submit-form<?php echo $reply->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</label>
+                 <!--<button id="save<?php //echo $reply->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
+                 <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
+                 <?php } else{ ?>
+                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                 </button>
+                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
+                 </button>
+                 <?php
+                 $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
+                 ?>
+                 <?php if($reportedReplyStatus==1){ ?>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+                 <?php }else{ ?>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
+                 <?php } ?>
+                 <?php }}else{ ?>
+                 <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                 </button>
+                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
+                 </button>
+                 <?php
+                 $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
+                 ?>
+                 <?php if($reportedReplyStatus==1){ ?>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+                 <?php }else{ ?>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
+                 <?php }} ?>
+                 <span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
+                 <?php if ($crr_likes_cnt == 1){
+                   echo " Like";
+                 } else {
+                   echo " Likes";
+                 }?>
+                 </span>
+               </div>
 									<p>
 									<?php
-									if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
-												$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
+									if($reply->crr_likes_cnt!="" && $reply->crr_likes_cnt!=0){
+												$crr_likes_cnt = $reply->crr_likes_cnt;
 											}else{
 												$crr_likes_cnt = 0;
 											}
-											if($reviewReplay->crr_dislike_cnt!="" && $reviewReplay->crr_dislike_cnt!=0){
-												$crr_dislike_cnt = $reviewReplay->crr_dislike_cnt;
+											if($reply->crr_dislike_cnt!="" && $reply->crr_dislike_cnt!=0){
+												$crr_dislike_cnt = $reply->crr_dislike_cnt;
 											}else{
 												$crr_dislike_cnt = 0;
 											}
 									?>
-										<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-										<span style="float:right;font-size:13px;"><?php
+									<!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+										<span style="float:right;font-size:13px;">--><?php
 											if($reply->crr_uid == $userinfo->u_uid){
 												echo "Delete";
 											}
@@ -221,6 +271,7 @@
 							<?php
 							}}
 							?>
+            </div>
 						</div>
 					</div>
 					<div class="mar_b80"></div>
@@ -336,7 +387,7 @@ function confirmDeleteActions(){
     if(data.output=='success')
     {
       $("#delete_confirmation_modal_pop").modal('hide');
-	  $("#"+ Id).hide();
+	  $("#review_"+ Id).hide();
 	  $("#nor").html(data.no_of_replies);
     var no_rev=parseInt(($("#no_rev").text())) - 1;
     $("#no_rev").html(no_rev);
@@ -354,4 +405,704 @@ function confirmDeleteActions(){
             }
           });
         }
+
+
+        function shareCoin(){
+          //document.getElementById(".social_share").style.display = "inline";
+          if ($('.social_share').hasClass("clicked-once")) {
+              // already been clicked once, hide it
+              $(".social_share").css({"display":"none"});
+              $('.social_share').removeClass("clicked-once");
+          }
+          else {
+              // first time this is clicked, mark it
+              $('.social_share').addClass("clicked-once");
+              $(".social_share").css({"display":"inline", WebkitTransition : 'display 10s',
+              MozTransition    : 'display 10s',
+              MsTransition     : 'display 10s',
+              OTransition      : 'display 10s',
+              transition       : 'all 10s ease-in-out 10s'});
+          }
+
+          }
+        function newPopup(url) {
+
+          popupWindow = window.open(
+
+            url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+
+        }
+        function checkedUrl(){
+          $('#clickUrl_pop').modal('show');
+        }
+
+        function urlconform(){
+          $('#clickUrl_pop').modal('hide');
+        }
+
+        $(document).ready(function() {
+          $('.caption').hide();
+          $('.clear-rating').hide();
+          $('.replypopup').formValidation();
+          $('#reviewReport').formValidation();
+          $('#replyreplypopup').formValidation();
+        /*	$("textarea").focus(function(){
+            debugger;
+            var id = $('form').attr('id');
+            $(id).formValidation();
+          });*/
+        });
+        function reviewReportMethod(re_id,type,checkUser){
+          $("#change_btn_name").html('Cancel');
+          if(checkUser=='alreadyReported'){
+            $("#common_heading").html('Warning');
+            $("#common_message").html('You reported already for this reply.');
+            $("#change_btn_name").html('Ok');
+            $('#common_modal_pop').modal('show');
+          }else if(checkUser=='alreadyU'){
+            $("#common_heading").html('Warning');
+            $("#common_message").html('You already reported this review');
+            $("#change_btn_name").html('Ok');
+            $('#common_modal_pop').modal('show');
+          }else{
+            if($("#hid_sessionid").val()!=""){
+              $("#rr_reid").val(re_id);
+              $("#rr_reid_type").val(type);
+              $("#reviewreportpopup_modal").modal('show');
+            }else{
+              $("#confirmation_modal_pop").modal('hide');
+              $("#common_modal_pop").modal('hide');
+              $("#reviewreportpopup_modal").modal('hide');
+              setTimeout(function(){
+                $("#common_heading").html('Warning Message');
+                $("#common_message").html('Login required');
+                $('#common_modal_pop').modal('show');
+              }, 1000);
+            }
+          }
+        }
+        function reviewReportingSubmit(){
+          $("#successmessagereponse").html('');
+          $("#change_btn_name").html('Cancel');
+          if($("#hid_sessionid").val()!=""){
+            $('#common_modal_pop').modal('hide');
+            $('#reviewReport').formValidation().on('success.form.fv', function(e) {
+              e.stopImmediatePropagation();
+              var rr_reid           = $("#rr_reid").val();
+              var rr_report_reponse = $("#rr_report_reponse").val();
+              var type = $("#rr_reid_type").val();
+              if(type=='reviewpreport'){
+                var url = baseUrl+'Company/reportSaveMethod?expireTime='+time;
+              }else{
+                var url = baseUrl+'Company/replyReportSaveMethod?expireTime='+time;
+              }
+              $.ajax({
+                type 		: "POST",
+                url			: url,
+                cache       : false,
+                data        : {rr_reid:rr_reid,rr_report_reponse:rr_report_reponse},
+                dataType	: "json",
+                success: function(data){
+                  if(data.output=='success'){
+                    $("#successmessagereponse").html('Reported successfully');
+
+                    if(type=='reviewpreport'){
+                      $('#reviewReportId_'+rr_reid).html(data.butnreview);
+                    }else{
+                      $('#replyReportId_'+rr_reid).html(data.butn);
+                    }
+
+                    setTimeout(function(){
+                      var filterType = 'likes';
+                      var hid_filter = $("#hid_filter").val();
+                      if(hid_filter=='1'){
+                        filterType = 'likes';
+                      }else if(hid_filter=='2'){
+                        filterType = 'dislikes';
+                      }else if(hid_filter=='3'){
+                        filterType = 'oldest';
+                      }else if(hid_filter=='4'){
+                        filterType = 'newlist';
+                      }
+                      var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
+                      $("#filtername").html(htmlReload);
+                      reviewReplyFilter(filterType,rr_reid);
+                      // window.location.reload();
+                      $("#reviewReport").trigger('reset');
+                      $('#reviewReport').formValidation('resetForm', true);
+                      $('#reviewReport').data('formValidation').resetForm();
+                      $("#successmessagereponse").html('');
+                      $("#reviewreportpopup_modal").modal('hide');
+                    },2000);
+                  }else{
+                    $("#successmessagereponse").html('');
+                    $("#confirmation_modal_pop").modal('hide');
+                    $("#common_modal_pop").modal('hide');
+                    $("#reviewreportpopup_modal").modal('hide');
+                    setTimeout(function(){
+                      $("#common_heading").html('Warning Message');
+                      $("#common_message").html('Login required');
+                      $('#common_modal_pop').modal('show');
+                    }, 1000);
+                  }
+                }
+              });
+              e.preventDefault();
+            });
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            $("#reviewreportpopup_modal").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+        function wirteareplyreplySubmit(crr_id){
+          console.log("data.oddddutput");
+          debugger;
+          $("#change_btn_name").html('Cancel');
+          $("#successmessage").html('');
+          if($("#hid_sessionid").val()!=""){
+            $('#common_modal_pop').modal('hide');
+            console.log("data.output");
+            $('#form_decript'+crr_id).formValidation().on('success.form.fv', function(e) {
+              console.log("data.8output");
+              e.stopImmediatePropagation();
+              var crr_replyReviewId       = $("#crr_replyReviewId").val();
+              var crrr_decript = $("#res_decript"+crr_id).val();
+              var url = baseUrl+'Company/replyReplies?expireTime='+time;
+              $("#tp9").show();
+              $.ajax({
+                type 		: "POST",
+                url			: url,
+                cache       : false,
+                data        : {crr_id:crr_id,crrr_decript:crrr_decript},
+                dataType	: "json",
+                success: function(data){
+                  $("#tp9").hide();
+                  console.log(data.output);
+                  if(data.output=='success'){
+                    $("#replysuccessmessage").html('Reply successfully updated').css('color','green');
+                    setTimeout(function(){
+                      $("#replysuccessmessage").html('');
+                      var filterType = 'likes';
+                      var hid_filter = $("#hid_filter").val();
+                      if(hid_filter=='1'){
+                        filterType = 'likes';
+                      }else if(hid_filter=='2'){
+                        filterType = 'dislikes';
+                      }else if(hid_filter=='3'){
+                        filterType = 'oldest';
+                      }else if(hid_filter=='4'){
+                        filterType = 'newlist';
+                      }
+                      var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
+                      $("#filtername").html(htmlReload);
+                      reviewReplyFilter(filterType,crr_replyReviewId);
+                      // window.location.reload();
+                      $("#replyreplypopup").trigger('reset');
+                      $('#replyreplypopup').formValidation('resetForm', true);
+                      $('#replyreplypopup').data('formValidation').resetForm();
+                      $("#replyreplypopup_modal").modal('hide');
+                    }, 2000);
+                  }else if(data.output=='exists')
+                  {
+                    $('#replysuccessmessage').html('Reply already exists').css('color','red');
+                  }else if(data.output=='fail'){
+                    $("#replyreplypopup_modal").modal('hide');
+                    setTimeout(function(){
+                      $("#common_heading").html('Warning Message');
+                      $("#common_message").html('Login required');
+                      $('#common_modal_pop').modal('show');
+                    }, 2000);
+                  }
+                }
+              });
+              e.preventDefault();
+            });
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+
+        function wirteareplySubmit(re_id){
+          debugger;
+          $('#replypopup'+re_id).formValidation();
+          replyMessage(re_id);
+          $("#change_btn_name").html('Cancel');
+          $("#successmessage"+re_id).html('');
+          if($("#hid_sessionid").val()!=""){
+            $('#common_modal_pop').modal('hide');
+            var reply='#replypopup'+re_id;
+            $('#replypopup'+re_id).formValidation().on('success.form.fv', function(e) {
+              e.stopImmediatePropagation();
+              var crr_reid    = $("#crr_reid"+re_id).val();
+              var crr_decript = $("#crr_decript"+re_id).val();
+              var url = baseUrl+'Company/replySaveMethod?expireTime='+time;
+              $("#tp7"+re_id).show();
+              $.ajax({
+                type 		: "POST",
+                url			: url,
+                cache       : false,
+                data        : {crr_reid:crr_reid,crr_decript:crr_decript},
+                dataType	: "json",
+                success: function(data){
+                  $("#tp7"+re_id).hide();
+                  console.log(data.output);
+                  if(data.output=='success'){
+                    $("#successmessage"+re_id).html('Reply successfully saved').css('color','green');
+                    setTimeout(function(){
+                      $("#successmessage"+re_id).html('');
+                      var filterType = 'likes';
+                      var hid_filter = $("#hid_filter").val();
+                      if(hid_filter=='1'){
+                        filterType = 'likes';
+                      }else if(hid_filter=='2'){
+                        filterType = 'dislikes';
+                      }else if(hid_filter=='3'){
+                        filterType = 'oldest';
+                      }else if(hid_filter=='4'){
+                        filterType = 'newlist';
+                      }
+                      var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
+                      $("#filtername").html(htmlReload);
+                      //reviewFilter(filterType);
+                      reviewReplyFilter(filterType,crr_reid);
+                      // window.location.reload();
+                      $("#replypopup"+re_id).trigger('reset');
+                      $('#replypopup'+re_id).formValidation('resetForm', true);
+                      $('#replypopup'+re_id).data('formValidation').resetForm();
+                      $("#replypopup_modal").modal('hide');
+                    }, 2000);
+                  }else if(data.output=='exists'){
+                    $("#successmessage"+re_id).html('Reply already exists').css('color','red');
+
+                  }else if(data.output=='fail'){
+                    $("#replypopup_modal").modal('hide');
+                    setTimeout(function(){
+                      $("#common_heading").html('Warning Message');
+                      $("#common_message").html('Login required');
+                      $('#common_modal_pop').modal('show');
+                    }, 2000);
+                  }
+                },error:function(jqXHR,textStatus, errorThrown){
+                  console.log( jqXHR);
+                    console.log( textStatus);
+                      console.log(errorThrown);
+                    console.log(jqXHR.output);
+                  console.log('ERROR: ' + jqXHR.status);
+              }
+              });
+              e.preventDefault();
+            });
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+        function replyMessage(re_id){
+          $('#replypopup'+re_id).formValidation();
+          console.log($('#replypopup'+re_id).formValidation());
+          $("#change_btn_name").html('Cancel');
+          $("#review_char_count"+re_id).html('1000');
+          $("#successmessage"+re_id).html('');
+          $("#crr_reid"+re_id).val(re_id);
+          if($("#hid_sessionid").val()!=""){
+            var userId = $("#hid_sessionid").val();
+            $.ajax({
+            type 		: "POST",
+            url			: baseUrl+'Company/checkReplyForallow',
+            cache       : false,
+            data        : {userId:userId,re_id:re_id},
+            dataType	: "json",
+            beforeSend: function(xhr) {
+
+         },
+            success: function(data){
+              console.log(data.output);
+              if(data.output < 5)
+              {
+                console.log("S");
+              //	$("#crr_decript"+re_id).show();
+              }else{
+                alert('You cannot add more than 5 replies in a minute.');
+              }
+            },
+            error:function(jqXHR){
+              console.log('ERROR: ' + jqXHR.status);
+          }
+          });
+
+
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+        function replyReplyMessage(crr_id,crr_reid){
+          $("#crr_id").val(crr_id);
+          $("#crr_replyReviewId").val(crr_reid);
+          if($("#hid_sessionid").val()!=""){
+            var url = baseUrl+'Company/replyReplies?crr_id='+crr_id+'&expireTime='+time;
+            $.ajax({
+              type 		: "GET",
+              url			: url,
+              cache       : false,
+              dataType	: "json",
+              success: function(data){
+                console.log(data.output);
+                if(data.output=='success'){
+                  $("#reply_reply_pop"+crr_id).fadeOut();
+                  setTimeout(function(){
+                    $("#save"+crr_id)
+                      .css('opacity', 0)
+                      .slideDown('slow')
+                      .animate(
+                            { opacity: 1 },
+                            { queue: false, duration: 'fast' }
+                              );
+                //	$("#save"+crr_id).fadeIn();
+                  $("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
+                  $("#crrr_decript").val(data.crr_decript);
+                  $("#save"+crr_id).val(crr_id);
+                    $("#submit-form").attr('id',   "submit-form"+crr_id);
+                  $("#form_decript").attr('id',   "form_decript"+crr_id);
+                  $("#res_decript").attr('id',   "res_decript"+crr_id);
+                    $("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
+                    $("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
+                  $("#res_decript"+crr_id).val(data.crr_decript);
+                  $("#form_decript"+crr_id).formValidation();
+                  $("#res_decript"+crr_id).focus();
+                //	$("#replyreplypopup_modal").modal('show');
+              },0 );
+                }
+              }
+            });
+
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            $("#replyreplypopup_modal").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+        function countCharcter(crr_id)
+        {
+          var textLength = $('#res_decript'+crr_id).val().length;
+          var FinalLength = parseInt(1000)-parseInt(textLength);
+          if(parseInt(FinalLength) >=1){
+            $('#r_char_cnt'+crr_id).show();
+            $('#review_char_count'+crr_id).html(FinalLength);
+          }else{
+            $('#r_char_cnt'+crr_id).hide();
+            $('#review_char_count'+crr_id).html('');
+          }
+        }
+        function fullViewFilter(typeee,Pagee){
+          var cm_name = $('#company_name').val();
+          var hid_uniqueid   = $("#hid_uniqueid").val();
+          window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_')+'&'+typeee;
+        }
+        function reviewFilter(type,Pagee){
+          $("#change_btn_name").html('Cancel');
+          var hid_filter = $("#hid_filter").val();
+          var filterTitle = 'Up Votes';
+          if(type =='likes'){
+            filterTitle = "Up Votes";
+            $("#hid_filter").val(1);
+          }else if(type =='dislikes'){
+            filterTitle = "Down Votes";
+            $("#hid_filter").val(2);
+          }else if(type =='oldest'){
+            filterTitle = "Oldest";
+            $("#hid_filter").val(3);
+          }else if(type =='newlist'){
+            filterTitle = "Newest";
+            $("#hid_filter").val(4);
+          }
+          var htmlReload = filterTitle+'<div class="arrow_down"><span class="caret"></span></div>';
+          $("#filtername").html(htmlReload);
+          var cm_id   = $("#hid_cmid").val();
+          var hid_uniqueid   = $("#hid_uniqueid").val();
+          $('.box-comments').html('');
+          var url = baseUrl+'Company/reviewsReplies?expireTime='+time;
+          // var url = baseUrl+'Company/companyFullView?expireTime='+time;
+          var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+          $('.box-comments').html(relaoding);
+          $.ajax({
+            type 		: "POST",
+            url			: url,
+            cache       : false,
+            data        : {cm_id:cm_id,order_by:type,hid_uniqueid:hid_uniqueid,Pagee:Pagee},
+            dataType	: "json",
+            success: function(data){
+              if(data.output=='success'){
+                $('#fullviewPagy').hide();
+                setTimeout(function(){
+                  if(data.resData != ""){
+                    $(".box-comments").html(data.resData);
+                  }
+                  else{
+                    $('.box-comments').html('There are no reviews for this company.');
+                  }
+                  var $input = $('.rating-loading');
+                  $input.rating();
+                  $('.caption').hide();
+                  $('.clear-rating').hide();
+                }, 1000);
+              }
+            }
+          });
+        }
+        function reviewReplyFilter(type,crr_reid){
+          debugger;
+          $("#change_btn_name").html('Cancel');
+          var hid_filter = $("#hid_filter").val();
+          var filterTitle = 'Up Votes';
+          if(type =='likes'){
+            filterTitle = "Up Votes";
+            $("#hid_filter").val(1);
+          }else if(type =='dislikes'){
+            filterTitle = "Down Votes";
+            $("#hid_filter").val(2);
+          }else if(type =='oldest'){
+            filterTitle = "Oldest";
+            $("#hid_filter").val(3);
+          }else if(type =='newlist'){
+            filterTitle = "Newest";
+            $("#hid_filter").val(4);
+          }
+          var htmlReload = filterTitle+'<div class="arrow_down"><span class="caret"></span></div>';
+          $("#filtername").html(htmlReload);
+          if( $("#hid_cmid").val() == undefined){
+            var cm_id   = $("#hid_cmid"+crr_reid).val();
+          }else{
+          var cm_id   = $("#hid_cmid").val();}
+          // $('.box-comments').html('');
+          var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
+          var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+          $('#repliesDiv_'+crr_reid).html(relaoding);
+          $.ajax({
+            type 		: "POST",
+            url			: url,
+            cache       : false,
+            data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid},
+            dataType	: "json",
+            success: function(data){
+              console.log(data.output);
+              console.log(data.resData);
+              console.log(data.repliesCntt);
+
+              if(data.output=='success'){
+                setTimeout(function(){
+                  if(data.resData != ""){
+                    $('#repliesDiv_'+crr_reid).html(data.resData);
+                    $('#repliesDiv_'+crr_reid).show();
+                    $('#repliesCntt_'+crr_reid).html(data.repliesCntt);
+                    if(data.repliesCntt == 1)
+                    {
+                      $('#repliesText_'+crr_reid).html('Reply');
+                    }else{
+                      $('#repliesText_'+crr_reid).html('Replies');
+                    }
+                    $('#view_replies_id_'+crr_reid).show();
+                  }
+                  else{
+                    $('#repliesDiv_'+crr_reid).html('There are no reviews for this company.');
+                  }
+                  var $input = $('.rating-loading');
+                  $input.rating();
+                  $('.caption').hide();
+                  $('.clear-rating').hide();
+                }, 1000);
+              }
+            }
+          });
+        }
+        function confirmReviewsActions(){
+          $("#common_modal_pop").modal('hide');
+          $("#confirmation_modal_pop").modal('hide');
+          var reviewCnt = $("#reviewCnt").val();
+          var reviewid  = $("#reviewid").val();
+          var type      = $("#type").val();
+          var typeMode  = $("#typeMode").val();
+          var reid      = $("#reid").val();
+          reviewLikeDisLike(reviewCnt,reviewid,type,typeMode,reid);
+        }
+        function reviewLikeDisLikee(reviewCnt,reviewid,type,typeMode,reid){
+          $("#change_btn_name").html('Cancel');
+          $("#common_modal_pop").modal('hide');
+          $("#reviewCnt").val(reviewCnt);
+          $("#reviewid").val(reviewid);
+          $("#type").val(type);
+          $("#typeMode").val(typeMode);
+          $("#reid").val(reid);
+          $('#confirmation_heading').html('Dislike confirmation');
+          if(typeMode=="replies"){
+            $('#confirmation_message').html('Do you want to dislike this reply?');
+          }else{
+            $('#confirmation_message').html('Do you want to dislike this review?');
+          }
+          if($("#hid_sessionid").val()!=""){
+            //$("#confirmation_modal_pop").modal('show');
+          var url = baseUrl+'Company/checklikesDislikes?expireTime='+time;
+          $.ajax({
+            type 		: "POST",
+            url			: url,
+            cache       : false,
+            data        : {reviewCnt:reviewCnt,reviewid:reviewid,type:type,typeMode:typeMode},
+            dataType	: "json",
+            success: function(data){
+              console.log(data.output);
+              if(data.output=='success'){
+                if(data.alreadyReplyDisliked=='1'){
+                  $("#common_heading").html('Dislike status');
+                  $("#common_message").html('Already disliked.');
+                  $("#common_modal_pop").modal('show');
+                  $("btn_like").html();
+                }else if(data.alreadyReplyLiked=='1'){
+                  $("#common_heading").html('Like status');
+                  $("#common_message").html('You already liked this reply.');
+                  $("#common_modal_pop").modal('show');
+                }else if(data.alreadyDisliked=='1'){
+                  $("#common_heading").html('Dislike status');
+                  $("#common_message").html('Already disliked.');
+                  $("#common_modal_pop").modal('show');
+                  $("btn_like").html();
+                }else if(data.alreadyLiked=='1'){
+                  $("#common_heading").html('Like status');
+                  $("#common_message").html('You already liked this review.');
+                  $("#common_modal_pop").modal('show');
+                }else{
+                  $("#confirmation_modal_pop").modal('show');
+                }
+              }else if(data.output=='fail'){
+                $("#confirmation_modal_pop").modal('hide');
+                $("#common_modal_pop").modal('hide');
+                if(data.loginrequired=='1'){
+                  setTimeout(function(){
+                    $("#common_heading").html('Warning Message');
+                    $("#common_message").html('Login required');
+                    $('#common_modal_pop').modal('show');
+                  }, 1000);
+                }
+              }
+            }
+          });
+          }else{
+            $("#confirmation_modal_pop").modal('hide');
+            $("#common_modal_pop").modal('hide');
+            setTimeout(function(){
+              $("#common_heading").html('Warning Message');
+              $("#common_message").html('Login required');
+              $('#common_modal_pop').modal('show');
+            }, 1000);
+          }
+        }
+        function reviewLikeDisLike(reviewCnt,reviewid,type,typeMode,reid){
+          $("#change_btn_name").html('Cancel');
+          $('#common_modal_pop').modal('hide');
+          $("#confirmation_modal_pop").modal('hide');
+          $("#common_modal_pop").modal('hide');
+          var url = baseUrl+'Company/likesDislikes?expireTime='+time;
+          $.ajax({
+            type 		: "POST",
+            url			: url,
+            cache       : false,
+            data        : {reviewCnt:reviewCnt,reviewid:reviewid,type:type,typeMode:typeMode},
+            dataType	: "json",
+            success: function(data){
+              console.log(data.output);
+              if(data.output=='success'){
+                if(data.alreadyReplyDisliked=='1'){
+                  $("#common_heading").html('Dislike status');
+                  $("#common_message").html('You already disliked this reply.');
+                  $("#common_modal_pop").modal('show');
+                  $("btn_like").html();
+                }else if(data.alreadyReplyLiked=='1'){
+                  $("#common_heading").html('Like status');
+                  $("#common_message").html('You already liked this reply.');
+                  $("#common_modal_pop").modal('show');
+                }else if(data.alreadyDisliked=='1'){
+                  $("#common_heading").html('Dislike status');
+                  $("#common_message").html('You already disliked this review.');
+                  $("#common_modal_pop").modal('show');
+                  $("btn_like").html();
+                }else if(data.alreadyLiked=='1'){
+                  $("#common_heading").html('Like status');
+                  $("#common_message").html('You already liked this review.');
+                  $("#common_modal_pop").modal('show');
+                }else{
+                  if(typeMode=='review'){
+                    if(type=='like'){
+                      $("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
+                      $("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+                    }else{
+                      $("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
+                      $("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+                    }
+                  }else if(typeMode=='replies'){
+                    if(type=='like'){
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                    }else{
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                    }
+                  }
+                  /*}else if(typeMode=='replies'){
+                    if(type=='like'){
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                    }else{
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
+                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                    }
+                  }*/
+                }
+              }else if(data.output=='fail'){
+                $("#confirmation_modal_pop").modal('hide');
+                $("#common_modal_pop").modal('hide');
+                if(data.loginrequired=='1'){
+                  setTimeout(function(){
+                    $("#common_heading").html('Warning Message');
+                    $("#common_message").html('Login required');
+                    $('#common_modal_pop').modal('show');
+                  }, 1000);
+                }
+              }
+            }
+          });
+        }
+
+
+
+
+
+
+
+
 </script>

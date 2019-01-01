@@ -502,7 +502,7 @@
 									$u_username = "Guest User";
 								}
 					?>
-					<div class="row border_bottom asset-padding mar_0">
+					<div class="row border_bottom asset-padding mar_0" id="review_<?php echo $review->re_id; ?>">
 					<div class = "col-md-2">
 						<?php if($review->u_picture!=""){ ?>
 						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
@@ -643,7 +643,7 @@
 								<div id="repliesDiv_<?php echo $review->re_id; ?>">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
 
-						<div class = "row">
+						<div class = "row" id="individualReplies_<?php echo $reviewReplay->crr_id; ?>">
 					        <?php
 								if($reviewReplay->u_username!=""){
 									$u_username = ucfirst($reviewReplay->u_username);
@@ -711,7 +711,7 @@
 
 
 
-								<div id="review_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin-bottom:0px;">
+								<div id="replyreview_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin-bottom:0px;">
 									<?php
 
 									$stringReply = strip_tags($reviewReplay->crr_decript);
@@ -1803,6 +1803,87 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}, 1000);
 		}
 	}
+
+	function reviewReplyFilter_New(type,crr_reid,crr_id){
+			debugger;
+		$("#change_btn_name").html('Cancel');
+		var hid_filter = $("#hid_filter").val();
+		var filterTitle = 'Up Votes';
+		if(type =='likes'){
+			filterTitle = "Up Votes";
+			$("#hid_filter").val(1);
+		}else if(type =='dislikes'){
+			filterTitle = "Down Votes";
+			$("#hid_filter").val(2);
+		}else if(type =='oldest'){
+			filterTitle = "Oldest";
+			$("#hid_filter").val(3);
+		}else if(type =='newlist'){
+			filterTitle = "Newest";
+			$("#hid_filter").val(4);
+		}
+		var htmlReload = filterTitle+'<div class="arrow_down"><span class="caret"></span></div>';
+	//	$("#filtername").html(htmlReload);
+		var cm_id   = $("#hid_cmid").val();
+		// $('.box-comments').html('');
+		var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
+		var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+		//$('#repliesDiv_'+crr_reid).html(relaoding);
+		$.ajax({
+			type 		: "POST",
+			url			: url,
+			cache       : false,
+			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid},
+			dataType	: "json",
+			success: function(data){
+				console.log(data.output);
+				console.log(data.resData);
+				console.log(data.repliesCntt);
+
+				if(data.output=='success'){
+					setTimeout(function(){
+						$("#reply_reply_pop"+crr_id).fadeIn();
+
+							$("#save"+crr_id).hide();
+					//	$("#save"+crr_id).fadeIn();
+						$("#replyreview_"+crr_id).html('<p>this text</p>');
+					//	$("#crrr_decript").val(data.crr_decript);
+					//	$("#save"+crr_id).val(crr_id);
+						//	$("#submit-form").attr('id',   "submit-form"+crr_id);
+					//	$("#form_decript").attr('id',   "form_decript"+crr_id);
+					//	$("#res_decript").attr('id',   "res_decript"+crr_id);
+						//	$("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
+					//		$("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
+					//	$("#res_decript"+crr_id).val(data.crr_decript);
+					//	$("#form_decript"+crr_id).formValidation();
+				//		$("#res_decript"+crr_id).focus();
+					//	$("#replyreplypopup_modal").modal('show');
+
+						if(data.resData != ""){
+					//		$('#repliesDiv_'+crr_reid).html(data.resData);
+					//		$('#repliesDiv_'+crr_reid).show();
+					//		$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
+							if(data.repliesCntt == 1)
+							{
+								$('#repliesText_'+crr_reid).html('Reply');
+							}else{
+								$('#repliesText_'+crr_reid).html('Replies');
+							}
+							$('#view_replies_id_'+crr_reid).show();
+						}
+						else{
+							$('#repliesDiv_'+crr_reid).html('There are no reviews for this company.');
+						}
+						var $input = $('.rating-loading');
+						$input.rating();
+						$('.caption').hide();
+						$('.clear-rating').hide();
+					}, 500);
+				}
+			}
+		});
+	}
+
 	function wirteareplyreplySubmit(crr_id){
 		console.log("data.oddddutput");
 		debugger;
@@ -1844,7 +1925,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 								}
 								var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
 								$("#filtername").html(htmlReload);
-								reviewReplyFilter(filterType,crr_replyReviewId);
+								reviewReplyFilter_New(filterType,crr_replyReviewId,crr_id);
 								// window.location.reload();
 								$("#replyreplypopup").trigger('reset');
 								$('#replyreplypopup').formValidation('resetForm', true);
@@ -2024,7 +2105,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
     									{ queue: false, duration: 'fast' }
   											);
 					//	$("#save"+crr_id).fadeIn();
-						$("#review_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
+						$("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
 						$("#crrr_decript").val(data.crr_decript);
 						$("#save"+crr_id).val(crr_id);
 							$("#submit-form").attr('id',   "submit-form"+crr_id);
@@ -2121,6 +2202,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 		});
 	}
 	function reviewReplyFilter(type,crr_reid){
+		  debugger;
 		$("#change_btn_name").html('Cancel');
 		var hid_filter = $("#hid_filter").val();
 		var filterTitle = 'Up Votes';
