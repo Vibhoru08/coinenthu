@@ -404,9 +404,10 @@
 											 element.attributes.class += ' ' + 'pClass';
 
 									 // Add the subsequent id:
-									 if ( !element.attributes.id )
+									 if ( !element.attributes.id ){
 											// element.attributes.id = 'paragraph_';
 							 }
+						 }
 					 }
 			 });
 	 }
