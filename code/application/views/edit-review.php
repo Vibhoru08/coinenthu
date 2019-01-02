@@ -43,7 +43,7 @@
 								<div class = "new_boxes upcoming_box_padding">
 									<form class="form-horizontal mandatory" id="wirte_review" name="wirte_review" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="updateWriteaReview();">
 									<label for="inputEmail3" class="control-label">Rate The Asset</label>
-										<select id="star-rating" name="star-rating" class="form-control" required data-fv-notempty-message="The rating is required">
+										<select id="star-rating" >
 									  	<option value="">Select a rating</option>
 									  	<option value="10">10</option>
 									  	<option value="9">9</option>
@@ -178,7 +178,7 @@
 					</div>
 			</div>
 		</div>
-					
+
 
 		  <script>
 	$(document).ready(function() {

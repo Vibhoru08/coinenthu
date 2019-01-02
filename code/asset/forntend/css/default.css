@@ -2134,6 +2134,19 @@ color:#fff;
 	background:#f9f9f9;
 	border:1px solid #f9f9f9;
 }
+.btn_dislike_new{
+  font-size:12px;
+  	border:none;
+    padding:0 8px 0 0;
+}
+.btn_dislike_new:active{
+  color:green;
+}
+@media(min-width:990px){
+  .btn_dislike_new:hover{
+    background-color: #ffff;
+  }
+}
 .comment_date{
 	position:relative;
 	top:6px;
@@ -2857,6 +2870,24 @@ font-family: NoirPro;
   margin-top: -90.5px;
   color:#ffff;
 }
+@media(max-width:990px){
+  .profile_desx{
+    padding:0;
+    margin-left:0;
+    color:black;
+    margin-top:-10px;
+    text-align:center;
+  }
+.profile_image{
+  padding:0;
+  text-align:center;
+}
+}
+@media(min-width:768px)and (max-width:990px){
+  .smar_b50{
+    margin-bottom:50px!important;
+  }
+}
 .like_upvote{
   padding:20px 0 20px 0;
   margin-top: 90px;
@@ -2871,6 +2902,10 @@ font-family: NoirPro;
 .linear_color_home{
   background-image:url('../images/homebanner.png')
 }
+.crr_decript{
+  border:1px solid black;
+}
+textarea { resize: vertical; }
 .searchhome{
   border-color:transparent!important;
 }
@@ -2903,7 +2938,7 @@ font-family: NoirPro;
 }
 .time_stamp{
   font-size:10px;
-  font-family:NoirPro Light;
+  font-family:NoirPro LightItalic;
 }
 .upcoming_box_padding{
  padding-top:20px;
@@ -2956,6 +2991,19 @@ font-family: NoirPro;
  margin-top:-79.5px;
  height:130px;
 
+}
+@media(max-width:990px){
+  .like_upvote{
+  background-color: #f9f9f9;
+  
+  }
+  .profile-image{
+    background-color: #f9f9f9;
+    padding:15px;
+    height:200px;
+    width:200px;
+    border-radius: 10px;
+  }
 }
 .review_head{
   font-family: NoirPro SemiBold;
@@ -3029,12 +3077,16 @@ margin:0 -15%;
   .asset-image{
     left:0;
   }
+  .mar_l30{
+  margin-left: 0px!important;
+  }
+
   .asset-padding{
-    padding:25px 0 17px 0!important;
-    margin:0 0 10px -15px!important;
+    padding:25px 5px 17px 5px!important;
+    margin:0 0 10px 0!important;
   }
   div.asset-boxes > p{
-    margin:0 0 10px -15px!important;
+    margin:0 0 10px 0!important;
   }
 }
 @media(max-width:768px){
@@ -3097,10 +3149,14 @@ a.left_panel_desc{
  height:100px;
 }
 .reply-image{
- height:50px;
+ height:40px;
+}
+.no_padding_label{
+  padding-top: 0!important;
+  padding-bottom: 0;
 }
 .asset-padding{
- padding:25px 30px 17px 30px;
+ padding:25px 15px 17px 15px;
 
 }
 .like-button-text{

@@ -613,10 +613,10 @@
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
 						<div class="row" id="replypopup_m" style="">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
-									 <div class="col-md-11">
+									 <div class="col-xs-10">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
-											 <label for="inputEmail3" class="col-sm-2 control-label no_padding_label validate_c"><?php
+											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
                 if(isset($companyview['user_profile_info']->u_picture) && $companyview['user_profile_info']->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$companyview['user_profile_info']->u_picture.'?id='.$viewTime;
 		        }else if(isset($companyview['user_profile_info']->u_social_pic) && $companyview['user_profile_info']->u_social_pic!=""){
@@ -626,20 +626,20 @@
 		        }
 		    ?>
 		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
-											 <div class="col-sm-10" >
-												 <textarea class="form-control" rows="2" id="crr_decript<?php echo $review->re_id; ?>" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2(<?php echo $review->re_id; ?>);"></textarea>
+											 <div class="col-xs-10" >
+												 <textarea class="form-control crr_decript" rows="1" id="crr_decript<?php echo $review->re_id; ?>" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2(<?php echo $review->re_id; ?>);"></textarea>
 												 <span id="r_char_cnt<?php echo $review->re_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $review->re_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
 												 <span id="errorNotes<?php echo $review->re_id; ?>" style="color:#a94442;"></span>
 											 </div>
 										 </div>
 									 </div>
-									 <div class="col-md-1">
+									 <div class="col-xs-2 pad_0">
 										 <span id="successmessage<?php echo $review->re_id; ?>" style="color:green"></span>
 										 <span class="vwdTitleError" style="color:#a94442;"></span>
 											 <span id="tp7<?php echo $review->re_id; ?>" style="display:none;">
 											 <svg width='20px' height='20px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#f9f9f9 " fill="none" stroke-width="10" stroke-linecap="round"></circle><circle cx="50" cy="50" r="40" stroke="#00a7af " fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="2s" repeatCount="indefinite" values="200.8 50.19999999999999;1 250;200.8 50.19999999999999"></animate></circle></svg>
 										 </span>
-										 <button type="submit" class="btn btn-primary btn-sm">Save</button>
+										 <button type="submit" class="btn btn-primary btn-custom btn-sm" style="width:100%;">Save</button>
 									 </div>
 									 </form>
 								 </div>
@@ -1688,6 +1688,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 	}
 
 	$(document).ready(function() {
+			debugger;
 		setInterval(get_comdtls, 10000);
 		$('.caption').hide();
 		$('.clear-rating').hide();
@@ -1838,7 +1839,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			type 		: "POST",
 			url			: url,
 			cache       : false,
-			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid},
+			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid,crr_id:crr_id},
 			dataType	: "json",
 			success: function(data){
 				console.log(data.output);
@@ -2124,7 +2125,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
     									{ queue: false, duration: 'fast' }
   											);
 					//	$("#save"+crr_id).fadeIn();
-						$("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
+						$("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><div class="form-group"><textarea class="form-control crr_decript" placeholder="Review" style="min-height:100px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea></div><input type="submit" id="submit-form" class="hidden" /></form>');
 						$("#crrr_decript").val(data.crr_decript);
 						$("#save"+crr_id).val(crr_id);
 							$("#submit-form").attr('id',   "submit-form"+crr_id);
@@ -2132,8 +2133,9 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 						$("#res_decript").attr('id',   "res_decript"+crr_id);
 							$("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
 							$("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
+							debugger;
 						$("#res_decript"+crr_id).val(data.crr_decript);
-						$("#form_decript"+crr_id).formValidation();
+						$(".replypopup").formValidation();
 						$("#res_decript"+crr_id).focus();
 					//	$("#replyreplypopup_modal").modal('show');
 				},0 );
@@ -2244,7 +2246,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 		// $('.box-comments').html('');
 		var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
 		var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
-		$('#repliesDiv_'+crr_reid).html(relaoding);
+	//	$('#repliesDiv_'+crr_reid).html(relaoding);
 		$.ajax({
 			type 		: "POST",
 			url			: url,
@@ -2259,7 +2261,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 				if(data.output=='success'){
 					setTimeout(function(){
 						if(data.resData != ""){
-							$('#repliesDiv_'+crr_reid).html(data.resData);
+							$('#repliesDiv_'+crr_reid).prepend(data.resData);
 							$('#repliesDiv_'+crr_reid).show();
 							$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
 							if(data.repliesCntt == 1)

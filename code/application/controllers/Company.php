@@ -845,7 +845,7 @@
 				foreach ($reply_details as $row){
 					$edited_reply = $row['crr_decript'];
 				}
-				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt,"edited_reply"=>$edited_reply));
+				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt,"edited_reply"=>	$edited_reply ));
 			}
 		}
 		public function reviewsReplies(){

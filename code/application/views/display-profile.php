@@ -1,7 +1,7 @@
 <div class = "content">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color">
-            <div class="row mmar_t40 mmar_b10 mar_t140 mar_b10">
+            <div class="row mmar_t40 mmar_b10 mar_t140 mar_b10 smar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
 						<hr style="width:5%;border:2px solid #ffff">
@@ -16,7 +16,7 @@
         <input type="hidden" id="hid_sessionid" name="hid_sessionid" value="<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){ echo $_SESSION['user_id']; }else{}?>">
         <input type="hidden" id="hid_filter" name="hid_filter" value="1">
         <div class="row">
-	        <div class="text-left col-md-offset-1 col-md-1 pad_l0">
+	        <div class="text-left col-md-offset-1 col-md-1 col-xs-12 profile_image pad_l0">
             <?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -28,12 +28,12 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-2 profile_desx">
+            <div class = "col-md-2 col-xs-12 profile_desx">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
             </div>
           <br>
           <div class="row like_upvote">
-            <div class = "text-center col-md-4">
+            <div class = "text-center col-xs-4">
                 <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
                 <i class="fa fa-commenting" aria-hidden="true"></i>
 				<?php
@@ -45,7 +45,7 @@
                 }
                 ?>
 		   </div>
-            <div class = "text-center col-md-4">
+            <div class = "text-center col-xs-4">
                 <span id = "nor"><?php echo $nore; ?></span>&nbsp;
                 <i class="fa fa-reply" aria-hidden="true"></i>
 				<?php
@@ -57,7 +57,7 @@
                 }
                 ?>
 			</div>
-            <div class = "text-center col-md-4">
+            <div class = "text-center col-xs-4">
                 <?php echo $nou; ?>&nbsp;
                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                 <?php
@@ -202,6 +202,7 @@
 									<p id="replyreview_<?php echo $reply->crr_id; ?>">
 									<?php echo $reply->crr_decript; ?>
 									</p>
+                  <span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" style="display:none;"></span>
                   <span id="r_char_cnt<?php echo $reply->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reply->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
                <div class = "row" style="padding-bottom:5px">
                  <?php
@@ -272,6 +273,40 @@
 							}}
 							?>
             </div>
+            <?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
+						<div class="row" id="replypopup_m" style="">
+									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
+									 <div class="col-xs-10">
+										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
+										 <div class="form-group">
+											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
+                if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
+		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
+		        }else if(isset($companyview['user_profile_info']->u_social_pic) && $companyview['user_profile_info']->u_social_pic!=""){
+		            $imagepath = $companyview['user_profile_info']->u_social_pic;
+		        }else{
+			        $imagepath = base_url().'asset/img/alt.jpg';
+		        }
+		    ?>
+		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
+											 <div class="col-xs-10" >
+												 <textarea class="form-control crr_decript" rows="1" id="crr_decript<?php echo $review->re_id; ?>" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2(<?php echo $review->re_id; ?>);"></textarea>
+												 <span id="r_char_cnt<?php echo $review->re_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $review->re_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
+												 <span id="errorNotes<?php echo $review->re_id; ?>" style="color:#a94442;"></span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="col-xs-2 pad_0">
+										 <span id="successmessage<?php echo $review->re_id; ?>" style="color:green"></span>
+										 <span class="vwdTitleError" style="color:#a94442;"></span>
+											 <span id="tp7<?php echo $review->re_id; ?>" style="display:none;">
+											 <svg width='20px' height='20px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#f9f9f9 " fill="none" stroke-width="10" stroke-linecap="round"></circle><circle cx="50" cy="50" r="40" stroke="#00a7af " fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="2s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="2s" repeatCount="indefinite" values="200.8 50.19999999999999;1 250;200.8 50.19999999999999"></animate></circle></svg>
+										 </span>
+										 <button type="submit" class="btn btn-primary btn-custom btn-sm" style="width:100%;">Save</button>
+                   </div>
+									 </form>
+								 </div>
+								<?php }?>
 						</div>
 					</div>
 					<div class="mar_b80"></div>
@@ -560,6 +595,91 @@ function confirmDeleteActions(){
             }, 1000);
           }
         }
+
+        function reviewReplyFilter_New(type,crr_reid,crr_id){
+      			debugger;
+      		$("#change_btn_name").html('Cancel');
+      		var hid_filter = $("#hid_filter").val();
+      		var filterTitle = 'Up Votes';
+      		if(type =='likes'){
+      			filterTitle = "Up Votes";
+      			$("#hid_filter").val(1);
+      		}else if(type =='dislikes'){
+      			filterTitle = "Down Votes";
+      			$("#hid_filter").val(2);
+      		}else if(type =='oldest'){
+      			filterTitle = "Oldest";
+      			$("#hid_filter").val(3);
+      		}else if(type =='newlist'){
+      			filterTitle = "Newest";
+      			$("#hid_filter").val(4);
+      		}
+      		var htmlReload = filterTitle+'<div class="arrow_down"><span class="caret"></span></div>';
+      	//	$("#filtername").html(htmlReload);
+        if( $("#hid_cmid").val() == undefined){
+          var cm_id   = $("#hid_cmid"+crr_reid).val();
+        }else{
+        var cm_id   = $("#hid_cmid").val();}
+      		// $('.box-comments').html('');
+      		var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
+      		var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+      		//$('#repliesDiv_'+crr_reid).html(relaoding);
+      		$.ajax({
+      			type 		: "POST",
+      			url			: url,
+      			cache       : false,
+      			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid,crr_id:crr_id},
+      			dataType	: "json",
+      			success: function(data){
+      				console.log(data.output);
+      			//	console.log(data.resData);
+      				console.log(data.repliesCntt);
+      					console.log(data.edited_reply);
+      				if(data.output=='success'){
+      					setTimeout(function(){
+      						$("#reply_reply_pop"+crr_id).fadeIn();
+      							$('#r_char_cnt'+crr_id).hide();
+      							$("#save"+crr_id).hide();
+      					//	$("#save"+crr_id).fadeIn();
+      						$("#replyreview_"+crr_id).html(data.edited_reply);
+      					//	$("#crrr_decript").val(data.crr_decript);
+      					//	$("#save"+crr_id).val(crr_id);
+      						//	$("#submit-form").attr('id',   "submit-form"+crr_id);
+      					//	$("#form_decript").attr('id',   "form_decript"+crr_id);
+      					//	$("#res_decript").attr('id',   "res_decript"+crr_id);
+      						//	$("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
+      					//		$("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
+      					//	$("#res_decript"+crr_id).val(data.crr_decript);
+      					//	$("#form_decript"+crr_id).formValidation();
+      				//		$("#res_decript"+crr_id).focus();
+      					//	$("#replyreplypopup_modal").modal('show');
+
+      						if(data.resData != ""){
+      					//		$('#repliesDiv_'+crr_reid).html(data.resData);
+      					//		$('#repliesDiv_'+crr_reid).show();
+      					//		$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
+      							if(data.repliesCntt == 1)
+      							{
+      								$('#repliesText_'+crr_reid).html('Reply');
+      							}else{
+      								$('#repliesText_'+crr_reid).html('Replies');
+      							}
+      							$('#view_replies_id_'+crr_reid).show();
+      						}
+      						else{
+      							$('#repliesDiv_'+crr_reid).html('There are no reviews for this company.');
+      						}
+      						var $input = $('.rating-loading');
+      						$input.rating();
+      						$('.caption').hide();
+      						$('.clear-rating').hide();
+      					}, 500);
+      				}
+      			}
+      		});
+      	}
+
+
         function wirteareplyreplySubmit(crr_id){
           console.log("data.oddddutput");
           debugger;
@@ -585,8 +705,10 @@ function confirmDeleteActions(){
                   $("#tp9").hide();
                   console.log(data.output);
                   if(data.output=='success'){
+                    $("#successMessage_"+crr_id).html('Reply successfully updated').css('color','green');
                     $("#replysuccessmessage").html('Reply successfully updated').css('color','green');
                     setTimeout(function(){
+                      $("#successMessage_"+crr_id).html('');
                       $("#replysuccessmessage").html('');
                       var filterType = 'likes';
                       var hid_filter = $("#hid_filter").val();
@@ -601,7 +723,7 @@ function confirmDeleteActions(){
                       }
                       var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
                       $("#filtername").html(htmlReload);
-                      reviewReplyFilter(filterType,crr_replyReviewId);
+                      reviewReplyFilter_New(filterType,crr_replyReviewId,crr_id);
                       // window.location.reload();
                       $("#replyreplypopup").trigger('reset');
                       $('#replyreplypopup').formValidation('resetForm', true);
@@ -610,6 +732,7 @@ function confirmDeleteActions(){
                     }, 2000);
                   }else if(data.output=='exists')
                   {
+                    $("#successMessage_"+crr_id).html('Reply already exists').css('color','red');
                     $('#replysuccessmessage').html('Reply already exists').css('color','red');
                   }else if(data.output=='fail'){
                     $("#replyreplypopup_modal").modal('hide');
@@ -781,8 +904,8 @@ function confirmDeleteActions(){
                             { queue: false, duration: 'fast' }
                               );
                 //	$("#save"+crr_id).fadeIn();
-                  $("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea><input type="submit" id="submit-form" class="hidden" /></form>');
-                  $("#crrr_decript").val(data.crr_decript);
+                  $("#replyreview_"+crr_id).html('<form onSubmit="wirteareplyreplySubmit();" id="form_decript" class="form-horizontal replypopup" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh"><div class="form-group"><textarea class="form-control crr_decript" placeholder="Review" style="min-height:100px;" required data-fv-notempty-message="The review is required" id="res_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea></div><input type="submit" id="submit-form" class="hidden" /></form>');
+      						$("#crrr_decript").val(data.crr_decript);
                   $("#save"+crr_id).val(crr_id);
                     $("#submit-form").attr('id',   "submit-form"+crr_id);
                   $("#form_decript").attr('id',   "form_decript"+crr_id);
@@ -904,7 +1027,7 @@ function confirmDeleteActions(){
           // $('.box-comments').html('');
           var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
           var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
-          $('#repliesDiv_'+crr_reid).html(relaoding);
+        //  $('#repliesDiv_'+crr_reid).html(relaoding);
           $.ajax({
             type 		: "POST",
             url			: url,
@@ -919,7 +1042,7 @@ function confirmDeleteActions(){
               if(data.output=='success'){
                 setTimeout(function(){
                   if(data.resData != ""){
-                    $('#repliesDiv_'+crr_reid).html(data.resData);
+                    $('#repliesDiv_'+crr_reid).append(data.resData);
                     $('#repliesDiv_'+crr_reid).show();
                     $('#repliesCntt_'+crr_reid).html(data.repliesCntt);
                     if(data.repliesCntt == 1)
