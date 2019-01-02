@@ -1833,6 +1833,33 @@ class Companies_model extends CI_Model
 		$this->db->update('bop_compaines',$data);
 	}
 
+	public function getcompanyidfromreview($re_id){
+		$this->db->select('re_cmid');
+		$this->db->from('bop_company_reviews');
+		$this->db->where('bop_company_reviews.re_id',$re_id);
+		$this->db->where('bop_company_reviews.re_status',1);
+		$query = $this->db->get();
+		return $query->result_array();
+	 
+	}
+    public function fetchreply($crr_id){
+		$this->db->select('crr_decript');
+		$this->db->from('bop_company_review_replies');
+		$this->db->where('bop_company_review_replies.crr_id',$crr_id);
+		$this->db->where('bop_company_review_replies.crr_status',1);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function getcompanyinfobycmid($cm_id){
+		$this->db->select('*');
+        $this->db->from('bop_compaines');
+		$this->db->where('bop_compaines.cm_id',$cm_id);
+		$this->db->where('bop_compaines.cm_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function getcompanyinfobyname($cm_name){
 		$this->db->select('*');
         $this->db->from('bop_compaines');

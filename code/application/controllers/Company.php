@@ -840,6 +840,11 @@
 							   $j++;
 							}
 						}
+				$crr_id = $_POST['crr_id'];
+				$reply_details = $this->Companies_model->fetchreply($crr_id);
+				foreach ($reply_details as $row){
+					$edited_reply = $row['crr_decript'];
+				}		
 				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt));
 			}
 		}
@@ -1145,11 +1150,33 @@
 			}
 		}
 		public function editReview(){
+			$this->load->library('ckeditor');
+			$this->load->library('ckfinder');
+			$this->ckeditor->basePath = base_url().'asset/ckeditor/';
+
+			//Add Ckfinder to Ckeditor
+			$this->ckfinder->SetupCKEditor($this->ckeditor,'../../asset/ckfinder/');
+
 			$data = array();
 			$re_id = $this->uri->segment(2);
+			$cm_id_details = $this->Companies_model->getcompanyidfromreview($re_id);
+			foreach ($cm_id_details as $row){
+				$cm_id = $row['re_cmid'];
+			}
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login', 'refresh');
 			}else{
+				$result = $this->Companies_model->getcompanyinfobycmid($cm_id);
+				if(count($result) > 0){
+					foreach($result as $key=>$details)
+					{
+						$data['cm_id']        = $details->cm_id;
+						$data['cm_ctid']      = $details->cm_ctid;
+						$data['cm_unique_id'] = $details->cm_unique_id;
+						$data['cm_name'] 	  = $cm_name_initial;
+						$data['company_picture'] = $details->cm_picture;
+					}
+				}
 				$results      = $this->Companies_model->editReview($re_id);
 				$data['editReview'] = $results;
 				$this->show('edit-review',$data);
