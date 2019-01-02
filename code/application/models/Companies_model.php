@@ -44,6 +44,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+	public function getLastReplyByUser($review_id,$uid){
+		$this->db->select('*');
+		$this->db->from('bop_company_review_replies');
+		$this->db->join('bop_users', 'bop_users.u_uid = bop_company_review_replies.crr_uid','LEFT');
+		$this->db->where('bop_company_review_replies.crr_reid',$review_id);
+		$this->db->where('bop_company_review_replies.crr_uid',$uid);
+		$this->db->get();
+		return $query;
+	}
+
 	public function userReviews($user_id){
 		$this->db->select('*');
 		$this->db->from('bop_company_reviews');
