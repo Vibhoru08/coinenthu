@@ -762,8 +762,61 @@
 				}else{
 					$uid = "";
 				}
+				$review_id = $_POST['re_id'];
+				$user_id = $this->session->userdata('user_id');
+				$last_reply_details = $this->Companies_model->getLastReplyByUser($review_id,$user_id);
+				$row = $last_reply_details->last_row('array');
+				if($row['u_username'] != ""){
+						$u_username = ucfirst($row['u_username']);
+				} 
+				elseif($row['u_firstname'] != ""){
+						$u_username = ucfirst($row['u_firstname']);
+				}
+				else{
+						$u_username = "Guest User";
+				}
+				$html .='<div class="reply_post" style = "margin-bottom:100px;" >';
+				$html .='<div class="box-comment">';
+				if($row['u_picture']!=""){
+						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
+				}else if($row['u_social_pic']!=""){
+						$html .= '<img class="img-circle img-sm" src="'.$row['u_social_pic'].'" alt="'.$u_username.'">';
+				}else{
+						$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
+				}
+				$html .="<div class='comment-text'>
+				<span class='username'>By ".$u_username."<span class='text-muted pull-right comment_date'><div class='time_stamp'>";
+				$old_date = timeago($row['crr_createdat']);
+				$html .=$old_date."</div></span></span>";
+				$replylikeval    = "'like'";
+				$replyreviewval  = "'replies'";
+				$replydislikeval = "'dislike'";
+				$crr_likes_cnt= 0;
+   				$crr_dislike_cnt = 0;
+				$stringReply = strip_tags($row['crr_decript']);
+				if (strlen($stringReply) > 150) {
+
+					$stringCut = substr($stringReply, 0, 150);
+					$stringReply = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readReplyMoreSpan('.$row['crr_id'].');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
+				}
+				$html .= '<span id="replyspanLess_'.$row['crr_id'].'" style="overflow-wrap: break-word;">'.$stringReply.'</span>
+				<span id="replyexpandSpan_'.$row['crr_id'].'" style="display:none;overflow-wrap: break-word;" >'.nl2br($row['crr_decript']).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$row['crr_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a></span>';
+				//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
+				$html.=' <div class="mar_t15">
+			  <div class="pull-left">';
+				
+				if($uid!=""){
+					if($uid == $row['crr_uid']){
+							$html.='<button id="reply_reply_pop" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike">Edit Reply</button>';
+					}
+				}
+				$html.='</div>
+				</div>
+			   </div>
+  			   </div> </div>';
+			
 				$repliesCntt = sizeof($replies);
-				if(sizeof($replies)>0){ 
+			/*	if(sizeof($replies)>0){ 
 					$j=1;
 							foreach($replies as $crr=>$reviewReplay){
 								if($reviewReplay->u_username!=""){
@@ -783,7 +836,7 @@
 									$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
 								}
 								$html .="<div class='comment-text'>
-									  <span class='username'> ".$u_username." <span class='text-muted pull-right comment_date'>";
+									  <span class='username'> ".$row['u_username']." <span class='text-muted pull-right comment_date'>";
 								$old_date = Date_create($reviewReplay->crr_createdat);
 								$new_date = Date_format($old_date, "d/m/Y");
 
@@ -839,11 +892,11 @@
 							   </div> </div>';
 							   $j++;
 							}
-						}
+						}*/
 				$crr_id = $_POST['crr_id'];
 				$reply_details = $this->Companies_model->fetchreply($crr_id);
-				foreach ($reply_details as $row){
-					$edited_reply = $row['crr_decript'];
+				foreach ($reply_details as $row2){
+					$edited_reply = $row2['crr_decript'];
 				}
 				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt,"edited_reply"=>	$edited_reply ));
 			}
