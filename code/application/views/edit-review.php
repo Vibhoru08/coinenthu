@@ -1,160 +1,212 @@
 <div class="content-wrapper">
-	<div  class="bread_crumb">
-		<div class="container-fluid">
-			<section class="content-header">
-					<h1 class="text-right m_hide">
-					  &nbsp;
-					</h1>
-					<ol class="breadcrumb">
-					  <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
-					  <?php if(isset($editReview->cm_ctid) && $editReview->cm_ctid==2) { ?>
-						<li class=""><a href="<?php echo base_url();?>ico-tracker">ICO Tracker</a></li>
-					  <?php }else{ ?>
-						<li class=""><a href="<?php echo base_url();?>digital-assets">Digital Assets</a></li>
-					  <?php } ?>
-					   <?php if(isset($editReview->cm_name) && $editReview->cm_name != "") { ?>
-						<li class=""><a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(' ','_',$editReview->cm_name); ?>"><?php echo $editReview->cm_name; ?></a></li>
-					  <?php }?>
-					  <li class="active">Edit a review</li>
-					</ol>
-			</section>
+	<div class="container-fluid banner_margin linear_color">
+				<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
+						EDIT REVIEW
+						<hr style="width:5%;border:1px solid #ffff">
+					</div>
+				</div>
 		</div>
-		</div>
-        <div class="container">
-			<section class="content mar_b20 mar_t50">
-			<div class="row">
-					<div class="col-md-9">
-						<div class="box mar_b50 box_shadow overflow_hidden">
-							<div class="box-header with-border header_bg">
-								<h3 style="display: inline-block;font-size: 18px;line-height: 1;
-						margin: 0;position: relative;top: 1px;">Edit a review</h3>
-							</div>
-							<div class="box-body">
-								<form class="form-horizontal mandatory" id="wirte_review" name="wirte_review" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="updateWriteaReview();">
-								  <div class="form-group">
-									<label for="inputEmail3" class="col-sm-3 control-label">Rating</label>
-									<div class="col-sm-7">
-									<select id="star-rating">
-									  <option value="">Select a rating</option>
-									  <option value="10">10</option>
-									  <option value="9">9</option>
-									  <option value="8">8</option>
-									  <option value="7">7</option>
-									  <option value="6">6</option>
-									  <option value="5">5</option>
-									  <option value="4">4</option>
-									  <option value="3">3</option>
-									  <option value="2">2</option>
-									  <option value="1">1</option>
-									</select>
-									</div>
-									<div class="col-sm-1">
-									   <?php
+		<?php if($company_picture !=""){
+								//print_r($companyview['cm_ctid']);exit;
+								if($cm_ctid == 2){ ?>
+									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.''; ?>" class="img-rounded review-asset-image"/>
+							<?php }else if($cm_ctid == 1){
+							if($company_picture !="" && substr( $company_picture, 0, 4 ) === "digi"){ ?>
+									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+								<?php }else if(substr( $company_picture, 0, 3 ) === "ico"){?>
+									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+								<?php } else if($company_picture !=""){
+					$srcc= base_url().'asset/img/companies/digitalasset/'.$company_picture;
+									if (@getimagesize($srcc)){
+								?>
+									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+								<?php }else{ ?>
+										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+									<?php }?>
+								<?php } else { ?>
+									<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+								<?php } ?>
+
+							<?php }	}
+							else { ?>
+							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
+							<?php } ?>
+							<div class = "container-fluid mar_t50">
+			<div class = "row">
+					<div class = "col-md-4 col-md-offset-1 mar_b10 text-left review_head">
+								<span><h3>Edit Your review!</h3></span>
+								<hr align="left" style="width:10%;border:4px solid black;">
+					</div>
+					<div class = "row">
+						<div class = "col-md-7 col-md-offset-1">
+								<div class = "new_boxes upcoming_box_padding">
+									<form class="form-horizontal mandatory" id="wirte_review" name="wirte_review" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="updateWriteaReview();">
+									<label for="inputEmail3" class="control-label">Rate The Asset</label>
+										<select id="star-rating" name="star-rating" class="form-control" required data-fv-notempty-message="The rating is required">
+									  	<option value="">Select a rating</option>
+									  	<option value="10">10</option>
+									  	<option value="9">9</option>
+									  	<option value="8">8</option>
+									  	<option value="7">7</option>
+									  	<option value="6">6</option>
+									  	<option value="5">5</option>
+									  	<option value="4">4</option>
+									  	<option value="3">3</option>
+									  	<option value="2">2</option>
+									  	<option value="1">1</option>
+										</select>
+										<?php
 										if(isset($editReview->re_rating) && $editReview->re_rating != "") {
 											$re_rating = 2*($editReview->re_rating);
 										}else{
 											$re_rating = 0;
 										}
 									   ?>
-									  <input type="text" style="border:0;margin-top: 6px;display:none" name="re_rating" id="re_rating" value="<?php echo $re_rating; ?>">
-									</div>
-								  </div>
-									<input type="hidden" name="company_name" id="company_name" value="<?php echo $editReview->cm_name; ?>">
+										<input type="text" style="border:0;margin-top: 6px;display:none" name="re_rating" id="re_rating" value="<?php echo $re_rating; ?>">
+										<input type="hidden" name="company_name" id="company_name" value="<?php echo $editReview->cm_name; ?>">
 								  <input type="hidden" name="re_id" id="re_id" value="<?php echo $editReview->re_id; ?>">
 								  <input type="hidden" name="re_cmid" id="re_cmid" value="<?php echo $editReview->re_cmid; ?>">
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $editReview->cm_unique_id; ?>">
-								  <div class="form-group">
-									<label for="inputPassword3" class="col-sm-3 control-label">Review  <span class="mstar">*</span> </label>
-									<div class="col-sm-6">
-									  <textarea class="form-control" placeholder="Review" style="min-height:270px;" id="re_decript" name="re_decript" required data-fv-notempty-message="The review is required" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo @strip_tags(str_replace(' ','&nbsp;',$editReview->re_decript),'<br />'); ?></textarea>
-									  <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
-									</div>
-								  </div>
-								  <div class="form-group">
-								<label for="inputEmail3" class="col-sm-3 control-label">Agree <span class="mstar">*</span></label>
-									<div class="col-sm-6">
-									  <div class="checkbox">
-										<label>
-											<?php
+										<label for="inputPassword3" class="control-label">Add your review</label>
+										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo @strip_tags(str_replace(' ','&nbsp;',$editReview->re_decript),'<br />'); ?></textarea>
+									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
+									 <div class = "mar_t30" style= "border:1px solid black;border-radius:10px;padding:10px 10px 10px 10px;">
+									 <label>
+									 <?php
 												if($editReview->re_agree==1){
 													$checked = "checked";
 												}else{
 													$checked = "";
 												}
 											?>
-										  <input <?php echo $checked; ?> required data-fv-notempty-message="Please agree to our terms" type="checkbox" id="agree_check" name="agree_check"> Please do not use derogatory terminology. Try to back your facts with relevant reference links. This is not a place to spread fake news. We are on a mission to promote block chain technology. We hope that you will support us. Refer <a href="#">our comments policy</a>
+										  Please do not use derogatory terminology. Try to back your facts with relevant reference links. This is not a place to spread fake news.We hope that you will support us. Please
+										  refer <a href="<?php echo base_url();?>comments-policy">our comments policy</a><br/>
+											<span style = "float:right;font-family:NoirPro Semibold;font-weight:600;">I AGREE&nbsp;&nbsp;<input <?php echo $checked; ?> required data-fv-notempty-message="Please agree to our terms" type="checkbox" id="agree_check" name="agree_check"></span>
 										</label>
-									  </div>
 									</div>
-								</div>
-								  <div class="form-group text-right">
-									<div class="col-sm-offset-3 col-sm-6">
 									<span id="loadSuccess"  style="float:left;display:none">Updating...</span>
-									  <a type="button" class="btn btn-default" onClick="redirectUrlMethod();">CANCEL</a>
-									  <button type="submit" class="btn btn-danger">UPDATE</button>
-									</div>
-								  </div>
+									<a type="button" class="btn btn-primary pull-right mar_t30 mar_b20" onClick="redirectUrlMethod();">CANCEL</a>
+							    <button type="submit" class="btn btn-primary pull-right mar_r10 mar_t30 mar_b20">UPDATE</button>
 								</form>
+								</div>
+
+						</div>
+						<div class = "col-md-3">
+						<div class="new_boxes upcoming_box_padding">
+					<div class = "text-center">
+						<h5>UPCOMING EVENTS</h5>
+					</div>
+					<div>
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+						<ol class="carousel-indicators">
+						<?php
+						if(count($digitalAssetsImages) > 0)
+						{
+							foreach($digitalAssetsImages as $key=>$value)
+								{
+									if($key == 0)
+									{
+										$active = 'active';
+									}else{
+										$active = '';
+									}
+									?>
+								<li data-target="#carousel-example-generic" data-slide-to="<?php echo $key; ?>" class="<?php echo $active; ?>"></li>
+								<?php
+								}
+						}else{?>
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<?php
+						}
+
+						?>
+
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<?php
+							if(count($digitalAssetsImages) > 0){
+								foreach($digitalAssetsImages as $key=>$value)
+								{
+									$active ="";
+									if($key == 0){
+										$active = "active";
+									}
+							?>
+							<div class="item <?php echo $active; ?>">
+								<div class="text-center">
+								<?php
+									$sb_link = "";
+									$sb_link = $value->sb_link;
+									if (strpos($sb_link, 'http') !== false) {
+										$sb_linkUrl = $sb_link;
+									}else{
+										$sb_linkUrl = '//'.$sb_link;
+									}
+								?>
+							  <a href="<?php echo $sb_linkUrl; ?>" target="_blank"><img src="<?php echo base_url();?>asset/img/banners/<?php echo $value->sb_imagename; ?>" style="width:100%" class="img-responce"></a>
+							  </div>
 							</div>
+							<?php }
+							}else{	?>
+							<div class="item active">
+								<div class="text-center">
+									<a href="#" target="_blank"><img src="<?php echo base_url();?>images/architecture.jpg" style="width:100%" class="img-responce"></a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="text-center">
+									<a href="#" target="_blank"><img src="<?php echo base_url();?>images/bannerrrrjpg.jpg" style="width:100%" class="img-responce"></a>
+								</div>
+							</div>
+							<?php }?>
+						</div>
+						 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>-->
+					  </a>
+					  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>-->
+					  </a>
 						</div>
 					</div>
-					<div class="col-md-3">
-					<div class="box overflow_hidden">
-						<div class="box-header with-border header_bg">
-							<h3 class="box-title">Upcoming Events</h3>
-						</div>
-						<div class="box-body no-padding">
-							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-						  <!-- Indicators -->
-							<ol class="carousel-indicators">
-								<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner" role="listbox">
-								<div class="item active">
-									<div class="text-center">
-								  <img src="<?php echo base_url()?>images/sm_slide1.png" class="img-responsive">
-								  </div>
-								</div>
-								<div class="item">
-									<div class="text-center">
-								  <img src="<?php echo base_url()?>images/sm_slide2.png" class="img-responsive">
-								</div>
-								</div>
-								<div class="item">
-									<div class="text-center">
-								  <img src="<?php echo base_url()?>images/sm_slide3.png" class="img-responsive">
-								</div>
-								</div>
-							</div>
-							 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						  </a>
-						  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						  </a>
-							</div>
+				</div>
 						</div>
 					</div>
-					<!--<div class="box overflow_hidden">
-						<div class="box-header with-border header_bg">
-							<h3 class="box-title">Live Tickers  </h3>
-						</div>
-						<div class="box-body">
-							<p></p>
-						</div>
-					</div>-->
-				</div>
-				</div>
 			</div>
-			</section>
-        </div>
-    </div>
-<script>
+		</div>
+					
+
+		  <script>
 	$(document).ready(function() {
+		CKEDITOR.replace('re_decript', {
+			 on: {
+				 instanceReady: function() {
+			 this.dataProcessor.htmlFilter.addRules({
+					 elements: {
+							 p: function( element ) {
+									 // If there's no class, assing the custom one:
+									 if ( !element.attributes.class )
+											 element.attributes.class = 'pClass';
+
+									 // It there's some other class, append the custom one:
+									 else if ( !element.attributes.class.match( pClassRegexp ) )
+											 element.attributes.class += ' ' + 'pClass';
+
+									 // Add the subsequent id:
+									 if ( !element.attributes.id ){
+											// element.attributes.id = 'paragraph_';
+							 }
+						 }
+					 }
+			 });
+	 }
+}
+});
+
 		var ratingVall = $('#re_rating').val();
 		var starSelectedClas = (parseInt(ratingVall)*parseInt("10"));
 		$('.gl-star-rating-stars').addClass('s'+starSelectedClas);
@@ -212,7 +264,8 @@
 			var re_agree = 0;
 			var re_cmid      = $('#re_cmid').val();
 			var re_rating    = $('#re_rating').val();
-			var re_decript   = $('#re_decript').val();
+			var re_decript   = CKEDITOR.instances['re_decript'].getData();
+			console.log(re_decript);
 			var cm_unique_id = $('#cm_unique_id').val();
 			var re_id = $('#re_id').val();
 			var cm_name = $('#company_name').val();
