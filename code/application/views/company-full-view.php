@@ -66,7 +66,7 @@
 </div>-->
     <div class = "container-fluid mar_b400 mar_tn10">
 		<div class ="row">
-			<div class="col-md-3 col-md-offset-1 asset-boxes text-left">
+			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left">
 				<div class="text-center">
 					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i></div>
 						<ul class="social_share social-network social-circle sharing_img sharing_img_new">
@@ -454,7 +454,7 @@
 							</ul>
 						</div>
 			</div>
-			<div class = "col-md-7 mar_l30">
+			<div class = "col-md-7 mar_l30 col-xs-12">
 				<div class= "row asset-boxes asset-padding text-justify">
 				<p><?php echo ucfirst($companyview['company_desc']); ?></p>
 				</div>
@@ -503,7 +503,7 @@
 								}
 					?>
 					<div class="row border_bottom asset-padding mar_0" id="review_<?php echo $review->re_id; ?>">
-					<div class = "col-md-2">
+					<div class = "col-md-2 col-xs-12">
 						<?php if($review->u_picture!=""){ ?>
 						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 						<?php }else if($review->u_social_pic!=""){ ?>
@@ -512,7 +512,7 @@
 						<img class="img-circle review-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 						<?php } ?>
 					</div>
-					<div class = "col-md-9">
+					<div class = "col-md-10 col-xs-12">
 						<div class = "row" style="padding-left:30px;padding-top:15px;">
 							<span class="pull-right">
 									<?php
@@ -562,37 +562,40 @@
 							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
+							<div class="col-xs-8 pad_0">
 							<?php
 							if(isset($_SESSION['user_id']))
 							{
 								if($uid == $review->re_uid){
 							?>
-							<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
 							<?php } else { ?>
-								<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
-							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
-							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
+								<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
 							<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
 							?>
 							<?php if($reportedStatus==1){ ?>
-							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
 							<?php }else{ ?>
-							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php } ?>
 							<?php }}else{ ?>
-							<button id="reply_dislike_pop" onClick="replyMessage('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
-							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
-							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
+							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
 							<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
 							?>
 							<?php if($reportedStatus==1){ ?>
-							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','alreadyU');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class="report-button-text">Reported</span></button></span>
 							<?php }else{ ?>
-							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
+							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
-							<span class="pull-right" style="font-size:12px;color:#e43d78;margin-top:7.5px;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
+						</div>
+						<div class="col-xs-4 pad_0">
+							<span class="pull-right" style="font-size:12px;color:#e43d78;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
 								echo " Reply . ";
 							}else{
 								echo " Replies . ";
@@ -605,6 +608,7 @@
 							}else{
 								echo " Dislikes";
 							} ?></span>
+						</div>
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
 						<div class="row" id="replypopup_m" style="">
@@ -726,6 +730,7 @@
 									<span id="replyexpandSpan_<?php echo $reviewReplay->crr_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo nl2br($review->re_decript).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$reviewReplay->crr_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?>
 								    </span>
 								</div>
+								<span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" ></span>
 									 <span id="r_char_cnt<?php echo $reviewReplay->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reviewReplay->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
 								<div class = "row" style="padding-bottom:5px">
 									<?php
@@ -1837,16 +1842,16 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			dataType	: "json",
 			success: function(data){
 				console.log(data.output);
-				console.log(data.resData);
+			//	console.log(data.resData);
 				console.log(data.repliesCntt);
-
+					console.log(data.edited_reply);
 				if(data.output=='success'){
 					setTimeout(function(){
 						$("#reply_reply_pop"+crr_id).fadeIn();
-
+							$('#r_char_cnt'+crr_id).hide();
 							$("#save"+crr_id).hide();
 					//	$("#save"+crr_id).fadeIn();
-						$("#replyreview_"+crr_id).html('<p>this text</p>');
+						$("#replyreview_"+crr_id).html(data.edited_reply);
 					//	$("#crrr_decript").val(data.crr_decript);
 					//	$("#save"+crr_id).val(crr_id);
 						//	$("#submit-form").attr('id',   "submit-form"+crr_id);
@@ -1909,8 +1914,11 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 						$("#tp9").hide();
 						console.log(data.output);
 						if(data.output=='success'){
+							debugger;
+							$("#successMessage_"+crr_id).html('Reply successfully updated').css('color','green');
 							$("#replysuccessmessage").html('Reply successfully updated').css('color','green');
 							setTimeout(function(){
+								$("#successMessage_"+crr_id).html('');
 								$("#replysuccessmessage").html('');
 								var filterType = 'likes';
 								var hid_filter = $("#hid_filter").val();
@@ -1934,6 +1942,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 							}, 2000);
 						}else if(data.output=='exists')
 						{
+							$("#successMessage_"+crr_id).html('Reply already exists').css('color','red');
 							$('#replysuccessmessage').html('Reply already exists').css('color','red');
 						}else if(data.output=='fail'){
 							$("#replyreplypopup_modal").modal('hide');
@@ -2038,6 +2047,16 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}, 1000);
 		}
 	}
+	function reply_Message(id){
+			$("#crr_decript"+id).focus();
+
+				$("#crr_decript"+id).css({"background-color":"#8e44ad"})
+				.animate({
+					backgroundColor:"#ffff",
+				},400,function() {
+				});
+	}
+
 	function replyMessage(re_id){
 		$('#replypopup'+re_id).formValidation();
 		console.log($('#replypopup'+re_id).formValidation());

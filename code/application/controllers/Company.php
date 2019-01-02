@@ -84,7 +84,7 @@
 					}
 					else{
 						echo json_encode(array('status'=>TRUE,'output'=>'fail'));
-					}	
+					}
 				}
 			}
 
@@ -844,8 +844,8 @@
 				$reply_details = $this->Companies_model->fetchreply($crr_id);
 				foreach ($reply_details as $row){
 					$edited_reply = $row['crr_decript'];
-				}		
-				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt));
+				}
+				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt,"edited_reply"=>$edited_reply));
 			}
 		}
 		public function reviewsReplies(){
