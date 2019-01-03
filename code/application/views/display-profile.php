@@ -71,7 +71,7 @@
               </div>
             </div>
         </div>
-        <div class = "row mar_t110">
+        <div class = "row mar_t70">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">
@@ -239,16 +239,7 @@
                  <?php }else{ ?>
                  <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
                  <?php }} ?>
-                 <span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
-                 <?php if ($crr_likes_cnt == 1){
-                   echo " Like";
-                 } else {
-                   echo " Likes";
-                 }?>
-                 </span>
-               </div>
-									<p>
-									<?php
+                 <?php
 									if($reply->crr_likes_cnt!="" && $reply->crr_likes_cnt!=0){
 												$crr_likes_cnt = $reply->crr_likes_cnt;
 											}else{
@@ -260,7 +251,16 @@
 												$crr_dislike_cnt = 0;
 											}
 									?>
-									<!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                 <span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
+                 <?php if ($crr_likes_cnt == 1){
+                   echo " Like";
+                 } else {
+                   echo " Likes";
+                 }?>
+                 </span>
+               </div>
+									<p>
+										<!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
 										<span style="float:right;font-size:13px;">--><?php
 											if($reply->crr_uid == $userinfo->u_uid){
 												echo "Delete";
@@ -311,8 +311,22 @@
 					</div>
 					<div class="mar_b80"></div>
 					<?php
-					}}
+					}}else{
 					?>
+          <div class = "pad_l25 pad_t30">
+          <div class = "row">
+          <span><h2>You have not written<br> any reviews yet.</h2></span>
+          <hr align="left" style="width:10%;border:4px solid black;">
+          </div>
+          <div class = "row">
+          <span>Read about <strong>DIGITAL ASSETS</strong>,<br>share your experience and help others make the right decision while investing.</span>
+          </div>
+          <div class = "row mar_t20">
+          <a href="<?php echo base_url().'digital-assets';?>" class="btn btn-primary" role="button">Digital Assets</a>
+          <a href="<?php echo base_url().'ico-tracker';?>" class="btn btn-primary" role="button">ICOs</a>
+          </div>
+          </div>  
+          <?php } ?>
 				</div>
 				<div class = "col-md-3">
                 <div class="new_boxes upcoming_box_padding">

@@ -550,9 +550,11 @@
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
 						<?php
-							$string = strip_tags($review->re_decript);
-							if (strlen($string) > 150) {
-
+						    if(strlen($review->re_decript) < 150){
+								$string = $review->re_decript;
+							}
+							else{
+								$string = strip_tags($review->re_decript);
 								$stringCut = substr($string, 0, 150);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$review->re_id.');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
 							}
@@ -785,11 +787,21 @@
 					</div>
 
 					<?php }}else{ ?>
-					<div>
+					<div class ="pad_l15 pad_t10 pad_b10">
 						There are no reviews available.
 					</div>
 					<?php } ?>
 				</div>
+				<?php
+					if(isset($companyview['links']) && $companyview['links'] != ""){ ?>
+					<nav aria-label="Page navigation example" style="text-align:center;margin-top:20px;" id="fullviewPagy">
+
+						<?php echo $companyview['links'];?>
+
+					</nav>
+					<?php
+					 }
+					 ?>
  			</div>
 		</div>
 	</div>
@@ -1622,16 +1634,6 @@
 					<span>There are no reviews for this company.</span>
 					<?php } ?>
 					</div>
-					<?php
-					if(isset($companyview['links']) && $companyview['links'] != ""){ ?>
-					<nav aria-label="Page navigation example" style="text-align:center" id="fullviewPagy">
-
-						<?php echo $companyview['links'];?>
-
-					</nav>
-					<?php
-					 }
-					 ?>
 					</div>
 				</div>
 			</div>
@@ -2010,7 +2012,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 								var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
 								$("#filtername").html(htmlReload);
 								//reviewFilter(filterType);
-								reviewReplyFilter(filterType,crr_reid);
+								reviewReplyFilter(filterType,crr_reid,re_id);
 								// window.location.reload();
 								$("#replypopup"+re_id).trigger('reset');
 								$('#replypopup'+re_id).formValidation('resetForm', true);
@@ -2222,7 +2224,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			}
 		});
 	}
-	function reviewReplyFilter(type,crr_reid){
+	function reviewReplyFilter(type,crr_reid,re_id){
 		  debugger;
 		$("#change_btn_name").html('Cancel');
 		var hid_filter = $("#hid_filter").val();
@@ -2251,7 +2253,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			type 		: "POST",
 			url			: url,
 			cache       : false,
-			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid},
+			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid,re_id:re_id},
 			dataType	: "json",
 			success: function(data){
 				console.log(data.output);

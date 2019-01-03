@@ -1378,6 +1378,9 @@ a.ui-button:active,
 .mar_t110{
   margin-top:110px;
 }
+.pad_b10{
+  padding-bottom:10px;	
+}
 .mar_t140{
   margin-top:140px;
 }
@@ -3237,6 +3240,9 @@ a.left_panel_desc{
 }
 .pad_l25{
   padding-left: 25px;
+}
+.pad_l15{
+  padding-left:15px;		
 }
 @media(min-width:768px) and (max-width:990px){
   .ss_width{
