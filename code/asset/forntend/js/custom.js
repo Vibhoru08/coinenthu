@@ -160,11 +160,11 @@ else {
 	$(".p_hover").hover(
 			function() {
 					$('.ul_left_m').show();
-					$(".nav_user").html('<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret-up"></span>');
+					$(".caret_change").html('<span class="caret-up"></span>');
 			},
 			function() {
 					$('.ul_left_m').hide();
-					$(".nav_user").html('<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret "></span>');
+					$(".caret_change").html('<span class="caret "></span>');
 			}
 	);
 	$(".p_hover").bind('click', function(){
