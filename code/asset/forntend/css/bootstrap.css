@@ -6676,6 +6676,15 @@ button.close {
   text-align: center;
   list-style: none;
 }
+.indicator-location{
+  bottom:-40px!important;
+}
+.indicator-location li{
+  border: 1px solid#8e44ad!important;
+}
+.indicator-location .active{
+ background-color: #8e44ad!important;
+}
 .carousel-indicators li {
   display: inline-block;
   width: 10px;

@@ -299,11 +299,16 @@ function changePassword() {
     });
 }
 
-function filterCompanies(type,pagemode) {
+function filterCompanies(type,pagemode,limit) {
+	debugger;
 	localStorage.setItem('type',type);
 	localStorage.setItem('page_name',pagemode);
 	$("#offsetpage").val(1);
+	if(limit!=null){
+		$("#limitpage").val(limit);
+	}else{
     $("#limitpage").val(6);
+	}
     if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
         var filterTitle = 'Most reviewed';
         $("#filter_id").val(1);
@@ -312,7 +317,7 @@ function filterCompanies(type,pagemode) {
         $("#filter_id").val(6);
 
     }
-    if (type == 'rating') {       
+    if (type == 'rating') {
 	    filterTitle = "Highest rating";
     } else if (type == 'viewed') {
 		$("#filter_id").val(2);
@@ -371,7 +376,11 @@ function filterCompanies(type,pagemode) {
             console.log(data.output);
             if (data.output == 'success') {
                 setTimeout(function() {
+									if($("#home_no_display").val()==3){
+										  $(".company_list").fadeOut();
+									}else{
                     $(".company_list").html(data.resData);
+									}
                     $('#loadingHash1').show();
                     if (data.cnt > 6) {
                         $('#loadingHash1').show();
@@ -409,21 +418,21 @@ function sreachterm() {
         var limitpage = $("#limitpage").val();
         var pageMode = $("#pageMode").val();
         var filterId = $("#filter_id").val();
-		if(filterId == '1'){       
+		if(filterId == '1'){
 			var type = "rating";
-		}else if(filterId == '2'){   
+		}else if(filterId == '2'){
 			var type = "viewed";
-		}else if(filterId == '3'){   
+		}else if(filterId == '3'){
 			var type = "mch";
-		}else if(filterId == '4'){   
+		}else if(filterId == '4'){
 			var type = "mcl";
-		}else if(filterId == '5'){   
+		}else if(filterId == '5'){
 			var type = "sdtA";
-		}else if(filterId == '6'){   
+		}else if(filterId == '6'){
 			var type = "sdtD";
-		}else if(filterId == '7'){   
+		}else if(filterId == '7'){
 			var type = "edtA";
-		}else if(filterId == '8'){   
+		}else if(filterId == '8'){
 			var type = "edtD";
 		}
 		if(pageMode=='digital'){
@@ -437,7 +446,7 @@ function sreachterm() {
 		}
 		localStorage.setItem('type',type);
 		localStorage.setItem('page_name',pagemodebtn);
-		
+
         $('.company_list').html('');
         var url = baseUrl + 'Company/loadmoreCompanies?expireTime=' + time;
         var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
@@ -610,20 +619,20 @@ function subFeedback() {
 			url:  baseUrl+'/Careers/addEmails?expireTime='+time,
 			data:{email:email},
 			dataType	:	'json',
-			success: function(data){	
+			success: function(data){
 				console.log(data.output);
 				if(data.output=='success'){
 				$("#successMsg").html('Email added sucessfully.');
-				setTimeout(function(){ 
-					
+				setTimeout(function(){
+
 						window.location=baseUrl;
-					
-				}, 1000);							
-			}					
+
+				}, 1000);
 			}
-		});			
+			}
+		});
 		e.preventDefault();
-	});		
+	});
 } */
 function subscriber() {
     $('#successMsg').html('');

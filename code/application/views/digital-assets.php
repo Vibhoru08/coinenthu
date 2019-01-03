@@ -263,7 +263,7 @@ $viewTime = date('Ymd') .'_'. date('His');
     });
 
 	$(document).ready(function() {
-
+debugger;
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
 		if(filterType!=""){
