@@ -301,8 +301,8 @@
 											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
-		        }else if(isset($companyview['user_profile_info']->u_social_pic) && $companyview['user_profile_info']->u_social_pic!=""){
-		            $imagepath = $companyview['user_profile_info']->u_social_pic;
+		        }else if(isset($userinfo->u_social_pic) && $userinfo->u_social_pic!=""){
+		            $imagepath = $userinfo->u_social_pic;
 		        }else{
 			        $imagepath = base_url().'asset/img/alt.jpg';
 		        }

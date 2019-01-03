@@ -143,7 +143,7 @@ $img =  base_url().'images/logo.png';
 
 				<!--<li class="dropdown mpull_right dropdown_hover" id="change_u">-->
                   <!--<a href="#" class="dropdown-toggle active_bg mobile_pad" data-toggle="dropdown" aria-expanded="true">-->
-				   <?php/*
+				   <?php
 					$styleWidth1 ="";
 					if(isset($_SESSION['profileImg']) && $_SESSION['profileImg']!=""){
 						if($_SESSION['profileImg'] != "" )
@@ -191,7 +191,7 @@ $img =  base_url().'images/logo.png';
 
 						}
 
-					} */?>
+					} ?>
 				  <!--<span class="<?php/* echo $user_bg_ico; */?>">-->
 
 
@@ -210,7 +210,7 @@ $img =  base_url().'images/logo.png';
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 					<div class="dropdown mar_t10 float_right mar_r30 p_hover">
 					<button type="button" class="dropdown-toggle nav_user" data-toggle="dropdown" style="position:relative;">
-						<i class="far fa-user user_icon"></i>&nbsp;&nbsp;<span class="caret"></span></button>
+						<img src = "<?php echo $imagePath; ?>" class = "img-circle reply-image">&nbsp;&nbsp;<span class="caret"></span></button>
 
 
 					<ul class= "dropdown-menu ul_left_m">
