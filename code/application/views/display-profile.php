@@ -6,7 +6,10 @@
 						MY PROFILE
 						<hr style="width:5%;border:2px solid #ffff">
                         <div class = "mar_t50 text-left row">
-                            <div class = "col-md-2 mar_l120">
+                          <div class = "col-md-9 col-xs-12 mar_l40 profile_desx m_hide pad_0">
+                              <h2 class="mar_0">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
+                          </div>
+                            <div class = "col-md-5 mar_l40 pad_0 m_hide">
                             <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
                             </div>
                         </div>
@@ -28,8 +31,11 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-2 col-xs-12 profile_desx pad_0">
+            <div class = "col-md-2 col-xs-12 profile_desx pad_0 big_hide">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
+            </div>
+            <div class = "col-md-5 col-xs-12 profile_desx pad_0 big_hide">
+            <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
             </div>
           <br>
         </div>
@@ -71,7 +77,7 @@
               ?>
             </div>
           </div>
-        <div class = "row">
+        <div class = "row mar_t80">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">
