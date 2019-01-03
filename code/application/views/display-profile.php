@@ -16,7 +16,7 @@
         <input type="hidden" id="hid_sessionid" name="hid_sessionid" value="<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){ echo $_SESSION['user_id']; }else{}?>">
         <input type="hidden" id="hid_filter" name="hid_filter" value="1">
         <div class="row">
-	        <div class="text-left col-md-offset-1 col-md-1 col-xs-12 profile_image pad_l0">
+	        <div class="text-left col-md-offset-1 col-md-2 col-xs-12 profile_image pad_0">
             <?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -28,50 +28,50 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-2 col-xs-12 profile_desx">
+            <div class = "col-md-2 col-xs-12 profile_desx pad_0">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
             </div>
           <br>
-          <div class="row like_upvote">
-            <div class = "text-center col-xs-4">
-                <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
-                <i class="fa fa-commenting" aria-hidden="true"></i>
-				<?php
-                if ($nor == 1){
-                    echo "Review";
-                }
-                else{
-                    echo "Reviews";
-                }
-                ?>
-		   </div>
-            <div class = "text-center col-xs-4">
-                <span id = "nor"><?php echo $nore; ?></span>&nbsp;
-                <i class="fa fa-reply" aria-hidden="true"></i>
-				<?php
-                if ($nore == 1){
-                    echo "Reply";
-                }
-                else{
-                    echo "Replies";
-                }
-                ?>
-			</div>
-            <div class = "text-center col-xs-4">
-                <?php echo $nou; ?>&nbsp;
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                <?php
-                if ($nou == 1){
-                    echo "Upvote";
-                }
-                else{
-                    echo "Upvotes";
-                }
-                ?>
-              </div>
-            </div>
         </div>
-        <div class = "row mar_t70">
+        <div class="row like_upvote">
+          <div class = "text-center col-xs-4">
+              <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
+              <i class="fa fa-commenting" aria-hidden="true"></i>
+      <?php
+              if ($nor == 1){
+                  echo "Review";
+              }
+              else{
+                  echo "Reviews";
+              }
+              ?>
+     </div>
+          <div class = "text-center col-xs-4">
+              <span id = "nor"><?php echo $nore; ?></span>&nbsp;
+              <i class="fa fa-reply" aria-hidden="true"></i>
+      <?php
+              if ($nore == 1){
+                  echo "Reply";
+              }
+              else{
+                  echo "Replies";
+              }
+              ?>
+    </div>
+          <div class = "text-center col-xs-4">
+              <?php echo $nou; ?>&nbsp;
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+              <?php
+              if ($nou == 1){
+                  echo "Upvote";
+              }
+              else{
+                  echo "Upvotes";
+              }
+              ?>
+            </div>
+          </div>
+        <div class = "row">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">
@@ -140,9 +140,17 @@
 						</div>
 						<div class = "col-md-10">
 							<div>
-							<a style="float:right;" onclick="deleteComment('<?php echo $review->re_id; ?>');">
-								Delete
-							</a>
+                <div class="dropdown" style="float:right;">
+                  <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
+                  <span class="fa fa-ellipsis-h"></span></button>
+                  <ul class="dropdown-menu display-dropdown">
+                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>">Edit</a></li>
+                    <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
+      								       Delete
+      							</a></li>
+                  </ul>
+                </div>
+
 								<h4><a href = "<?php echo base_url().'company-full-view/'.str_replace(" ","_",$review->cm_name); ?>" title = "<?php echo $review->cm_name; ?>"><?php echo $review->cm_name; ?></a></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 
 							</div>
@@ -258,15 +266,20 @@
                    echo " Likes";
                  }?>
                  </span>
+                 <span class="btn btn-default btn_dislike btn-small prof_reply_delte" id="prof_reply_delete" onclick="showDelete(<?php echo $reply->crr_id; ?>);">
+                   <!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                   <span style="float:right;font-size:13px;">--><?php
+                     if($reply->crr_uid == $userinfo->u_uid){
+                       echo "Delete";
+                     }
+                   ?>
+                 </span>
+                 <span id="reply_delte_confirm<?php echo $reply->crr_id; ?>" style="padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
+                   <a style="color:red;cursor:pointer;" onclick="reply_delete(<?php echo $reply->crr_id; ?>);">Yes</a>
+                   <a id="no_delete<?php echo $reply->crr_id; ?>" onclick="hideDelete(<?php echo $reply->crr_id; ?>);" style="color:green;cursor:pointer;">No</a>
+                 </span>
                </div>
-									<p>
-										<!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-										<span style="float:right;font-size:13px;">--><?php
-											if($reply->crr_uid == $userinfo->u_uid){
-												echo "Delete";
-											}
-										?></span>
-									</p>
+
 									</div>
 							</div>
 							<?php
@@ -325,7 +338,7 @@
           <a href="<?php echo base_url().'digital-assets';?>" class="btn btn-primary" role="button">Digital Assets</a>
           <a href="<?php echo base_url().'ico-tracker';?>" class="btn btn-primary" role="button">ICOs</a>
           </div>
-          </div>  
+          </div>
           <?php } ?>
 				</div>
 				<div class = "col-md-3">
@@ -415,6 +428,22 @@
     </section>
 </div>
 <script>
+$(document).ready(function() {
+
+
+
+});
+function reply_delete(id){
+    $("#individualReplies_"+id).fadeOut();
+}
+function hideDelete(id){
+  $("#reply_delte_confirm"+id).fadeOut();
+}
+
+function showDelete(id){
+  $("#reply_delte_confirm"+id).fadeIn();
+}
+
 function deleteComment(id){
   if($("#hid_sessionid").val()!=""){
   $("#delete_confirmation_modal_pop").modal('show');

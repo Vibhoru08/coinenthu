@@ -1831,7 +1831,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 			$("#hid_filter").val(4);
 		}
 		var htmlReload = filterTitle+'<div class="arrow_down"><span class="caret"></span></div>';
-	//	$("#filtername").html(htmlReload);
+		$("#filtername").html(htmlReload);
 		var cm_id   = $("#hid_cmid").val();
 		// $('.box-comments').html('');
 		var url = baseUrl+'Company/getReviewBasedReplies?expireTime='+time;
@@ -1870,7 +1870,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 						if(data.resData != ""){
 					//		$('#repliesDiv_'+crr_reid).html(data.resData);
 					//		$('#repliesDiv_'+crr_reid).show();
-					//		$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
+							$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
 							if(data.repliesCntt == 1)
 							{
 								$('#repliesText_'+crr_reid).html('Reply');

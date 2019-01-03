@@ -167,6 +167,7 @@ h6,
 }
 /* General Links */
 a {
+  cursor:pointer;
   color: #1546a5;
 }
 a:hover,
@@ -934,6 +935,27 @@ a:focus {
 }
 .dropdown-menu > .divider {
   background-color: #eee;
+}
+.display-dropdown > li > a:hover {
+  background-color: #ffffff;
+  color: #333;
+}
+.display-dropdown{
+  background-color: #ffffff;
+  min-width: 70px;
+  max-width:70px;
+  left:-30px;
+  border:1px solid grey;
+}
+.display-dropdown>li{
+    margin:0 3px 0 3px;
+}
+.display-dropdown>li>a{
+  padding:3px 0px;
+  text-align: center;
+}
+.display-dropdown>li:first-child{
+  border-bottom:1px solid #f9f9f9;
 }
 .navbar-nav > .notifications-menu > .dropdown-menu,
 .navbar-nav > .messages-menu > .dropdown-menu,
@@ -2304,7 +2326,7 @@ border:none;
 }
 .btn-cstm{
   float:none;
-  
+
 background-color: #e31c77;
 border-color: #e31c77;
 color:#ffff;
@@ -2319,6 +2341,11 @@ border-radius:10px!important;
   background-color: #e31c77!important;
   color:#fff!important;
   border-color: #e31c77!important;
+}
+.btn-dis{
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  border:0.5px solid grey;
 }
 .btn-custom{
   background-color: #8e44ad;
