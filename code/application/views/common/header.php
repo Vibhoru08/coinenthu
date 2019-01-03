@@ -215,7 +215,7 @@ $img =  base_url().'images/logo.png';
 
 					<ul class= "dropdown-menu ul_left_m">
 
-						<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
+						<li class="signup_box"><a href="<?php echo base_url();?>display-profile">MY PROFILE</a></li>
 						<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
@@ -247,7 +247,7 @@ $img =  base_url().'images/logo.png';
 				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 				<ul class= "nav navbar-nav mar_t5 pm_hover">
 
-					<li class="signup_box"><a href="<?php echo base_url();?>edit-profile">MY PROFILE</a></li>
+					<li class="signup_box"><a href="<?php echo base_url();?>display-profile">MY PROFILE</a></li>
 					<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>
 					<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 					<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
