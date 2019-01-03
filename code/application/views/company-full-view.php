@@ -741,7 +741,7 @@
 									?>
 									<label  id="save<?php echo $reviewReplay->crr_id; ?>" for="submit-form<?php echo $reviewReplay->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</label>
 									<!--<button id="save<?php //echo $reviewReplay->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
-									<button id="reply_reply_pop<?php echo $reviewReplay->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>
+									<button id="reply_reply_pop<?php echo $reviewReplay->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
 									<?php } else{ ?>
 										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
 									</button>

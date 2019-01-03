@@ -826,96 +826,54 @@
 				
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
-							$html.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>';
+							$html.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
 				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
 				$html.='</div></div></div>';
-			
+        
+				$html2 .='<div class="row mar_t20" id = "individualReplies_"'.$row['crr_id'].'">';
+				$html2 .='<div class = "col-md-2">';
+				if($row['u_picture']!=""){
+						$html2 .= '<img class="img-circle reply-image" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
+				}else if($row['u_social_pic']!=""){
+						$html2 .= '<img class="img-circle reply-image" src="'.$row['u_social_pic'].'" alt="'.$u_username.'">';
+				}else{
+						$html2 .= '<img class="img-circle reply-image" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
+				}
+				$html2 .='</div><div class="col-md-10">';
+				$old_date = timeago($row['crr_createdat']);
+				$html2 .="<p><span class = 'time_stamp' style = 'float:right;'>".$old_date."</span>";
+				$html2 .="<span>".$u_username."</span><br style='margin-bottom:0px;'>";
+				$html2 .="<span style= 'font-size:11px;'>".$row['u_about']."</span></p>";
+				$html2 .="<p id='replyreview_'".$row['crr_id']."'>";
+				$html2 .="".strip_tags($row['crr_decript'])."</p>";
+				$replylikeval    = "'like'";
+				$replyreviewval  = "'replies'";
+				$replydislikeval = "'dislike'";
+				$crr_likes_cnt= 0;
+   				$crr_dislike_cnt = 0;
+				$stringReply = strip_tags($row['crr_decript']);
+				$html2.='<div class="row" style = "padding-bottom:5px">';
+				
+				if($uid!=""){
+					if($uid == $row['crr_uid']){
+							$html2.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
+					}
+				}
+				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete("'.$row['crr_id'].'");">';
+				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
+				$html2.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
+				$html2.='</div></div></div>';		
+      			
 				$repliesCntt = sizeof($replies);
-			/*	if(sizeof($replies)>0){ 
-					$j=1;
-							foreach($replies as $crr=>$reviewReplay){
-								if($reviewReplay->u_username!=""){
-									$u_username = ucfirst($reviewReplay->u_username);
-								}else if($reviewReplay->u_firstname!=""){
-									$u_username = ucfirst($reviewReplay->u_firstname);
-								}else{
-									$u_username = "Guest User";
-								}
-								$html .='<div class="reply_post">';
-								$html .='<div class="box-comment">';
-								if($reviewReplay->u_picture!=""){
-									$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$reviewReplay->u_picture.'" alt="'.$u_username.'">';
-								}else if($reviewReplay->u_social_pic!=""){
-									$html .= '<img class="img-circle img-sm" src="'.$reviewReplay->u_social_pic.'" alt="'.$u_username.'">';
-								}else{
-									$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
-								}
-								$html .="<div class='comment-text'>
-									  <span class='username'> ".$row['u_username']." <span class='text-muted pull-right comment_date'>";
-								$old_date = Date_create($reviewReplay->crr_createdat);
-								$new_date = Date_format($old_date, "d/m/Y");
-
-								$html .=$new_date."</span></span>";
-
-								if($reviewReplay->crr_likes_cnt!="" && $reviewReplay->crr_likes_cnt!=0){
-									$crr_likes_cnt = $reviewReplay->crr_likes_cnt;
-								}else{
-									$crr_likes_cnt = 0;
-								}
-								if($reviewReplay->crr_dislike_cnt!="" && $reviewReplay->crr_dislike_cnt!=0){
-									$crr_dislike_cnt = $reviewReplay->crr_dislike_cnt;
-								}else{
-									$crr_dislike_cnt = 0;
-								}
-								$replylikeval    = "'like'";
-								$replyreviewval  = "'replies'";
-								$replydislikeval = "'dislike'";
-
-								$stringReply = strip_tags($reviewReplay->crr_decript);
-								if (strlen($stringReply) > 150) {
-
-									$stringCut = substr($stringReply, 0, 150);
-									$stringReply = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readReplyMoreSpan('.$reviewReplay->crr_id.');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
-								}
-								$html .= '<span id="replyspanLess_'.$reviewReplay->crr_id.'" style="overflow-wrap: break-word;">'.$stringReply.'</span>
-									<span id="replyexpandSpan_'.$reviewReplay->crr_id.'" style="display:none;overflow-wrap: break-word;" >'.nl2br($reviewReplay->crr_decript).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$reviewReplay->crr_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a></span>';
-								//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
-								$html.=' <div class="mar_t15">
-									  <div class="pull-left">
-										<button id="reply_btn_like_'.$reviewReplay->crr_id.'" class="btn btn-default btn_like" onClick="reviewLikeDisLike('.$crr_likes_cnt.','.$reviewReplay->crr_id.','.$replylikeval.','.$replyreviewval.','.$crr.');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i>'.$crr_likes_cnt.'</button>';
-								$html.='<button id="reply_btn_dislike_'.$reviewReplay->crr_id.'" class="btn btn-default btn_dislike" onClick="reviewLikeDisLikee('.$crr_dislike_cnt.','.$reviewReplay->crr_id.','.$replydislikeval.','.$replyreviewval.','.$crr.');"><i class="fa fa-thumbs-down" aria-hidden="true"></i>'.$crr_dislike_cnt.'</button>';
-								$replypreport        = "'replypreport'";
-								$reviewpcheckreports = "'alreadyReported'";
-								$emptyQuotes = "''";
-								$reportedStatuss = checkUserReplyReport($uid,$reviewReplay->crr_id);
-								if($reportedStatuss==1){
-									$html .='<span id="replyReportId_'. $reviewReplay->crr_id.'"><button onclick="reviewReportMethod('.$reviewReplay->crr_id.','.$replypreport.','.$reviewpcheckreports.');" class="btn btn-default btn_dislike">Reported</button></span>';
-								}else{
-									$html .='<span id="replyReportId_'. $reviewReplay->crr_id.'"><button onclick="reviewReportMethod('.$reviewReplay->crr_id.','.$replypreport.','.$emptyQuotes.');" class="btn btn-default btn_dislike">Report</button></span>';
-								}
-								if($uid!=""){
-									if($uid == $reviewReplay->crr_uid){
-										$html.='<button id="reply_reply_pop" onClick="replyReplyMessage('.$reviewReplay->crr_id.','.$reviewReplay->crr_reid.');" class="btn btn-default btn_dislike">Edit Reply</button>';
-									}
-								}
-								$html.='</div>
-									<div class="pull-right pad_t10">
-
-									   </div>
-								   </div>
-							   </div>
-							   </div> </div>';
-							   $j++;
-							}
-						}*/
+			
 				$crr_id = $_POST['crr_id'];
 				$reply_details = $this->Companies_model->fetchreply($crr_id);
 				foreach ($reply_details as $row2){
 					$edited_reply = $row2['crr_decript'];
 				}
-				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'repliesCntt'=>$repliesCntt,"edited_reply"=>	$edited_reply ));
+				echo json_encode(array('status'=>TRUE,'output'=>'success','resData'=>$html,'resData2'=>$html2,'repliesCntt'=>$repliesCntt,"edited_reply"=>	$edited_reply ));
 			}
 		}
 		public function reviewsReplies(){

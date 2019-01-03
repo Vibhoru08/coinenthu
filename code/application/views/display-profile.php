@@ -214,7 +214,7 @@
 									<span style= "font-size:11px;"><?php echo $reply->u_about; ?></span>
 									</p>
 									<p id="replyreview_<?php echo $reply->crr_id; ?>">
-									<?php echo $reply->crr_decript; ?>
+									<?php echo strip_tags($reply->crr_decript); ?>
 									</p>
                   <span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" style="display:none;"></span>
                   <span id="r_char_cnt<?php echo $reply->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reply->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
@@ -846,7 +846,7 @@ function confirmDeleteActions(){
                       var htmlReload = filterType+' <div class="arrow_down"><span class="caret"></span></div>';
                       $("#filtername").html(htmlReload);
                       //reviewFilter(filterType);
-                      reviewReplyFilter(filterType,crr_reid);
+                      reviewReplyFilter(filterType,crr_reid,re_id);
                       // window.location.reload();
                       $("#replypopup"+re_id).trigger('reset');
                       $('#replypopup'+re_id).formValidation('resetForm', true);
@@ -1047,7 +1047,7 @@ function confirmDeleteActions(){
             }
           });
         }
-        function reviewReplyFilter(type,crr_reid){
+        function reviewReplyFilter(type,crr_reid,re_id){
           debugger;
           $("#change_btn_name").html('Cancel');
           var hid_filter = $("#hid_filter").val();
@@ -1079,7 +1079,7 @@ function confirmDeleteActions(){
             type 		: "POST",
             url			: url,
             cache       : false,
-            data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid},
+            data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid,re_id:re_id},
             dataType	: "json",
             success: function(data){
               console.log(data.output);
@@ -1089,7 +1089,7 @@ function confirmDeleteActions(){
               if(data.output=='success'){
                 setTimeout(function(){
                   if(data.resData != ""){
-                    $('#repliesDiv_'+crr_reid).append(data.resData);
+                    $('#repliesDiv_'+crr_reid).append(data.resData2);
                     $('#repliesDiv_'+crr_reid).show();
                     $('#repliesCntt_'+crr_reid).html(data.repliesCntt);
                     if(data.repliesCntt == 1)
