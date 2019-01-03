@@ -93,6 +93,23 @@
 
 		}
 
+		public function deleteReply(){
+			if($this->session->userdata('user_id') == ""){
+				echo json_encode(array('status'=>TRUE,'output'=>'fail','loginrequired'=>'1'));exit;
+			}else{
+				if(isset($_POST['']) && $_POST[''] != ""){
+					$reply_id = $_POST[''];
+					$statusDeletedReply = $this->Companies_model->deleteReply($reply_id);
+					if($statusDeletedReply == 1){
+						echo json_encode(array('status'=>TRUE,'output'=>'success'));
+					}
+					else{
+						echo json_encode(array('status'=>TRUE,'output'=>'fail'));
+					}
+				}
+			}
+		}
+
 		public function reportSaveMethod(){
 			if($this->session->userdata('user_id') == "")
 			{
@@ -775,8 +792,8 @@
 				else{
 						$u_username = "Guest User";
 				}
-				$html .='<div class="reply_post" style = "margin-bottom:100px;" >';
-				$html .='<div class="box-comment">';
+				$html .='<div class="row" id = "individualReplies_"'.$row['crr_id'].'">';
+				$html .='<div class = "col-md-2">';
 				if($row['u_picture']!=""){
 						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
 				}else if($row['u_social_pic']!=""){
@@ -784,16 +801,18 @@
 				}else{
 						$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
 				}
-				$html .="<div class='comment-text'>
-				<span class='username'>By ".$u_username."<span class='text-muted pull-right comment_date'><div class='time_stamp'>";
+				$html .='</div>';
+				$html .="<div class='col-md-10'><div class = 'row mar_0' style = 'padding-top:5px;padding-bottom:5px;'>
+				By <span style = 'font-family:NoirPro Medium;font-weight: 500;'>".$u_username."</span>";
 				$old_date = timeago($row['crr_createdat']);
-				$html .=$old_date."</div></span></span>";
+				$html .="<div class = 'time_stamp'>".$old_date."</div></div>";
 				$replylikeval    = "'like'";
 				$replyreviewval  = "'replies'";
 				$replydislikeval = "'dislike'";
 				$crr_likes_cnt= 0;
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
+				$html .="<div id = 'replyreview_'".$row['crr_id']."' class = 'row' style = 'margin:0px;'>";
 				if (strlen($stringReply) > 150) {
 
 					$stringCut = substr($stringReply, 0, 150);
@@ -802,18 +821,16 @@
 				$html .= '<span id="replyspanLess_'.$row['crr_id'].'" style="overflow-wrap: break-word;">'.$stringReply.'</span>
 				<span id="replyexpandSpan_'.$row['crr_id'].'" style="display:none;overflow-wrap: break-word;" >'.nl2br($row['crr_decript']).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$row['crr_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a></span>';
 				//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
-				$html.=' <div class="mar_t15">
-			  <div class="pull-left">';
+				$html.=' </div>
+			  <div class="row" style = "padding-bottom:5px">';
 				
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
-							$html.='<button id="reply_reply_pop" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike">Edit Reply</button>';
+							$html.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit Reply</span></button>';
 					}
 				}
-				$html.='</div>
-				</div>
-			   </div>
-  			   </div> </div>';
+				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
+				$html.='</div></div></div>';
 			
 				$repliesCntt = sizeof($replies);
 			/*	if(sizeof($replies)>0){ 
@@ -1454,6 +1471,7 @@
 					foreach($getCompanies as $key=>$value){
 						$data = array();
 						$company_id = $value->cm_id;
+						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
 						$company_reviews = $this->Companies_model->assetLastReview($company_id);
 						$total_likes_count = 0;
 						$total_dislikes_count = 0;
@@ -1552,13 +1570,9 @@
 
 
 
-							if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
-								$cm_totalviews = $value->cm_totalviews;
-							}else{
-								$cm_totalviews = '0';
-							}
+				
 							//$html.=$cm_totalviews. ' Reviews';
-							if ($cm_totalviews == 1){
+							if ($number_of_reviews == 1){
 								$review_s = 'Review';
 							}
 							else{
@@ -1576,7 +1590,7 @@
 							else{
 									$dislike_s = 'Dislikes';
 							}
-							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$cm_totalviews.' '.$review_s.'</span></div></div>';
+							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.$review_s.'</span></div></div>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{
