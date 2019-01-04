@@ -134,7 +134,7 @@ $img =  base_url().'images/logo.png';
 	    <nav class="navbar navbar-static-top">
 		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
-			<a href="javascript:void(0);" onClick="return redirectPage('digi');" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
+			<a href="javascript:void(0);" onClick="return redirectPage('home');" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>

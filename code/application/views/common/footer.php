@@ -11,6 +11,7 @@
          <li><a href="<?php echo base_url();?>about-us">About Us </a></li>
          <li><a href="<?php echo base_url(); ?>add-digital-asset">Add Digital Asset </a></li>
          <li><a href="<?php echo base_url(); ?>add-ico-tracker">Add ICO </a></li>
+         <li><a href="<?php echo base_url(); ?>add-event">Add An Event </a></li>
      <li><a href="<?php echo base_url(); ?>contact-us">Contact us</a></li>
          <li><a href="javascript:void(0);" data-toggle="modal" data-target="#suggestions">Suggest us</a></li>
        </ul>

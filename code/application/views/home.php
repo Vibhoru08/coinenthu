@@ -52,13 +52,57 @@
   <div class="carousel-inner">
     <div class="item active">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
+      <?php $company_id = $value->cm_id;
+						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
+            $company_reviews = $this->Companies_model->assetLastReview($company_id);
+            $total_likes_count = 0;
+						$total_dislikes_count = 0;
+						foreach($company_reviews->result_array() as $row){
+							if(isset($row['re_likes_cnt'])){
+								$re_likes_cnt = $row['re_likes_cnt'];
+							}
+							else{
+								$re_likes_cnt = 0;
+							}
+							$total_likes_count = $total_likes_count + $re_likes_cnt;
+
+							if(isset($row['re_dislike_cnt'])){
+								$re_dislikes_cnt = $row['re_dislike_cnt'];
+							}
+							else{
+								$re_dislikes_cnt = 0;
+							}
+							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
+            }
+            if ($number_of_reviews == 1){
+              $review_s = 'Review';
+            }
+            else{
+              $review_s = 'Reviews';
+            }
+            if ($total_likes_count == 1){
+              $like_s = 'Like';
+            }
+            else{
+              $like_s = 'Likes';
+            }
+            if ($total_dislikes_count == 1){
+                $dislike_s = 'Dislike';
+            }
+            else{
+                $dislike_s = 'Dislikes';
+            }
+            $last_review = $company_reviews->last_row('array');
+						$last_review_userid = $last_review['re_uid'];
+						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
+             ?>
         <?php if($key<3){?>
         <div class="col-md-4 mar_t80">
           <ul class="products-list product-list-in-box">
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>">
+              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -89,19 +133,39 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <p>
-                  <span class="">
-                      <?php
-                      if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
-                        $reviews = $value->cm_totalviews;
-                      }else{
-                        $reviews = '0';
-                      }
-
-                      echo $reviews; ?>  reviews
-                  </span>
-                </p>
-              </div>
+                <?php 
+                if(isset($last_review)){
+                ?>
+                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <?php }else{ ?>
+                  <br/><br/>
+                <?php } ?>
+                <?php 
+                $string = strip_tags($last_review['re_decript']);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }
+                ?>
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <?php }else{ ?>
+                <?php
+                $string = strip_tags($value->cm_decript);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }  
+                ?>
+                <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br><br>
+                <?php } ?>
+                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <hr class="col-xs-12">
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+               </div>
               </span>
               </div>
               </div>
@@ -121,7 +185,7 @@
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>">
+              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -152,18 +216,38 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <p>
-                  <span class="">
-                      <?php
-                      if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
-                        $reviews = $value->cm_totalviews;
-                      }else{
-                        $reviews = '0';
-                      }
-
-                      echo $reviews; ?>  reviews
-                  </span>
-                </p>
+                <?php 
+                if(isset($last_review)){
+                ?>
+                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <?php }else{ ?>
+                  <br/><br/>
+                <?php } ?>
+                <?php 
+                $string = strip_tags($last_review['re_decript']);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }
+                ?>
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <?php }else{ ?>
+                <?php
+                $string = strip_tags($value->cm_decript);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }  
+                ?>
+                <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br>
+                <?php } ?>
+                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <hr class="col-xs-12">
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
               </div>
               </span>
               </div>
@@ -184,7 +268,7 @@
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>">
+              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -215,18 +299,38 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <p>
-                  <span class="">
-                      <?php
-                      if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
-                        $reviews = $value->cm_totalviews;
-                      }else{
-                        $reviews = '0';
-                      }
-
-                      echo $reviews; ?>  reviews
-                  </span>
-                </p>
+                <?php 
+                if(isset($last_review)){
+                ?>
+                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <?php }else{ ?>
+                  <br/><br/>
+                <?php } ?>
+                <?php 
+                $string = strip_tags($last_review['re_decript']);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }
+                ?>
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <?php }else{ ?>
+                <?php
+                $string = strip_tags($value->cm_decript);
+                if (strlen($string) > 100) {
+  
+                  $stringCut = substr($string, 0, 100);
+                  $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+                }  
+                ?>
+                <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br>
+                <?php } ?>
+                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <hr class="col-xs-12">
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
               </div>
               </span>
               </div>
@@ -253,72 +357,7 @@
 
 
 
-          <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
-  					<div class="col-md-4 mar_t80">
-  						<ul class="products-list product-list-in-box">
-  							<li class="item center">
-  							<div class="product_zorder">
-  							  <div class="product-img company_img_width">
-  								<a href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>">
-  									<?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
-  										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
-  									<?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
-  										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
-  									<?php } else if($value->cm_picture!=""){
-  						$srcc= base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
-  										if (@getimagesize($srcc)){
-  									?>
-  										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
-  									<?php }else{ ?>
-  											<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
-  										<?php }?>
-  									<?php } else { ?>
-  										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
-  									<?php } ?>
-  								</a>
-  							  </div>
-  							  <div class="product-info text-left">
-  							  <?php
-  								  $string = strip_tags($value->cm_name);
-  								  if (strlen($string) > 18) {
-  									  $string = substr($string, 0, 18).'...';
-  								  }
-  								?>
-  								<a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo $value->cm_unique_id; ?>" class="product-title"><?php echo $string; ?></a>
-  								<span class="product-description">
-  								<div>
-
-
-  									<input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-  									<p>
-  										<span class="">
-  												<?php
-  												if(isset($value->cm_totalviews) && $value->cm_totalviews!=''){
-  													$reviews = $value->cm_totalviews;
-  												}else{
-  													$reviews = '0';
-  												}
-
-  												echo $reviews; ?>  reviews
-  										</span>
-  									</p>
-  								</div>
-  								</span>
-  							  </div>
-  							  </div>
-  							</li>
-  						</ul>
-  					</div>
-  				<?php } }else{ ?>
-  				 There are no digital assets.
-  				<?php } ?>
-  				<span id="loadingData"></span>
-  			</div>
-      </div>
-        <?php if($totCntDigitals > 6){?>
-  			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
-  			<span id="m_hide"><br/></span>
-  			<?php } ?>
+         
     </section>
 </div>
 <script>

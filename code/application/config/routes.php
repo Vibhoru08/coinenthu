@@ -72,6 +72,7 @@ $route['my-companies-list']         = 'Company/myCompaniesList';
 $route['my-ico-trackers']           = 'Company/myIcoTrackers';
 $route['my-digital-assets']         = 'Company/myCompaniesList';
 $route['add-digital-asset']         = 'Company/addDigitalAsset';
+$route['add-event']                 = 'Company/addEvent';  
 $route['edit-profile']              = 'User/editProfile';
 $route['display-profile']           = 'User/showProfile';
 $route['social-sign-in/(:any)']     = 'Login/socialSignIn';

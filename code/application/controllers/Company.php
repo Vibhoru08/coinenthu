@@ -1614,6 +1614,18 @@
 				redirect(base_url().'login');
 			}
 		}
+
+		public function addEvent(){
+			$data = Array();
+			$this->session->set_userdata('redirect_page', 0);
+			if($this->session->userdata('user_id') != ""){
+				$this->show('add-event',$data);
+			}else{
+				$this->session->set_userdata('redirect_page', 1);
+				redirect(base_url().'login');
+			}
+		}
+
 		public function getComonImage(){
 			$this->load->helper(array('common'));
 			//print_r($_FILES);exit;
