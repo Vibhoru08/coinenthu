@@ -408,7 +408,9 @@ function sreachterm() {
     $("#offsetpage").val(1);
     // $("#limitpage").val(4);
     $('#loadingHash1').hide();
-
+		if($("#home_no_display").val()==3){
+				$(".company_list").fadeIn();
+		}
     var searchterms = $("#searchterms").val();
     if (searchterms == '' || searchterms == 'undefined') {
         var type = $("#filter_id").val();

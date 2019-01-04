@@ -133,32 +133,32 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <?php 
+                <?php
                 if(isset($last_review)){
                 ?>
                 <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
-                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
-                <?php 
+                <?php
                 $string = strip_tags($last_review['re_decript']);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-                }  
+                }
                 ?>
                 <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br><br>
                 <?php } ?>
@@ -216,32 +216,32 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <?php 
+                <?php
                 if(isset($last_review)){
                 ?>
                 <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
-                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
-                <?php 
+                <?php
                 $string = strip_tags($last_review['re_decript']);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-                }  
+                }
                 ?>
                 <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
@@ -299,32 +299,32 @@
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
-                <?php 
+                <?php
                 if(isset($last_review)){
                 ?>
                 <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
-                <?php if ($last_review_details->u_about != ""){ ?>                 
+                <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
-                <?php 
+                <?php
                 $string = strip_tags($last_review['re_decript']);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>  
+                <div class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
                 if (strlen($string) > 100) {
-  
+
                   $stringCut = substr($string, 0, 100);
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-                }  
+                }
                 ?>
                 <span class="col-xs-12" style="height:63px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
@@ -357,7 +357,7 @@
 
 
 
-         
+
     </section>
 </div>
 <script>
@@ -375,6 +375,23 @@
 
 	$(document).ready(function() {
 debugger;
+
+$(".carousel").on("touchstart", function(event){
+        var xClick = event.originalEvent.touches[0].pageX;
+    $(this).one("touchmove", function(event){
+        var xMove = event.originalEvent.touches[0].pageX;
+        if( Math.floor(xClick - xMove) > 5 ){
+            $(this).carousel('next');
+        }
+        else if( Math.floor(xClick - xMove) < -5 ){
+            $(this).carousel('prev');
+        }
+    });
+    $(".carousel").on("touchend", function(){
+            $(this).off("touchmove");
+    });
+});
+
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
 		if(filterType!=""){
