@@ -1313,14 +1313,7 @@ a.ui-button:active,
 	box-shadow: 0px 0px 5px #666666;
 }
 /* End */
-@media(max-width:768px){
-  .mmar_t40{
-    margin-top:40px !important;
-  }
-  .mmar_b10{
-    margin-bottom:10px !important;
-  }
-}
+
 .mar_0{
   margin:0;
 }
@@ -1442,6 +1435,24 @@ a.ui-button:active,
   padding:0;
 }
 @media(max-width:768px){
+  .mmar_t40{
+    margin-top:40px !important;
+  }
+  .mmar_b10{
+    margin-bottom:10px !important;
+  }
+  .mmar_b15{
+    margin-bottom:15px !important;
+  }
+  .mmar_b20{
+    margin-bottom:20px !important;
+  }
+  .mmar_t15{
+    margin-top:15px !important;
+  }
+  .mmar_t20{
+    margin-top:20px;
+  }
   .pad_m0{
     padding:0;
   }
@@ -1662,6 +1673,13 @@ a.ui-button:active,
 .color_w{
 	color:#fff;
 }
+.companiesy_list{
+	padding:0 10px;
+}
+.companiesy_list .col-md-6, .companiesy_list .col-md-4 {
+	padding-left:5px;
+	padding-right:5px;
+}
 .company_list{
 	padding:0 10px;
 }
@@ -1688,6 +1706,17 @@ a.ui-button:active,
         /* margin-right:auto; */
         /* vertical-align:middle; */
     /* } */
+
+.companiesy_list .product-img{
+	float:none;
+	margin:0 0;
+}
+.companiesy_list .product-info{
+	margin-left:0;
+	text-align:left;
+	margin-top:-70px;
+}
+
 .company_list .product-img{
 	float:none;
 	margin:0 0;
@@ -1697,6 +1726,25 @@ a.ui-button:active,
 	text-align:left;
 	margin-top:-70px;
 }
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+  .card {
+    display: inline-block;
+    width:80%;
+    margin-right:10px;
+  }
+
+  .scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+::-webkit-scrollbar {
+    display: none;
+  }
+
+
 .mar_left10{
 	margin-left:10px !important;
 }
@@ -2035,7 +2083,6 @@ color:#fff;
 	transition: all 0.2s;
 }
 .social-circle i {
-	color: #fff;
 	-webkit-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 	-o-transition: all 0.8s;
@@ -2043,14 +2090,16 @@ color:#fff;
 	transition: all 0.8s;
 }
 .icoFacebook{
- background-color: #ffff;
- color:#1546a5;
+ background-color: #3B5998;
+ color:#fff;
 }
 .icoTwitter{
-	background-color: transparent ;
+	background-color: #33ccff;
+  color:#fff;
 }
 .icoGoogle{
 	background-color: #BD3518;
+  color:#fff;
 }
 .icon_market{
 	background-color: #f7941d;
@@ -2066,7 +2115,8 @@ color:#fff;
 	background-color: #333;
 }
 .icoLinkedin{
-	background-color: #ffff;
+	background-color: #007bb7;
+  color:#ffffff;
 }
 .github_c{
 	background-color: #57b73d;
@@ -2137,22 +2187,7 @@ color:#fff;
 	background:#f9f9f9;
 	border:1px solid #f9f9f9;
 }
-.btn_dislike_new{
-  font-size:12px;
-  	border:none;
-    padding:0 8px 0 0;
-}
-.btn_dislike_new:active{
-  color:green;
-}
-@media(min-width:990px){
-  .digi_height{
-    height:90px;
-  }
-  .btn_dislike_new:hover{
-    background-color: #ffff;
-  }
-}
+
 .comment_date{
 	position:relative;
 	top:6px;
@@ -2866,10 +2901,24 @@ font-family: NoirPro;
   z-index:1;
   margin-left:5px;
   width:200px;
-  top:-10px;
+  top:-30px;
   background-color: #ffff;
   border-radius: 10px;
   border:1px solid #8e44ad;
+}
+@media(min-width:990px){
+  .social_share{
+  left:85%;
+  white-space: nowrap;
+}
+}
+@media(max-width:990px){
+  .social_share{
+    position:relative;
+    margin-left:16.66666667%;;
+    width:66.66666667%;;
+    top:5px;
+  }
 }
 .profile_desx{
   margin-top: 0px;
@@ -2969,7 +3018,13 @@ textarea { resize: vertical; }
   padding:5px;
   background-color:#f9f9f9;
  }
+ .mob_s_register{
+   border-left:2px solid white;
+ }
  @media(max-width:990px){
+   .mob_s_register{
+     border-left:none;
+   }
    .profile_box_image{
      display: inline;
    }
@@ -3132,7 +3187,7 @@ margin:0 -15%;
 
   }
  .asset-image{
- margin-top:-90px!important;
+ margin-top:-80px!important;
  }
 }
 .reviews_lastborder>.border_bottom:last-child{
@@ -3268,6 +3323,9 @@ a.left_panel_desc{
 	font-size:20px;
 	font-family:NoirPro Light;
 }
+.NoirProSemiBold{
+  font-family: NoirPro SemiBold;
+}
 @media (min-width:1200px){
   .s_width{
     width:392px;
@@ -3317,6 +3375,9 @@ a.left_panel_desc{
   }
 }
 @media (max-width:768px){
+  .mob_height_banner{
+    height:190px;
+  }
 .centered{
   margin: auto;
   text-align: center;

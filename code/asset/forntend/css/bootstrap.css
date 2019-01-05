@@ -3017,11 +3017,6 @@ select[multiple].input-lg {
   margin-bottom: 10px;
   color: #737373;
 }
-@media (max-width: 768px){
-  .gl-star-rating{
-    pointer-events: none !important;
-  }
-}
 
 
 @media (min-width: 768px) {
@@ -6930,6 +6925,12 @@ color:#8e44ad;
   th.visible-md,
   td.visible-md {
     display: table-cell !important;
+  }
+}
+@media(max-width:1200px){
+  .no-pull-right{
+  clear: both!important;
+  float:none!important; 
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {

@@ -78,7 +78,7 @@
 											  </form>
 										  </div>
 									  </div>
-									  <div class="col-md-6 mbrgt pos_r mob_s_register" style="border-left:2px solid white;">
+									  <div class="col-md-6 mbrgt pos_r mob_s_register">
 										<div class="col-xs-12 col-md-10 well_bg_none"><h3 class="box-title m_hide">Register</h3><hr class="col-xs-1 m_hide" style="width:4%;border-top:8px solid #424242;;margin-top:0;"></div>
 										<div class="well no-margin well_bg_none">
 											<!--<div class="ligin_pos_ab"><span>OR</span></div>-->

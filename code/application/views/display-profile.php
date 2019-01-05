@@ -1,6 +1,6 @@
 <div class = "content">
     <section class = "content">
-        <div class = "container-fluid banner_margin linear_color">
+        <div class = "container-fluid banner_margin linear_color mob_height_banner">
             <div class="row mmar_t40 mmar_b10 mar_t140 mar_b10 smar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
@@ -224,34 +224,34 @@
                      if(isset($_SESSION['user_id'])){
                        if($uid == $reply->crr_uid){
                  ?>
-                 <label  id="save<?php echo $reply->crr_id; ?>" for="submit-form<?php echo $reply->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</label>
+                 <label  id="save<?php echo $reply->crr_id; ?>" for="submit-form<?php echo $reply->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike_new btn-small" style="display:none;" value="">Save</label>
                  <!--<button id="save<?php //echo $reply->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
-                 <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
+                 <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
                  <?php } else{ ?>
-                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
                  </button>
-                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
+                 <button id="reply_btn_dislike_new_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
                  </button>
                  <?php
                  $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
                  ?>
                  <?php if($reportedReplyStatus==1){ ?>
-                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
                  <?php }else{ ?>
-                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
                  <?php } ?>
                  <?php }}else{ ?>
-                 <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                 <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
                  </button>
-                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
+                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
                  </button>
                  <?php
                  $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
                  ?>
                  <?php if($reportedReplyStatus==1){ ?>
-                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','alreadyReported');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Reported</span></button></span>
                  <?php }else{ ?>
-                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
+                 <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
                  <?php }} ?>
                  <?php
 									if($reply->crr_likes_cnt!="" && $reply->crr_likes_cnt!=0){
@@ -272,7 +272,7 @@
                    echo " Likes";
                  }?>
                  </span>
-                 <span class="btn btn-default btn_dislike btn-small prof_reply_delte" id="prof_reply_delete" onclick="showDelete(<?php echo $reply->crr_id; ?>);">
+                 <span class="btn btn-default btn_dislike_new btn-small prof_reply_delte" id="prof_reply_delete" onclick="showDelete(<?php echo $reply->crr_id; ?>);">
                    <!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
                    <span style="float:right;font-size:13px;">--><?php
                      if($reply->crr_uid == $userinfo->u_uid){
@@ -438,7 +438,43 @@ $(document).ready(function() {
 
 });
 function reply_delete(id){
-    $("#individualReplies_"+id).fadeOut();
+  if($("#hid_sessionid").val()!=""){
+
+    $.ajax({
+    type 		: "POST",
+    url			: baseUrl+'Company/deleteIndividualReply?expireTime='+time,
+    cache       : false,
+    data        : {reply_id:id},
+    dataType	: "json",
+    success: function(data){
+      if(data.output=='success')
+      {
+  	 $("#individualReplies_"+id).fadeOut();
+  	  $("#nor").html(data.no_of_replies);
+
+      }
+      else if(data.output=='fail'){
+        setTimeout(function(){
+          $("#common_heading").html('Warning Message');
+          $("#common_message").html('Login required');
+          $('#common_modal_pop').modal('show');
+                    }, 2000);
+                  }
+
+              }
+            });
+    }else{
+        alert('Login Required');
+      }
+
+
+
+
+
+
+
+
+
 }
 function hideDelete(id){
   $("#reply_delte_confirm"+id).fadeOut();
@@ -461,7 +497,7 @@ function confirmDeleteActions(){
   var Id= $("#delete_button").val();
   $.ajax({
   type 		: "POST",
-  url			: baseUrl+'Company/deleteComment',
+  url			: baseUrl+'Company/deleteComment?expireTime='+time,
   cache       : false,
   data        : {Id:Id},
   dataType	: "json",
