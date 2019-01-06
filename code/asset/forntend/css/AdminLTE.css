@@ -1275,7 +1275,7 @@ a:focus {
    color: #231f20;
  }
 .form-control {
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: none;
   border-color: #d2d6de;
 }
@@ -1562,7 +1562,7 @@ a:focus {
  }
 .box {
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
   background: #f9f9f9;
   border: none;
   margin-bottom: 20px;
@@ -2211,7 +2211,7 @@ a:focus {
  * -----------------
  */
 .btn {
-  border-radius: 10px;
+  border-radius: 5px;
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid transparent;
@@ -2332,7 +2332,7 @@ border-color: #e31c77;
 color:#ffff;
 width:229px;
 margin:auto;
-border-radius:10px!important;
+border-radius:5px!important;
 }
 .btn-cstm:hover,
 .btn-cstm:visited,
@@ -2351,7 +2351,7 @@ border-radius:10px!important;
   background-color: #8e44ad;
   border-color: #8e44ad;
   color:#ffff;
-  border-radius:10px!important;
+  border-radius:5px!important;
   width:229px;
   margin:auto;
 }
@@ -2690,7 +2690,7 @@ border-radius:10px!important;
  * ------------------------
  */
 .products-list {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #f9f9f9;
   list-style: none;
   margin: 0;

@@ -1,13 +1,42 @@
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color banner-asset-margin mob_height_banner">
-		<div class="row mmar_t40 mmar_b10 mar_t110 mar_b80">
+		<div class="row mmar_t40 mmar_b10 mar_t40 mar_b50">
 			<div class="col-xs-12 text-center banner_head">
 			<?php echo strtoupper($companyview['company_name']);?> REVIEWS
-				<hr style="width:5%;border:2px solid #ffff">
+			<div class="row lg_hide m_height">
+			<div class="text-center">
+			<?php if($companyview['company_picture']!=""){
+										//print_r($companyview['cm_ctid']);exit;
+										if($companyview['cm_ctid'] == 2){ ?>
+											<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$companyview['company_picture'].''; ?>" class="img-rounded asset-image"/>
+									<?php }else if($companyview['cm_ctid'] == 1){
+									if($companyview['company_picture']!="" && substr( $companyview['company_picture'], 0, 4 ) === "digi"){ ?>
+											<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+										<?php }else if(substr( $companyview['company_picture'], 0, 3 ) === "ico"){?>
+											<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+										<?php } else if($companyview['company_picture']!=""){
+							$srcc= base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'];
+											if (@getimagesize($srcc)){
+										?>
+											<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$companyview['company_picture'].'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded asset-image"/>
+										<?php }else{ ?>
+												<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded asset-image"/>
+											<?php }?>
+										<?php } else { ?>
+											<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded asset-image"/>
+										<?php } ?>
+
+									<?php }	}
+									else { ?>
+									<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded asset-image"/>
+									<?php } ?>
+								</div>
+							</div>
+				<!--<hr style="width:5%;border:2px solid #ffff">-->
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row sm_hide">
 	<div class="text-center col-md-3 col-md-offset-1">
 	<?php if($companyview['company_picture']!=""){
 								//print_r($companyview['cm_ctid']);exit;
@@ -64,7 +93,7 @@
 		</section>
 	</div>
 </div>-->
-    <div class = "container-fluid mar_b400 mar_tn10">
+    <div class = "container-fluid mar_b400 mar_tn10 mar_tm30">
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left">
 				<div class="text-center">
@@ -181,11 +210,11 @@
 						</div>
 						<?php }else{ ?><h4 id="demo" style="display:none;"></h4><?php } ?>
 						<?php if($companyview['cm_marketcap'] != "") { ?>
-						<div class="mar_t10 market_value_count mar_t40">
+						<div class="mar_t10 market_value_count mar_t40 text-center">
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
-							<div class="" style="margin-left:-8px;"><table class="table">
+							<div class="text-left" style="margin-left:-8px;"><table class="table">
 								<?php if($companyview['cm_ctid'] != 2){ ?>
 								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
@@ -472,7 +501,7 @@
 				<div class= "row asset-boxes asset-padding text-justify">
 				<p><?php echo ucfirst($companyview['company_desc']); ?></p>
 				</div>
-				<div class= "row" style="padding:40px 0px 40px 0px;">
+				<div class= "row" style="padding:20px 0px 20px 0px;">
 					<ul class="nav navbar-nav" style="float:right;">
 							<li class="dropdown mpull_right select_dropdown ma_dw" id="change_u">
 		 					&nbsp; <button class="btn btn-default dropdown-toggle review_dw" type="button" data-toggle="dropdown" aria-expanded="true" id="filtername">

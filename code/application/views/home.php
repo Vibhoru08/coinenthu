@@ -4,7 +4,7 @@
             <div class = "row text-center mar_t40 mmar_th0">
                 <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_headh">
                     COMMUNITY BASED CRYPTO REVIEWS
-                    <hr style="width:5%;border:2px solid #ffff">
+                  <!--  <hr style="width:5%;border:2px solid #ffff">-->
                 </div>
             </div>
             <div class = "row text-center m_hide">

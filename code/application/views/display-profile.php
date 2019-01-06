@@ -1,10 +1,10 @@
 <div class = "content">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color mob_height_banner">
-            <div class="row mmar_t40 mmar_b10 mar_t140 mar_b10 smar_b50">
+            <div class="row mmar_t40 mmar_b10 mar_t80 mar_b10 smar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
-						<hr style="width:5%;border:2px solid #ffff">
+						<!--<hr style="width:5%;border:2px solid #ffff">-->
                         <div class = "mar_t50 text-left row">
                           <div class = "col-md-9 col-xs-12 mar_l40 profile_desx m_hide pad_0">
                               <h2 class="mar_0">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
@@ -77,7 +77,7 @@
               ?>
             </div>
           </div>
-        <div class = "row mar_t80">
+        <div class = "row mar_t40">
                 <div class ="col-md-8 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">

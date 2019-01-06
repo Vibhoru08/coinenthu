@@ -2860,7 +2860,7 @@ color:#fff;
 .terms_of_use{
   background-color: #f9f9f9;
   color:black;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .terms_of_use h4{
 	margin-top:30px;
@@ -2903,10 +2903,13 @@ font-family: NoirPro;
   width:200px;
   top:-30px;
   background-color: #ffff;
-  border-radius: 10px;
+  border-radius: 5px;
   border:1px solid #8e44ad;
 }
 @media(min-width:990px){
+  .market_value_count{
+    margin-left: 7.5%;
+  }
   .social_share{
   left:85%;
   white-space: nowrap;
@@ -2965,7 +2968,7 @@ textarea { resize: vertical; }
   border-color:transparent!important;
 }
 .new_boxes{
-  border-radius: 10px;
+  border-radius: 5px;
   width:100%;
   background-color: #f9f9f9;
 }
@@ -3039,11 +3042,11 @@ textarea { resize: vertical; }
  background-color:#f9f9f9;
 }
 .asset-image{
- width:162px;
+ width:92px;
  padding:0;
  position:relative;
- margin-top:-260px;
- height:162px;
+ margin-top:-120px;
+ height:92px;
  border:15px solid #f9f9f9;
 }
 .profile-image{
@@ -3064,7 +3067,7 @@ textarea { resize: vertical; }
     padding:15px;
     height:200px;
     width:200px;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 }
 .review_head{
@@ -3166,6 +3169,8 @@ margin:0 -15%;
   }
   .asset-image{
     left:0;
+    margin-top:-80px;
+    margin-bottom:10px;
   }
   .mar_l30{
   margin-left: 0px!important;
@@ -3187,7 +3192,7 @@ margin:0 -15%;
 
   }
  .asset-image{
- margin-top:-80px!important;
+ margin-top:0px!important;
  }
 }
 .reviews_lastborder>.border_bottom:last-child{
@@ -3203,7 +3208,7 @@ margin:0 -15%;
   letter-spacing: normal;
   color: #404852;
   background-color: #f9f9f9;
-  border-radius:10px;
+  border-radius:5px;
 }
 h3.company_name{
   font-family: NoirPro SemiBold;
@@ -3277,7 +3282,7 @@ a.left_panel_desc{
  margin:30px 0 0 0;
 }
 .banner-asset-margin{
- margin-bottom:130px;
+ margin-bottom:30px;
 }
 .banner_desc{
   font-family:NoirPro Light ;
@@ -3376,7 +3381,10 @@ a.left_panel_desc{
 }
 @media (max-width:768px){
   .mob_height_banner{
-    height:190px;
+    height:auto;
+  }
+  .mar_tm30{
+    margin-top:30px;
   }
 .centered{
   margin: auto;
@@ -3689,9 +3697,12 @@ a.left_panel_desc{
 		width:100%;
 		margin-left:0;
 	}
-	.m_hide{
+	.sm_hide{
 		display:none !important;
 	}
+  .m_height{
+  height:30px;
+  }
 	.div{
 		width:60%;
 		font-size: 20px;

@@ -20,10 +20,10 @@ $viewTime = date('Ymd') .'_'. date('His');
 		</div>
 	</div> -->
 	<div class="container-fluid banner_margin linear_color">
-		<div class="row mmar_t40 mmar_b10 mar_t70 mar_b80">
+		<div class="row mmar_t40 mmar_b10 mar_t40 mar_b50">
 			<div class="col-xs-12 text-center banner_head">
 				DIGITAL ASSETS
-				<hr style="width:5%;border:2px solid #ffff">
+			<!--	<hr style="width:5%;border:2px solid #ffff"> -->
 				<div class="banner_desc">
 				Let’s not invest blindly, get the correct information on your Digital Assets.
 				<div>Search for them.</div>
@@ -33,7 +33,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row mar_b80 mar_t40">
+		<div class="row mar_b0 mar_t40">
 			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header pad_0">
