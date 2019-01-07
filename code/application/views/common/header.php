@@ -243,6 +243,10 @@ $img =  base_url().'images/logo.png';
 					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
 
 				</li>
+				<li>
+  					<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#ChangePass">Change Password</a>
+				</li>
+
 			  </ul>
 				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
 				<ul class= "nav navbar-nav mar_t5 pm_hover">

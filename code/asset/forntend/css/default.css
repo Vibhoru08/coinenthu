@@ -3001,6 +3001,9 @@ textarea { resize: vertical; }
  padding-left:20px;
  padding-bottom:20px;
 }
+.cp-header{
+ padding:0px 0px 0px 10px;	
+}
 .twitter_box_padding{
  padding-top:5px;
  padding-right:10px;

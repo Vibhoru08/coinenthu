@@ -384,6 +384,55 @@
  </div>
 </div>
 
+<div class="modal fade" id="ChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cp-dialog" role="document">
+    <div class="modal-content">
+    <form id="uChangePwd" name="uChangePwd" method="POST" class="form-horizontal" 
+										data-fv-message="This value is not valid"
+										data-fv-icon-valid="glyphicon glyphicon-ok"
+										data-fv-icon-invalid="glyphicon glyphicon-remove"
+										data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="changePassword()">
+      <div class = "cp-header">
+        <button type="button" class="close cp-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>  
+      <div class="modal-body cp-body mx-3">
+      
+          <div class="md-form mb-5">
+            <label for="inputPassword3" class="control-label">Current Password</label>
+            <i class = "fa fa-eye cp-eye" id = "eye1"></i>
+            <input type="password" class="form-control cp-form" id="o_u_password" name="o_u_password" placeholder="Current Password" value=""
+													required data-fv-notempty-message="Please enter a current password">
+          </div>
+          <div class="md-form mb-5">
+            <label for="inputPassword3" class="control-label">New Password</label>
+            <i class = "fa fa-eye cp-eye"></i>
+            <input type="password" class="form-control cp-form" id="n_u_password" name="n_u_password" placeholder="New Password" value=""
+                          required data-fv-notempty-message="Please enter a new password">
+            <span id="ErrorM" style="font-size:14px;color:#a94442;"><?php if(isset($this->ErrorM) && $this->ErrorM!=""){ echo $this->ErrorM; }?></span>                
+          </div>
+
+          <div class="md-form mb-4">
+            <label for="inputPassword3" class="control-label">Confirm Password</label>
+            <i class = "fa fa-eye cp-eye"></i>
+            <input type="password" class="form-control cp-form" id="u_password" name="u_password" placeholder="Confirm Password" value=""
+													required data-fv-notempty-message="Please enter a confirm password">
+          </div>
+          <input type="hidden" id="u_id" name="u_id" value="">
+      </div>
+      <div class="modal-footer cp-body d-flex justify-content-center">
+      <button type="submit"  id="changePwdTbtn"  name="changePwdTbtn" class="btn btn-info pull-right">Save</button>
+      <center><span id="success" style="color:green"></span></center>
+											<center><span id="errMesg" style="color:red"></span></center>
+											<center><span id="loadingError" style="display:none;"> Loading...</span></center>
+      </div>
+      </form> 
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="delete_confirmation_modal_pop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
  <div class="modal-dialog" role="document">
    <div class="modal-content">
@@ -776,6 +825,63 @@ function GetMoreCompaniesLoad()
      $("#loadingHash").removeClass("show");
      $("#loadingHash").addClass("hide");
 
+}
+function changePassword() {
+    $('#errMesg').html('');
+    $('#success').html('');
+    var flag = true;
+    $('#uChangePwd').formValidation().on('success.form.fv', function(e) {
+        e.stopImmediatePropagation();
+        var currentPass = $('#o_u_password').val();
+        var newPass = $('#n_u_password').val();
+        var confirmPass = $('#u_password').val();
+        if (typeof(currentPass) != "undefined" && currentPass != "") {
+            if (currentPass == newPass) {
+                $('#errMesg').html('');
+                flag = false;
+            } else {
+                flag = true;
+            }
+            if (newPass != confirmPass) {
+                $('#errMesg').html('The new password and its confirm password are not same.');
+                flag = false;
+            } else {
+                flag = true;
+            }
+        }
+        if (flag == true) {
+            $('#loadingError').show();
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'User/updatePassword?id=' + time,
+                data: { newPass: newPass, currentPass: currentPass },
+                success: function(data) {
+                    $('#loadingError').hide();
+                    if (data == '1') {
+                        $('#o_u_password').val('');
+                        $('#n_u_password').val('');
+                        $('#u_password').val('');
+                        $("#uChangePwd").trigger('reset');
+                        $('#uChangePwd').formValidation('resetForm', true);
+                        $('#uChangePwd').data('formValidation').resetForm();
+                        $('#errMesg').html('');
+                        $('#success').html('Password updated successfully');
+                    } else {
+                        $('#errMesg').html('');
+                        $('#errMesg').html('Entered current password is wrong.');
+                    }
+                }
+            });
+        }
+        e.preventDefault();
+    });
+}
+var pwd = document.getElementById('o_u_password');
+var eye = document.getElementById('eye1');
+eye.addEventListener('click',togglePass);
+fuction togglePass(){
+  eye.classList.toggle('active');
+  (pwd.type == 'password') ? pwd.type = 'text': pwd.type = 'password';
 }
 </script>
 

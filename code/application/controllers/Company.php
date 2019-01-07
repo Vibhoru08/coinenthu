@@ -97,8 +97,8 @@
 			if($this->session->userdata('user_id') == ""){
 				echo json_encode(array('status'=>TRUE,'output'=>'fail','loginrequired'=>'1'));exit;
 			}else{
-				if(isset($_POST['']) && $_POST[''] != ""){
-					$reply_id = $_POST[''];
+				if(isset($_POST['reply_id']) && $_POST['reply_id'] != ""){
+					$reply_id = $_POST['reply_id'];
 					$statusDeletedReply = $this->Companies_model->deleteReply($reply_id);
 					if($statusDeletedReply == 1){
 						echo json_encode(array('status'=>TRUE,'output'=>'success'));
@@ -1512,7 +1512,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<div class="col-xs-12" style="height:63px;">'.ucfirst($string).'</div>';
+						$html.='<div class="col-xs-12" style="height:90px;">'.ucfirst($string).'</div>';
 						}else{
 						$string = strip_tags($value->cm_decript);
 							if (strlen($string) > 100) {
@@ -1520,7 +1520,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<span class="col-xs-12" style="height:63px;">'.ucfirst($string).'</span><br>';
+						$html.='<span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
 						}
 						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
@@ -1548,7 +1548,7 @@
 							else{
 									$dislike_s = 'Dislikes';
 							}
-							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>'.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>'.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.$review_s.'</span></div></div>';
+							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.$review_s.'</span></div></div>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{

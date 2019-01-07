@@ -139,9 +139,9 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12" style = "padding: 0px 0px 0px 0px;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -153,7 +153,7 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></div>
+                <div class="col-xs-12" style="height:90px;padding:0px 0px 0px 0px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
@@ -163,13 +163,13 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class = "col-xs-12 NoirProMedium">DESCRIPTION</div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;">DESCRIPTION</div>
                 <div class = "col-xs-12"><br></div>
-                <span class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></span><br><br>
+                <span class="col-xs-12" style="height:90px;padding: 0px 0px 0px 0px;"><?php echo ucfirst($string); ?></span><br><br>
                 <?php } ?>
-                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
                </div>
               </span>
               </div>
@@ -224,9 +224,9 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12" style = "padding: 0px 0px 0px 0px;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -238,7 +238,7 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></div>
+                <div class="col-xs-12" style="height:90px;padding:0px 0px 0px 0px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
@@ -248,13 +248,13 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class = "col-xs-12 NoirProMedium">DESCRIPTION</div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;">DESCRIPTION</div>
                 <div class = "col-xs-12"><br></div>
-                <span class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></span><br>
+                <span class="col-xs-12" style="height:90px;padding:0px 0px 0px 0px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
-                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
               </div>
               </span>
               </div>
@@ -309,9 +309,9 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12" style = "padding: 0px 0px 0px 0px;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -323,7 +323,7 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></div>
+                <div class="col-xs-12" style="height:90px;padding: 0px 0px 0px 0px;"><?php echo ucfirst($string); ?></div>
                 <?php }else{ ?>
                 <?php
                 $string = strip_tags($value->cm_decript);
@@ -333,13 +333,13 @@
                   $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
                 }
                 ?>
-                <div class = "col-xs-12 NoirProMedium">DESCRIPTION</div>
+                <div class = "col-xs-12 NoirProMedium" style = "padding: 0px 0px 0px 0px;">DESCRIPTION</div>
                 <div class = "col-xs-12"><br></div>
-                <span class="col-xs-12" style="height:90px;"><?php echo ucfirst($string); ?></span><br>
+                <span class="col-xs-12" style="height:90px;padding:0px 0px 0px 0px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
-                <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
               </div>
               </span>
               </div>

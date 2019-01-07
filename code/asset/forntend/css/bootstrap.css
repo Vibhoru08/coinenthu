@@ -2668,6 +2668,9 @@ output {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 */}
+.cp-form{
+  border: 1px solid black;
+}
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -6120,6 +6123,11 @@ button.list-group-item-danger.active:focus {
   filter: alpha(opacity=20);
   opacity: .2;
 }
+.cp-close{
+  float: none !important;
+  font-size: 40px !important;
+  font-weight: lighter!important;
+}
 .close:hover,
 .close:focus {
   color: #000;
@@ -6134,6 +6142,10 @@ button.close {
   cursor: pointer;
   background: transparent;
   border: 0;
+}
+button.cp-close{
+  padding: 0;
+  
 }
 .modal-open {
   overflow: hidden;
@@ -6219,6 +6231,9 @@ button.close {
   position: relative;
   padding: 15px;
 }
+.cp-body{
+  padding: 30px!important;
+}
 .modal-footer {
   padding: 15px;
   text-align: right;
@@ -6245,6 +6260,9 @@ button.close {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
+  }
+  .cp-dialog{
+    width: 400px!important;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

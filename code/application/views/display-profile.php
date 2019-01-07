@@ -442,7 +442,7 @@ function reply_delete(id){
 
     $.ajax({
     type 		: "POST",
-    url			: baseUrl+'Company/deleteIndividualReply?expireTime='+time,
+    url			: baseUrl+'Company/deleteReply?expireTime='+time,
     cache       : false,
     data        : {reply_id:id},
     dataType	: "json",

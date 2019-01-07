@@ -1,14 +1,14 @@
 <div class="content-wrapper">
 	<div  class="bread_crumb">
-		<div class="container-fluid">
+		<div class="container-fluid banner_margin linear_color">
 			<section class="content-header">
-					<h1 class="text-right m_hide">
-					  &nbsp;
-					</h1>
-					<ol class="breadcrumb">
-					  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-					  <li class="active">Edit Profile</li>
-					</ol>
+			<div class="row mmar_t40 mmar_b10 mar_t80 mar_b80">
+					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
+						EDIT PROFILE
+						<hr style="width:5%;border:1px solid #ffff">
+						
+					</div>
+				</div>
 			</section>
 		</div>
 		</div>
