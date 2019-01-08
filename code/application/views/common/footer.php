@@ -384,51 +384,53 @@
  </div>
 </div>
 
-<div class="modal fade" id="ChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog cp-dialog" role="document">
-    <div class="modal-content">
-    <form id="uChangePwd" name="uChangePwd" method="POST" class="form-horizontal" 
+
+
+<div class="modal fade" id="ChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" >
+ <div class="modal-dialog" role="document">
+ <div class="modal-content">
+   <div class="modal-header">
+   <button type="button" class="close" onClick="" aria-label="Close" data-dismiss="modal" title="Close"><span aria-hidden="true">&times;</span></button>
+   <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD</h4>
+   </div>
+    <form id="uChangePwd" name="uChangePwd" method="POST" class="form-horizontal"
 										data-fv-message="This value is not valid"
 										data-fv-icon-valid="glyphicon glyphicon-ok"
 										data-fv-icon-invalid="glyphicon glyphicon-remove"
 										data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="changePassword()">
-      <div class = "cp-header">
-        <button type="button" class="close cp-close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>  
-      <div class="modal-body cp-body mx-3">
-      
-          <div class="md-form mb-5">
-            <label for="inputPassword3" class="control-label">Current Password</label>
+
+
+      <div class="modal-body">
+
+          <div class="form-group">
+            <label for="inputEmail3" class="control-label">Current Password</label>
             <i class = "fa fa-eye cp-eye" id = "eye1"></i>
             <input type="password" class="form-control cp-form" id="o_u_password" name="o_u_password" placeholder="Current Password" value=""
 													required data-fv-notempty-message="Please enter a current password">
           </div>
-          <div class="md-form mb-5">
-            <label for="inputPassword3" class="control-label">New Password</label>
+          <div class="form-group">
+            <label for="inputEmail3" class="control-label">New Password</label>
             <i class = "fa fa-eye cp-eye"></i>
             <input type="password" class="form-control cp-form" id="n_u_password" name="n_u_password" placeholder="New Password" value=""
                           required data-fv-notempty-message="Please enter a new password">
-            <span id="ErrorM" style="font-size:14px;color:#a94442;"><?php if(isset($this->ErrorM) && $this->ErrorM!=""){ echo $this->ErrorM; }?></span>                
+            <span id="ErrorM" style="font-size:14px;color:#a94442;"><?php if(isset($this->ErrorM) && $this->ErrorM!=""){ echo $this->ErrorM; }?></span>
           </div>
 
-          <div class="md-form mb-4">
-            <label for="inputPassword3" class="control-label">Confirm Password</label>
+          <div class="form-group">
+            <label for="inputEmail3" class="control-label">Confirm Password</label>
             <i class = "fa fa-eye cp-eye"></i>
             <input type="password" class="form-control cp-form" id="u_password" name="u_password" placeholder="Confirm Password" value=""
 													required data-fv-notempty-message="Please enter a confirm password">
           </div>
           <input type="hidden" id="u_id" name="u_id" value="">
       </div>
-      <div class="modal-footer cp-body d-flex justify-content-center">
+      <div class="modal-footer">
       <button type="submit"  id="changePwdTbtn"  name="changePwdTbtn" class="btn btn-info pull-right">Save</button>
       <center><span id="success" style="color:green"></span></center>
 											<center><span id="errMesg" style="color:red"></span></center>
 											<center><span id="loadingError" style="display:none;"> Loading...</span></center>
       </div>
-      </form> 
+      </form>
     </div>
   </div>
 </div>
@@ -876,10 +878,11 @@ function changePassword() {
         e.preventDefault();
     });
 }
-var pwd = document.getElementById('o_u_password');
-var eye = document.getElementById('eye1');
-eye.addEventListener('click',togglePass);
-fuction togglePass(){
+function togglePass(){
+
+  var pwd = document.getElementById('o_u_password');
+  var eye = document.getElementById('eye1');
+  eye.addEventListener('click',togglePass);
   eye.classList.toggle('active');
   (pwd.type == 'password') ? pwd.type = 'text': pwd.type = 'password';
 }
