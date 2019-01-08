@@ -499,7 +499,19 @@
 			</div>
 			<div class = "col-md-7 mar_l30 col-xs-12">
 				<div class= "row asset-boxes asset-padding text-justify">
-				<p><?php echo ucfirst($companyview['company_desc']); ?></p>
+				<!--<p><//?php echo ucfirst($companyview['company_desc']); ?></p>-->
+				<p><?php if(strlen($companyview['company_desc']) < 100){
+								$string = $companyview['company_desc'];
+							}
+						else{
+							$string2 = strip_tags($companyview['company_desc']);
+							$stringCut2 = substr($string2, 0, 100);
+							$string2 = substr($stringCut2, 0, strrpos($stringCut2, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$companyview['cm_unique_id'].');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
+							}
+
+						?>
+							<span id="spanLess_<?php echo $companyview['cm_unique_id']; ?>" style="overflow-wrap: break-word;"><?php echo $string2; ?></span>
+							<span id="expandSpan_<?php echo $companyview['cm_unique_id']; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $companyview['company_desc'].' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$companyview['cm_unique_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span></p>
 				</div>
 				<div class= "row" style="padding:20px 0px 20px 0px;">
 					<ul class="nav navbar-nav" style="float:right;">
