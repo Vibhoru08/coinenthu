@@ -783,21 +783,22 @@
 				$user_id = $this->session->userdata('user_id');
 				$last_reply_details = $this->Companies_model->getLastReplyByUser($review_id,$user_id);
 				$row = $last_reply_details->last_row('array');
-				if($row['u_username'] != ""){
-						$u_username = ucfirst($row['u_username']);
+				$user_details = $this->User_model->getUserDetails($user_id);
+				if($user_details->u_username != ""){
+						$u_username = ucfirst($user_details->u_username);
 				} 
 				elseif($row['u_firstname'] != ""){
-						$u_username = ucfirst($row['u_firstname']);
+						$u_username = ucfirst($user_details->u_username);
 				}
 				else{
 						$u_username = "Guest User";
 				}
 				$html .='<div class="row" id = "individualReplies_"'.$row['crr_id'].'">';
 				$html .='<div class = "col-md-2">';
-				if($row['u_picture']!=""){
-						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
-				}else if($row['u_social_pic']!=""){
-						$html .= '<img class="img-circle img-sm" src="'.$row['u_social_pic'].'" alt="'.$u_username.'">';
+				if($user_details->u_picture !=""){
+						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$user_details->u_picture.'" alt="'.$u_username.'">';
+				}else if($user_details->u_social_pic !=""){
+						$html .= '<img class="img-circle img-sm" src="'.$user_details->u_social_pic.'" alt="'.$u_username.'">';
 				}else{
 						$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
 				}
