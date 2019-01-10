@@ -2135,6 +2135,8 @@ function reply_show(id){
 		}
 	}
 	function reply_Message(id){
+		if($("#hid_sessionid").val()!=""){
+			$("#replypopup_m"+id).show();
 			$("#crr_decript"+id).focus();
 
 				$("#crr_decript"+id).css({"background-color":"#8e44ad"})
@@ -2142,6 +2144,15 @@ function reply_show(id){
 					backgroundColor:"#ffff",
 				},400,function() {
 				});
+			}else {
+				$("#confirmation_modal_pop").modal('hide');
+				$("#common_modal_pop").modal('hide');
+				setTimeout(function(){
+					$("#common_heading").html('Warning Message');
+					$("#common_message").html('Login required');
+					$('#common_modal_pop').modal('show');
+				}, 100);
+			}
 	}
 
 	function replyMessage(re_id){
