@@ -1359,6 +1359,9 @@ a.ui-button:active,
 .mar_tn10{
   margin-top:-10px;
 }
+.mar_b0{
+  margin-bottom:0px;
+}
 .mar_b5{
   margin-bottom:5px;
 }
@@ -3002,7 +3005,7 @@ textarea { resize: vertical; }
  padding-bottom:20px;
 }
 .cp-header{
- padding:0px 0px 0px 10px;	
+ padding:0px 0px 0px 10px;
 }
 .twitter_box_padding{
  padding-top:5px;
@@ -3048,7 +3051,7 @@ textarea { resize: vertical; }
  width:92px;
  padding:0;
  position:relative;
- margin-top:-120px;
+ margin-top:-90px;
  height:92px;
  border:15px solid #f9f9f9;
 }
@@ -3257,7 +3260,7 @@ a.left_panel_desc{
   padding-bottom: 0;
 }
 .asset-padding{
- padding:25px 15px 17px 15px;
+ padding:5px 15px 5px 15px;
 
 }
 .like-button-text{
@@ -3285,7 +3288,7 @@ a.left_panel_desc{
  margin:30px 0 0 0;
 }
 .banner-asset-margin{
- margin-bottom:30px;
+ margin-bottom:10px;
 }
 .banner_desc{
   font-family:NoirPro Light ;

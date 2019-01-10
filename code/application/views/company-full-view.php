@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color banner-asset-margin mob_height_banner">
-		<div class="row mmar_t40 mmar_b10 mar_t40 mar_b50">
+		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 			<div class="col-xs-12 text-center banner_head">
 			<?php echo strtoupper($companyview['company_name']);?> REVIEWS
 			<div class="row lg_hide m_height">
@@ -97,7 +97,7 @@
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left">
 				<div class="text-center">
-					<h3  class="company_name"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i>
+					<h3  class="company_name mar_t10 mar_b0"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i>
 						<ul class="social_share social-network social-circle sharing_img sharing_img_new m_hide">
 							<?php
 							$whatsappLink = base_url().'company-full-view/'.$cm_name;
@@ -164,7 +164,7 @@
 				<?php
 						if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != "" && $companyview['cm_ico_end_date'] >= date('Y-m-d') && $companyview['cm_ctid'] == 2){
 						?>
-						<div class="mar_t40">
+						<div class="mar_t10">
 						<hr>
 							<?php
 								$options = array();
@@ -210,7 +210,7 @@
 						</div>
 						<?php }else{ ?><h4 id="demo" style="display:none;"></h4><?php } ?>
 						<?php if($companyview['cm_marketcap'] != "") { ?>
-						<div class="mar_t10 market_value_count mar_t40 text-center">
+						<div class="mar_t10 market_value_count mar_t10 text-center">
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
@@ -244,7 +244,7 @@
 
 
 				<?php if($companyview['cot_name'] != "") { ?>
-					<div class="mar_t40">
+					<div class="mar_t10">
 					<hr>
 						<h4 class="no-margin asset-heading pad_b5">Founding Team </h4>
 							<?php if(sizeof($companyview['cot_name'])>0) {
@@ -277,7 +277,7 @@
 
 
 				<?php if($companyview['adt_name'] != "") { ?>
-					<div class="mar_t40 ">
+					<div class="mar_t10 ">
 					<hr>
 						<h4 class="no-margin asset-heading pad_b5">Advisory Team </h4>
 							<?php if(sizeof($companyview['adt_name'])>0) {
@@ -309,7 +309,7 @@
 					<?php } ?>
 
 				<?php if($companyview['resource_name'] != "") { ?>
-						<div class="mar_t40">
+						<div class="mar_t10">
 						<hr>
 						<h4 class="no-margin pad_b5">Resources </h4>
 							<?php if(sizeof($companyview['resource_name'])>0) {
@@ -341,7 +341,7 @@
 						</div>
 						<?php } ?>
 						<?php if($companyview['cm_ctid'] == 2 && $companyview['escrow_name'] !="") { ?>
-						<div class="mar_t40">
+						<div class="mar_t10">
 						<hr>
 						<h4 class="no-margin pad_b5">Escrow Details</h4>
 							<!--<p><?php // echo $companyview['cm_escrow']; ?></p>-->
@@ -373,7 +373,7 @@
 						</div>
 						<?php } ?>
 						<?php if($companyview['ms_title'] != "") { ?>
-						<div class="mar_t40">
+						<div class="mar_t10">
 						<hr>
 						<h4 class="no-margin asset-heading pad_b10">Milestones</h4>
 							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
@@ -393,7 +393,7 @@
 							<?php } $i++; } } else{ echo "No Milestones Box "; } ?>
 						</div>
 						<?php } ?>
-						<div class="mar_t40 text-center">
+						<div class="mar_t10 text-center">
 							<hr>
 							<ul class="social-network social-circle social_brg_b pad_0">
 								<?php
@@ -506,14 +506,14 @@
 						else{
 							$string2 = strip_tags($companyview['company_desc']);
 							$stringCut2 = substr($string2, 0, 100);
-							$string2 = substr($stringCut2, 0, strrpos($stringCut2, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$companyview['cm_unique_id'].');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
+							$string2 = substr($stringCut2, 0, strrpos($stringCut2, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$companyview['company_id'].');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
 							}
 
 						?>
-							<span id="spanLess_<?php echo $companyview['cm_unique_id']; ?>" style="overflow-wrap: break-word;"><?php echo $string2; ?></span>
-							<span id="expandSpan_<?php echo $companyview['cm_unique_id']; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $companyview['company_desc'].' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$companyview['cm_unique_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span></p>
+							<span id="spanLess_<?php echo $companyview['company_id']; ?>" style="overflow-wrap: break-word;"><?php echo $string2; ?></span>
+							<span id="expandSpan_<?php echo $companyview['company_id']; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $companyview['company_desc'].' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$companyview['company_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span></p>
 				</div>
-				<div class= "row" style="padding:20px 0px 20px 0px;">
+				<div class= "row" style="padding:2px 0px 2px 0px;">
 					<ul class="nav navbar-nav" style="float:right;">
 							<li class="dropdown mpull_right select_dropdown ma_dw" id="change_u">
 		 					&nbsp; <button class="btn btn-default dropdown-toggle review_dw" type="button" data-toggle="dropdown" aria-expanded="true" id="filtername">
@@ -603,7 +603,7 @@
 							?>
 
 						</div>
-						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
+						<div class = "row" style="padding-left:30px;padding-top:2px;padding-bottom:2px;">
 						<?php
 						    if(strlen($review->re_decript) < 150){
 								$string = $review->re_decript;
@@ -618,7 +618,7 @@
 							<span id="spanLess_<?php echo $review->re_id; ?>" style="overflow-wrap: break-word;"><?php echo $string; ?></span>
 							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
-						<div class = "row" style="padding-left:30px;padding-top:15px;padding-bottom:15px;">
+						<div class = "row" style="padding-left:30px;padding-top:2px;padding-bottom:2px;">
 							<div class="col-xs-12 col-lg-8 pad_0">
 							<?php
 							if(isset($_SESSION['user_id']))
@@ -651,7 +651,7 @@
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
 						</div>
-						<div class="col-xs-12 col-lg-4 pad_0">
+						<div class="col-xs-12 col-lg-4 pad_0" id="reply_show<?php echo $review->re_id; ?>" onclick="reply_show('<?php echo $review->re_id; ?>')">
 							<span class="pull-right no-pull-right" style="font-size:12px;color:#e43d78;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
 								echo " Reply .&nbsp; ";
 							}else{
@@ -668,7 +668,7 @@
 						</div>
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
-						<div class="row" id="replypopup_m" style="">
+						<div class="row" id="replypopup_m<?php echo $review->re_id; ?>" style="display:none;">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-xs-10">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
@@ -701,7 +701,7 @@
 									 </form>
 								 </div>
 								<?php }?>
-								<div id="repliesDiv_<?php echo $review->re_id; ?>">
+								<div id="repliesDiv_<?php echo $review->re_id; ?>" style="display:none;">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
 
 						<div class = "row" id="individualReplies_<?php echo $reviewReplay->crr_id; ?>">
@@ -1711,6 +1711,17 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 <input type="hidden" id="timeDate1" name="timeDate1" value="<?php print date("F d, Y H:i:s",strtotime(date('Y-m-d H:i:s'))); ?>">
 
 <script>
+function reply_show(id){
+	if($('#reply_show'+id).hasClass("clicked")){
+		$("#repliesDiv_"+id).hide();
+		$("#reply_show"+id).removeClass("clicked");
+		$("#replypopup_m"+id).hide();
+	}else{
+		$("#repliesDiv_"+id).show();
+		$("#reply_show"+id).addClass("clicked");
+		$("#replypopup_m"+id).show();
+	}
+}
 	function shareCoin(){
 		//document.getElementById(".social_share").style.display = "inline";
 

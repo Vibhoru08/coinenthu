@@ -208,7 +208,7 @@ $img =  base_url().'images/logo.png';
 						}
 					?>
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-					<div class="dropdown mar_t10 float_right mar_r30 p_hover">
+					<div class="dropdown mar_t5 float_right mar_r30 p_hover">
 					<button type="button" class="dropdown-toggle nav_user" data-toggle="dropdown" style="position:relative;">
 						<img src = "<?php echo $imagePath; ?>" class = "img-circle reply-image">&nbsp;&nbsp;<span class="caret_change"><span class="caret"></span></span></button>
 
@@ -234,7 +234,7 @@ $img =  base_url().'images/logo.png';
 					<?php } ?>
 
 
-							<ul class="nav navbar-nav mar_t5 margin-right">
+							<ul class="nav navbar-nav mar_t0 margin-right">
 			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
 			   <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
@@ -249,7 +249,7 @@ $img =  base_url().'images/logo.png';
 
 			  </ul>
 				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-				<ul class= "nav navbar-nav mar_t5 pm_hover">
+				<ul class= "nav navbar-nav mar_t0 pm_hover">
 
 					<li class="signup_box"><a href="<?php echo base_url();?>display-profile">MY PROFILE</a></li>
 					<!--<li class="h_hover"><a href="</*?php echo base_url();?*/>my-digital-assets">My ASSETS </a></li>

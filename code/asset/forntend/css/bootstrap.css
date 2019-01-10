@@ -1384,7 +1384,7 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 0px;
 }
 .lead {
   margin-bottom: 20px;
@@ -4621,10 +4621,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    margin-top:15px;
-    margin-bottom:15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 @media(max-width:990px){
@@ -4637,7 +4637,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     display:none;
   }
   .margin-right{
-    margin:5px 120px 0px 0px!important;
+    margin:10px 120px 0px 0px!important;
   }
 }
 .navbar-form {
@@ -6145,7 +6145,7 @@ button.close {
 }
 button.cp-close{
   padding: 0;
-  
+
 }
 .modal-open {
   overflow: hidden;

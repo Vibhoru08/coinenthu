@@ -121,7 +121,7 @@ body {
 }
 .fixed .content-wrapper,
 .fixed .right-side {
-  padding-top: 50px;
+  padding-top: 30px;
 }
 @media (max-width: 767px) {
   .fixed .content-wrapper,
@@ -203,7 +203,8 @@ a:focus {
   margin-bottom: 0;
   margin-left: 230px;
   border-bottom: 1px solid #ddd;
-  min-height: 80px;
+  min-height: 60px;
+  height:60px;
   border-radius: 0;
 }
 .layout-top-nav .main-header > .navbar {
