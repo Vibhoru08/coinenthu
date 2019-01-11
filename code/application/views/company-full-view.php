@@ -95,7 +95,7 @@
 </div>-->
     <div class = "container-fluid mar_b400 mar_tn10 mar_tm30">
 		<div class ="row">
-			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left">
+			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left md_equal_margin">
 				<div class="text-center">
 					<h3  class="company_name mar_t10 mar_b0"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i>
 						<ul class="social_share social-network social-circle sharing_img sharing_img_new m_hide">
@@ -156,7 +156,7 @@
 						<?php echo $target;?>>View Site</a></span>
 					</p>
 					<div class="row">
-						<div class="col-xs-12 pad_0">
+						<div class="col-xs-10 col-xs-offset-1 pad_0 mar_t10">
 					<a href="javascript:void(0)" onclick="ReviewAllow();" class="col-xs-12 btn btn-cstm btn-review">Leave a Review</a>
 				</div>
 			</div>
@@ -505,7 +505,7 @@
 							}
 						else{
 							$string2 = strip_tags($companyview['company_desc']);
-							$stringCut2 = substr($string2, 0, 100);
+							$stringCut2 = substr($string2, 0, 300);
 							$string2 = substr($stringCut2, 0, strrpos($stringCut2, ' ')).'... <a style="cursor:pointer;color:#1546a5" href="javascript:void(0);" onClick="readMoreSpan('.$companyview['company_id'].');">More <i class="fa fa-angle-double-right font_s16" aria-hidden="true"></i></a>';
 							}
 
@@ -513,10 +513,11 @@
 							<span id="spanLess_<?php echo $companyview['company_id']; ?>" style="overflow-wrap: break-word;"><?php echo $string2; ?></span>
 							<span id="expandSpan_<?php echo $companyview['company_id']; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $companyview['company_desc'].' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$companyview['company_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span></p>
 				</div>
-				<div class= "row" style="padding:2px 0px 2px 0px;">
+				<div class= "row" style="padding:5px 0px 5px 0px;">
 					<ul class="nav navbar-nav" style="float:right;">
 							<li class="dropdown mpull_right select_dropdown ma_dw" id="change_u">
-		 					&nbsp; <button class="btn btn-default dropdown-toggle review_dw" type="button" data-toggle="dropdown" aria-expanded="true" id="filtername">
+		 					 <span class="for-border">
+							 <span id="sort_by">Sort By</span><button class="btn btn-default dropdown-toggle review_dw no-border" type="button" data-toggle="dropdown" aria-expanded="true" id="filtername">
 		   					<?php
 		   						if($companyview['results_type'] == 'likes')
 		   							{
@@ -534,7 +535,7 @@
 
 			   							echo 'Up Votes';
 		   							}
-		   					?>
+		   					?></span>
 							<div class="arrow_down"><span class="caret"></span></div>
 		  					</button>
 		  					<ul class="dropdown-menu user_dropdown_t" role="menu" style="left:0px;">
@@ -2497,19 +2498,19 @@ function reply_show(id){
 					}else{
 						if(typeMode=='review'){
 							if(type=='like'){
-								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
+								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class="like-button-text" style="color:#065FD4;">Liked</span>');
 								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
 							}else{
 								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
-								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i><span class ="dislike-button-text" style="color:#065FD4;">Disliked</span>');
 							}
 						}else if(typeMode=='replies'){
 							if(type=='like'){
-								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.cntLikeDislikes+'</span>');
+								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>&nbsp;'+ data.dislikescnt);
 							}else{
-								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;'+ data.cntLikeDislikes);
+								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.dislikescnt+'</span>');
 							}
 						}
 						/*}else if(typeMode=='replies'){

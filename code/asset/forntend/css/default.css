@@ -1320,6 +1320,9 @@ a.ui-button:active,
 .mar_r30{
   margin-right:30px;
 }
+.mar_t0{
+  margin-top:0;
+}
 .mar_t5{
 	margin-top:5px;
 }
@@ -2524,10 +2527,9 @@ color:#fff;
 	padding-left:0px
 }
 .review_dw{
-	background:#fff;
-	width:160px;
+	background:#f2f2f2;
 	text-align:left;
-	padding:6px 19px;
+	padding:6px 15px;
 }
 .mailstone_pad_bg{
 	background:#ffff;
@@ -2991,7 +2993,7 @@ textarea { resize: vertical; }
  padding-bottom:30px;
 }
 .border_bottom{
-  border-bottom:1px solid #bfbfbf;
+  border-bottom:1px solid #E4E3E3;
   padding-top:10px;
 }
 .time_stamp{
@@ -3175,7 +3177,7 @@ margin:0 -15%;
   }
   .asset-image{
     left:0;
-    margin-top:-80px;
+    margin-top:-45px;
     margin-bottom:10px;
   }
   .mar_l30{
@@ -3260,7 +3262,7 @@ a.left_panel_desc{
   padding-bottom: 0;
 }
 .asset-padding{
- padding:5px 15px 5px 15px;
+ padding:8px 15px 8px 15px;
 
 }
 .like-button-text{

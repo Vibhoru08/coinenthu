@@ -4484,8 +4484,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-brand-logo >img{
-  height:69px;
-  width:180px;
+  height:60px;
+  width:156.5px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4537,6 +4537,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 4px;
 }
 @media (min-width: 991px) {
+  .md_equal_margin{
+    margin-left:7%;
+  }
   .navbar-toggle {
     display: none;
   }

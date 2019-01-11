@@ -2331,7 +2331,7 @@ border:none;
 background-color: #e31c77;
 border-color: #e31c77;
 color:#ffff;
-width:229px;
+/*width:229px;*/
 margin:auto;
 border-radius:5px!important;
 }
@@ -2444,7 +2444,7 @@ border-radius:5px!important;
     background-color: #f9f9f9;
 }
 .btn_dislike_new:active:focus{
-  color:green;
+  color:rgb(53, 120, 229);;
 }
 @media(min-width:990px){
   .digi_height{
