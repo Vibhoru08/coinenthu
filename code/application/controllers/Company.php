@@ -786,7 +786,7 @@
 				$user_details = $this->User_model->getUserDetails($user_id);
 				if($user_details->u_username != ""){
 						$u_username = ucfirst($user_details->u_username);
-				} 
+				}
 				elseif($row['u_firstname'] != ""){
 						$u_username = ucfirst($user_details->u_username);
 				}
@@ -824,7 +824,7 @@
 				//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
 				$html.=' </div>
 			  <div class="row" style = "padding-bottom:5px">';
-				
+
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
 							$html.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
@@ -832,7 +832,7 @@
 				}
 				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
 				$html.='</div></div></div>';
-        
+
 				$html2 .='<div class="row mar_t20" id = "individualReplies_"'.$row['crr_id'].'">';
 				$html2 .='<div class = "col-md-2">';
 				if($row['u_picture']!=""){
@@ -856,7 +856,7 @@
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
 				$html2.='<div class="row" style = "padding-bottom:5px">';
-				
+
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
 							$html2.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
@@ -865,10 +865,10 @@
 				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete("'.$row['crr_id'].'");">';
 				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
 				$html2.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
-				$html2.='</div></div></div>';		
-      			
+				$html2.='</div></div></div>';
+
 				$repliesCntt = sizeof($replies);
-			
+
 				$crr_id = $_POST['crr_id'];
 				$reply_details = $this->Companies_model->fetchreply($crr_id);
 				foreach ($reply_details as $row2){
@@ -1454,7 +1454,7 @@
 						$last_review = $company_reviews->last_row('array');
 						$last_review_userid = $last_review['re_uid'];
 						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
-						$html .='<div class="col-md-5 col-md-offset-1 mar_t80" style = "min-height:454px;">
+						$html .='<div class="col-md-4 mar_t40" style = "min-height:454px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1521,7 +1521,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
+						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><br/></br><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
 						}
 						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
@@ -1529,7 +1529,7 @@
 
 
 
-				
+
 							//$html.=$cm_totalviews. ' Reviews';
 							if ($number_of_reviews == 1){
 								$review_s = 'Review';
