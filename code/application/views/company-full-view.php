@@ -629,8 +629,23 @@
 							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
 							<?php } else { ?>
 								<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
-							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
-							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
+							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text"><?php $checkedRes = $this->Companies_model->checkUserLiked($uid,$review->re_id,'like');
+							      if(isset($checkedRes->rr_id) && $checkedRes->rr_id!=''){
+									echo 'Liked';
+									}
+								  else{
+									echo 'Like';  
+								  }			    
+							?></span></button>
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text"><?php 
+							$checkedRes = $this->Companies_model->checkUserLiked($uid,$review->re_id,'dislike');
+							if(isset($checkedRes->rr_id) && $checkedRes->rr_id!=''){
+								echo 'Disliked';
+							   }
+							else{
+								echo 'Dislike';
+							}    
+							?></span></button>
 							<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
 							?>

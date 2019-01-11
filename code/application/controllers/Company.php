@@ -800,7 +800,7 @@
 				}else if($user_details->u_social_pic !=""){
 						$html .= '<img class="img-circle img-sm" src="'.$user_details->u_social_pic.'" alt="'.$u_username.'">';
 				}else{
-						$html .= '<img class="img-circle img-sm" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
+						$html .= '<img class="img-circle img-sm" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
 				}
 				$html .='</div>';
 				$html .="<div class='col-md-10'><div class = 'row mar_0' style = 'padding-top:5px;padding-bottom:5px;'>
@@ -840,7 +840,7 @@
 				}else if($row['u_social_pic']!=""){
 						$html2 .= '<img class="img-circle reply-image" src="'.$row['u_social_pic'].'" alt="'.$u_username.'">';
 				}else{
-						$html2 .= '<img class="img-circle reply-image" src="'. base_url().'images/user5-128x128.jpg" alt="user image">';
+						$html2 .= '<img class="img-circle reply-image" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
 				}
 				$html2 .='</div><div class="col-md-10">';
 				$old_date = timeago($row['crr_createdat']);
