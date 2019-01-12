@@ -1,25 +1,33 @@
  <div class="content-wrapper">
-	<div  class="bread_crumb">
-		<div class="container-fluid">
-			<section class="content-header">
-					<h1 class="text-right m_hide">
-					  &nbsp;
-					</h1>
-					<ol class="breadcrumb">
-					  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-					  <li class="active">Add an ICO</li>
-					</ol>
-			</section>
-		</div>
-		</div>
+   <div class="container-fluid banner_margin linear_color">
+ 		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
+ 			<div class="col-xs-12 text-center banner_head">
+ 				ADD ICO TRACKER
+ 				<!--<hr style="width:5%;border:2px solid #ffff">-->
+ 			</div>
+ 		</div>
+ 	</div>
+ <!--<div  class="bread_crumb">
+ 		<div class="container-fluid">
+ 			<section class="content-header">
+ 					<h1 class="text-right m_hide">
+ 					  &nbsp;
+ 					</h1>
+ 					<ol class="breadcrumb">
+ 					  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
+ 					  <li class="active">Terms & Conditions</li>
+ 					</ol>
+ 			</section>
+ 		</div>
+ 	</div> -->
         <div class="container-fluid">
 			<section class="content mar_b20">
 			<div class="row">
 					<div class="col-md-12">
-						<div class="box mar_b50  mar_t20 box_shadow overflow_hidden">
-							<div class="box-header with-border header_bg">
+						<div class="box mar_b50  mar_t20 no_shadow overflow_hidden">
+							<!--<div class="box-header with-border header_bg">
 								<h3 class="box-title">Add an ICO </h3>
-							</div>
+							</div>-->
 							<form class="form-horizontal mandatory" action="" method="POST" name="add_digital_asset" id="add_digital_asset" enctype="multipart/form-data"  data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon"
 									data-fv-icon-invalid="glyphicon"            data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="addDigitalAsset();">
 							<div class="box-body pad_t30">
@@ -81,7 +89,7 @@
 										 <input type="hidden" id="advisory_cnt" value="1" />
 										  <input type="hidden" id="escrow_cnt" value="1" />
 
-									  
+
 									  <input type="hidden" id="resources_cnt" value="1" />
 									  <span id="resources_divs">
 									  <div class="form-group" id="resource_1">
@@ -187,7 +195,7 @@
 										  </div>
 									  </span>
 
-									  
+
 									  <div class="form-group">
 										<label for="Inflation" class="col-sm-3 control-label">ICO Start Date & Time <span class="mstar">*</span></label>
 										<div class="col-sm-9">
@@ -264,7 +272,7 @@
 											</div>
 										</div>
 									  </div>
-									  
+
 									  <div class="form-group">
 										<label for="Email ID " class="col-sm-3 control-label">Email ID <span class="mstar">*</span></label>
 										<div class="col-sm-9">
@@ -327,15 +335,15 @@
 										  <textarea class="form-control" id="cm_address" name="cm_address" value="" placeholder="Address"></textarea>
 										</div>
 									  </div>
-									 
+
 
 								<input type="hidden" id="hidCompanyType" name="hidCompanyType" value="2">
 
 									  <div class="form-group text-right">
 									    <span id="loadAddDigital"  style="float:left;display:none">Inserting...</span>
 										<div class="col-sm-offset-3 col-sm-9">
-										  <a href="<?php echo base_url();?>my-ico-trackers" class="btn btn-default">CANCEL</a>
-										  <button type="submit" class="btn btn-danger">ADD <span class="mm_show">AN </span> <span class="m_hide"></span> ICO </button>
+										 <!-- <a href="<?php echo base_url();?>my-ico-trackers" class="btn btn-default">CANCEL</a>-->
+										  <button type="submit" class="btn btn-custom">ADD <span class="mm_show">AN </span> <span class="m_hide"></span> ICO </button>
 										</div>
 									  </div>
 

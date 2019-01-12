@@ -13,10 +13,10 @@
 		</div>
   </div>-->
   <div class="container-fluid banner_margin linear_color">
-    <div class="row mmar_t40 mmar_b10 mar_t70 mar_b80">
+    <div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
       <div class="col-xs-12 text-center banner_head">
         ADD AN ASSET
-        <hr style="width:5%;border:2px solid #ffff">
+        	<!--<hr style="width:5%;border:2px solid #ffff">-->
       </div>
     </div>
   </div>
@@ -242,7 +242,7 @@
 									  <div class="form-group text-right">
 									   <span id="loadAddDigital"  style="float:left;display:none">Inserting...</span>
 										<div class="col-sm-offset-3 col-sm-9">
-										  <a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>
+										  <!--<a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>-->
 										  <button type="submit" class="btn btn-custom">ADD <span class="mm_show">AN </span> <span class="m_hide">DIGITAL</span> ASSET</button>
 										</div>
 									  </div>

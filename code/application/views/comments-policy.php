@@ -1,5 +1,13 @@
 <div class="content-wrapper">
-<div  class="bread_crumb">
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
+			<div class="col-xs-12 text-center banner_head">
+				COMMENTS POLICY
+				<!--<hr style="width:5%;border:2px solid #ffff">-->
+			</div>
+		</div>
+	</div>
+<!--<div  class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -7,12 +15,12 @@
 					</h1>
 					<ol class="breadcrumb">
 					  <li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-					  <li class="active">Comments Policy</li>
+					  <li class="active">Terms & Conditions</li>
 					</ol>
 			</section>
 		</div>
-	</div>
-<div class="container terms_of_use mar_b50">
+	</div> -->
+<div class="container terms_of_use mar_b50 mar_t30">
     <h3>Last revised on November 1st, 2018. Effective November 1st, 2018</h3>
 
 

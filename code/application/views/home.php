@@ -1,7 +1,7 @@
 <div class = "content-wrapper" style="min-height:0!important;">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color_home">
-            <div class = "row text-center mar_t40 mmar_th0">
+            <div class = "row text-center mar_t30 mmar_th0">
                 <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_headh">
                     COMMUNITY BASED CRYPTO REVIEWS
                   <!--  <hr style="width:5%;border:2px solid #ffff">-->
@@ -12,7 +12,7 @@
                     Let's not invest blindly, get the correct information on your Cryptos.<br/> Search for them.
                 </div>
             </div>
-            <div class = "row text-center mar_t30 mmar_t0 mmar_b15 mar_b50">
+            <div class = "row text-center mar_t30 mmar_t0 mmar_b15 mar_b40">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1  col-md-6 col-md-offset-2  su_home">
                     <input class="form-control1 form-control mar_r10 searchhome" type="text" onkeyup="sreachterm();" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets and ICOs"  />
                 </div>
@@ -451,7 +451,10 @@
   <?php } ?>
 </div>
 
-
+<div class="row text-center mar_t80">
+ <div class=""><a href="<?php echo base_url();?>digital-assets" class="btn btn-cstm btn-lg font_s22 div">Digital Assets</a>
+   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:20px">Upcoming ICOs</a></div>
+ </div>
 
 
     </section>
@@ -474,7 +477,6 @@ $(document).ready(function(){
     });
 
 	$(document).ready(function() {
-debugger;
 
 $(".carousel").on("touchstart", function(event){
         var xClick = event.originalEvent.touches[0].pageX;

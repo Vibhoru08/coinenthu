@@ -1362,6 +1362,9 @@ a.ui-button:active,
 .mar_tn10{
   margin-top:-10px;
 }
+.mar_tn50{
+  margin-top:-50px;
+}
 .mar_b0{
   margin-bottom:0px;
 }
@@ -1441,6 +1444,12 @@ a.ui-button:active,
   padding:0;
 }
 @media(max-width:768px){
+  .xsmar_b50{
+    margin-bottom:50px;
+  }
+  .xsmar_b0{
+    margin-bottom:0px;
+  }
   .mmar_t40{
     margin-top:40px !important;
   }
@@ -2968,6 +2977,48 @@ font-family: NoirPro;
 .crr_decript{
   border:1px solid black;
 }
+.small_replies_dropdown{
+  cursor:pointer;
+  font-size:12px;
+  color:#e43d78;
+}
+
+.reply_show{
+  margin-left:20px;
+  position: relative;
+  cursor:pointer;
+  color:#e31c77;
+}
+.reply_show .fa{
+
+  transform: rotate(-90deg);
+}
+.reply_show:before{
+  position:absolute;
+  top:-15px;
+  background:transparent;
+  width:100%;
+  height:40px;
+  content:"";
+  border-bottom:2px solid #8e44ad;
+}
+.dis_div{
+  padding-left:15px;
+}
+.br_height br {
+  display:block;
+  content:" ";
+  margin-top:-10px;
+  margin-bottom: 5px;
+  line-height:22px; }
+@media(min-width:990px){
+  .small_replies_dropdown:hover{
+    color:#ff99c2;
+  }
+  .reply_show:hover{
+    color:#ff99c2;
+  }
+}
 textarea { resize: vertical; }
 .searchhome{
   border-color:transparent!important;
@@ -3714,7 +3765,7 @@ a.left_panel_desc{
 	.div{
 		width:60%;
 		font-size: 20px;
-		margin: 30px 0px 20px 20px;
+		margin: 10px 0px 20px 10px;
 	}
 	.lg_hide{
 		display:block !important;

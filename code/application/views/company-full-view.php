@@ -634,17 +634,17 @@
 									echo 'Liked';
 									}
 								  else{
-									echo 'Like';  
-								  }			    
+									echo 'Like';
+								  }
 							?></span></button>
-							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text"><?php 
+							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text"><?php
 							$checkedRes = $this->Companies_model->checkUserLiked($uid,$review->re_id,'dislike');
 							if(isset($checkedRes->rr_id) && $checkedRes->rr_id!=''){
 								echo 'Disliked';
 							   }
 							else{
 								echo 'Dislike';
-							}    
+							}
 							?></span></button>
 							<?php
 									$reportedStatus = checkUserReport($uid,$review->re_id);
@@ -667,24 +667,28 @@
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
 						</div>
-						<div class="col-xs-12 col-lg-4 pad_0" id="reply_show<?php echo $review->re_id; ?>" onclick="reply_show('<?php echo $review->re_id; ?>')">
-							<span class="pull-right no-pull-right" style="font-size:12px;color:#e43d78;"><?php echo sizeof($companyview['replies'][$review->re_id]);?><?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
-								echo " Reply .&nbsp; ";
+						<div class="col-xs-12 col-lg-4 pad_0 small_replies_dropdown" id="reply_show<?php echo $review->re_id; ?>" onclick="reply_show('<?php echo $review->re_id; ?>')">
+							<span class="pull-right no-pull-right"><i class="fa fa-reply reply" aria-hidden="true"></i>&nbsp;
+								<span id="repliesCntt_<?php echo $review->re_id; ?>" class="no_of_replies<?php echo $review->re_id; ?>"><?php echo sizeof($companyview['replies'][$review->re_id]);?></span>
+									<span id="repliesText_<?php echo $review->re_id; ?>"> <?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
+								echo " Reply &nbsp; ";
 							}else{
-								echo " Replies .&nbsp; ";
-							} ?><?php echo $re_likes_cnt; ?><?php if($re_likes_cnt == 1){
-								echo " Like . ";
+								echo " Replies &nbsp; ";
+							} ?></span>
+								<span class="no_of_likes<?php echo $review->re_id; ?>"><?php echo $re_likes_cnt; ?><?php if($re_likes_cnt == 1){
+								echo " Like &nbsp;";
 							}else{
-								echo " Likes .&nbsp; ";
-							} ?><?php echo $re_dislike_cnt;?><?php if($re_dislike_cnt == 1){
+								echo " Likes &nbsp; ";
+							} ?></span>
+								<span class="no_of_dislikes<?php echo $review->re_id; ?>"><?php echo $re_dislike_cnt;?><?php if($re_dislike_cnt == 1){
 								echo " Dislike";
 							}else{
-								echo " Dislikes&nbsp;";
-							} ?></span>
+								echo " Dislikes";
+							} ?></span></span>
 						</div>
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
-						<div class="row" id="replypopup_m<?php echo $review->re_id; ?>" style="display:none;">
+						<div class="row mar_t20" id="replypopup_m<?php echo $review->re_id; ?>" style="display:none;">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-xs-10">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
@@ -839,7 +843,7 @@
 									<?php }else{ ?>
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
 									<?php }} ?>
-									<span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
+									<span id="replies_count_<?php echo $reviewReplay->crr_id; ?>" class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
 									<?php if ($crr_likes_cnt == 1){
 										echo " Like";
 									} else {
@@ -1786,7 +1790,6 @@ function reply_show(id){
 	}
 
 	$(document).ready(function() {
-			debugger;
 		setInterval(get_comdtls, 10000);
 		$('.caption').hide();
 		$('.clear-rating').hide();
@@ -1913,7 +1916,6 @@ function reply_show(id){
 	}
 
 	function reviewReplyFilter_New(type,crr_reid,crr_id){
-			debugger;
 		$("#change_btn_name").html('Cancel');
 		var hid_filter = $("#hid_filter").val();
 		var filterTitle = 'Up Votes';
@@ -1973,9 +1975,9 @@ function reply_show(id){
 							$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
 							if(data.repliesCntt == 1)
 							{
-								$('#repliesText_'+crr_reid).html('Reply');
+								$('#repliesText_'+crr_reid).html('Reply'+'\xa0\xa0\xa0');
 							}else{
-								$('#repliesText_'+crr_reid).html('Replies');
+								$('#repliesText_'+crr_reid).html('Replies'+'\xa0\xa0');
 							}
 							$('#view_replies_id_'+crr_reid).show();
 						}
@@ -1993,15 +1995,11 @@ function reply_show(id){
 	}
 
 	function wirteareplyreplySubmit(crr_id){
-		console.log("data.oddddutput");
-		debugger;
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage").html('');
 		if($("#hid_sessionid").val()!=""){
 			$('#common_modal_pop').modal('hide');
-			console.log("data.output");
 			$('#form_decript'+crr_id).formValidation().on('success.form.fv', function(e) {
-				console.log("data.8output");
 				e.stopImmediatePropagation();
 				var crr_replyReviewId       = $("#crr_replyReviewId").val();
 				var crrr_decript = $("#res_decript"+crr_id).val();
@@ -2017,7 +2015,6 @@ function reply_show(id){
 						$("#tp9").hide();
 						console.log(data.output);
 						if(data.output=='success'){
-							debugger;
 							$("#successMessage_"+crr_id).html('Reply successfully updated').css('color','green');
 							$("#replysuccessmessage").html('Reply successfully updated').css('color','green');
 							setTimeout(function(){
@@ -2071,7 +2068,6 @@ function reply_show(id){
 	}
 
 	function wirteareplySubmit(re_id){
-		debugger;
 		$('#replypopup'+re_id).formValidation();
 		replyMessage(re_id);
 		$("#change_btn_name").html('Cancel');
@@ -2246,7 +2242,6 @@ function reply_show(id){
 						$("#res_decript").attr('id',   "res_decript"+crr_id);
 							$("#form_decript"+crr_id).attr('onSubmit',   "wirteareplyreplySubmit("+crr_id+")");
 							$("#res_decript"+crr_id).attr("onkeyup",   "countCharcter("+crr_id+")");
-							debugger;
 						$("#res_decript"+crr_id).val(data.crr_decript);
 						$(".replypopup").formValidation();
 						$("#res_decript"+crr_id).focus();
@@ -2336,7 +2331,6 @@ function reply_show(id){
 		});
 	}
 	function reviewReplyFilter(type,crr_reid,re_id){
-		  debugger;
 		$("#change_btn_name").html('Cancel');
 		var hid_filter = $("#hid_filter").val();
 		var filterTitle = 'Up Votes';
@@ -2377,11 +2371,12 @@ function reply_show(id){
 							$('#repliesDiv_'+crr_reid).prepend(data.resData);
 							$('#repliesDiv_'+crr_reid).show();
 							$('#repliesCntt_'+crr_reid).html(data.repliesCntt);
+							$("#reply_show"+crr_reid).addClass("clicked");
 							if(data.repliesCntt == 1)
 							{
-								$('#repliesText_'+crr_reid).html('Reply');
+								$('#repliesText_'+crr_reid).html('Reply'+'\xa0\xa0\xa0');
 							}else{
-								$('#repliesText_'+crr_reid).html('Replies');
+								$('#repliesText_'+crr_reid).html('Replies'+'\xa0\xa0');
 							}
 							$('#view_replies_id_'+crr_reid).show();
 						}
@@ -2515,17 +2510,29 @@ function reply_show(id){
 							if(type=='like'){
 								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class="like-button-text" style="color:#065FD4;">Liked</span>');
 								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+								if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+								if(data.dislikescnt=="1"){var dislike_html="Dislike";}else{var dislike_html="Dislikes";}
+								$(".no_of_likes"+reviewid).html(data.cntLikeDislikes+' '+like_html+'\xa0\xa0\xa0');
+								$(".no_of_dislikes"+reviewid).html(data.dislikescnt+' '+dislike_html+' ');
 							}else{
 								$("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
 								$("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i><span class ="dislike-button-text" style="color:#065FD4;">Disliked</span>');
+								if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+								if(data.dislikescnt=="1"){var dislike_html="Dislike";}else{var dislike_html="Dislikes";}
+								$(".no_of_likes"+reviewid).html(data.cntLikeDislikes+' '+like_html+'\xa0\xa0\xa0');
+								$(".no_of_dislikes"+reviewid).html(data.dislikescnt+' '+dislike_html+' ');
 							}
 						}else if(typeMode=='replies'){
 							if(type=='like'){
 								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.cntLikeDislikes+'</span>');
 								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>&nbsp;'+ data.dislikescnt);
+								if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+								$("#replies_count_"+reviewid).html(data.cntLikeDislikes+' '+like_html);
 							}else{
 								$("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;'+ data.cntLikeDislikes);
 								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.dislikescnt+'</span>');
+								if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+								$("#replies_count_"+reviewid).html(data.cntLikeDislikes+' '+like_html);
 							}
 						}
 						/*}else if(typeMode=='replies'){

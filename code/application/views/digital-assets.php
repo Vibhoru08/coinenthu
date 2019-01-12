@@ -84,8 +84,8 @@ $viewTime = date('Ymd') .'_'. date('His');
 <div class = "row">
 	<div class = "col-md-10 col-md-offset-1">
 			<input type="hidden" id="totcntcompanies" value="<?php echo $totCntDigitals; ?>" />
-			<input type="hidden" id="limitpage"  value="6" />
-			<input type="hidden" id="offsetpage" value="6" />
+			<input type="hidden" id="limitpage"  value="9" />
+			<input type="hidden" id="offsetpage" value="9" />
 			<input type="hidden" id="pageMode" value="digital" />
 			<div class="row company_list">
 				<?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
@@ -265,7 +265,6 @@ $viewTime = date('Ymd') .'_'. date('His');
     });
 
 	$(document).ready(function() {
-debugger;
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
 		if(filterType!=""){

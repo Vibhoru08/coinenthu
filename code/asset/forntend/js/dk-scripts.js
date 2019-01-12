@@ -300,14 +300,13 @@ function changePassword() {
 }
 
 function filterCompanies(type,pagemode,limit) {
-	debugger;
 	localStorage.setItem('type',type);
 	localStorage.setItem('page_name',pagemode);
 	$("#offsetpage").val(1);
 	if(limit!=null){
 		$("#limitpage").val(limit);
 	}else{
-    $("#limitpage").val(6);
+    $("#limitpage").val(9);
 	}
     if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
         var filterTitle = 'Most reviewed';

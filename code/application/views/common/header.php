@@ -220,8 +220,8 @@ $img =  base_url().'images/logo.png';
 						<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 						<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
 						<li class="h_hover"><a href="</*?php echo $urlIco; ?*/>">ADD AN ICO </a></li>-->
-					<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal"){?>
-						<li class = "signup_box"><a href="#" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#ChangePass">CHANGE PASSWORD</a></li>
+					<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal") {?>
+						<li class = "signup_box"><a href="javascript:void(0);" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#ChangePass">CHANGE PASSWORD</a></li>
 					<?php } ?>
 						<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>
 					</ul>
@@ -254,9 +254,9 @@ $img =  base_url().'images/logo.png';
 					<li class="h_hover"><a href="</*?php echo $urlDigtal; ?*/>">ADD AN ASSET </a></li>
 					<li class="h_hover"><a href="</*?php echo base_url();?*/>my-ico-trackers">My ICOS </a></li>
 					<li class="h_hover"><a href="</*?php echo $urlIco; ?*/>">ADD AN ICO </a></li>-->
-				<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal"){?>
+				<?php if(isset($_SESSION['loginwith']) && $_SESSION['loginwith']=="Normal") {?>
 					<li class = "signup_box">
-	  					<a href="#" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#ChangePass">Change Password</a>
+	  					<a href="javascript:void(0);" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#ChangePass">Change Password</a>
 					</li>
 				<?php } ?>
 					<li class = "signup_box"><a href="javascript:void(0);" onClick="userlogoutmode();">LOGOUT</a></li>

@@ -1,11 +1,11 @@
 <div class = "content">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color mob_height_banner">
-            <div class="row mmar_t40 mmar_b10 mar_t80 mar_b10 smar_b50">
+            <div class="row mmar_t40 mar_t60 mar_b10 smar_b50 xsmar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
 						<!--<hr style="width:5%;border:2px solid #ffff">-->
-                        <div class = "mar_t50 text-left row">
+                        <div class = "mar_t30 text-left row">
                           <div class = "col-md-9 col-xs-12 mar_l40 profile_desx m_hide pad_0">
                               <h2 class="mar_0">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
                           </div>
@@ -19,7 +19,7 @@
         <input type="hidden" id="hid_sessionid" name="hid_sessionid" value="<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){ echo $_SESSION['user_id']; }else{}?>">
         <input type="hidden" id="hid_filter" name="hid_filter" value="1">
         <div class="row">
-	        <div class="text-left col-md-offset-1 col-md-2 col-xs-12 profile_image pad_0">
+	        <div class="text-left col-md-offset-1 col-md-2 col-xs-12 mmar_t10 profile_image pad_0">
             <?php
                 if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -178,12 +178,14 @@
 										$re_dislike_cnt = 0;
 									}
 							?>
-							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span><span style="float:right;"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class ="fa fa-reply" aria-hidden="true"></i></span>
+							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+              <span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span class="reply_show" onclick="reply_show('<?php echo $review->re_id; ?>')"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class="fa fa-reply reply" aria-hidden="true"></i></span>
 							</div>
-              <div id="repliesDiv_<?php echo $review->re_id; ?>">
+              <div id="repliesDiv_<?php echo $review->re_id; ?>" style="display:none;">
 							<?php if(sizeof($replies[$review->re_id] > 0)){foreach($replies[$review->re_id] as $crr=>$reply){ ?>
 
-              <div class = "row mar_t20" id="individualReplies_<?php echo $reply->crr_id; ?>">
+              <div class = "row mar_t20 br_height" id="individualReplies_<?php echo $reply->crr_id; ?>">
 									<div class = "col-md-2">
 									<?php if($reply->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reply->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
@@ -210,15 +212,15 @@
 											$u_username = "Guest User";
 										}
 										echo $u_username;
-									?><br style="margin-bottom:0px;">
-									<span style= "font-size:11px;"><?php echo $reply->u_about; ?></span>
+									?><br>
+									<span class="NoirProLight" style= "font-size:11px;color:#424242"><?php echo $reply->u_about; ?></span>
 									</p>
 									<p id="replyreview_<?php echo $reply->crr_id; ?>">
 									<?php echo strip_tags($reply->crr_decript); ?>
 									</p>
                   <span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" style="display:none;"></span>
                   <span id="r_char_cnt<?php echo $reply->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reply->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
-               <div class = "row" style="padding-bottom:5px">
+               <div class = "row" style="padding-bottom:5px;padding-left:10px;">
                  <?php
                  	$uid = $_SESSION['user_id'];
                      if(isset($_SESSION['user_id'])){
@@ -292,7 +294,7 @@
 							}}
 							?>
             </div>
-            <div class="row mar_t30" id="replypopup_m" style="">
+            <div class="row mar_t30" id="replypopup_m<?php echo $review->re_id; ?>" style="">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-xs-10">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
@@ -437,6 +439,17 @@ $(document).ready(function() {
 
 
 });
+function reply_show(id){
+  if($('#repliesDiv_'+id).hasClass("clicked")){
+		$("#repliesDiv_"+id).hide();
+		$("#repliesDiv_"+id).removeClass("clicked");
+	}else{
+		$("#repliesDiv_"+id).show();
+		$("#repliesDiv_"+id).addClass("clicked");
+		$("#replypopup_m"+id).show();
+	}
+
+}
 function reply_delete(id){
   if($("#hid_sessionid").val()!=""){
 
@@ -680,7 +693,6 @@ function confirmDeleteActions(){
         }
 
         function reviewReplyFilter_New(type,crr_reid,crr_id){
-      			debugger;
       		$("#change_btn_name").html('Cancel');
       		var hid_filter = $("#hid_filter").val();
       		var filterTitle = 'Up Votes';
@@ -764,15 +776,11 @@ function confirmDeleteActions(){
 
 
         function wirteareplyreplySubmit(crr_id){
-          console.log("data.oddddutput");
-          debugger;
           $("#change_btn_name").html('Cancel');
           $("#successmessage").html('');
           if($("#hid_sessionid").val()!=""){
             $('#common_modal_pop').modal('hide');
-            console.log("data.output");
             $('#form_decript'+crr_id).formValidation().on('success.form.fv', function(e) {
-              console.log("data.8output");
               e.stopImmediatePropagation();
               var crr_replyReviewId       = $("#crr_replyReviewId").val();
               var crrr_decript = $("#res_decript"+crr_id).val();
@@ -841,7 +849,6 @@ function confirmDeleteActions(){
         }
 
         function wirteareplySubmit(re_id){
-          debugger;
           $('#replypopup'+re_id).formValidation();
           replyMessage(re_id);
           $("#change_btn_name").html('Cancel');
@@ -1084,7 +1091,6 @@ function confirmDeleteActions(){
           });
         }
         function reviewReplyFilter(type,crr_reid,re_id){
-          debugger;
           $("#change_btn_name").html('Cancel');
           var hid_filter = $("#hid_filter").val();
           var filterTitle = 'Up Votes';

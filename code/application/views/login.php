@@ -13,7 +13,7 @@
 		</div>
 	</div>-->
 	<div class="container-fluid banner_margin linear_color">
-		<div class="row mmar_t40 mmar_b10 mar_t40 mar_b50">
+		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 			<div class="col-xs-12 text-center banner_head">
 				LOGIN/SIGNUP
 				<!--<hr style="width:5%;border:2px solid #ffff">-->

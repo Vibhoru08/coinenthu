@@ -947,6 +947,7 @@ a:focus {
   max-width:70px;
   left:-30px;
   border:1px solid grey;
+  margin-top:10px;
 }
 .display-dropdown>li{
     margin:0 3px 0 3px;
