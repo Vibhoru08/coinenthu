@@ -823,6 +823,7 @@
 				<span id="replyexpandSpan_'.$row['crr_id'].'" style="display:none;overflow-wrap: break-word;" >'.nl2br($row['crr_decript']).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$row['crr_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a></span>';
 				//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
 				$html.=' </div>';
+				$html.='<span id = "successMessage_'.$row['crr_id'].'"></span>';
 				$html.='<span id = "r_char_cnt'.$row['crr_id'].'" style = "display:none;"><span id = "review_char_count'.$row['crr_id'].'"></span>&nbsp;&nbsp;character(s) left</span>';
 				$html.='<div class="row" style = "padding-bottom:5px">';
 
@@ -870,7 +871,7 @@
 				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete('.$row['crr_id'].');">';
 				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
 				$html2 .='<span id = "reply_delte_confirm'.$row['crr_id'].'" style = "padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
-						  <a style = "color:red;cursor:pointer;" onlick = "reply_delete('.$row['crr_id'].');">Yes</a>
+						  <a style = "color:red;cursor:pointer;" onclick = "reply_delete('.$row['crr_id'].');">Yes</a>
 						  <a id = "no_delete'.$row['crr_id'].'" onclick = "hideDelete('.$row['crr_id'].');" style = "color:green;cursor:pointer;">No</a></span>'; 
 				
 				$html2.='</div></div></div>';
