@@ -793,7 +793,7 @@
 				else{
 						$u_username = "Guest User";
 				}
-				$html .='<div class="row" id = "individualReplies_"'.$row['crr_id'].'">';
+				$html .='<div class="row" id = "individualReplies_'.$row['crr_id'].'">';
 				$html .='<div class = "col-md-2">';
 				if($user_details->u_picture !=""){
 						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$user_details->u_picture.'" alt="'.$u_username.'">';
@@ -813,7 +813,7 @@
 				$crr_likes_cnt= 0;
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
-				$html .="<div id = 'replyreview_'".$row['crr_id']."' class = 'row' style = 'margin:0px;'>";
+				$html .="<div id = 'replyreview_".$row['crr_id']."' class = 'row' style = 'margin:0px;'>";
 				if (strlen($stringReply) > 150) {
 
 					$stringCut = substr($stringReply, 0, 150);
@@ -822,18 +822,20 @@
 				$html .= '<span id="replyspanLess_'.$row['crr_id'].'" style="overflow-wrap: break-word;">'.$stringReply.'</span>
 				<span id="replyexpandSpan_'.$row['crr_id'].'" style="display:none;overflow-wrap: break-word;" >'.nl2br($row['crr_decript']).' '.'<a href="javascript:void(0);" onClick="readReplyLessSpan('.$row['crr_id'].');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a></span>';
 				//$html .= $reviewReplay->crr_decript.' <div class="clearfix"></div>';
-				$html.=' </div>
-			  <div class="row" style = "padding-bottom:5px">';
+				$html.=' </div>';
+				$html.='<span id = "r_char_cnt'.$row['crr_id'].'" style = "display:none;"><span id = "review_char_count'.$row['crr_id'].'"></span>&nbsp;&nbsp;character(s) left</span>';
+				$html.='<div class="row" style = "padding-bottom:5px">';
 
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
-							$html.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
+						    $html.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>';
+							$html.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
 				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
 				$html.='</div></div></div>';
 
-				$html2 .='<div class="row mar_t20" id = "individualReplies_"'.$row['crr_id'].'">';
+				$html2 .='<div class="row mar_t20" id = "individualReplies_'.$row['crr_id'].'">';
 				$html2 .='<div class = "col-md-2">';
 				if($row['u_picture']!=""){
 						$html2 .= '<img class="img-circle reply-image" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
@@ -847,7 +849,7 @@
 				$html2 .="<p><span class = 'time_stamp' style = 'float:right;'>".$old_date."</span>";
 				$html2 .="<span>".$u_username."</span><br style='margin-bottom:0px;'>";
 				$html2 .="<span style= 'font-size:11px;'>".$row['u_about']."</span></p>";
-				$html2 .="<p id='replyreview_'".$row['crr_id']."'>";
+				$html2 .="<p id='replyreview_".$row['crr_id']."'>";
 				$html2 .="".strip_tags($row['crr_decript'])."</p>";
 				$replylikeval    = "'like'";
 				$replyreviewval  = "'replies'";
@@ -855,16 +857,22 @@
 				$crr_likes_cnt= 0;
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
+				$html2.='<span id= "r_char_cnt'.$row['crr_id'].'" style = "display:none;"><span id = "review_char_count'.$row['crr_id'].'"></span>&nbsp;&nbsp;character(s) left</span>';
 				$html2.='<div class="row" style = "padding-bottom:5px">';
 
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
-							$html2.='<button id="reply_reply_pop"'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
+						$html2.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>'; 
+						$html2.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
-				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete("'.$row['crr_id'].'");">';
-				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
 				$html2.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
+				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete('.$row['crr_id'].');">';
+				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
+				$html2 .='<span id = "reply_delte_confirm'.$row['crr_id'].'" style = "padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
+						  <a style = "color:red;cursor:pointer;" onlick = "reply_delete('.$row['crr_id'].');">Yes</a>
+						  <a id = "no_delete'.$row['crr_id'].'" onclick = "hideDelete('.$row['crr_id'].');" style = "color:green;cursor:pointer;">No</a></span>'; 
+				
 				$html2.='</div></div></div>';
 
 				$repliesCntt = sizeof($replies);
