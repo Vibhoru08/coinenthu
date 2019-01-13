@@ -3101,12 +3101,12 @@ textarea { resize: vertical; }
  background-color:#f9f9f9;
 }
 .asset-image{
- width:92px;
+ width:100px;
  padding:0;
  position:relative;
  margin-top:-90px;
- height:92px;
- border:15px solid #f9f9f9;
+ height:100px;
+ border:12px solid #f9f9f9;
 }
 .profile-image{
  width:130px;
@@ -3146,9 +3146,9 @@ textarea { resize: vertical; }
 .review-asset-image{
  position:relative;
  left:14.5%;
- margin-top:-80px;
- height:160px;
- border:3px solid #f9f9f9;
+ margin-top:-50px;
+ height:100px;
+ border:12px solid #f9f9f9;
 }
 .login_design{
   background-color: #f9f9f9;

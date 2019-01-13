@@ -232,7 +232,7 @@
                  <?php } else{ ?>
                    <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
                  </button>
-                 <button id="reply_btn_dislike_new_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
+                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
                  </button>
                  <?php
                  $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
@@ -267,7 +267,7 @@
 												$crr_dislike_cnt = 0;
 											}
 									?>
-                 <span class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
+                 <span id="replies_count_<?php echo $reply->crr_id; ?>" class = "pull-right" style="margin-top:7px;"><?php echo $crr_likes_cnt; ?>
                  <?php if ($crr_likes_cnt == 1){
                    echo " Like";
                  } else {
@@ -1278,11 +1278,15 @@ function confirmDeleteActions(){
                     }
                   }else if(typeMode=='replies'){
                     if(type=='like'){
-                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.cntLikeDislikes+'</span>');
+      								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>&nbsp;'+ data.dislikescnt);
+                      if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+                      $("#replies_count_"+reviewid).html(data.cntLikeDislikes+' '+like_html);
                     }else{
-                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.cntLikeDislikes);
-                      $("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i>'+ data.dislikescnt);
+                      $("#reply_btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;'+ data.cntLikeDislikes);
+      								$("#reply_btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i>&nbsp;<span style="color:#065FD4;">'+ data.dislikescnt+'</span>');
+                      if(data.cntLikeDislikes=="1"){var like_html="Like";}else{var like_html="Likes";}
+                      $("#replies_count_"+reviewid).html(data.cntLikeDislikes+' '+like_html);
                     }
                   }
                   /*}else if(typeMode=='replies'){
