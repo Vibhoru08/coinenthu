@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-	<div class="container-fluid banner_margin linear_color banner-asset-margin mob_height_banner">
+	<div class="container-fluid banner_margin photo_margin linear_color banner-asset-margin mob_height_banner">
 		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 			<div class="col-xs-12 text-center banner_head">
 			<?php echo strtoupper($companyview['company_name']);?> REVIEWS

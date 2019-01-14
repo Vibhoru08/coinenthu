@@ -3463,7 +3463,10 @@ a.left_panel_desc{
   border:none;
 }
 .banner_margin{
- margin:20px 0 55px 0;
+ margin:20px 0 0 0;
+}
+.photo_margin{
+  margin-bottom:55px;
 }
 
 }

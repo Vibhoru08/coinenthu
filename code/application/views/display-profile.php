@@ -1,6 +1,6 @@
 <div class = "content">
     <section class = "content">
-        <div class = "container-fluid banner_margin linear_color mob_height_banner">
+        <div class = "container-fluid banner_margin photo_margin linear_color mob_height_banner">
             <div class="row mmar_t40 mar_t60 mar_b10 smar_b50 xsmar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						MY PROFILE
