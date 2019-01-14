@@ -6949,7 +6949,8 @@ color:#8e44ad;
     display: table-cell !important;
   }
 }
-@media(max-width:1200px){
+
+@media(min-width:990px) and (max-width:1200px){
   .no-pull-right{
   clear: both!important;
   float:none!important;
@@ -7001,6 +7002,10 @@ color:#8e44ad;
   }
 }
 @media (max-width: 767px) {
+  .no-pull-right{
+  clear: both!important;
+  float:none!important;
+  }
   .hidden-xs {
     display: none !important;
   }

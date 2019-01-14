@@ -863,7 +863,7 @@
 
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
-						$html2.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>'; 
+						$html2.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>';
 						$html2.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
@@ -872,8 +872,8 @@
 				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
 				$html2 .='<span id = "reply_delte_confirm'.$row['crr_id'].'" style = "padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
 						  <a style = "color:red;cursor:pointer;" onclick = "reply_delete('.$row['crr_id'].');">Yes</a>
-						  <a id = "no_delete'.$row['crr_id'].'" onclick = "hideDelete('.$row['crr_id'].');" style = "color:green;cursor:pointer;">No</a></span>'; 
-				
+						  <a id = "no_delete'.$row['crr_id'].'" onclick = "hideDelete('.$row['crr_id'].');" style = "color:green;cursor:pointer;">No</a></span>';
+
 				$html2.='</div></div></div>';
 
 				$repliesCntt = sizeof($replies);
@@ -1558,7 +1558,7 @@
 							else{
 									$dislike_s = 'Dislikes';
 							}
-							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$total_likes_count.' '.$like_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$total_dislikes_count.' '.$dislike_s.'</span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.$review_s.'</span></div></div>';
+							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$total_likes_count.' '.'<span class="dis2_block">'.$like_s.'</span></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$total_dislikes_count.' '.'<span class="dis2_block">'.$dislike_s.'</span></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.'<span class="dis2_block">'.$review_s.'</span></span></div></div>';
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{

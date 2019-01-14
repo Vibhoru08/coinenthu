@@ -43,6 +43,7 @@
           <div class = "text-center col-xs-4">
               <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
               <i class="fa fa-commenting" aria-hidden="true"></i>
+              <span class="dis_block">
       <?php
               if ($nor == 1){
                   echo "Review";
@@ -50,11 +51,12 @@
               else{
                   echo "Reviews";
               }
-              ?>
+              ?></span>
      </div>
           <div class = "text-center col-xs-4">
               <span id = "nor"><?php echo $nore; ?></span>&nbsp;
               <i class="fa fa-reply" aria-hidden="true"></i>
+              <span class="dis_block">
       <?php
               if ($nore == 1){
                   echo "Reply";
@@ -62,11 +64,12 @@
               else{
                   echo "Replies";
               }
-              ?>
+              ?></span>
     </div>
           <div class = "text-center col-xs-4">
               <?php echo $nou; ?>&nbsp;
               <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+              <span class="dis_block">
               <?php
               if ($nou == 1){
                   echo "Upvote";
@@ -74,7 +77,7 @@
               else{
                   echo "Upvotes";
               }
-              ?>
+              ?></span>
             </div>
           </div>
         <div class = "row mar_t40">
@@ -213,7 +216,7 @@
 										}
 										echo $u_username;
 									?><br>
-                  <?php 
+                  <?php
                   if($reply->u_about != ""){
                     echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">'.$reply->u_about.'</span>';
                   }

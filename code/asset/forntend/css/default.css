@@ -3116,6 +3116,16 @@ textarea { resize: vertical; }
  height:130px;
 
 }
+@media(max-width:768px){
+  .profile-image{
+    background-color: #f9f9f9;
+    padding:15px;
+    height:200px;
+    width:200px;
+    border-radius: 5px;
+    margin-top: -135.5px;
+  }
+}
 @media(max-width:990px){
   .like_upvote{
   background-color: #f9f9f9;
@@ -3453,7 +3463,7 @@ a.left_panel_desc{
   border:none;
 }
 .banner_margin{
- margin:20px 0 0 0;
+ margin:20px 0 55px 0;
 }
 
 }
@@ -3810,8 +3820,24 @@ a.left_panel_desc{
 		z-index: 1000;
 	}
  }
+ @media(max-width:1150px){
+   .dis2_block{
+     display: block;
+   }
+ }
+ @media(min-width:481px) and (max-width:990px){
+   .dis2_block{
+     display: inline;
+   }
+ }
  @media (max-width: 480px) {
  .mm_no_padding{
 		padding:0 7px;
 	}
+  .dis_block{
+    display:block;
+  }
+  .dis2_block{
+    display: block;
+  }
  }

@@ -169,7 +169,9 @@
                 <?php } ?>
                 <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
                </div>
               </span>
               </div>
@@ -254,7 +256,9 @@
                 <?php } ?>
                 <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
               </div>
               </span>
               </div>
@@ -339,7 +343,9 @@
                 <?php } ?>
                 <br/><a class="col-xs-12" style = "padding: 0px 0px 0px 0px;" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						    <hr class="col-xs-12">
-                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+                <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
+                <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
               </div>
               </span>
               </div>
@@ -438,7 +444,9 @@
             <?php } ?>
             <br/><a class="col-xs-12" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             <hr class="col-xs-12">
-            <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo $total_likes_count.' '.$like_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo $total_dislikes_count.' '.$dislike_s; ?></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' '.$review_s; ?></span></div></div>
+            <div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo ' '.$total_likes_count.' ';?><span class="dis_block"><?php echo $like_s; ?></span></span></div>
+            <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo ' '.$total_dislikes_count.' ';?><span class="dis_block"><?php echo $dislike_s; ?></span></span></div>
+            <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis_block"><?php echo $review_s; ?></span></span></div></div>
           </div>
           </span>
           </div>
@@ -453,7 +461,7 @@
 
 <div class="row text-center mar_t80">
  <div class=""><a href="<?php echo base_url();?>digital-assets" class="btn btn-cstm btn-lg font_s22 div">Digital Assets</a>
-   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:20px">Upcoming ICOs</a></div>
+   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:10px">Upcoming ICOs</a></div>
  </div>
 
 

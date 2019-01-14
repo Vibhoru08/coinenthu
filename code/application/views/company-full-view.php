@@ -620,7 +620,7 @@
 							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
 						<div class = "row" style="padding-left:30px;padding-top:2px;padding-bottom:2px;">
-							<div class="col-xs-12 col-lg-8 pad_0">
+							<div class="col-xs-12 col-sm-8 col-md-12 col-lg-8 pad_0">
 							<?php
 							if(isset($_SESSION['user_id']))
 							{
@@ -667,7 +667,7 @@
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php }} ?>
 						</div>
-						<div class="col-xs-12 col-lg-4 pad_0 small_replies_dropdown" id="reply_show<?php echo $review->re_id; ?>" onclick="reply_show('<?php echo $review->re_id; ?>')">
+						<div class="col-xs-12 col-sm-4 col-md-12 col-lg-4 pad_0 small_replies_dropdown" id="reply_show<?php echo $review->re_id; ?>" onclick="reply_show('<?php echo $review->re_id; ?>')">
 							<span class="pull-right no-pull-right"><i class="fa fa-reply reply" aria-hidden="true"></i>&nbsp;
 								<span id="repliesCntt_<?php echo $review->re_id; ?>" class="no_of_replies<?php echo $review->re_id; ?>"><?php echo sizeof($companyview['replies'][$review->re_id]);?></span>
 									<span id="repliesText_<?php echo $review->re_id; ?>"> <?php if(sizeof($companyview['replies'][$review->re_id]) == 1){
