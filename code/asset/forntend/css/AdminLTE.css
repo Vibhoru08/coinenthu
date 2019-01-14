@@ -204,7 +204,6 @@ a:focus {
   margin-left: 230px;
   border-bottom: 1px solid #ddd;
   min-height: 60px;
-  height:60px;
   border-radius: 0;
 }
 .layout-top-nav .main-header > .navbar {
@@ -352,7 +351,7 @@ a:focus {
 }
 @media (min-width:768px) and (max-width:991px){
   .navbar-toggle{
-    margin-top:16px !important;
+    margin-top:0px !important;
   }
 }
 @media (max-width: 991px) {
