@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class= "row text-center mar_t40 mmar_t15">
+        <div class= "row text-center mar_t40 mmar_t15 mmar_b15">
             <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                 <p class = "home_desc m_hide">
                     Come here and discover the Cryptos you are interested about!<br/>
@@ -141,7 +141,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 pad_0"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -228,7 +228,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 pad_0"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -315,7 +315,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 pad_0"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -416,7 +416,7 @@
             ?>
             <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
             <?php if ($last_review_details->u_about != ""){ ?>
-            <div class = "col-xs-12 pad_0"><?php echo $last_review_details->u_about; ?></div>
+            <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
             <?php }else{ ?>
               <br/><br/>
             <?php } ?>
