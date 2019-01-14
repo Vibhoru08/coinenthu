@@ -213,8 +213,15 @@
 										}
 										echo $u_username;
 									?><br>
-									<span class="NoirProLight" style= "font-size:11px;color:#424242"><?php echo $reply->u_about; ?></span>
-									</p>
+                  <?php 
+                  if($reply->u_about != ""){
+                    echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">'.$reply->u_about.'</span>';
+                  }
+                  else{
+                    echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">&nbsp</span><br>';
+                  }
+                  ?>
+                  </p>
 									<p id="replyreview_<?php echo $reply->crr_id; ?>">
 									<?php echo strip_tags($reply->crr_decript); ?>
 									</p>
@@ -230,10 +237,25 @@
                  <!--<button id="save<?php //echo $reply->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
                  <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
                  <?php } else{ ?>
-                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
+							$checkedRow1 = $this->Companies_model->checkUserReplyLiked($uid,$reply->crr_id,'like');
+							if(isset($checkedRow1->rrr_id) && $checkedRow1->rrr_id!=''){
+								echo '<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class = "r-like-button-text" style="color:#065FD4;">Liked</span>';
+							   }
+							else{
+								echo '<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "r-like-button-text">Like</span>';
+							}
+							?>
                  </button>
-                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
-                 </button>
+                 <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><?php
+							$checkedRow2 = $this->Companies_model->checkUserReplyLiked($uid,$reply->crr_id,'dislike');
+							if(isset($checkedRow2->rrr_id) && $checkedRow2->rrr_id!=''){
+								echo '<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i><span class = "r-dislike-button-text" style="color:#065FD4;">Disliked</span>';
+							   }
+							else{
+								echo '<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "r-dislike-button-text">Dislike</span>';
+							}
+							?></button>
                  <?php
                  $reportedReplyStatus = checkUserReplyReport($uid,$reply->crr_id);
                  ?>

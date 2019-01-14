@@ -796,11 +796,11 @@
 				$html .='<div class="row" id = "individualReplies_'.$row['crr_id'].'">';
 				$html .='<div class = "col-md-2">';
 				if($user_details->u_picture !=""){
-						$html .= '<img class="img-circle img-sm" src="'.base_url().'asset/img/users/'.$user_details->u_picture.'" alt="'.$u_username.'">';
+						$html .= '<img class="img-circle reply-image" src="'.base_url().'asset/img/users/'.$user_details->u_picture.'" alt="'.$u_username.'">';
 				}else if($user_details->u_social_pic !=""){
-						$html .= '<img class="img-circle img-sm" src="'.$user_details->u_social_pic.'" alt="'.$u_username.'">';
+						$html .= '<img class="img-circle reply-image" src="'.$user_details->u_social_pic.'" alt="'.$u_username.'">';
 				}else{
-						$html .= '<img class="img-circle img-sm" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
+						$html .= '<img class="img-circle reply-image" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
 				}
 				$html .='</div>';
 				$html .="<div class='col-md-10'><div class = 'row mar_0' style = 'padding-top:5px;padding-bottom:5px;'>

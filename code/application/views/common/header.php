@@ -150,13 +150,13 @@ $img =  base_url().'images/logo.png';
 						{
 							$imagePath = base_url().'asset/img/users/'.$_SESSION['profileImg'].'?id='.$viewTime;
 						}else{
-							$imagePath = base_url().'images/empty_thumb.jpg';
+							$imagePath = base_url().'asset/img/alt.jpg';
 						}
 						if(@getimagesize($imagePath)){
 							$imagePath = $imagePath;
 						}else{
 
-							$imagePath = base_url().'images/empty_thumb.jpg';
+							$imagePath = base_url().'asset/img/alt.jpg';
 
 						}
 						$styleWidth = '';
@@ -169,7 +169,7 @@ $img =  base_url().'images/logo.png';
 						{
 							$imagePath = $_SESSION['sprofileImg'];
 						}else{
-							$imagePath = base_url().'images/empty_thumb.jpg';
+							$imagePath = base_url().'asset/img/alt.jpg';
 						}
 						$styleWidth = 'style="width:35px"';
 						$title = $_SESSION['uname'];
@@ -181,7 +181,7 @@ $img =  base_url().'images/logo.png';
 							$title = "User";
 							$user_bg_ico ='profile_pic';
 							$left_dm ='left_m';
-							$imagePath = base_url().'images/empty_thumb.jpg';
+							$imagePath = base_url().'asset/img/alt.jpg';
 						}else{
 							$styleWidth = 'style="width:15px;"';
 							$title = "Guest - User";

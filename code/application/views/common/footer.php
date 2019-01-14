@@ -241,6 +241,7 @@
        </form>
      </div>
      <div class="modal-footer">
+       <a href="<?php echo base_url().'login'; ?>" class="btn btn-primary">Sign In</a>
        <button id="change_btn_name" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
      </div>
    </div>
