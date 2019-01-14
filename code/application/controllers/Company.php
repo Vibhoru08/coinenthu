@@ -1512,7 +1512,7 @@
 						if(isset($last_review)){
 						$html.='<div class="col-xs-12 NoirProMedium">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';
 						if($last_review_details->u_about != ""){
-							$html.='<div class="col-xs-12">'.ucfirst($last_review_details->u_about).'</div>';
+							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{
 							$html.='<br/><br/>';
 						}

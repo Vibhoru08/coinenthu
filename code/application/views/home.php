@@ -141,7 +141,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -228,7 +228,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -315,7 +315,7 @@
                 ?>
                 <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -416,7 +416,7 @@
             ?>
             <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
             <?php if ($last_review_details->u_about != ""){ ?>
-            <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242"><?php echo $last_review_details->u_about; ?></div>
+            <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
             <?php }else{ ?>
               <br/><br/>
             <?php } ?>
