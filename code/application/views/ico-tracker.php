@@ -33,7 +33,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div> -->
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row mar_b80 mar_t40">
+		<div class="row mar_b40 mar_t40">
 			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header pad_0">
