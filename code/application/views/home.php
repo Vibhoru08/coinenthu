@@ -186,6 +186,50 @@
 
     <div class="item">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
+        <?php $company_id = $value->cm_id;
+						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
+            $company_reviews = $this->Companies_model->assetLastReview($company_id);
+            $total_likes_count = 0;
+						$total_dislikes_count = 0;
+						foreach($company_reviews->result_array() as $row){
+							if(isset($row['re_likes_cnt'])){
+								$re_likes_cnt = $row['re_likes_cnt'];
+							}
+							else{
+								$re_likes_cnt = 0;
+							}
+							$total_likes_count = $total_likes_count + $re_likes_cnt;
+
+							if(isset($row['re_dislike_cnt'])){
+								$re_dislikes_cnt = $row['re_dislike_cnt'];
+							}
+							else{
+								$re_dislikes_cnt = 0;
+							}
+							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
+            }
+            if ($number_of_reviews == 1){
+              $review_s = 'Review';
+            }
+            else{
+              $review_s = 'Reviews';
+            }
+            if ($total_likes_count == 1){
+              $like_s = 'Like';
+            }
+            else{
+              $like_s = 'Likes';
+            }
+            if ($total_dislikes_count == 1){
+                $dislike_s = 'Dislike';
+            }
+            else{
+                $dislike_s = 'Dislikes';
+            }
+            $last_review = $company_reviews->last_row('array');
+						$last_review_userid = $last_review['re_uid'];
+						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
+             ?>
         <?php if($key>=3 && $key<6){?>
         <div class="col-md-4 mar_t80">
           <ul class="products-list product-list-in-box">
@@ -273,6 +317,50 @@
 
     <div class="item">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
+        <?php $company_id = $value->cm_id;
+						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
+            $company_reviews = $this->Companies_model->assetLastReview($company_id);
+            $total_likes_count = 0;
+						$total_dislikes_count = 0;
+						foreach($company_reviews->result_array() as $row){
+							if(isset($row['re_likes_cnt'])){
+								$re_likes_cnt = $row['re_likes_cnt'];
+							}
+							else{
+								$re_likes_cnt = 0;
+							}
+							$total_likes_count = $total_likes_count + $re_likes_cnt;
+
+							if(isset($row['re_dislike_cnt'])){
+								$re_dislikes_cnt = $row['re_dislike_cnt'];
+							}
+							else{
+								$re_dislikes_cnt = 0;
+							}
+							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
+            }
+            if ($number_of_reviews == 1){
+              $review_s = 'Review';
+            }
+            else{
+              $review_s = 'Reviews';
+            }
+            if ($total_likes_count == 1){
+              $like_s = 'Like';
+            }
+            else{
+              $like_s = 'Likes';
+            }
+            if ($total_dislikes_count == 1){
+                $dislike_s = 'Dislike';
+            }
+            else{
+                $dislike_s = 'Dislikes';
+            }
+            $last_review = $company_reviews->last_row('array');
+						$last_review_userid = $last_review['re_uid'];
+						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
+             ?>
       <?php if($key>=6 && $key<9){?>
         <div class="col-md-4 mar_t80">
           <ul class="products-list product-list-in-box">
@@ -375,6 +463,50 @@
 
 <div class="scrolling-wrapper big_hide">
   <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
+    <?php $company_id = $value->cm_id;
+						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
+            $company_reviews = $this->Companies_model->assetLastReview($company_id);
+            $total_likes_count = 0;
+						$total_dislikes_count = 0;
+						foreach($company_reviews->result_array() as $row){
+							if(isset($row['re_likes_cnt'])){
+								$re_likes_cnt = $row['re_likes_cnt'];
+							}
+							else{
+								$re_likes_cnt = 0;
+							}
+							$total_likes_count = $total_likes_count + $re_likes_cnt;
+
+							if(isset($row['re_dislike_cnt'])){
+								$re_dislikes_cnt = $row['re_dislike_cnt'];
+							}
+							else{
+								$re_dislikes_cnt = 0;
+							}
+							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
+            }
+            if ($number_of_reviews == 1){
+              $review_s = 'Review';
+            }
+            else{
+              $review_s = 'Reviews';
+            }
+            if ($total_likes_count == 1){
+              $like_s = 'Like';
+            }
+            else{
+              $like_s = 'Likes';
+            }
+            if ($total_dislikes_count == 1){
+                $dislike_s = 'Dislike';
+            }
+            else{
+                $dislike_s = 'Dislikes';
+            }
+            $last_review = $company_reviews->last_row('array');
+						$last_review_userid = $last_review['re_uid'];
+						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
+             ?>
     <div class="card mar_t40">
       <ul class="products-list product-list-in-box">
         <li class="item center">
