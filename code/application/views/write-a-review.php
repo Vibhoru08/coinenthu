@@ -1,9 +1,9 @@
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color">
-				<div class="row mmar_t40 mmar_b10 mar_t80 mar_b40">
+				<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						YOUR REVIEW
-						<hr style="width:5%;border:1px solid #ffff">
+						<!--<hr style="width:5%;border:1px solid #ffff">-->
 					</div>
 				</div>
 		</div>
@@ -32,7 +32,7 @@
 							else { ?>
 							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
 							<?php } ?>
-	  <div class = "container-fluid mar_t50">
+	  <div class = "container-fluid mar_t10">
 			<div class = "row">
 					<div class = "col-md-4 col-md-offset-1 mar_b10 text-left review_head">
 								<span><h3>Your review will help others make the right decision!</h3></span>
@@ -62,7 +62,7 @@
 									<input type="hidden" name="company_name" id="company_name" value="<?php echo $cm_name; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
 										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea>
-									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
+									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;</span>
 									 <div class = "mar_t30" style= "border:1px solid black;border-radius:10px;padding:10px 10px 10px 10px;">
 									 <label>
 										  Please do not use derogatory terminology. Try to back your facts with relevant reference links. This is not a place to spread fake news.We hope that you will support us. Please
@@ -71,7 +71,7 @@
 										</label>
 									</div>
 									<span id="loadSuccess"  style="float:left;display:none">Submitting...</span>
-									<button type="submit" class="btn btn-primary pull-right mar_t30 mar_b20">SUBMIT</button>
+									<button id="submit_b" type="submit" class="btn btn-primary pull-right mar_t30 mar_b20">SUBMIT</button>
 								</form>
 								</div>
 
@@ -164,12 +164,14 @@
 		</div>
 
 
-		
+<script src="<?php echo base_url();?>asset/forntend/js/jquery.validate.min.js"></script>
 <script>
 
 	$(document).ready(function() {
 
 		CKEDITOR.replace('re_decript', {
+			height: '300',
+   maxlength: '400' ,
 			 on: {
 				 instanceReady: function() {
 			 this.dataProcessor.htmlFilter.addRules({
@@ -194,7 +196,21 @@
 }
 });
 		$('.gl-star-rating-tex').text('Rate me');
-		$('#wirte_review').formValidation();
+		$('#wirte_review').formValidation({
+			ignore:[]
+		});
+		CKEDITOR.instances.re_decript.on('change', function() {
+
+			CKEDITOR.instances.re_decript.updateElement();
+			var text=CKEDITOR.instances.re_decript.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/\&nbsp;/g, '').replace(/^\s+|\s+$/g, '');
+
+
+		});
+
+
+
+
+
 
 	});
 	function getRatingVall()
@@ -230,9 +246,23 @@
 		rangeSlider.create(elements, { }); */
 	})();
 	function insertWriteaReview(){
+		for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+    }
+		CKEDITOR.instances.re_decript.updateElement();
+		var text=CKEDITOR.instances.re_decript.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/\&nbsp;/g, '').replace(/^\s+|\s+$/g, '');
+		console.log(text.length );
+		debugger;
+		if(text.length==0 || text==""){
+			$('#r_char_cnt').show();
+			$('#review_char_count').html('<span style="color:red;">The review is required</span>');
+			$("#submit_b").prop("disabled", true);
+		throw new Error("Something went badly wrong!");
+		}else{
 		$('#wirte_review').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
 			debugger;
+			console.log(e);
 			var re_agree = 0;
 			var re_cmid      = $('#re_cmid').val();
 			var re_rating    = $('#re_rating').val();
@@ -262,12 +292,14 @@
 						}, 2000);
 					}else if(data.output=='failed')
 					{
-						$("#loadSuccess").html('Review already exists.').css("color", "red");;
+						$("#loadSuccess").html('Review already exists.').css("color", "red");
+						$("#submit_b").prop("disabled", true);
 					}
 				}
 			});
 			e.preventDefault();
 		});
+	 }
 	}
 	function redirectUrlMethod(){
 		var cm_unique_id = $('#cm_unique_id').val();

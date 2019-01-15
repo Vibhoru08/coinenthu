@@ -24,10 +24,27 @@ $viewTime = date('Ymd') .'_'. date('His');
 			<div class="col-xs-12 text-center banner_head">
 				DIGITAL ASSETS
 			<!--	<hr style="width:5%;border:2px solid #ffff"> -->
-				<div class="banner_desc">
+				<div class="banner_desc m_hide">
 				Let’s not invest blindly, get the correct information on your Digital Assets.
 				<div>Search for them.</div>
 			</div>
+			<div class="row mar_t10">
+			<div class="col-xs-10 col-xs-offset-1 msearch_bg big_hide">
+				<div class = "col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+				<input class="form-control brg_focus_n searchhome" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets">
+			</div>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="row mobile_login NoirProSemiBold big_hide text-center">
+		<div class="col-xs-12">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_login review_log" id="review_log">
+				REVIEWS
+			</div>
+			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_register news_log" id="news_log">
+				NEWS
 			</div>
 		</div>
 	</div>
@@ -39,7 +56,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 				<div class="box-header pad_0">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
-					<div class="col-md-5 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg">
+					<div class="col-md-5 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg m_hide">
 						<div class = "row s_width">
 						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
 						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Digital Assets">
@@ -49,7 +66,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" >
+					<div class="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" id="sort_by" >
 						<div class="row">
 							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 pad_0 centered ">
 						<div class="select_style">
@@ -155,7 +172,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>
-		<!--	<div class="col-md-3 mar_t86">
+			<div class="col-md-3 mar_t86 carousel_id mmar_t10 big_hide" id="carousel_id">
 				<div class="new_boxes upcoming_box_padding">
 					<div class = "text-center">
 						<h4>UPCOMING EVENTS</h4>
@@ -226,14 +243,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 							</div>
 							<?php }?>
 						</div>
-						 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
+						 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 						<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 						<span class="sr-only">Previous</span>-->
-					<!--  </a>
+					  </a>
 					  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
 						<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>-->
-					 <!-- </a>
+					</a>
 						</div>
 					</div>
 				</div>
@@ -245,7 +262,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						</div>
 					</div>
 				</div>
-			</div>-->
+			</div>
 		</div>
 	  </section>
 	  <div class="mar_b120"></div>
@@ -284,6 +301,81 @@ $viewTime = date('Ymd') .'_'. date('His');
 		$('.clear-rating').hide();
 		$('#funny_div').hide();
 		$('#funnyy_div').show();
+
+		$(window).resize(function(){
+			var y=window.matchMedia("(max-width: 990px)");
+			if (y.matches){
+				if( $("#news_log").hasClass("register_design") ){
+				$(".review_log").removeClass('login_design');
+				$(".company_list").fadeIn();
+				$("#sort_by").fadeIn();
+				$(".carousel_id").hide();
+				$("#loadingHash1").fadeIn();
+			}else if( $("#review_log").hasClass("login_design") ){
+				$(".news_log").removeClass('register_design');
+				$(".company_list").hide();
+				$("#loadingHash1").hide();
+				$("#sort_by").hide();
+			}else{
+				$(".news_log").addClass('register_design');
+				$(".carousel_id").hide();
+			}
+
+				$(".review_log").click(function(){
+					$(".review_log").removeClass('login_design');
+					$(".news_log").addClass('register_design');
+					$(".company_list").fadeIn();
+					$("#loadingHash1").fadeIn();
+					$("#sort_by").fadeIn();
+					$(".carousel_id").hide();
+				});
+
+				$(".news_log").click(function(){
+					$(".news_log").removeClass('register_design');
+					$(".review_log").addClass('login_design');
+					$(".company_list").hide();
+					$("#loadingHash1").hide();
+					$("#sort_by").hide();
+					$(".carousel_id").fadeIn();
+				});
+			}
+			else{
+				$(".carousel_id").show();
+				$("#loadingHash1").show();
+				$(".socila_img").show();
+				$(".company_list").show();
+				$("#sort_by").show();
+			}
+		});
+
+	var y=window.matchMedia("(max-width: 990px)");
+	if (y.matches){
+		$(".news_log").addClass('register_design');
+		$(".carousel_id").hide();
+
+		$(".review_log").click(function(){
+			$(".review_log").removeClass('login_design');
+			$(".news_log").addClass('register_design');
+			$(".company_list").fadeIn();
+			$("#loadingHash1").fadeIn();
+			$("#sort_by").fadeIn();
+			$(".carousel_id").hide();
+		});
+
+		$(".news_log").click(function(){
+			$(".news_log").removeClass('register_design');
+			$(".review_log").addClass('login_design');
+			$(".company_list").hide();
+			$("#loadingHash1").hide();
+			$("#sort_by").hide();
+			$(".carousel_id").fadeIn();
+		});
+	}
+
+
+
+
+
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			var owl = $('.owl-carousel');
 				owl.owlCarousel({

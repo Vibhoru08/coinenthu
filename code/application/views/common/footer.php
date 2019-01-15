@@ -33,14 +33,14 @@
         <hr class="footer_hr">
      <ul class="social-network social-circle" style="margin-left:0;padding-left:0;">
      <!--<li><a href="#" class="github" title="Github"><i class="fa fa-github"></i></a></li>-->
-     <li><a href="https://twitter.com/coinenthu" class="icoTwitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+     <li><a href="https://twitter.com/coinenthu" class="icoTwitter footer_social_icon" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
      <!--<li><a href="https://discord.gg/MHwEEXd" target="_blank" class="discord" title="Discord"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/discord.png"/></i></a></li>-->
      <li><a href="https://t.me/joinchat/FXFSjQ2ZWlb9B4w9aRbP3w" class="telegram" target="_blank" title="Telegram"><i class="fa "><img style="margin-top:5px;margin-left:4px;width:14px" src="<?php echo base_url();?>asset/forntend/images/telegram-app.png"/></i></a></li>
 
      <!--<li><a href="https://Coinenthu.slack.com/shared_invite/MTgyMDI4MDM3NjM5LTE0OTQzODMzNzgtZGEyMjc0ODBhNQ" target="_blank" class="icoGoogle" title="Slack"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/slack_ie11.png"/></i></a></li>
      <li><a href="#" class="icon_market" title="Coinmarketcap"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/bitcoin.png"/></i></a></li>-->
-     <li><a href="https://www.linkedin.com/company/Coinenthu/" class="icoLinkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin" style="color:#000046;"></i></a></li>
-     <li><a href="https://www.facebook.com/Coinenthu"  target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook" style="color:#000046;"></i></a></li>
+     <li><a href="https://www.linkedin.com/company/Coinenthu/" class="icoLinkedin footer_social_icon" target="_blank" title="Linkedin"><i class="fa fa-linkedin" style="color:#000046;"></i></a></li>
+     <li><a href="https://www.facebook.com/Coinenthu"  target="_blank" class="icoFacebook footer_social_icon" title="Facebook"><i class="fa fa-facebook" style="color:#000046;"></i></a></li>
      <!--<li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>-->
      </ul>
      <p class="mar_t20 NoirProLight m_hide">&nbsp;info@coinenthu.com</p>
