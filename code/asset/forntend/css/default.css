@@ -2482,6 +2482,14 @@ color:#fff;
 	position:absolute;
 	right:-30px;
 }
+.more_input_boxess{
+  position:relative;
+  padding-bottom:5px;
+}
+.new_input_boxes{
+  position:absolute;
+  right:-30px;
+}
 .mailston_bg{
 	border-left: 1px solid #bbcadc;
     display: inline-block;
@@ -3648,7 +3656,15 @@ a.left_panel_desc{
 		right: 15px;
 		top: -32px;
 	}
+  .new_input_boxes{
+    position: relative;
+    float:right;
+    right:15px;
+  }
 	.more_input_boxes .btn{
+		padding:3px 8px;
+	}
+  .more_input_boxess .btn{
 		padding:3px 8px;
 	}
 	.mmar_t15{

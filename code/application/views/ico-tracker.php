@@ -40,17 +40,17 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div> -->
   <div class="row mobile_login NoirProSemiBold big_hide text-center">
 		<div class="col-xs-12">
-			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_login review_log" id="review_log">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center review_log" id="review_log">
 				REVIEWS
 			</div>
-			<div class="col-xs-6 pad_t10 pad_b10 text-center mob_register news_log" id="news_log">
+			<div class="col-xs-6 pad_t10 pad_b10 text-center news_log" id="news_log">
 				NEWS
 			</div>
 		</div>
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row mar_b40 mar_t40">
+		<div class="row mar_b40 mar_t40" id="sort_by" >
 			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header pad_0">
@@ -65,7 +65,7 @@ $viewTime = date('Ymd') .'_'. date('His');
         </div>
           </div>
         </div>
-        <div class="col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" id="sort_by" >
+        <div class="col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width" >
           <div class="row">
             <div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 centered ">
 						<div class="select_style">
@@ -241,7 +241,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
 						<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>-->
-					 <</a>
+					 </a>
 						</div>
 					</div>
 				</div>

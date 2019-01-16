@@ -2,10 +2,10 @@
 <div class = "content about-bg text-color">
     <section class = "content">
         <div class = "container-fluid banner_margin linear_color">
-            <div class = "row mmar_t40 mmar_b10 mar_t70 mar_b80">
+            <div class = "row mmar_t40 mmar_b10 mar_t30 mar_b40">
                 <div class = "col-xs-12 text-center banner_head">
                     ADD AN EVENT
-                    <hr style="width:5%;border:1px solid #ffff">
+                    <!--<hr style="width:5%;border:1px solid #ffff">-->
                 </div>
             </div>
         </div>
@@ -15,9 +15,9 @@
 <section class="content mar_b20">
 <div class="row">
   <div class="col-md-12">
-    <div class="no_background box mar_b50  mar_t20 no_shadow overflow_hidden">
+    <div class="no_background box mar_b50  mar_t0 no_shadow overflow_hidden">
       <form class="form-horizontal mandatory" action="" method="POST" name="add_digital_asset" id="add_digital_asset" enctype="multipart/form-data"  data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon"
-          data-fv-icon-invalid="glyphicon"            data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="addDigitalAsset();">
+          data-fv-icon-invalid="glyphicon"            data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="addEvent();">
       <div class="box-body pad_t30">
         <div class="col-md-3 text-center">
           <div class="add_company">
@@ -25,7 +25,7 @@
           </div>
           <div class="pad_t20 text-center">
           <!--<a href="javascript:void(0);" onclick="showCropPopup1(1)" class="btn btn-default btn_like"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ADD LOGO</a>-->
-          <label for="digital_uploaded_file">Upload an image</label>
+            <!--<label for="digital_uploaded_file" class="btn btn-default">Upload an image</label>-->
           <input name="digital_uploaded_file" id="digital_uploaded_file" type="file" accept="image/x-png,image/jpeg" /><br/>
           </div>
         </div>
@@ -37,7 +37,7 @@
             <label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">Title<span class="mstar">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control background_color" id="cm_name" name="cm_name" placeholder="" required data-fv-notempty-message="The event title is required and cannot be empty" data-fv-regexp="true"
-            data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The asset name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The asset name must be less than 100 characters">
+            data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="The asset name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The asset name must be less than 100 characters">
             </div>
             </div>
             <div class="form-group">
@@ -50,7 +50,7 @@
             <label for="inputPassword3" class="col-sm-3 control-label">Description <span class="mstar">*</span></label>
             <div class="col-sm-9">
               <textarea id="cm_decript" name="cm_decript" class="form-control background_color" placeholder="" required data-fv-notempty-message="The description is required and cannot be empty" data-fv-regexp="true"
-            data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The description can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="2000" data-fv-stringlength-message="The description must be less than 2000 characters"></textarea>
+            data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="The description can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="2000" data-fv-stringlength-message="The description must be less than 2000 characters"></textarea>
             </div>
             </div>
 
@@ -77,10 +77,13 @@
               <div class="row pos_r">
                 <div class="col-md-6">
                   <input type="text" class="form-control background_color"  placeholder="Name" required name="cot_name[]"  id="cot_name_0" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
-                data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
+                data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
                 <div class="col-md-6 mmar_t15">
                   <input type="text" class="form-control background_color" name="cot_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
+                </div>
+                <div class="col-md-12 mar_t15">
+                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="cot_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />
                 </div>
                 <div class="more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
@@ -88,6 +91,35 @@
               </div>
             </span>
 
+
+            <span id="agenda_divs">
+
+              <div class="form-group" id="agenda_1">
+              <label for="Core Team" class="col-sm-3 control-label">Agenda<span class="mstar">*</span></label>
+              <div class="col-sm-9">
+              <div class="row pos_r days">
+                <input type="hidden" id="agenda_cnt1" value="1" />
+                <input type="hidden" name="agendaBoxesCnt"     id="agendaBoxesCnt1"     value="1">
+                <div class="day_1 mar_t5" id="day_1">
+                <div class="col-xs-3"><strong>Day 1</strong></div>
+                <div class="more_input_boxess col-xs-9" id="day1"><a href="javascript:void(0);" onClick="dayadd(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
+                <div class="col-xs-12 pad_0 mar_t15" id="agenda10">
+                <div class="col-md-4">
+                  <input type="text" class="form-control background_color"  placeholder="Time" required name="time0[]"  id="time_00" data-fv-notempty-message="Time is required and cannot be empty"
+                 data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">
+                </div>
+                <div class="col-md-8 mmar_t15">
+                  <input type="text" class="form-control background_color" name="event0[]" id="event_00" placeholder="Event" >
+                </div>
+                  <div class="more_input_boxess new_input_boxes" id="agenda_1"><a href="javascript:void(0);" onClick="agenda(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
+              </div>
+            </div>
+            </div>
+              </div>
+              </div>
+            </span>
+
+              <input type="hidden" id="day_cnt" value="1" />
             <input type="hidden" id="treadin_exchange_cnt" value="1" />
 
 
@@ -110,7 +142,7 @@
             <div class="form-group text-right">
              <span id="loadAddDigital"  style="float:left;display:none">Inserting...</span>
             <div class="col-sm-offset-3 col-sm-9">
-              <a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>
+              <!--<a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>-->
               <button type="submit" class="btn btn-custom">ADD <span class="mm_show">MORE </span> <span class="m_hide">MORE</span> EVENTS</button>
             </div>
             </div>
@@ -124,9 +156,8 @@
 </section>
 </div>
 </div>
-
-
-
+<input type="hidden" name="coreTeamBoxesCnt"     id="coreTeamBoxesCnt"     value="1">
+<input type="hidden" name="dayBoxesCnt"     id="dayBoxesCnt"     value="1">
 
 <script>
 	$(document).ready(function() {
@@ -451,7 +482,127 @@
 			$("#maxfieldsallowed").modal('show');
 		}
 	}
+  function agenda(cnt,cnt2){
+    debugger;
+		$("#maxfieldsallowed").modal('hide');
+		var agenda_cnt = $('#agenda_cnt'+cnt).val().trim();
+		var count_ct      = parseInt( agenda_cnt )+parseInt("1");
+		var TotagendaBoxesCnt = $('#agendaBoxesCnt'+cnt).val();
+		var existingFText = $('#agenda_'+cnt+cnt2+' span ').attr('class');
+		if( existingFText == "fa fa-minus" )
+		{
+			var noaCountRegFiles = 0;
+			$("div[id^='agenda"+cnt+"']").each(function()
+			{
+        debugger;
+				var textboxId = parseInt(this.id.replace("agenda"+cnt, ""));
+				if( $('#agenda'+cnt+textboxId).length > 0 )
+				{
+					noaCountRegFiles++;
+				}
+			});
+			if( noaCountRegFiles > 1 )
+			{
+				$('#agenda'+cnt+cnt2).remove();
+				$('#agendaBoxesCnt'+cnt).val(parseInt(TotagendaBoxesCnt)-parseInt(1));
+				return false;
+			}
+		}
+		if(TotagendaBoxesCnt < 20){
+			$('#agendaBoxesCnt'+cnt).val(parseInt(TotagendaBoxesCnt)+parseInt(1));
+			//$('#day'+cnt+' span ').removeClass( "fa fa-plus" );
+			//$('#day'+cnt+' span ').addClass( "fa fa-minus" );
+      if(cnt==1){
+        var x=cnt-1;
+      }else{
+        var x=cnt;
+      }
+			var html = "";
+      html += '<div class="col-xs-12 pad_0 mar_t15" id="agenda'+cnt+count_ct+'">';
+			html += '<div class="col-md-4">';
+			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+x+'[]"  id="time_'+x+count_ct+'" data-fv-notempty-message="Time is required and cannot be empty"';
+			html +='data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">';
+      html +='</div>';
+      html +='<div class="col-md-8 mmar_t15">';
+      html += '<input type="text" class="form-control background_color" name="event'+x+'[]" id="event_'+x+count_ct+'" placeholder="Event" >';
+      html += '</div>';
+      html +='<div class="more_input_boxess new_input_boxes" id="agenda_'+cnt+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+cnt+','+count_ct+');" class="btn btn-primary"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
+      html +='</div>';
+
+			$('#day_'+cnt).append(html);
+
+			$('#agenda_cnt'+cnt).val(count_ct);
+
+			return false;
+		}else{
+			$("#maxfieldsallowed").modal('show');
+		}
+	}
+  function dayadd(cnt){
+    debugger;
+		$("#maxfieldsallowed").modal('hide');
+		var day_cnt = $('#day_cnt').val().trim();
+		var count_ct      = parseInt( day_cnt )+parseInt("1");
+		var TotdayBoxesCnt = $('#dayBoxesCnt').val();
+		var existingFText = $('#day'+cnt+' span ').attr('class');
+		if( existingFText == "fa fa-minus" )
+		{
+			var noaCountRegFiles = 0;
+			$("div[id^='day_']").each(function()
+			{
+				var textboxId = parseInt(this.id.replace("day_", ""));
+        console.log(textboxId);
+				if( $('#day_'+textboxId).length > 0 )
+				{
+					noaCountRegFiles++;
+				}
+			});
+			if( noaCountRegFiles > 1 )
+			{
+				$('#day_'+cnt).remove();
+				$('#dayBoxesCnt').val(parseInt(TotdayBoxesCnt)-parseInt(1));
+				return false;
+			}
+		}
+		if(TotdayBoxesCnt < 20){
+			$('#dayBoxesCnt').val(parseInt(TotdayBoxesCnt)+parseInt(1));
+      var start=parseInt(cnt)-parseInt(1);
+			//$('#day'+cnt+' span ').removeClass( "fa fa-plus" );
+			//$('#day'+cnt+' span ').addClass( "fa fa-minus" );
+      if(cnt==1){
+        var x=cnt-1;
+      }else{
+        var x=cnt;
+      }
+			var html = "";
+      html+= '<input type="hidden" id="agenda_cnt'+count_ct+'" value="1" />';
+      html+= '<input type="hidden" name="agendaBoxesCnt'+count_ct+'"     id="agendaBoxesCnt'+count_ct+'"     value="1">';
+			html += '<div class="col-xs-12 pad_0 day_'+count_ct+' mar_t5" id="day_'+count_ct+'">';
+      html +='<div class="col-xs-3"><strong>Day '+count_ct+'</strong></div>';
+			html += '<div class="more_input_boxess col-xs-9" style="position:relative;padding-bottom:5px;" id="day'+count_ct+'"><a href="javascript:void(0);" onClick="dayadd('+count_ct+');" class="btn btn-primary"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
+      html += '<div class="col-xs-12 pad_0 mar_t15" id="agenda'+count_ct+x+'">';
+      html += '<div class="col-md-4">';
+			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+count_ct+'[]"  id="time_'+count_ct+start+'" data-fv-notempty-message="Time is required and cannot be empty"';
+			html +='data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">';
+      html +='</div>';
+      html +='<div class="col-md-8 mmar_t15">';
+      html += '<input type="text" class="form-control background_color" name="event'+count_ct+'[]" id="event_'+count_ct+ start +'" placeholder="Event" >';
+      html += '</div>';
+      html +='<div class="more_input_boxess new_input_boxes" id="agenda_'+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+					html += '</div>';
+          html += '</div>';
+
+			$('.days').append(html);
+
+			$('#day_cnt').val(count_ct);
+
+			return false;
+		}else{
+			$("#maxfieldsallowed").modal('show');
+		}
+	}
 	function coreTeam(cnt){
+    debugger;
 		$("#maxfieldsallowed").modal('hide');
 		var core_team_cnt = $('#core_team_cnt').val().trim();
 		var count_ct      = parseInt( core_team_cnt )+parseInt("1");
@@ -481,11 +632,14 @@
 			$('#coreteam_'+cnt+' span ').addClass( "fa fa-minus" );
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
-			html += '<label for="Core Team" class="col-sm-3 control-label">Core Team</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
-			html += '<input class="form-control background_color" placeholder="Core Team" name="cot_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
+			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
+			html += '<input class="form-control background_color" placeholder="Name" name="cot_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="cot_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
-			html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+      html +='<div class="col-md-12 mar_t15">';
+      html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="cot_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
+      html += '</div>';
+      html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
 			html += '</div>';
@@ -735,7 +889,7 @@
 			$("#maxfieldsallowed").modal('show');
 		}
 	}
-	function addDigitalAsset(){
+	function addEvent(){
 		$("#cm_marketcap_error").html('');
 		$('#add_digital_asset').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
@@ -785,7 +939,7 @@
 					$("#loadUpdateDigital").show();
 					var form_data = new FormData($('#add_digital_asset')[0]);
 					$.ajax({
-						url: baseUrl+'Company/addDigitalAssetView?id='+time,
+						url: baseUrl+'Company/addEventView?id='+time,
 						cache: false,
 						contentType: false,
 						processData: false,
