@@ -72,12 +72,12 @@ $viewTime = date('Ymd') .'_'. date('His');
 							<form class="form-inline">
 							<div class="form-group">
 								<ul class="nav navbar-nav">
-								 <li class="dropdown mpull_right select_dropdown" id="change_u">
-								  Sort By &nbsp; <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
+								 <li class="dropdown mpull_right select_dropdown" id="change_u"><span class="for-border">
+								   <span id="sort_by">Sort By</span> <button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								 Ending soon<div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:231px">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;">
 									<li><a onClick="filterCompanies('rating','2');" href="javascript:void('0');">Highest rating</a></li>
 									<li><a onClick="filterCompanies('viewed','2');" href="javascript:void('0');">Most reviewed</a></li>
 									<li><a onClick="filterCompanies('mch','2');" href="javascript:void('0');">Market cap(High to Low)</a></li>
@@ -277,12 +277,23 @@ $viewTime = date('Ymd') .'_'. date('His');
 
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
+    var sortby_status = localStorage.getItem('sortby_status');
 		if(filterType!=""){
 			localStorage.setItem('type',filterType);
 			localStorage.setItem('page_name',pageMode);
 		}else{
 			localStorage.setItem('type','viewed');
 			localStorage.setItem('page_name',1);
+      localStorage.setItem('sortby_status',1);
+		}
+    if(filterType=="viewed" || filterType=="rating" || filterType=="edtA"){
+			localStorage.setItem('sortby_status',1);
+		}
+		var sortby_status = localStorage.getItem('sortby_status');
+		if(sortby_status==0){
+			$('#sort_by').hide();
+		}else if(sortby_status==1){
+			$('#sort_by').show();
 		}
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
