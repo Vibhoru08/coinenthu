@@ -50,7 +50,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row mar_b40 mar_t40" id="sort_by" >
+		<div class="row mar_b40 mar_t40" id="sort_by_main" >
 			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header pad_0">
@@ -305,14 +305,14 @@ $viewTime = date('Ymd') .'_'. date('His');
         if( $("#news_log").hasClass("register_design") ){
         $(".review_log").removeClass('login_design');
         $(".company_list").fadeIn();
-        $("#sort_by").fadeIn();
+        $("#sort_by_main").fadeIn();
         $(".carousel_id").hide();
         $("#loadingHash1").fadeIn();
       }else if( $("#review_log").hasClass("login_design") ){
         $(".news_log").removeClass('register_design');
         $(".company_list").hide();
         $("#loadingHash1").hide();
-        $("#sort_by").hide();
+        $("#sort_by_main").hide();
       }else{
         $(".news_log").addClass('register_design');
         $(".carousel_id").hide();
@@ -323,7 +323,7 @@ $viewTime = date('Ymd') .'_'. date('His');
           $(".news_log").addClass('register_design');
           $(".company_list").fadeIn();
           $("#loadingHash1").fadeIn();
-          $("#sort_by").fadeIn();
+          $("#sort_by_main").fadeIn();
           $(".carousel_id").hide();
         });
 
@@ -332,7 +332,7 @@ $viewTime = date('Ymd') .'_'. date('His');
           $(".review_log").addClass('login_design');
           $(".company_list").hide();
           $("#loadingHash1").hide();
-          $("#sort_by").hide();
+          $("#sort_by_main").hide();
           $(".carousel_id").fadeIn();
         });
       }
@@ -341,7 +341,7 @@ $viewTime = date('Ymd') .'_'. date('His');
         $("#loadingHash1").show();
         $(".socila_img").show();
         $(".company_list").show();
-        $("#sort_by").show();
+        $("#sort_by_main").show();
       }
     });
 
@@ -355,7 +355,7 @@ $viewTime = date('Ymd') .'_'. date('His');
       $(".news_log").addClass('register_design');
       $(".company_list").fadeIn();
       $("#loadingHash1").fadeIn();
-      $("#sort_by").fadeIn();
+      $("#sort_by_main").fadeIn();
       $(".carousel_id").hide();
     });
 
@@ -364,7 +364,7 @@ $viewTime = date('Ymd') .'_'. date('His');
       $(".review_log").addClass('login_design');
       $(".company_list").hide();
       $("#loadingHash1").hide();
-      $("#sort_by").hide();
+      $("#sort_by_main").hide();
       $(".carousel_id").fadeIn();
     });
   }

@@ -3517,6 +3517,13 @@ a.left_panel_desc{
 
 }
 @media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header{
+    padding-left:15px;
+  }
+  .for-border{
+    float:left;
+    text-align:left;
+  }
 	.body_h{
 		overflow:auto;
 	}
@@ -3721,9 +3728,6 @@ a.left_panel_desc{
 	}
 	.ma_dw .dropdown-menu{
 		min-width:120px;
-	}
-	.mpull_right{
-		float:none !important;
 	}
 	.about_slider .carousel-indicators{
 		display:none;

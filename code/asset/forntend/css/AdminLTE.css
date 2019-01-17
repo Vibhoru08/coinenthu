@@ -2267,7 +2267,7 @@ a:focus {
   left:190px;
   height: 31px;
   padding:6px 0 8px 0;
-  border-right:2px solid #ddd;
+  border-right:2px solid #e5e5e5;
   content:"";
 }
 @media(max-width:768px){

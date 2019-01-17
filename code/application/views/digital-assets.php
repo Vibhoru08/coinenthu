@@ -50,7 +50,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 	</div>
 	<div class="container-fluid m_margin_0">
 	  <section class="content no-margin">
-		<div class="row mar_b40 mar_t40" id="sort_by">
+		<div class="row mar_b40 mar_t40" id="sort_by_main">
 			<div class="col-md-12 pad_0">
 			<div class="box mar_b5 sorting home_box_n">
 				<div class="box-header pad_0">
@@ -66,7 +66,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width"  >
+					<div class="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width">
 						<div class="row">
 							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 pad_0 centered ">
 						<div class="select_style">
@@ -78,7 +78,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 								  Most reviewed</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="1">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:231px">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;">
 									<li><a onClick="filterCompanies('viewed','1');" href="javascript:void('0');">Most reviewed</a></li>
 									<li><a onClick="filterCompanies('rating','1');" href="javascript:void('0');">Highest rating</a></li>
 									<li><a onClick="filterCompanies('mch','1');" href="javascript:void('0');">Market cap(High to Low)</a></li>
@@ -284,12 +284,23 @@ $viewTime = date('Ymd') .'_'. date('His');
 	$(document).ready(function() {
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
+		var sortby_status = localStorage.getItem('sortby_status');
 		if(filterType!=""){
 			localStorage.setItem('type',filterType);
 			localStorage.setItem('page_name',pageMode);
 		}else{
 			localStorage.setItem('type','viewed');
 			localStorage.setItem('page_name',1);
+			localStorage.setItem('sortby_status',1);
+		}
+		if(filterType=="viewed" || filterType=="rating"){
+			localStorage.setItem('sortby_status',1);
+		}
+		var sortby_status = localStorage.getItem('sortby_status');
+		if(sortby_status==0){
+			$('#sort_by').hide();
+		}else if(sortby_status==1){
+			$('#sort_by').show();
 		}
 		var filterType = localStorage.getItem('type');
 		var pageMode   = localStorage.getItem('page_name');
@@ -308,14 +319,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 				if( $("#news_log").hasClass("register_design") ){
 				$(".review_log").removeClass('login_design');
 				$(".company_list").fadeIn();
-				$("#sort_by").fadeIn();
+				$("#sort_by_main").fadeIn();
 				$(".carousel_id").hide();
 				$("#loadingHash1").fadeIn();
 			}else if( $("#review_log").hasClass("login_design") ){
 				$(".news_log").removeClass('register_design');
 				$(".company_list").hide();
 				$("#loadingHash1").hide();
-				$("#sort_by").hide();
+				$("#sort_by_main").hide();
 			}else{
 				$(".news_log").addClass('register_design');
 				$(".carousel_id").hide();
@@ -326,7 +337,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					$(".news_log").addClass('register_design');
 					$(".company_list").fadeIn();
 					$("#loadingHash1").fadeIn();
-					$("#sort_by").fadeIn();
+					$("#sort_by_main").fadeIn();
 					$(".carousel_id").hide();
 				});
 
@@ -335,7 +346,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					$(".review_log").addClass('login_design');
 					$(".company_list").hide();
 					$("#loadingHash1").hide();
-					$("#sort_by").hide();
+					$("#sort_by_main").hide();
 					$(".carousel_id").fadeIn();
 				});
 			}
@@ -344,7 +355,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 				$("#loadingHash1").show();
 				$(".socila_img").show();
 				$(".company_list").show();
-				$("#sort_by").show();
+				$("#sort_by_main").show();
 			}
 		});
 
@@ -358,7 +369,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 			$(".news_log").addClass('register_design');
 			$(".company_list").fadeIn();
 			$("#loadingHash1").fadeIn();
-			$("#sort_by").fadeIn();
+			$("#sort_by_main").fadeIn();
 			$(".carousel_id").hide();
 		});
 
@@ -367,7 +378,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 			$(".review_log").addClass('login_design');
 			$(".company_list").hide();
 			$("#loadingHash1").hide();
-			$("#sort_by").hide();
+			$("#sort_by_main").hide();
 			$(".carousel_id").fadeIn();
 		});
 	}
