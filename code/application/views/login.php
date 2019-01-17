@@ -103,6 +103,8 @@
 													$redirect = 1;
 												}else if($this->session->userdata('redirect_page')==2){
 													$redirect = 2;
+												}else if($this->session->userdata('redirect_page')==3){
+													$redirect = 3;
 												}else{
 													$redirect = 0;
 												}

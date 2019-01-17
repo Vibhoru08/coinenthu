@@ -199,7 +199,9 @@ function userLogin() {
                         window.location = baseUrl + 'add-digital-asset';
                     } else if (redirectPage == 2) {
                         window.location = baseUrl + 'add-ico-tracker';
-                    } else {
+                    } else if (redirectPage == 3) {
+                        window.location = baseUrl + 'add-event';
+                    }else {
                         window.location = baseUrl;
                     }
                 } else {
