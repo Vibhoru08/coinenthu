@@ -1638,6 +1638,86 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
+	public function addEventAgenda($event_id,$agtime,$agevent)
+	{
+		$data = array(
+			'ag_evid'           => $event_id,
+			'ag_day'            => 1,
+			'ag_time'           => $agtime,
+			'ag_event'          => $agevent,
+			'ag_status'         => 1,
+			'ag_md'             => date('Y-m-d H:i:s'),	
+		);
+		if($this->db->insert('bop_events_agenda', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	public function addEventAgenda2($event_id,$agtime,$agevent)
+	{
+		$data = array(
+			'ag_evid'           => $event_id,
+			'ag_day'            => 2,
+			'ag_time'           => $agtime,
+			'ag_event'          => $agevent,
+			'ag_status'         => 1,
+			'ag_md'             => date('Y-m-d H:i:s'),	
+		);
+		if($this->db->insert('bop_events_agenda', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	public function addEventAgenda3($event_id,$agtime,$agevent)
+	{
+		$data = array(
+			'ag_evid'           => $event_id,
+			'ag_day'            => 3,
+			'ag_time'           => $agtime,
+			'ag_event'          => $agevent,
+			'ag_status'         => 1,
+			'ag_md'             => date('Y-m-d H:i:s'),	
+		);
+		if($this->db->insert('bop_events_agenda', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	public function addEventAgenda4($event_id,$agtime,$agevent)
+	{
+		$data = array(
+			'ag_evid'           => $event_id,
+			'ag_day'            => 4,
+			'ag_time'           => $agtime,
+			'ag_event'          => $agevent,
+			'ag_status'         => 1,
+			'ag_md'             => date('Y-m-d H:i:s'),	
+		);
+		if($this->db->insert('bop_events_agenda', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	public function addEventAgenda5($event_id,$agtime,$agevent)
+	{
+		$data = array(
+			'ag_evid'           => $event_id,
+			'ag_day'            => 5,
+			'ag_time'           => $agtime,
+			'ag_event'          => $agevent,
+			'ag_status'         => 1,
+			'ag_md'             => date('Y-m-d H:i:s'),	
+		);
+		if($this->db->insert('bop_events_agenda', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
 	public function addAdvosries($companyId,$adtname,$url)
 	{
 		$data = array(

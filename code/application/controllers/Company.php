@@ -1686,8 +1686,41 @@
 						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
 					}
 				}
-				
-				
+				if(!empty($_POST['time0'])){
+					foreach($_POST['time0'] as $key=>$agtime){
+						if($agtime != ""){
+							$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event0'][$key]);
+						}
+					}
+				}
+				if(!empty($_POST['time2'])){
+					foreach($_POST['time2'] as $key2=>$agtime2){
+						if($agtime2 != ""){
+							$agendaStatus2 = $this->Companies_model->addEventAgenda2($event_id,$agtime2,$_POST['event2'][$key2]);
+						}
+					}
+				}
+				if(!empty($_POST['time3'])){
+					foreach($_POST['time3'] as $key3=>$agtime3){
+						if($agtime3 != ""){
+							$agendaStatus3 = $this->Companies_model->addEventAgenda3($event_id,$agtime3,$_POST['event3'][$key3]);
+						}
+					}
+				}
+				if(!empty($_POST['time4'])){
+					foreach($_POST['time4'] as $key4=>$agtime4){
+						if($agtime4 != ""){
+							$agendaStatus4 = $this->Companies_model->addEventAgenda4($event_id,$agtime4,$_POST['event4'][$key4]);
+						}
+					}
+				}
+				if(!empty($_POST['time5'])){
+					foreach($_POST['time5'] as $key5=>$agtime5){
+						if($agtime5 != ""){
+							$agendaStatus5 = $this->Companies_model->addEventAgenda5($event_id,$agtime5,$_POST['event5'][$key5]);
+						}
+					}
+				}
 
 			}
 
