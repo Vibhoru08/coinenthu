@@ -2053,7 +2053,15 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-
+	public function getEventInfoById($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events');
+		$this->db->where('ev_id',$event_id);
+		$this->db->where('ev_status',0);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function getcompanyinfo($cm_unique_id){
 		$this->db->select('*');
         $this->db->from('bop_compaines');
