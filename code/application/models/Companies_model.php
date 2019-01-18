@@ -1441,6 +1441,78 @@ class Companies_model extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
+	public function AddEvent($post,$uid,$ins_fr,$resizeImg){
+		if(isset($post['ev_name']) && $post['ev_name'] != "")
+		{
+			$ev_name = $post['ev_name'];
+		}else{
+			$ev_name = '';
+		}
+
+		if(isset($post['ev_loc']) && $post['ev_loc'] != "")
+		{
+			$ev_loc = $post['ev_loc'];
+		}else{
+			$ev_loc = '';
+		}
+
+		if(isset($post['ev_decript']) && $post['ev_decript'] != "")
+		{
+			$ev_decript = $post['ev_decript'];
+		}else{
+			$ev_decript = '';
+		}
+
+		if(isset($post['ev_price']) && $post['ev_price'] != "")
+		{
+			$ev_price = $post['ev_price'];
+		}else{
+			$ev_price = '';
+		}
+
+		if(isset($post['ev_num']) && $post['ev_num'] != "")
+		{
+			$ev_num = $post['ev_num'];
+		}else{
+			$ev_num = '';
+		}
+
+		if(isset($post['ev_city']) && $post['ev_city'] != "")
+		{
+			$ev_city = $post['ev_city'];
+		}else{
+			$ev_city = '';
+		}
+		if(isset($ins_fr) && $ins_fr == 'Admin')
+		{
+			$status = '1';
+		}elseif(isset($ins_fr) && $ins_fr == 'User')
+		{
+			$status = '0';
+		}else{
+			$status = '0';
+		}
+
+		$data = array(
+            'ev_uid'      						=> $uid,
+            'ev_name'  							=> $ev_name,
+			'ev_decript'   						=> $ev_decript,
+			'ev_picture'    					=> $resizeImg,
+			'ev_loc'                            => $ev_loc,
+			'ev_price'                          => $ev_price,
+			'ev_num'                            => $ev_num,
+			'ev_city'                           => $ev_city,
+			'ev_status'     					=> $status,
+            'ev_cd' 				        	=> date('Y-m-d H:i:s'),
+            'ev_md'  					        => date('Y-m-d H:i:s'),
+            
+        );
+        if($this->db->insert('bop_events', $data) === FALSE){
+			return FALSE;
+		}else{
+			return $this->db->insert_id();
+		}
+	}
 	public function UpdateDigitalAsset($post,$uid,$resizeImg)
 	{
 		if(isset($post['cm_total_token_supply']) && $post['cm_total_token_supply'] != "")
@@ -1545,6 +1617,22 @@ class Companies_model extends CI_Model
 
         );
         if($this->db->insert('bop_company_coreteam', $data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}
+	public function addEventSpeakers($event_id,$spname,$url,$spimage)
+	{
+		$data = array(
+			'sp_evid'           => $event_id,
+			'sp_name'           => $spname,
+			'sp_url'            => $url,
+			'sp_image'          => $spimage,
+			'sp_status'         => 1,
+			'sp_md'             => date('Y-m-d H:i:s'),    	
+		);
+		if($this->db->insert('bop_events_speakers', $data) === FALSE){
 			return FALSE;
 		}else{
 			return TRUE;

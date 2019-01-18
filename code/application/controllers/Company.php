@@ -1635,6 +1635,63 @@
 				redirect(base_url().'login');
 			}
 		}
+		public function addEventView(){
+			$this->load->helper(array('common'));
+			if(isset($_POST) && !empty($_POST)){
+				if(isset($_FILES['event_uploaded_file']['name']) && $_FILES['event_uploaded_file']['name'] != ""){
+					$evntName = $_POST['ev_name'];
+					$eventName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $evntName));
+					$fileName = $_FILES["event_uploaded_file"]["name"];
+					$fileTmpLoc = $_FILES["event_uploaded_file"]["tmp_name"];
+					$target_dir     = base_url().'asset/img/events/main/';
+					$temp           = explode(".", $_FILES['event_uploaded_file']["name"]);
+					$newfilename    = date('Ymd_His') . '.' . end($temp);
+					move_uploaded_file($_FILES["event_uploaded_file"]["tmp_name"], 'asset/img/events/main/'.$newfilename);
+					// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+					$kaboom = explode(".", $fileName);
+					$fileExt = end($kaboom);
+					$target_file = 'asset/img/events/main/'.$newfilename;
+					$resized_file = 'asset/img/events/main/event_'.$eventName.'_'.$newfilename;
+					$wmax = 160;
+					$getImagNames = ak_img_resize($target_file, $resized_file, $wmax, $fileExt);
+					$reImage = explode('/',$getImagNames);
+					$resizeImg = $reImage[4];
+				}
+				$user_id = $this->session->userdata('user_id');
+				$insert_from = 'User';
+				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg);
+				if(!empty($_POST['sp_name'])){
+					foreach($_POST['sp_name'] as $key=>$spname)
+					{   
+						if(isset($_FILES['sp_profile_image']['name'][$key]) && $_FILES['sp_profile_image']['name'][$key] != ""){
+							$spkrName = $_POST['sp_name'][$key];
+							$speakerName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $spkrName));
+							$fileName2 = $_FILES["sp_profile_image"]["name"][$key];
+							$fileTmpLoc2 = $_FILES["sp_profile_image"]["tmp_name"][$key];
+							$target_dir2     = base_url().'asset/img/events/speakers/';
+							$temp2           = explode(".", $_FILES['sp_profile_image']["name"][$key]);
+							$newfilename2    = date('Ymd_His') . '.' . end($temp2);
+							move_uploaded_file($_FILES["sp_profile_image"]["tmp_name"][$key], 'asset/img/events/speakers/'.$newfilename2);
+							// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+							$kaboom2 = explode(".", $fileName2);
+							$fileExt2 = end($kaboom2);
+							$target_file2 = 'asset/img/events/speakers/'.$newfilename2;
+							$resized_file2 = 'asset/img/events/speakers/speaker_'.$speakerName.'_'.$newfilename2;
+							$wmax2 = 160;
+							$getImagNames2 = ak_img_resize($target_file2, $resized_file2, $wmax2, $fileExt2);
+							$reImage2 = explode('/',$getImagNames2);
+							$spimage = $reImage2[4];
+							
+						}
+						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+					}
+				}
+				
+				
+
+			}
+
+		}
 
 		public function getComonImage(){
 			$this->load->helper(array('common'));

@@ -26,7 +26,7 @@
           <div class="pad_t20 text-center">
           <!--<a href="javascript:void(0);" onclick="showCropPopup1(1)" class="btn btn-default btn_like"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ADD LOGO</a>-->
             <!--<label for="digital_uploaded_file" class="btn btn-default">Upload an image</label>-->
-          <input name="digital_uploaded_file" id="digital_uploaded_file" type="file" accept="image/x-png,image/jpeg" /><br/>
+          <input name="event_uploaded_file" id="digital_uploaded_file" type="file" accept="image/x-png,image/jpeg" /><br/>
           </div>
         </div>
         <div class="col-md-7">
@@ -36,20 +36,20 @@
             <div class="form-group">
             <label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">Title<span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <input type="text" class="form-control background_color" id="cm_name" name="cm_name" placeholder="" required data-fv-notempty-message="The event title is required and cannot be empty" data-fv-regexp="true"
+              <input type="text" class="form-control background_color" id="cm_name" name="ev_name" placeholder="" required data-fv-notempty-message="The event title is required and cannot be empty" data-fv-regexp="true"
             data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="The asset name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The asset name must be less than 100 characters">
             </div>
             </div>
             <div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">Location<span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <textarea class="form-control background_color" required rows="1" id="cm_address" name="cm_address" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
+              <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
             </div>
             </div>
             <div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">Description <span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <textarea id="cm_decript" name="cm_decript" class="form-control background_color" placeholder="" required data-fv-notempty-message="The description is required and cannot be empty" data-fv-regexp="true"
+              <textarea id="cm_decript" name="ev_decript" class="form-control background_color" placeholder="" required data-fv-notempty-message="The description is required and cannot be empty" data-fv-regexp="true"
             data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="The description can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="2000" data-fv-stringlength-message="The description must be less than 2000 characters"></textarea>
             </div>
             </div>
@@ -64,7 +64,7 @@
            <div class="form-group">
             <label id="label_mar" for="inputPassword3" class="col-sm-3 control-label">Price (in US$)<span class="mstar">*</span></label>
             <div class="col-sm-9">
-             <input type="text" id="cm_marketcap" name="cm_marketcap" class="form-control background_color" placeholder="" required data-fv-regexp="true"
+             <input type="text" id="cm_marketcap" name="ev_price" class="form-control background_color" placeholder="" required data-fv-regexp="true"
              data-fv-regexp-regexp="^\d+(,\d+)*$"  onBlur="marketCapFun();">
              <p id="cm_marketcap_error" style="color:#a94442" name="cm_marketcap_error"></p>
             </div>
@@ -76,14 +76,14 @@
               <div class="col-sm-9">
               <div class="row pos_r">
                 <div class="col-md-6">
-                  <input type="text" class="form-control background_color"  placeholder="Name" required name="cot_name[]"  id="cot_name_0" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
+                  <input type="text" class="form-control background_color"  placeholder="Name" required name="sp_name[]"  id="cot_name_0" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
                 data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
                 <div class="col-md-6 mmar_t15">
-                  <input type="text" class="form-control background_color" name="cot_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
+                  <input type="text" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
                 </div>
                 <div class="col-md-12 mar_t15">
-                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="cot_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />
+                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />
                 </div>
                 <div class="more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
@@ -127,7 +127,7 @@
             <div class="form-group">
              <label id="label_mar" for="inputPassword3" class="col-sm-3 control-label">Attendees Number<span class="mstar">*</span></label>
              <div class="col-sm-9">
-              <input type="text" id="cm_marketcap" name="cm_marketcap" class="form-control background_color" placeholder="" required data-fv-regexp="true"
+              <input type="text" id="cm_marketcap" name="ev_num" class="form-control background_color" placeholder="" required data-fv-regexp="true"
               data-fv-regexp-regexp="^\d+(,\d+)*$"  onBlur="marketCapFun();">
               <p id="cm_marketcap_error" style="color:#a94442" name="cm_marketcap_error"></p>
              </div>
@@ -633,11 +633,11 @@
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
 			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
-			html += '<input class="form-control background_color" placeholder="Name" name="cot_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
+			html += '<input class="form-control background_color" placeholder="Name" name="sp_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +='<input class="form-control background_color" placeholder="Linkden url" name="cot_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
+			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
       html +='<div class="col-md-12 mar_t15">';
-      html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="cot_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
+      html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
       html += '</div>';
       html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
