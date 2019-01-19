@@ -2062,6 +2062,15 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function getSpeakersForEvent($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_speakers');
+		$this->db->where('sp_evid',$event_id);
+		$this->db->where('sp_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	public function getCities($status)
 	{
 		$this->db->select('*');

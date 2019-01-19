@@ -775,10 +775,13 @@
 				foreach($result as $key=>$value){
 					$data['event_name'] = $value->ev_name;
 					$data['event_location'] = $value->ev_loc;
+					$data['event_city'] = $value->ev_city;
 					$data['event_picture'] = $value->ev_picture;
+					$data['event_att'] = $value->ev_num;
 					$data['event_price'] = $value->ev_price;
 					$data['event_description'] = $value->ev_decript;
-					$data['ev_id'] = $event_id;
+					$data['event_id'] = $event_id;
+					$data['speakers'] = $this->Companies_model->getSpeakersForEvent($event_id);
 				}
 				$this->show('event-full-view',$data);
 			}else{
