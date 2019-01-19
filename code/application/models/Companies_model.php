@@ -1455,7 +1455,7 @@ class Companies_model extends CI_Model
 		}else{
 			$ev_loc = '';
 		}
-
+		
 		if(isset($post['ev_decript']) && $post['ev_decript'] != "")
 		{
 			$ev_decript = $post['ev_decript'];
@@ -2058,7 +2058,15 @@ class Companies_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('bop_events');
 		$this->db->where('ev_id',$event_id);
-		$this->db->where('ev_status',0);
+		$this->db->where('ev_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getCities($status)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_event_cities');
+		$this->db->where('ci_status',$status);
 		$query = $this->db->get();
 		return $query->result();
 	}

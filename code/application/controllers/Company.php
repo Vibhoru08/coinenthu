@@ -1651,6 +1651,7 @@
 			$data = Array();
 			$this->session->set_userdata('redirect_page', 0);
 			if($this->session->userdata('user_id') != ""){
+				$data['cities'] = $this->Companies_model->getCities(1);
 				$this->show('add-event',$data);
 			}else{
 				$this->session->set_userdata('redirect_page', 1);
@@ -1708,10 +1709,10 @@
 						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
 					}
 				}
-				if(!empty($_POST['time0'])){
-					foreach($_POST['time0'] as $key=>$agtime){
+				if(!empty($_POST['time1'])){
+					foreach($_POST['time1'] as $key=>$agtime){
 						if($agtime != ""){
-							$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event0'][$key]);
+							$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event1'][$key]);
 						}
 					}
 				}

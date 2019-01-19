@@ -46,6 +46,19 @@
               <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
             </div>
             </div>
+			<div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">City<span class="mstar">*</span></label>
+            <div class="col-sm-9">
+              <select name = "ev_city" required>
+				<option value = "">None</option>
+				<?php
+				foreach($cities as $city){
+					echo '<option value = "'.$city->ci_value.'">'.$city->ci_name.'</option>';	
+				}
+				?>			  	
+			  </select>
+            </div>
+            </div>
             <div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">Description <span class="mstar">*</span></label>
             <div class="col-sm-9">
@@ -105,11 +118,11 @@
                 <div class="more_input_boxess col-xs-9" id="day1"><a href="javascript:void(0);" onClick="dayadd(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
                 <div class="col-xs-12 pad_0 mar_t15" id="agenda10">
                 <div class="col-md-4">
-                  <input type="text" class="form-control background_color"  placeholder="Time" required name="time0[]"  id="time_00" data-fv-notempty-message="Time is required and cannot be empty"
+                  <input type="text" class="form-control background_color"  placeholder="Time" required name="time1[]"  id="time_00" data-fv-notempty-message="Time is required and cannot be empty"
                  data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">
                 </div>
                 <div class="col-md-8 mmar_t15">
-                  <input type="text" class="form-control background_color" name="event0[]" id="event_00" placeholder="Event" >
+                  <input type="text" class="form-control background_color" name="event1[]" id="event_00" placeholder="Event" >
                 </div>
                   <div class="more_input_boxess new_input_boxes" id="agenda_1"><a href="javascript:void(0);" onClick="agenda(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
@@ -520,11 +533,11 @@
 			var html = "";
       html += '<div class="col-xs-12 pad_0 mar_t15" id="agenda'+cnt+count_ct+'">';
 			html += '<div class="col-md-4">';
-			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+x+'[]"  id="time_'+x+count_ct+'" data-fv-notempty-message="Time is required and cannot be empty"';
+			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+cnt+'[]"  id="time_'+x+count_ct+'" data-fv-notempty-message="Time is required and cannot be empty"';
 			html +='data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">';
       html +='</div>';
       html +='<div class="col-md-8 mmar_t15">';
-      html += '<input type="text" class="form-control background_color" name="event'+x+'[]" id="event_'+x+count_ct+'" placeholder="Event" >';
+      html += '<input type="text" class="form-control background_color" name="event'+cnt+'[]" id="event_'+x+count_ct+'" placeholder="Event" >';
       html += '</div>';
       html +='<div class="more_input_boxess new_input_boxes" id="agenda_'+cnt+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+cnt+','+count_ct+');" class="btn btn-primary"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
       html +='</div>';
