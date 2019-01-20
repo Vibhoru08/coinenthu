@@ -53,9 +53,9 @@
 				<option value = "">None</option>
 				<?php
 				foreach($cities as $city){
-					echo '<option value = "'.$city->ci_value.'">'.$city->ci_name.'</option>';	
+					echo '<option value = "'.$city->ci_value.'">'.$city->ci_name.'</option>';
 				}
-				?>			  	
+				?>
 			  </select>
             </div>
             </div>
@@ -71,7 +71,82 @@
             <input type="hidden" id="core_team_cnt" value="1" />
              <input type="hidden" id="advisory_cnt" value="1" />
              <input type="hidden" id="escrow_cnt" value="1" />
+             <div class="form-group">
+             <label for="Inflation" class="col-sm-3 control-label">Event Start Date & Time <span class="mstar">*</span></label>
+             <div class="col-sm-9">
+               <div class="row">
+                 <div class="col-md-6">
+                  <input type="text" class="form-control" id="cm_ico_start_date" name="cm_ico_start_date" class="form-control" placeholder="Event Start Date " readonly style="background-color:#fff;" required data-fv-notempty-message="The start date is required" >
+                 </div>
+                 <div class="col-md-6 mmar_t15">
+                  <select name="cm_ico_start_time" id="cm_ico_start_time" class="form-control" required data-fv-notempty-message="The start time is required">
+                  <option value="">Event Start Time (UTC)</option>
+                  <?php
+                 $options = array();
+                 foreach (range(0,23) as $fullhour)
+                 {
+                    $parthour = $fullhour > 12 ? $fullhour - 12 : $fullhour;
+                    $sufix = $fullhour > 11 ? " pm" : " am";
+                   if($parthour == '0')
+                   {
+                     $partHr = '12';
+                   }else{
 
+                     $partHr = $parthour;
+                   }
+                    $options["$fullhour:00"] = $partHr.":00".$sufix;
+                    $options["$fullhour:30"] = $partHr.":30".$sufix;
+                 }
+                 foreach($options as $k=>$opt)
+                 {?>
+                 <option value="<?php echo $k; ?>"><?php echo $opt; ?></option>
+                 <?php
+                 }
+                 ?>
+
+                  </select>
+                 </div>
+               </div>
+             </div>
+             </div>
+             <div class="form-group">
+             <label for="Inflation" class="col-sm-3 control-label">Event End Date & Time <span class="mstar">*</span></label>
+             <div class="col-sm-9">
+               <div class="row">
+                 <div class="col-md-6">
+                  <input type="text" id="cm_ico_end_date" name="cm_ico_end_date" class="form-control" placeholder="Event End Date "  readonly style="background-color:#fff;" required data-fv-notempty-message="The end date is required">
+                 </div>
+                 <div class="col-md-6 mmar_t15">
+                   <select name="cm_ico_end_time" id="cm_ico_end_time" class="form-control" required data-fv-notempty-message="The end time is required">
+                  <option value="">Event End Time (UTC)</option>
+                  <?php
+                 $options = array();
+                 foreach (range(0,23) as $fullhour)
+                 {
+                    $parthour = $fullhour > 12 ? $fullhour - 12 : $fullhour;
+                    $sufix = $fullhour > 11 ? " pm" : " am";
+                   if($parthour == '0')
+                   {
+                     $partHr = '12';
+                   }else{
+
+                     $partHr = $parthour;
+                   }
+                    $options["$fullhour:00"] = $partHr.":00".$sufix;
+                    $options["$fullhour:30"] = $partHr.":30".$sufix;
+                 }
+                 foreach($options as $k=>$opt)
+                 {?>
+                 <option value="<?php echo $k; ?>"><?php echo $opt; ?></option>
+                 <?php
+                 }
+                 ?>
+
+                  </select>
+                 </div>
+               </div>
+             </div>
+             </div>
             <input type="hidden" id="resources_cnt" value="1" />
 
            <div class="form-group">
@@ -175,7 +250,28 @@
 <script>
 	$(document).ready(function() {
 		$('#add_digital_asset').formValidation();
-	});
+    $( "#cm_ico_start_date" ).datepicker({
+  		 minDate: 0,
+  		onClose: function (selectedDate) {
+              $("#cm_ico_end_date").datepicker("option", "minDate", selectedDate);
+  			$('#add_digital_asset').formValidation('revalidateField', 'cm_ico_start_date');
+          },
+  		dateFormat: 'mm/dd/yy',
+  		changeMonth: true,
+  		changeYear: true,}).datepicker(	);
+      $( "#cm_ico_end_date" ).datepicker({
+  		minDate: 0,
+  		onClose: function (selectedDate) {
+              /* $("#cm_ico_start_date").datepicker("option", "maxDate", selectedDate); */
+  			$('#add_digital_asset').formValidation('revalidateField', 'cm_ico_end_date');
+          },
+  		dateFormat: 'mm/dd/yy',
+  		changeMonth: true,
+  		changeYear: true,}).datepicker();
+    } );
+  	var d 		= new Date();
+  	var time 	= d.getTime();
+
 	/* $(document).ready(function() {
 		$(document).on('change','#digital_uploaded_file',function(){
 			var file_data = document.getElementById('digital_uploaded_file').files[0];
@@ -961,6 +1057,7 @@
 						dataType:'json',
 						success: function(data){
 							if(data != 0){
+                debugger;
 							    $('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
