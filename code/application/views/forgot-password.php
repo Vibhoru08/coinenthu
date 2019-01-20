@@ -1,5 +1,21 @@
 <div class="content-wrapper">
-	<div  class="bread_crumb">
+	<div class="container-fluid banner_margin linear_color">
+		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
+			<div class="col-xs-12 text-center banner_head">
+				FORGOT PASSWORD
+			<!--	<hr style="width:5%;border:2px solid #ffff"> -->
+				
+			<div class="row mar_t10">
+			<div class="col-xs-10 col-xs-offset-1 msearch_bg big_hide">
+				<div class = "col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+				<input class="form-control brg_focus_n searchhome" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets">
+			</div>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<!--<div  class="bread_crumb">
 		<div class="container-fluid">
 			<section class="content-header">
 					<h1 class="text-right m_hide">
@@ -11,7 +27,7 @@
 					</ol>
 			</section>
 		</div>
-		</div>
+	</div>-->
         <div class="container">
 			<section class="content mar_b20">
 			<div class="row">
@@ -20,14 +36,14 @@
 							<div class="box-header with-border header_bg">
 								<h3 class="box-title">Forgot Password</h3>
 							</div>
-							<div class="box-body">								
+							<div class="box-body">
 								<div class="col-md-12">
-									<form id="forgotPwdd" name="forgotPwdd" method="POST" class="form-horizontal" 
+									<form id="forgotPwdd" name="forgotPwdd" method="POST" class="form-horizontal"
 										data-fv-message="This value is not valid"
 										data-fv-icon-valid="glyphicon glyphicon-ok"
 										data-fv-icon-invalid="glyphicon glyphicon-remove"
 										data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="forgotPasswordd()">
-										<div class="box-body">													
+										<div class="box-body">
 											<div class="form-group">
 												<label for="inputPassword3" class="col-sm-2 control-label">Email</label>
 												<div class="col-sm-4">
@@ -35,7 +51,7 @@
 													data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
 												</div>
 											</div>
-											
+
 										</div><!-- /.box-body -->
 										<div class="box-footer">
 										<a href="<?php echo base_url();?>" class="btn btn-default">Cancel
@@ -44,7 +60,7 @@
 											<center><span id="success" style="color:green"></span></center>
 											<center><span id="errMesg" style="color:red"></span></center>
 											<center><span id="loadingError" style="display:none;"> Loading...</span></center>
-										</div><!-- /.box-footer -->						
+										</div><!-- /.box-footer -->
 									</form>
 								</div>
 							</div>
