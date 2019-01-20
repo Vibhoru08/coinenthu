@@ -116,5 +116,98 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 		}
 	
 	}
+	function CombineDate($startdate,$enddate){
+		$kaboom1 = explode('/',$startdate);
+		$sdm = $kaboom1[0];
+		$sdd = $kaboom1[1];
+		$sdy = $kaboom1[2];
+		$kaboom2 = explode('/',$enddate);
+		$edm = $kaboom2[0];
+		$edd = $kaboom2[1];
+		$edy = $kaboom2[2];
+		if($sdm == '01'){
+			$sdmn = 'Jan';
+		}
+		elseif($sdm == '02'){
+			$sdmn = 'Feb';		
+		}
+		elseif($sdm == '03'){
+			$sdmn = 'Mar';
+		}
+		elseif($sdm == '04'){
+			$sdmn = 'Apr';
+		}
+		elseif($sdm == '05'){
+			$sdmn = 'May';
+		}
+		elseif($sdm == '06'){
+			$sdmn = 'Jun';
+		}
+		elseif($sdm == '07'){
+			$sdmn = 'Jul';
+		}
+		elseif($sdm == '08'){
+			$sdmn = 'Aug';
+		}
+		elseif($sdm == '09'){
+			$sdmn = 'Sept';
+		}
+		elseif($sdm == '10'){
+			$sdmn = 'Oct';
+		}
+		elseif($sdm == '11'){
+			$sdmn = 'Nov';	 	 
+		}
+		else{
+			$sdmn = 'Dec';
+		}
+
+		if($edm == '01'){
+			$edmn = 'Jan';
+		}
+		elseif($edm == '02'){
+			$edmn = 'Feb';		
+		}
+		elseif($edm == '03'){
+			$edmn = 'Mar';
+		}
+		elseif($edm == '04'){
+			$edmn = 'Apr';
+		}
+		elseif($edm == '05'){
+			$edmn = 'May';
+		}
+		elseif($edm == '06'){
+			$edmn = 'Jun';
+		}
+		elseif($edm == '07'){
+			$edmn = 'Jul';
+		}
+		elseif($edm == '08'){
+			$edmn = 'Aug';
+		}
+		elseif($edm == '09'){
+			$edmn = 'Sept';
+		}
+		elseif($edm == '10'){
+			$edmn = 'Oct';
+		}
+		elseif($edm == '11'){
+			$edmn = 'Nov';	 	 
+		}
+		else{
+			$edmn = 'Dec';
+		}
+		if($edy == $sdy){
+			if($sdm == $edm){
+				$comdat = $sdmn.' '.$sdd.' - '.$edd.', '.$sdy;
+			}else{
+				$comdat = $sdd.' '.$sdmn.' - '.$edd.' '.$edmn.', '.$edy;
+			}
+		}else{
+			$comdat = $sdd.' '.$sdmn.', '.$sdy.' - '.$edd.' '.$edmn.', '.$edy;
+		}
+		return $comdat;
+	} 
    
 

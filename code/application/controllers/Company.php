@@ -766,13 +766,16 @@
 			}
 		}
 		public function eventFullView()
-		{
+		{   $this->load->helper(array('common'));
 			$data = array();
 			$exploded =  explode('&',$this->uri->segment(2));
 			$event_id = $exploded[0];
 			$result = $this->Companies_model->getEventInfoById($event_id);
 			if(count($result) > 0){
 				foreach($result as $key=>$value){
+					$startdate = $value->ev_sd;
+					$enddate = $value->ev_ed;
+					$data['event_date'] = CombineDate($startdate,$enddate);
 					$data['event_name'] = $value->ev_name;
 					$data['event_location'] = $value->ev_loc;
 					$data['event_city'] = $value->ev_city;
@@ -782,6 +785,11 @@
 					$data['event_description'] = $value->ev_decript;
 					$data['event_id'] = $event_id;
 					$data['speakers'] = $this->Companies_model->getSpeakersForEvent($event_id);
+					$data['Agenda_1'] = $this->Companies_model->getAgenda1($event_id);
+					$data['Agenda_2'] = $this->Companies_model->getAgenda2($event_id);
+					$data['Agenda_3'] = $this->Companies_model->getAgenda3($event_id);
+					$data['Agenda_4'] = $this->Companies_model->getAgenda4($event_id);
+					$data['Agenda_5'] = $this->Companies_model->getAgenda4($event_id);
 				}
 				$this->show('event-full-view',$data);
 			}else{

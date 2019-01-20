@@ -1455,6 +1455,34 @@ class Companies_model extends CI_Model
 		}else{
 			$ev_loc = '';
 		}
+
+		if(isset($post['ev_sd']) && $post['ev_sd'] != "")
+		{
+			$ev_sd = $post['ev_sd'];
+		}else{
+			$ev_sd = '';
+		}
+
+		if(isset($post['ev_st']) && $post['ev_st'] != "")
+		{
+			$ev_st = $post['ev_st'];
+		}else{
+			$ev_st = '';
+		}
+
+		if(isset($post['ev_ed']) && $post['ev_ed'] != "")
+		{
+			$ev_ed = $post['ev_ed'];
+		}else{
+			$ev_ed = '';
+		}
+
+		if(isset($post['ev_et']) && $post['ev_et'] != "")
+		{
+			$ev_et = $post['ev_et'];
+		}else{
+			$ev_et = '';
+		}
 		
 		if(isset($post['ev_decript']) && $post['ev_decript'] != "")
 		{
@@ -1499,6 +1527,10 @@ class Companies_model extends CI_Model
 			'ev_decript'   						=> $ev_decript,
 			'ev_picture'    					=> $resizeImg,
 			'ev_loc'                            => $ev_loc,
+			'ev_sd'                             => $ev_sd,
+			'ev_st'                             => $ev_st,
+			'ev_ed'                             => $ev_ed,
+			'ev_et'                             => $ev_et,  
 			'ev_price'                          => $ev_price,
 			'ev_num'                            => $ev_num,
 			'ev_city'                           => $ev_city,
@@ -2068,6 +2100,56 @@ class Companies_model extends CI_Model
 		$this->db->from('bop_events_speakers');
 		$this->db->where('sp_evid',$event_id);
 		$this->db->where('sp_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getAgenda1($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_day',1);
+		$this->db->where('ag_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getAgenda2($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_day',2);
+		$this->db->where('ag_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getAgenda3($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_day',3);
+		$this->db->where('ag_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getAgenda4($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_day',4);
+		$this->db->where('ag_status',1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function getAgenda5($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_day',5);
+		$this->db->where('ag_status',1);
 		$query = $this->db->get();
 		return $query->result();
 	}

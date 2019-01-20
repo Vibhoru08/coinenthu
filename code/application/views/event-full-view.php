@@ -21,8 +21,8 @@
                 <div class="col-xs-10 mar_t30 NoirProLight event_head_info">
                     <!--<span class="col-xs-3">location - <?php echo $event_location; ?></span>-->
                     <span class="col-xs-3" title="Event Location"><i class="fa fa-map-marker"></i>&nbsp; <?php echo $event_city; ?></span>
-                    <span class="col-xs-3" title="Event Date"><i class="fa fa-calendar"></i>&nbsp;Date</span>
-                    <span class="col-xs-3" title="Price in USD"><i class="fa fa-money"></i>&nbsp; <?php echo $event_price;?></span>
+                    <span class="col-xs-3" title="Event Date"><i class="fa fa-calendar"></i>&nbsp; <?php echo $event_date; ?></span>
+                    <span class="col-xs-3" title="Price in USD"><i class="fa fa-money"></i>&nbsp; <?php echo '$'.$event_price;?></span>
                     <span class="col-xs-3" title="Number of people attending"><i class="fa fa-users"></i>&nbsp; <?php echo $event_att ?></span>
                   </div>
                 </div>
@@ -56,7 +56,69 @@
                     ?>
              </div>
            </div>
-
+           <div class = "row">
+            <div class = "col-xs-10 col-xs-offset-1 asset-boxes asset_padding text-center">
+              <h4>Agenda</h4>
+              <table border = "1">
+              <?php if (!empty($Agenda_1)){?>  
+                <tr>    
+                  <td colspan = "2">Day 1</td>
+                </tr>
+                <?php foreach($Agenda_1 as $day_1){ ?>
+                <tr>
+                  <td><?php echo $day_1->ag_time; ?><td>
+                  <td><?php echo $day_1->ag_event; ?></td>
+                </tr>
+                <?php } ?>
+              <?php }?>
+              <?php if (!empty($Agenda_2)){?>  
+                <tr>    
+                  <td colspan = "2">Day 2</td>
+                </tr>
+                <?php foreach($Agenda_2 as $day_2){ ?>
+                <tr>
+                  <td><?php echo $day_2->ag_time; ?><td>
+                  <td><?php echo $day_2->ag_event; ?></td>
+                </tr>
+                <?php } ?>
+              <?php }?>
+              <?php if (!empty($Agenda_3)){?>  
+                <tr>    
+                  <td colspan = "2">Day 3</td>
+                </tr>
+                <?php foreach($Agenda_3 as $day_3){ ?>
+                <tr>
+                  <td><?php echo $day_3->ag_time; ?><td>
+                  <td><?php echo $day_3->ag_event; ?></td>
+                </tr>
+                <?php } ?>
+              <?php }?>
+              <?php if (!empty($Agenda_4)){?>  
+                <tr>    
+                  <td colspan = "2">Day 4</td>
+                </tr>
+                <?php foreach($Agenda_4 as $day_4){ ?>
+                <tr>
+                  <td><?php echo $day_4->ag_time; ?><td>
+                  <td><?php echo $day_4->ag_event; ?></td>
+                </tr>
+                <?php } ?>
+              <?php }?>
+              <?php if (!empty($Agenda_5)){?>  
+                <tr>    
+                  <td colspan = "2">Day 5</td>
+                </tr>
+                <?php foreach($Agenda_5 as $day_5){ ?>
+                <tr>
+                  <td><?php echo $day_5->ag_time; ?><td>
+                  <td><?php echo $day_5->ag_event; ?></td>
+                </tr>
+                <?php } ?>
+              <?php }?>
+                 
+              </table>                      
+            </div>                       
+           </div>
           </div>
 
 
