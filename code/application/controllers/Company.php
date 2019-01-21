@@ -1355,6 +1355,14 @@
 
 			$this->show('digital-assets',$data);
 		}
+		public function Events()
+		{
+			$data = array();
+			$data['event_list'] = $this->Companies_model->getEventList(1);
+			$data['cities'] = $this->Companies_model->getCities(1);
+			$this->show('events',$data);
+		}
+
 		public function icoTracker(){
 			$data = array();
 			$cm_cpid = 2;
@@ -1716,6 +1724,8 @@
 							$reImage2 = explode('/',$getImagNames2);
 							$spimage = $reImage2[4];
 							
+						}else{
+							$spimage = '';
 						}
 						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
 					}

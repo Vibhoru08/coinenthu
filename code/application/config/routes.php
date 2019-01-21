@@ -64,6 +64,7 @@ $route['ico-tracker-edit/(:any)']   = 'Company/digitalAssetEdit';
 $route['write-a-review/(:any)']     = 'Company/writeAreview';
 $route['edit-review/(:any)']        = 'Company/editReview';
 $route['digital-assets']            = 'Company/digitalAssets';
+$route['events']                    = 'Company/Events';  
 $route['add-ico-tracker']           = 'Company/addIcoTracker';
 $route['ico-tracker']               = 'Company/icoTracker';
 $route['company-full-view/(:any)']  = 'Company/companyFullView';

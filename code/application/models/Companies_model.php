@@ -37,6 +37,23 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function getEventList($status)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events');
+		$this->db->where('ev_status',$status);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function CountSpeakers($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_speakers');
+		$this->db->where('sp_evid',$event_id);
+		$this->db->where('sp_status',1);
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
 	public function assetLastReview($company_id){
 		$this->db->select('*');
 		$this->db->from('bop_company_reviews');
