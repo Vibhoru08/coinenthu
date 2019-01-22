@@ -254,7 +254,7 @@
   		 minDate: 0,
   		onClose: function (selectedDate) {
               $("#cm_ico_end_date").datepicker("option", "minDate", selectedDate);
-  			$('#add_digital_asset').formValidation('revalidateField', 'cm_ico_start_date');
+  			$('#add_digital_asset').formValidation('revalidateField', 'ev_sd');
           },
   		dateFormat: 'mm/dd/yy',
   		changeMonth: true,
@@ -263,7 +263,7 @@
   		minDate: 0,
   		onClose: function (selectedDate) {
               /* $("#cm_ico_start_date").datepicker("option", "maxDate", selectedDate); */
-  			$('#add_digital_asset').formValidation('revalidateField', 'cm_ico_end_date');
+  			$('#add_digital_asset').formValidation('revalidateField', 'ev_ed');
           },
   		dateFormat: 'mm/dd/yy',
   		changeMonth: true,

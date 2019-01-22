@@ -1,4 +1,4 @@
-<div class = "content-wrapper">
+event_<div class = "content-wrapper">
 <div class = "content about-bg text-color">
 
         <div class = "container-fluid banner_margin linear_color">
@@ -18,7 +18,7 @@
                 ?>
                 <img class="img-rounded event-image" src = "<?php echo $imagepath; ?>" alt = "<?php echo $event_name; ?>">
               </div>
-                <div class="col-xs-10 mar_t30 NoirProLight event_head_info">
+                <div class="col-xs-10 mar_t30 NoirProLight event_head_info text-center">
                     <!--<span class="col-xs-3">location - <?php echo $event_location; ?></span>-->
                     <span class="col-xs-3" title="Event Location"><i class="fa fa-map-marker"></i>&nbsp; <?php echo $event_city; ?></span>
                     <span class="col-xs-3" title="Event Date"><i class="fa fa-calendar"></i>&nbsp; <?php echo $event_date; ?></span>
@@ -31,14 +31,15 @@
         <div class="container-fluid">
           <section class = "content">
           <div class="row ">
-            <div class="col-xs-10 col-xs-offset-1 asset-boxes asset_padding text-center">
-              <h4>About </h4>
+            <div class="col-xs-10 col-xs-offset-1 asset-boxes event_padding text-center pad_b20">
+              <h4 class="mar_t20">About </h4>
               <p class="text-justify event_description"><?php echo $event_description; ?></p>
+              <div class="btn btn-cstm btn-review mar_t10 NoirProRegular" type="button">Join Event</div>
             </div>
           </div>
-          <div class="row mar_t5">
-            <div class="col-xs-10 col-xs-offset-1 asset-boxes asset_padding text-center">
-                <h4>Speakers </h4>
+          <div class="row" >
+            <div class="col-xs-10 col-xs-offset-1 asset-boxes event_padding text-center pad_b20" style="border-top: 1px solid #E4E3E3;">
+                <h4 class="mar_t20">Speakers </h4>
                     <?php
                     foreach($speakers as $speaker){ ?>
                       <div class="col-md-3 individual_speaker_div"><?php
@@ -56,68 +57,86 @@
                     ?>
              </div>
            </div>
-           <div class = "row">
-            <div class = "col-xs-10 col-xs-offset-1 asset-boxes asset_padding text-center">
-              <h4>Agenda</h4>
-              <table border = "1">
-              <?php if (!empty($Agenda_1)){?>  
-                <tr>    
-                  <td colspan = "2">Day 1</td>
-                </tr>
+           <div class = "row mar_b30">
+            <div class = "col-xs-10 col-xs-offset-1 eevent_divs asset-boxes event_padding text-center pad_b20" style="border-top: 1px solid #E4E3E3;">
+              <h4 class="mar_t20">Agenda</h4>
+              <div class="col-xs-12 col-md-6 pad_0 event_table">
+              <?php if (!empty($Agenda_1)){?>
+                <div class="col-xs-12 pad_0">
+                <div class="col-xs-12 event_table_row pad_t5 pad_b5">
+                  <h5>Day 1</h5>
+                </div>
                 <?php foreach($Agenda_1 as $day_1){ ?>
-                <tr>
-                  <td><?php echo $day_1->ag_time; ?><td>
-                  <td><?php echo $day_1->ag_event; ?></td>
-                </tr>
+                <div class="col-xs-12 event_table_row">
+                  <span class="col-xs-4 event_table_smallrow"><?php echo $day_1->ag_time; ?></span>
+                  <span class="col-xs-8 event_table_smallrow2"><?php echo $day_1->ag_event; ?></span>
+                </div>
                 <?php } ?>
+              </div>
               <?php }?>
-              <?php if (!empty($Agenda_2)){?>  
-                <tr>    
-                  <td colspan = "2">Day 2</td>
-                </tr>
+            </div>
+              <div class="col-xs-12 col-md-6 pad_0 event_table">
+              <?php if (!empty($Agenda_2)){?>
+                <div class="col-xs-12 pad_0">
+                <div class="col-xs-12 event_table_row pad_t5 pad_b5">
+                  <h5>Day 2</h5>
+                </div>
                 <?php foreach($Agenda_2 as $day_2){ ?>
-                <tr>
-                  <td><?php echo $day_2->ag_time; ?><td>
-                  <td><?php echo $day_2->ag_event; ?></td>
-                </tr>
+                <div class="col-xs-12 event_table_row">
+                  <span class="col-xs-4 event_table_smallrow"><?php echo $day_2->ag_time; ?></span>
+                  <span class="col-xs-8 event_table_smallrow2"><?php echo $day_2->ag_event; ?></span>
+                </div>
                 <?php } ?>
+              </div>
               <?php }?>
-              <?php if (!empty($Agenda_3)){?>  
-                <tr>    
-                  <td colspan = "2">Day 3</td>
-                </tr>
+            </div>
+              <div class="col-xs-12 col-md-6 pad_0 event_table">
+              <?php if (!empty($Agenda_3)){?>
+                <div class="col-xs-12 pad_0">
+                <div class="col-xs-12 event_table_row pad_t5 pad_b5">
+                  <h5>Day 3</h5>
+                </div>
                 <?php foreach($Agenda_3 as $day_3){ ?>
-                <tr>
-                  <td><?php echo $day_3->ag_time; ?><td>
-                  <td><?php echo $day_3->ag_event; ?></td>
-                </tr>
+                <div class="col-xs-12 event_table_row">
+                  <span class="col-xs-4 event_table_smallrow">><?php echo $day_3->ag_time; ?></span>
+                  <span class="col-xs-8 event_table_smallrow2"><?php echo $day_3->ag_event; ?></span>
+                </div>
                 <?php } ?>
+              </div>
               <?php }?>
-              <?php if (!empty($Agenda_4)){?>  
-                <tr>    
-                  <td colspan = "2">Day 4</td>
-                </tr>
+            </div>
+              <div class="col-xs-12 col-md-6 pad_0 event_table">
+              <?php if (!empty($Agenda_4)){?>
+                <div class="col-xs-12 pad_0">
+                <div class="col-xs-12 event_table_row pad_t5 pad_b5">
+                  <h5>Day 4</h5>
+                </div>
                 <?php foreach($Agenda_4 as $day_4){ ?>
-                <tr>
-                  <td><?php echo $day_4->ag_time; ?><td>
-                  <td><?php echo $day_4->ag_event; ?></td>
-                </tr>
+                <div class="col-xs-12 event_table_row">
+                  <span class="col-xs-4 event_table_smallrow"><?php echo $day_4->ag_time; ?></span>
+                  <span class="col-xs-8 event_table_smallrow2"><?php echo $day_4->ag_event; ?></span>
+                </div>
                 <?php } ?>
+              </div>
               <?php }?>
-              <?php if (!empty($Agenda_5)){?>  
-                <tr>    
-                  <td colspan = "2">Day 5</td>
-                </tr>
+            </div>
+              <div class="col-xs-12 col-md-6 pad_0 event_table">
+              <?php if (!empty($Agenda_5)){?>
+                <div class="col-xs-12 pad_0">
+                <div class="col-xs-12 event_table_row pad_t5 pad_b5">
+                  <h5>Day 5</h5>
+                </div>
                 <?php foreach($Agenda_5 as $day_5){ ?>
-                <tr>
-                  <td><?php echo $day_5->ag_time; ?><td>
-                  <td><?php echo $day_5->ag_event; ?></td>
-                </tr>
+                <div class="col-xs-12 event_table_row">
+                  <span class="col-xs-4 event_table_smallrow"><?php echo $day_5->ag_time; ?></span>
+                  <span class="col-xs-8 event_table_smallrow2"><?php echo $day_5->ag_event; ?></span>
+                </div>
                 <?php } ?>
+              </div>
               <?php }?>
-                 
-              </table>                      
-            </div>                       
+
+              </div>
+            </div>
            </div>
           </div>
 
@@ -125,3 +144,15 @@
     </section>
 </div>
 </div>
+<script>
+$(document).ready(function(){
+  var divs = document.getElementsByClassName("event_table");
+for(var i = 0; i < divs.length; i+=2){
+  if(i!=divs.length-1){
+  var height=Math.max(divs[i].offsetHeight,divs[i+1].offsetHeight);
+   divs[i].style.height = height+"px";
+    divs[i+1].style.height = height+"px";
+ }
+}
+});
+</script>
