@@ -1,7 +1,7 @@
-event_<div class = "content-wrapper">
+event_<div class = "content-wrapper" style = "padding-top:0px;">
 <div class = "content about-bg text-color">
 
-        <div class = "container-fluid banner_margin linear_color">
+        <div class = "container-fluid banner_margin linear_color" style = "padding-top:30px;">
             <div class = "row mmar_t40 mmar_b10 mar_t30">
                 <div class = "col-xs-12 text-center banner_head" style="text-transform: uppercase;">
                     <?php echo $event['event_name']; ?>
@@ -43,7 +43,7 @@ event_<div class = "content-wrapper">
                     <?php
                     foreach($event['speakers'] as $speaker){ ?>
                       <div class="col-md-3 individual_speaker_div"><?php
-                        if(isset($speaker->sp_image)){
+                        if(isset($speaker->sp_image) && $speaker->sp_image != ''){
                             $spimage = base_url().'asset/img/events/speakers/'.$speaker->sp_image;
                         }else{
                             $spimage = base_url().'asset/img/alt.jpg';
@@ -62,8 +62,9 @@ event_<div class = "content-wrapper">
               <h4 class="mar_t20">Agenda</h4>
                   
                            
-              <div class = "col-xs-12 col-md-6 pad_0 event_table">
+             
               <?php foreach($event['Agenda'] as $k=>$v){?>
+              <div class = "col-xs-12 col-md-6 pad_0 event_table">
               <div class = "col-xs-12 pad_0">
               <div class = "col-xs-12 event_table_row pad_t5 pad_b5">
               <h5>Day <?php echo $k; ?></h5>
@@ -75,8 +76,9 @@ event_<div class = "content-wrapper">
               </div>    
               <?php } ?>
               </div>
-              <?php } ?>
               </div>
+              <?php } ?>
+              
             </div>
            </div>
           </div>
