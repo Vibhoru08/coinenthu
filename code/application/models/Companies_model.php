@@ -2111,6 +2111,15 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function getAgendaLast($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events_agenda');
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('ag_status',1);
+		$query = $this->db->get();
+		return $query->last_row('array');
+	}
 	public function getSpeakersForEvent($event_id)
 	{
 		$this->db->select('*');
@@ -2120,56 +2129,17 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getAgenda1($event_id)
+	public function getAgenda($event_id,$day)
 	{
 		$this->db->select('*');
 		$this->db->from('bop_events_agenda');
 		$this->db->where('ag_evid',$event_id);
-		$this->db->where('ag_day',1);
+		$this->db->where('ag_day',$day);
 		$this->db->where('ag_status',1);
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getAgenda2($event_id)
-	{
-		$this->db->select('*');
-		$this->db->from('bop_events_agenda');
-		$this->db->where('ag_evid',$event_id);
-		$this->db->where('ag_day',2);
-		$this->db->where('ag_status',1);
-		$query = $this->db->get();
-		return $query->result();
-	}
-	public function getAgenda3($event_id)
-	{
-		$this->db->select('*');
-		$this->db->from('bop_events_agenda');
-		$this->db->where('ag_evid',$event_id);
-		$this->db->where('ag_day',3);
-		$this->db->where('ag_status',1);
-		$query = $this->db->get();
-		return $query->result();
-	}
-	public function getAgenda4($event_id)
-	{
-		$this->db->select('*');
-		$this->db->from('bop_events_agenda');
-		$this->db->where('ag_evid',$event_id);
-		$this->db->where('ag_day',4);
-		$this->db->where('ag_status',1);
-		$query = $this->db->get();
-		return $query->result();
-	}
-	public function getAgenda5($event_id)
-	{
-		$this->db->select('*');
-		$this->db->from('bop_events_agenda');
-		$this->db->where('ag_evid',$event_id);
-		$this->db->where('ag_day',5);
-		$this->db->where('ag_status',1);
-		$query = $this->db->get();
-		return $query->result();
-	}
+	
 	public function getCities($status)
 	{
 		$this->db->select('*');

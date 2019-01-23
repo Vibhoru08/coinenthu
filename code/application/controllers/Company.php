@@ -771,6 +771,8 @@
 			$exploded =  explode('&',$this->uri->segment(2));
 			$event_id = $exploded[0];
 			$result = $this->Companies_model->getEventInfoById($event_id);
+			$agenda_last_row = $this->Companies_model->getAgendaLast($event_id);
+			$agenda_last_day = $agenda_last_row['ag_day'];
 			if(count($result) > 0){
 				foreach($result as $key=>$value){
 					$startdate = $value->ev_sd;
@@ -785,13 +787,14 @@
 					$data['event_description'] = $value->ev_decript;
 					$data['event_id'] = $event_id;
 					$data['speakers'] = $this->Companies_model->getSpeakersForEvent($event_id);
-					$data['Agenda_1'] = $this->Companies_model->getAgenda1($event_id);
-					$data['Agenda_2'] = $this->Companies_model->getAgenda2($event_id);
-					$data['Agenda_3'] = $this->Companies_model->getAgenda3($event_id);
-					$data['Agenda_4'] = $this->Companies_model->getAgenda4($event_id);
-					$data['Agenda_5'] = $this->Companies_model->getAgenda4($event_id);
+					$data['agenda_days'] = $agenda_last_day;
+					$data['Agenda'] = array();
+					for($i = 1; $i <= $agenda_last_day;$i++){
+						$data['Agenda'][$i] = $this->Companies_model->getAgenda($event_id,$i);
+					}
+					$finalData['event'] = $data;
 				}
-				$this->show('event-full-view',$data);
+				$this->show('event-full-view',$finalData);
 			}else{
 				show_404();
 			}
