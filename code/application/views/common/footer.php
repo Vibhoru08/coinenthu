@@ -766,6 +766,71 @@ $(document).ready(function(e) {
    }
  }); */
 });
+function GetMoreEventsLoad()
+{
+ if($("#offsetpage").val()!=undefined && $("#offsetpage").val()!=0){
+
+       var offsetpage  = $("#offsetpage").val();
+       var limitpage   = $("#limitpage").val();
+       var minCount    = $("#totcntevents").val();
+       var pageMode    = $("#pageMode").val();
+       var filterId    = $("#filter_id").val();
+       var searchterms = $("#searchterms").val();
+       if(searchterms.length>=4){
+         searchterms = searchterms;
+       }else{
+         searchterms = "";
+       }
+
+       console.log(minCount+'--'+offsetpage);
+       if(parseInt(minCount)>parseInt(offsetpage)){
+         $("#loadingHash").removeClass("hide");
+         $("#loadingHash").addClass("show");
+         var url = baseUrl+'Company/loadmoreEvents?expireTime='+time;
+         $.ajax({
+           type 		: 	"POST",
+           url			:	url,
+           cache: false,
+           data: {limitpage:limitpage,offsetpage:offsetpage,pageMode:pageMode,filterId:filterId,searchterms:searchterms},
+           type: 'post',
+           dataType	: 	"json",
+           success: function(data){
+             console.log(data.output);
+             // alert(parseInt(data.cnt));
+             if(data.output=='success'){
+               if(parseInt(offsetpage) <= parseInt(data.cnt)){
+                 $("#loadingHash").removeClass("show");
+                 $("#loadingHash").addClass("hide");
+                 $("#loadingData").append(data.resData);
+                 $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt($('#offsetpage').val()) );
+                 var $input = $('.rating-loading');
+                 $input.rating();
+                 $('.caption').hide();
+                 $('.clear-rating').hide();
+               }
+               offsetpage  = $("#offsetpage").val();
+               if(parseInt(offsetpage) >= parseInt(data.cnt))
+               {
+                 $('#loadingHash1').addClass('mm_bttom hide');
+               }
+             }else if(data.output=='norecoreds'){
+               setTimeout(function(){
+                 $("#loadingData").html(data.resData);
+                 // $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt(offsetpage) );
+               }, 1000);
+             }
+           }
+         });
+       }else{
+         $('#loadingHash1').addClass('mm_bttom hide');
+       }
+     }
+     $("#loadingHash").removeClass("show");
+     $("#loadingHash").addClass("hide");
+
+}
+
+
 function GetMoreCompaniesLoad()
 {
  if($("#offsetpage").val()!=undefined && $("#offsetpage").val()!=0){

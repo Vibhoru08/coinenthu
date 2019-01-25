@@ -37,14 +37,22 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getEventList($status)
+	public function getEventList($status,$limit,$offset)
 	{
 		$this->db->select('*');
 		$this->db->from('bop_events');
 		$this->db->where('ev_status',$status);
+    $this->db->limit($limit,$offset);
 		$query = $this->db->get();
 		return $query->result();
 	}
+  public function totalCountEvents($status){
+    $this->db->select('*');
+    $this->db->from('bop_events');
+    $this->db->where('ev_status',$status);
+      
+    return $this->db->count_all_results();
+  }
 	public function CountSpeakers($event_id)
 	{
 		$this->db->select('*');
@@ -107,7 +115,7 @@ class Companies_model extends CI_Model
 	public function deleteReview($review_id){
 		$this->db->where('re_id', $review_id);
 		$this->db->delete('bop_company_reviews');
-        return 1;  
+        return 1;
 	}
 	public function deleteReviewReply($review_id){
 		$this->db->where('crr_reid',$review_id);
@@ -1500,7 +1508,7 @@ class Companies_model extends CI_Model
 		}else{
 			$ev_et = '';
 		}
-		
+
 		if(isset($post['ev_decript']) && $post['ev_decript'] != "")
 		{
 			$ev_decript = $post['ev_decript'];
@@ -1547,14 +1555,14 @@ class Companies_model extends CI_Model
 			'ev_sd'                             => $ev_sd,
 			'ev_st'                             => $ev_st,
 			'ev_ed'                             => $ev_ed,
-			'ev_et'                             => $ev_et,  
+			'ev_et'                             => $ev_et,
 			'ev_price'                          => $ev_price,
 			'ev_num'                            => $ev_num,
 			'ev_city'                           => $ev_city,
 			'ev_status'     					=> $status,
             'ev_cd' 				        	=> date('Y-m-d H:i:s'),
             'ev_md'  					        => date('Y-m-d H:i:s'),
-            
+
         );
         if($this->db->insert('bop_events', $data) === FALSE){
 			return FALSE;
@@ -1679,7 +1687,7 @@ class Companies_model extends CI_Model
 			'sp_url'            => $url,
 			'sp_image'          => $spimage,
 			'sp_status'         => 1,
-			'sp_md'             => date('Y-m-d H:i:s'),    	
+			'sp_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_speakers', $data) === FALSE){
 			return FALSE;
@@ -1695,7 +1703,7 @@ class Companies_model extends CI_Model
 			'ag_time'           => $agtime,
 			'ag_event'          => $agevent,
 			'ag_status'         => 1,
-			'ag_md'             => date('Y-m-d H:i:s'),	
+			'ag_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_agenda', $data) === FALSE){
 			return FALSE;
@@ -1711,7 +1719,7 @@ class Companies_model extends CI_Model
 			'ag_time'           => $agtime,
 			'ag_event'          => $agevent,
 			'ag_status'         => 1,
-			'ag_md'             => date('Y-m-d H:i:s'),	
+			'ag_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_agenda', $data) === FALSE){
 			return FALSE;
@@ -1727,7 +1735,7 @@ class Companies_model extends CI_Model
 			'ag_time'           => $agtime,
 			'ag_event'          => $agevent,
 			'ag_status'         => 1,
-			'ag_md'             => date('Y-m-d H:i:s'),	
+			'ag_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_agenda', $data) === FALSE){
 			return FALSE;
@@ -1743,7 +1751,7 @@ class Companies_model extends CI_Model
 			'ag_time'           => $agtime,
 			'ag_event'          => $agevent,
 			'ag_status'         => 1,
-			'ag_md'             => date('Y-m-d H:i:s'),	
+			'ag_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_agenda', $data) === FALSE){
 			return FALSE;
@@ -1759,7 +1767,7 @@ class Companies_model extends CI_Model
 			'ag_time'           => $agtime,
 			'ag_event'          => $agevent,
 			'ag_status'         => 1,
-			'ag_md'             => date('Y-m-d H:i:s'),	
+			'ag_md'             => date('Y-m-d H:i:s'),
 		);
 		if($this->db->insert('bop_events_agenda', $data) === FALSE){
 			return FALSE;
@@ -2073,7 +2081,7 @@ class Companies_model extends CI_Model
 		$this->db->where('bop_company_reviews.re_status',1);
 		$query = $this->db->get();
 		return $query->result_array();
-	 
+
 	}
     public function fetchreply($crr_id){
 		$this->db->select('crr_decript');
@@ -2139,7 +2147,7 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
+
 	public function getCities($status)
 	{
 		$this->db->select('*');

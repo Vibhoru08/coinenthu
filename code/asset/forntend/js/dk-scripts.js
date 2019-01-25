@@ -300,7 +300,76 @@ function changePassword() {
         e.preventDefault();
     });
 }
+function filterEvents(type) {
+	$("#offsetpage").val(1);
+    $("#limitpage").val(12);
+    if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
+        var filterTitle = 'Most reviewed';
+        $("#filter_id").val(1);
+    } else {
+        var filterTitle = 'Ending soon';
+        $("#filter_id").val(6);
 
+    }
+
+    var htmlReload = filterTitle + '<div class="arrow_down"><span class="caret"></span></div>';
+    $("#filtername").html(htmlReload);
+    var offsetpage = 0;
+    var limitpage = $("#limitpage").val();
+    var pageMode = $("#pageMode").val();
+    var filterId = $("#filter_id").val();
+	var searchterms = $("#searchterms").val();
+    if (searchterms.length >= 3) {
+        searchterms = searchterms;
+    } else {
+        searchterms = "";
+    }
+    $('.company_list').html('');
+    var url = baseUrl + 'Company/loadmoreEvents?expireTime=' + time;
+    var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+    $('.company_list').html(relaoding);
+    $('#loadingHash1').hide();
+    $.ajax({
+        type: "POST",
+        url: url,
+        cache: false,
+        data: {
+            limitpage: limitpage,
+            offsetpage: offsetpage,
+            pageMode: pageMode,
+            filterId: filterId,
+            filter: "filetrfrom",
+            searchterms: searchterms
+        },
+        dataType: "json",
+        success: function(data) {
+
+            console.log(data.output);
+            if (data.output == 'success') {
+                setTimeout(function() {
+                    $(".company_list").html(data.resData);
+                    $('#loadingHash1').show();
+                    if (data.cnt > 12) {
+                        $('#loadingHash1').show();
+                        $('#loadingHash1').removeClass('mm_bttom hide');
+                    }
+                    $('#offsetpage').val(parseInt($('#limitpage').val()) + parseInt(offsetpage));
+                    var $input = $('.rating-loading');
+                    $input.rating();
+                    $('.caption').hide();
+                    $('.clear-rating').hide();
+                }, 1000);
+
+            } else if (data.output == 'norecoreds') {
+                setTimeout(function() {
+                    $(".company_list").html(data.resData);
+                    // $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt(offsetpage) );
+                }, 1000);
+            }
+        }
+    });
+    $(".hide_menu").css("display", "none");
+}
 function filterCompanies(type,pagemode,limit) {
 	localStorage.setItem('type',type);
 	localStorage.setItem('page_name',pagemode);
@@ -404,7 +473,62 @@ function filterCompanies(type,pagemode,limit) {
     });
     $(".hide_menu").css("display", "none");
 }
+function sreachterm2() {
+    $("#offsetpage").val(1);
+    // $("#limitpage").val(4);
+  //  $('#loadingHash1').hide();
 
+    var searchterms = $("#searchterms").val();
+    if (searchterms == '' || searchterms == 'undefined') {
+        var type = $("#filter_id").val();
+        filterEvents(type);
+    } else if (searchterms.length >= 3) {
+        var offsetpage = 0;
+        var limitpage = $("#limitpage").val();
+        var pageMode = $("#pageMode").val();
+        var filterId = $("#filter_id").val();
+        $('.company_list').html('');
+        var url = baseUrl + 'Company/loadmoreEvents?expireTime=' + time;
+        var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+        $('.company_list').html(relaoding);
+        $.ajax({
+            type: "POST",
+            url: url,
+            cache: false,
+            data: {
+                limitpage: limitpage,
+                offsetpage: offsetpage,
+                pageMode: pageMode,
+                filterId: filterId,
+                filter: "filetrfrom",
+                searchterms: searchterms
+            },
+            dataType: "json",
+            success: function(data) {
+                console.log(data.output);
+                if (data.output == 'success') {
+                    setTimeout(function() {
+                        $(".company_list").html(data.resData);
+                        if (data.cnt > 12) {
+                            $('#loadingHash1').show();
+                            $('#loadingHash1').removeClass('mm_bttom hide');
+                        }
+                        $('#offsetpage').val(parseInt($('#limitpage').val()) + parseInt(offsetpage));
+                        var $input = $('.rating-loading');
+                        $input.rating();
+                        $('.caption').hide();
+                        $('.clear-rating').hide();
+                    }, 1000);
+                } else if (data.output == 'norecoreds') {
+                    setTimeout(function() {
+                        $(".company_list").html(data.resData);
+                        // $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt(offsetpage) );
+                    }, 1000);
+                }
+            }
+        });
+    }
+}
 function sreachterm() {
     $("#offsetpage").val(1);
     // $("#limitpage").val(4);

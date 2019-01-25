@@ -26,7 +26,7 @@
 			<div class="row mar_t10">
 			<div class="col-xs-10 col-xs-offset-1 msearch_bg big_hide">
 				<div class = "col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-				<input class="form-control brg_focus_n searchhome" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets">
+				<input class="form-control brg_focus_n searchhome" type="text" onkeyup="sreachterm2();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Events">
 			</div>
 			</div>
 			</div>
@@ -54,7 +54,7 @@
 					<div class="col-md-5 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg m_hide">
 						<div class = "row s_width">
 						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
-						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Digital Assets">
+						<input class="form-control brg_focus_n" type="text" onkeyup="sreachterm2();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Events">
 						</div>
 					<div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:#e31c77;border-radius:10px;">
 						<img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
@@ -75,14 +75,14 @@
 								  <input type="hidden" id="filter_id" value="1">
 								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;">
 									<?php
-								 	foreach($cities as $city){?>  
+								 	foreach($cities as $city){?>
 									<li><a onClick="filterEvents('<?php echo $city->ci_value; ?>','1');" href = "javascript:void('0');"><?php echo $city->ci_name; ?></li>
-									<?php } ?> 
+									<?php } ?>
 									<li><a onClick="filterCompanies('viewed','1');" href="javascript:void('0');">Most reviewed</a></li>
 									<li><a onClick="filterCompanies('rating','1');" href="javascript:void('0');">Highest rating</a></li>
 									<li><a onClick="filterCompanies('mch','1');" href="javascript:void('0');">Market cap(High to Low)</a></li>
 									<li><a onClick="filterCompanies('mcl','1');" href="javascript:void('0');">Market cap(Low to High)</a></li>
-									
+
 								  </ul>
 								  </li>
 								</ul></nobr>
@@ -100,10 +100,10 @@
 </div>
 <div class = "row">
 	<div class = "col-md-10 col-md-offset-1">
-			<input type="hidden" id="totcntcompanies" value="<?php echo $totCntDigitals; ?>" />
+			<input type="hidden" id="totcntevents" value="<?php echo $totCntEvents; ?>" />
 			<input type="hidden" id="limitpage"  value="9" />
 			<input type="hidden" id="offsetpage" value="9" />
-			<input type="hidden" id="pageMode" value="digital" />
+			<input type="hidden" id="pageMode" value="events" />
 			<div class="row company_list">
 				<?php if(sizeof($event_list)>0){ foreach($event_list as $event){?>
 					<div class="col-md-4 mar_t80">
@@ -116,7 +116,7 @@
 										<img src = "<?php echo base_url().'asset/img/events/main/'.$event->ev_picture.'?id ='.$viewTime;  ?>" alt = "<?php echo $event->ev_name; ?>" class = "img-responsive img-circle digital_box_image" >
 									<?php }else{ ?>
 										<img src = "<?php echo base_url().'images/Felix_the_Cat.jpg'; ?>" alt = "<?php echo $event->ev_name; ?>" class = "img-responsive img-circle digital_box_image">
-									<?php } ?>	
+									<?php } ?>
 								</a>
 							  </div>
 							  <div class="product-info text-left">
@@ -133,7 +133,7 @@
 											$edmn = 'Jan';
 										}
 										elseif($edm == '02'){
-											$edmn = 'Feb';		
+											$edmn = 'Feb';
 										}
 										elseif($edm == '03'){
 											$edmn = 'Mar';
@@ -160,7 +160,7 @@
 											$edmn = 'Oct';
 										}
 										elseif($edm == '11'){
-											$edmn = 'Nov';	 	 
+											$edmn = 'Nov';
 										}
 										else{
 											$edmn = 'Dec';
@@ -176,7 +176,7 @@
 									<hr>
 									<div class = "text-right">
 									<a href="<?php echo base_url().'event-full-view/'.$event->ev_id; ?>" class="btn btn-default" role="button">View More</a>
-							        </div> 
+							        </div>
 								</div>
 							  </div>
 							</li>
@@ -188,8 +188,8 @@
 				<span id="loadingData"></span>
 			</div>
 			<!--<div id="loadingHash" class="text-center font_s22 mar_t20 mm_bttom hide"><i class="fa fa-spinner" aria-hidden="true"></i> Loading </div>-->
-			<?php if($totCntDigitals > 6){?>
-			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
+			<?php if($totCntEvents > 9){?>
+			<div id="loadingHash1" class="text-center font_s22 mar_t20 "><a href="javascript:void(0);" onClick="GetMoreEventsLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
 			<span id="m_hide"><br/></span>
 			<?php } ?>
 			</div>
@@ -289,3 +289,10 @@
 	  <div class="mar_b120"></div>
 	</div>
     </div>
+<script>
+$( "#searchterms" ).keypress(function( event ) {
+	if ( event.which == 13 ) {
+		sreachterm2();
+	}
+});
+</script>

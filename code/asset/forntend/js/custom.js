@@ -174,7 +174,7 @@ else {
 
 	$(".select_dropdown").hover(
 			function() {
-					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();debugger;
+					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
 					$(this).toggleClass('open');
 						$('#sort_by').hide();
 						localStorage.setItem('sortby_status',0);
