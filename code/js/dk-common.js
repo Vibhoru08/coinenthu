@@ -850,6 +850,62 @@ function loadCompanies(companyType) {
     });
 }
 
+function loadEventsList(companyType) {
+    $("#eventsList").html("Please wait loading...");
+    $.ajax({
+        type: 'GET',
+        cache: false,
+        dataType: 'json',
+        url: baseUrl + '/Companies/eventsList?type=' + companyType + '&sRch=' + time,
+        success: function(data) {
+            $('#eventsList').html('<table id="faqQuestionsU" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">' +
+                '<thead>' +
+                '<tr>' +
+                '<th>Name</th>' +
+                '<th>Description</th>' +
+                '<th>Location</th>' +
+                '<th>Start Date</th>' +
+                // '<th>Mobile </th>'+
+                '<th>Status</th>' +
+                '<th>Actions</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody></tbody></table>');
+            var oTable = $('#faqQuestionsU').dataTable({
+                "aLengthMenu": [
+                    [25, 50, 75, 100, -1],
+                    [25, 50, 75, 100, "All"]
+                ],
+                "iDisplayLength": 25,
+                "paging": true,
+                "lengthChange": true,
+                
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "aaData": data.aaData,
+                "columnDefs": [
+                    { "bSortable": false, "aTargets": [3] },
+                    { "width": "20%", "targets": 0 },
+                    { "width": "30%", "targets": 1 },
+                    { "width": "45%", "targets": 2 },
+                    { "width": "5%", "targets": 3 },
+                    { "width": "5%", "targets": 4 },
+                ],
+                "aoColumns": [
+                    { "mData": "ev_name" },
+                    { "mData": "ev_decript" },
+                    { "mData": "ev_loc" },
+                    { "mData": "ev_sd" },
+                    // { "mData": "cm_mobile" },
+                    { "mData": "ev_status" },
+                    { "mData": "action" },
+                ]
+            });
+        }
+    });
+}
+
 function editUser() {
     $('#successMsg').html('');
     $('#edit_user').formValidation().on('success.form.fv', function(e) {

@@ -869,6 +869,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function getEventsList($status){
+
+		$this->db->select('*');
+        $this->db->from('bop_events');
+        $this->db->where('ev_status !=',$status,False);
+        $query = $this->db->get();
+		return $query->result();
+	}
+
 	public function getDigtalImageList(){
 
 		$this->db->select('*');
@@ -2119,6 +2129,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function getEventInfoForAdmin($event_id)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events');
+		$this->db->where('ev_id',$event_id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function getAgendaLast($event_id)
 	{
 		$this->db->select('*');

@@ -94,6 +94,16 @@ class Companies extends MY_Controller {
 		$data = array();
 		$this->show_admin('admin/digital-assets',$data);
 	}
+
+	public function events()
+	{
+		if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') != 1){
+			redirect('admin', 'refresh');
+		}else{
+			$this->show_admin('admin/events',$data);
+		}
+	}
+
 	public function icoTrackers(){
 		if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') != 1){
 			redirect('admin', 'refresh');
@@ -205,6 +215,78 @@ class Companies extends MY_Controller {
 		}
 		echo json_encode($faqqstns); exit;
 	}
+	
+	public function eventsList(){
+
+		if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') != 1){
+			redirect('admin', 'refresh');
+		}else{
+			$data = array();
+			$result = $this->Companies_model->getEventsList(2);
+			if(count($result) != 0){
+				foreach($result as $key=>$ad){
+					if(isset($ad->ev_name) && $ad->ev_name != "")
+					{
+						$data[$key]['ev_name']  = ucfirst($ad->ev_name);
+					}else{
+						$data[$key]['ev_name']  = "";
+					}
+
+					if(isset($ad->ev_decript) && $ad->ev_decript != "")
+					{
+						$data[$key]['ev_decript']  = ucfirst($ad->ev_decript);
+					}else{
+						$data[$key]['ev_decript']  = "";
+					}
+					if(isset($ad->ev_loc) && $ad->ev_loc != "")
+					{
+						$data[$key]['ev_loc']  = ucfirst($ad->ev_loc);
+					}else{
+						$data[$key]['ev_loc']  = "";
+					}
+					if(isset($ad->ev_sd) && $ad->ev_sd != "")
+					{
+						$data[$key]['ev_sd']  = $ad->ev_sd;
+					}else{
+						$data[$key]['ev_sd']  = "";
+					}
+					
+					/* if(isset($ad->u_picture) && $ad->u_picture!=""){
+						$imagePath = base_url().'asset/img/users/'.$ad->u_picture;
+					}else{
+						$imagePath = base_url().'asset/img/no_image.png';
+					} */
+					/* $data[$key]['u_picture']  = '<img style="width:60px;height:60px;" class="img-thumbnail" src="'.$imagePath.'">'; */
+					if($ad->ev_status=='1'){
+						$fqf_status						=	'<a href="javascript:void(0);" title="Approved" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>';
+					}else if($ad->ev_status=='2'){
+						$fqf_status						=	'<a href="javascript:void(0);" title="Delete" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+					}else if($ad->ev_status=='0'){
+						$fqf_status						=	'<a href="javascript:void(0);" title="Not Approved" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>';
+					}
+					$data[$key]['ev_status']          	= 	$fqf_status;
+
+					$goUrl = 'edit-event';
+					$whitchPage = "'icotracker'";
+
+					if($ad->ev_status == 1){
+						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
+												<a href="javascript:void(0);" title="Disapprove" onclick="userConfirmation('.$ad->cm_id.',0,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->cm_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+					}else{
+						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
+												<a href="javascript:void(0);" title="Approve" onclick="userConfirmation('.$ad->cm_id.',1,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->cm_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+					}
+				}
+				$faqqstns['aaData'] = $data;
+			}else{
+				$faqqstns['aaData'] = array();
+			}
+		}
+		echo json_encode($faqqstns); exit;
+	}
+
 	public function addDigitalAssetView()
 	{
 		// print_r($_POST);exit;
@@ -355,6 +437,107 @@ class Companies extends MY_Controller {
 			$this->show_admin('admin/add-digital-asset',$data);
 		}
 	}
+
+	public function addEvent()
+	{
+		// print_r($_POST);exit;
+		// print_r($_FILES);exit;
+		$this->load->helper(array('common'));
+			if(isset($_POST) && !empty($_POST)){
+				if(isset($_FILES['event_uploaded_file']['name']) && $_FILES['event_uploaded_file']['name'] != ""){
+					$evntName = $_POST['ev_name'];
+					$eventName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $evntName));
+					$fileName = $_FILES["event_uploaded_file"]["name"];
+					$fileTmpLoc = $_FILES["event_uploaded_file"]["tmp_name"];
+					$target_dir     = base_url().'asset/img/events/main/';
+					$temp           = explode(".", $_FILES['event_uploaded_file']["name"]);
+					$newfilename    = date('Ymd_His') . '.' . end($temp);
+					move_uploaded_file($_FILES["event_uploaded_file"]["tmp_name"], 'asset/img/events/main/'.$newfilename);
+					// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+					$kaboom = explode(".", $fileName);
+					$fileExt = end($kaboom);
+					$target_file = 'asset/img/events/main/'.$newfilename;
+					$resized_file = 'asset/img/events/main/event_'.$eventName.'_'.$newfilename;
+					$wmax = 160;
+					$getImagNames = ak_img_resize($target_file, $resized_file, $wmax, $fileExt);
+					$reImage = explode('/',$getImagNames);
+					$resizeImg = $reImage[4];
+				}
+				$user_id = $this->session->userdata('user_id');
+				$insert_from = 'Admin';
+				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg);
+				if(!empty($_POST['sp_name'])){
+					foreach($_POST['sp_name'] as $key=>$spname)
+					{
+						if(isset($_FILES['sp_profile_image']['name'][$key]) && $_FILES['sp_profile_image']['name'][$key] != ""){
+							$spkrName = $_POST['sp_name'][$key];
+							$speakerName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $spkrName));
+							$fileName2 = $_FILES["sp_profile_image"]["name"][$key];
+							$fileTmpLoc2 = $_FILES["sp_profile_image"]["tmp_name"][$key];
+							$target_dir2     = base_url().'asset/img/events/speakers/';
+							$temp2           = explode(".", $_FILES['sp_profile_image']["name"][$key]);
+							$newfilename2    = date('Ymd_His') . '.' . end($temp2);
+							move_uploaded_file($_FILES["sp_profile_image"]["tmp_name"][$key], 'asset/img/events/speakers/'.$newfilename2);
+							// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+							$kaboom2 = explode(".", $fileName2);
+							$fileExt2 = end($kaboom2);
+							$target_file2 = 'asset/img/events/speakers/'.$newfilename2;
+							$resized_file2 = 'asset/img/events/speakers/speaker_'.$speakerName.'_'.$newfilename2;
+							$wmax2 = 160;
+							$getImagNames2 = ak_img_resize($target_file2, $resized_file2, $wmax2, $fileExt2);
+							$reImage2 = explode('/',$getImagNames2);
+							$spimage = $reImage2[4];
+
+						}else{
+							$spimage = '';
+						}
+						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+					}
+				}
+				if(!empty($_POST['time1'])){
+					foreach($_POST['time1'] as $key=>$agtime){
+						if($agtime != ""){
+							$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event1'][$key]);
+						}
+					}
+				}
+				if(!empty($_POST['time2'])){
+					foreach($_POST['time2'] as $key2=>$agtime2){
+						if($agtime2 != ""){
+							$agendaStatus2 = $this->Companies_model->addEventAgenda2($event_id,$agtime2,$_POST['event2'][$key2]);
+						}
+					}
+				}
+				if(!empty($_POST['time3'])){
+					foreach($_POST['time3'] as $key3=>$agtime3){
+						if($agtime3 != ""){
+							$agendaStatus3 = $this->Companies_model->addEventAgenda3($event_id,$agtime3,$_POST['event3'][$key3]);
+						}
+					}
+				}
+				if(!empty($_POST['time4'])){
+					foreach($_POST['time4'] as $key4=>$agtime4){
+						if($agtime4 != ""){
+							$agendaStatus4 = $this->Companies_model->addEventAgenda4($event_id,$agtime4,$_POST['event4'][$key4]);
+						}
+					}
+				}
+				if(!empty($_POST['time5'])){
+					foreach($_POST['time5'] as $key5=>$agtime5){
+						if($agtime5 != ""){
+							$agendaStatus5 = $this->Companies_model->addEventAgenda5($event_id,$agtime5,$_POST['event5'][$key5]);
+						}
+					}
+				}
+
+			}else{
+			$data = Array();
+			$data['cities'] = $this->Companies_model->getCities(1);
+			$this->show_admin('admin/add-event',$data);
+		}
+	}
+	
+
 	public function adddigitalAsset()
 	{
 
@@ -683,6 +866,94 @@ class Companies extends MY_Controller {
 		}
 		// echo '<pre>';print_r($data);exit;
 	}
+
+	public function editEvent()
+	{
+		$data = array();
+		$ev_id = $this->uri->segment(3);
+		$result = $this->Companies_model->getEventInfoForAdmin($ev_id);
+		$data['cities'] = $this->Companies_model->getCities(1);
+		if (count($result) > 0)
+		{	
+			foreach($result as $k=>$v)
+			{   
+				if (isset($v->ev_name) && $v->ev_name != ''){
+					$data['event_name'] = $v->ev_name;
+				}else{
+					$data['event_name'] = '';
+ 				}
+				if (isset($v->ev_loc) && $v->ev_loc != ''){
+					$data['event_location'] = $v->ev_loc;
+				}else{
+					$data['event_location'] = '';
+				}
+				if (isset($v->ev_city) && $v->ev_city != ''){
+					$data['event_city'] = $v->ev_city;
+				}else{
+					$data['event_city'] = '';
+				}
+				if (isset($v->ev_decript) && $v->ev_decript != ''){
+					$data['event_decript'] = $v->ev_decript;
+				}else{
+					$data['event_decript'] = '';
+				} 
+				if (isset($v->ev_price) && $v->ev_price != ''){
+					$data['event_price'] = $v->ev_price;
+				}else{
+					$data['event_price'] = '';
+				}
+				if (isset($v->ev_sd) && $v->ev_sd != ''){
+					$data['event_sd'] = $v->ev_sd;
+				}else{
+					$data['event_sd'] = '';
+				}  
+				if (isset($v->ev_st) && $v->ev_st != ''){
+					$data['event_st'] = $v->ev_st;
+				}else{
+					$data['event_st'] = '';
+				}  
+				if (isset($v->ev_ed) && $v->ev_ed != ''){
+					$data['event_ed'] = $v->ev_ed;
+				}else{
+					$data['event_ed'] = '';
+				}  
+				if (isset($v->ev_et) && $v->ev_et != ''){
+					$data['event_et'] = $v->ev_et;
+				}else{
+					$data['event_et'] = '';
+				}
+				if (isset($v->ev_num) && $v->ev_num != ''){
+					$data['event_att'] = $v->ev_num;
+				}else{
+					$data['event_att'] = '';
+				}
+				if (isset($v->ev_picture) && $v->ev_picture != ''){
+					$data['event_picture'] = $v->ev_picture;
+				}else{
+					$data['event_picture'] = '';
+ 				}              
+				
+			}
+			$speakers = $this->Companies_model->getSpeakersForEvent($ev_id);
+			foreach ($speakers as $n=>$speaker){
+				$data['speakers'][$n] = $speaker->sp_name;
+				$data['speakers_url'][$n] = $speaker->sp_url;
+
+			}
+			$lastagenda = $this->Companies_model->getAgendaLast($ev_id);
+			$daycount = $lastagenda['ag_day'];
+			for($i = 1; $i <= $daycount;$i++){
+				$data['Agenda'][$i] = $this->Companies_model->getAgenda($ev_id,$i);
+			}
+			
+			$this->show_admin('admin/edit-event',$data);	
+		}else{
+			show_404();
+		}
+
+
+	}
+
 	public function updateDigitalAsset()
 	{
 		$this->load->helper(array('common'));
