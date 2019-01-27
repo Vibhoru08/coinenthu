@@ -15,6 +15,9 @@ $img =  base_url().'images/logo.png';
 	if($page=="digital-assets"){
 		$assets="active";
 	}
+	if($page=="events"){
+		$events="active";
+	}
 	if($page=="ico-tracker"){
 		$ico="active";
 	}
@@ -243,7 +246,9 @@ $img =  base_url().'images/logo.png';
 					<a href="javascript:void(0);" onClick="return redirectPage('ico');" id="icotracker">ICO Tracker</a>
 
 				</li>
-
+				<li class="<?php echo $events;?> h_hover">
+				 <a href="javascript:void(0);" onClick="return redirectPage('events');" id="company">Upcoming Events</a>
+			 </li>
 
 			  </ul>
 				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>

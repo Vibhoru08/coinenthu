@@ -11,6 +11,10 @@ function redirectPage(pageName){
 		window.location = baseUrl + 'digital-assets';
 		localStorage.setItem('type','viewed');
 		localStorage.setItem('page_name',2);
+	}else if(pageName=='events'){
+		window.location = baseUrl + 'events';
+		localStorage.setItem('type','viewed');
+		localStorage.setItem('page_name',4);
 	}else if(pageName=='ico'){
 		localStorage.setItem('type','edtA');
 		localStorage.setItem('page_name',3);

@@ -3009,7 +3009,7 @@ select[multiple].input-lg {
   color: #a94442;
 }
 .has-feedback label ~ .form-control-feedback {
-  top: 25px;
+  top: 35px;
 }
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
@@ -3020,7 +3020,9 @@ select[multiple].input-lg {
   margin-bottom: 10px;
   color: #737373;
 }
-
+.fa-eye{
+  cursor: pointer;
+}
 
 @media (min-width: 768px) {
   .form-inline .form-group {

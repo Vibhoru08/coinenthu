@@ -394,6 +394,8 @@
    <button type="button" class="close" onClick="" aria-label="Close" data-dismiss="modal" title="Close"><span aria-hidden="true">&times;</span></button>
    <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD</h4>
    </div>
+   <div class="modal-body">
+     <div class="col-xs-12">
     <form id="uChangePwd" name="uChangePwd" method="POST" class="form-horizontal"
 										data-fv-message="This value is not valid"
 										data-fv-icon-valid="glyphicon glyphicon-ok"
@@ -401,7 +403,7 @@
 										data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="changePassword()">
 
 
-      <div class="modal-body">
+
 
           <div class="form-group">
             <label for="inputEmail3" class="control-label">Current Password</label>
@@ -411,7 +413,7 @@
           </div>
           <div class="form-group">
             <label for="inputEmail3" class="control-label">New Password</label>
-            <i class = "fa fa-eye cp-eye"></i>
+            <i class = "fa fa-eye cp-eye" id = "eye2"></i>
             <input type="password" class="form-control cp-form" id="n_u_password" name="n_u_password" placeholder="New Password" value=""
                           required data-fv-notempty-message="Please enter a new password">
             <span id="ErrorM" style="font-size:14px;color:#a94442;"><?php if(isset($this->ErrorM) && $this->ErrorM!=""){ echo $this->ErrorM; }?></span>
@@ -419,7 +421,7 @@
 
           <div class="form-group">
             <label for="inputEmail3" class="control-label">Confirm Password</label>
-            <i class = "fa fa-eye cp-eye"></i>
+            <i class = "fa fa-eye cp-eye" id = "eye3"></i>
             <input type="password" class="form-control cp-form" id="u_password" name="u_password" placeholder="Confirm Password" value=""
 													required data-fv-notempty-message="Please enter a confirm password">
           </div>
@@ -430,8 +432,10 @@
       <center><span id="success" style="color:green"></span></center>
 											<center><span id="errMesg" style="color:red"></span></center>
 											<center><span id="loadingError" style="display:none;"> Loading...</span></center>
-      </div>
+
       </form>
+      </div>
+      </div>
     </div>
   </div>
 </div>
@@ -944,13 +948,26 @@ function changePassword() {
         e.preventDefault();
     });
 }
+var pwd = document.getElementById('o_u_password');
+var pwdn = document.getElementById('n_u_password');
+var pwdnu = document.getElementById('u_password');
+var eye = document.getElementById('eye1');
+var eye2 = document.getElementById('eye2');
+var eye3 = document.getElementById('eye3');
+eye.addEventListener('click',togglePass);
+eye2.addEventListener('click',togglePass2);
+eye3.addEventListener('click',togglePass3);
 function togglePass(){
-
-  var pwd = document.getElementById('o_u_password');
-  var eye = document.getElementById('eye1');
-  eye.addEventListener('click',togglePass);
   eye.classList.toggle('active');
   (pwd.type == 'password') ? pwd.type = 'text': pwd.type = 'password';
+}
+function togglePass2(){
+  eye2.classList.toggle('active');
+  (pwdn.type == 'password') ? pwdn.type = 'text': pwdn.type = 'password';
+}
+function togglePass3(){
+  eye.classList.toggle('active');
+  (pwdnu.type == 'password') ? pwdnu.type = 'text': pwdnu.type = 'password';
 }
 </script>
 
