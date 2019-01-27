@@ -1,21 +1,21 @@
 <div class="content-wrapper">
 <div class = "content about-bg text-color">
     <section class = "content">
-        <div class = "container-fluid banner_margin linear_color">
-            <div class = "row mmar_t40 mmar_b10 mar_t30 mar_b40">
-                <div class = "col-xs-12 text-center banner_head">
-                    ADD AN EVENT
-                    <!--<hr style="width:5%;border:1px solid #ffff">-->
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+      <div class="row">
+     <div class="col-md-12">
+      <div class="box controls">
+        <section class="content-header">
+          <h1>
+          ADD EVENT
+          </h1>
+          <ol class="breadcrumb">
+          <li class="" style="margin-top:-10px;"><a href="<?php echo base_url(); ?>admin/events" class="btn btn-info pull-right" style="color:#fff;"><i class="glyphicon glyphicon-arrow-left"></i> Back</a></li>
+          </ol>
+  </section>
 <div class="container-fluid">
-<section class="content mar_b20">
 <div class="row">
   <div class="col-md-12">
-    <div class="no_background box mar_b50  mar_t0 no_shadow overflow_hidden">
+    <div class="no_background mar_b50  mar_t0 no_shadow overflow_hidden">
       <form class="form-horizontal mandatory" action="" method="POST" name="add_digital_asset" id="add_digital_asset" enctype="multipart/form-data"  data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon"
           data-fv-icon-invalid="glyphicon"            data-fv-icon-validating="glyphicon glyphicon-refresh" onSubmit="addEvent();">
       <div class="box-body pad_t30">
@@ -163,18 +163,19 @@
               <label for="Core Team" class="col-sm-3 control-label">Speakers<span class="mstar">*</span></label>
               <div class="col-sm-9">
               <div class="row pos_r">
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <input type="text" class="form-control background_color"  placeholder="Name" required name="sp_name[]"  id="cot_name_0" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
                 data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
                 <div class="col-md-6 mmar_t15">
                   <input type="text" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
                 </div>
+                <div class="col-md-1 form-group more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
+
                 <div class="col-md-12 mar_t15">
                   Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />
                 </div>
-                <div class="more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
-              </div>
+                </div>
               </div>
               </div>
             </span>
@@ -190,16 +191,16 @@
                 <input type="hidden" name="agendaBoxesCnt"     id="agendaBoxesCnt1"     value="1">
                 <div class="day_1 mar_t5" id="day_1">
                 <div class="col-xs-3"><strong>Day 1</strong></div>
-                <div class="more_input_boxess col-xs-9" id="day1"><a href="javascript:void(0);" onClick="dayadd(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
+                <div class="form-group more_input_boxess col-xs-9" id="day1"><a href="javascript:void(0);" onClick="dayadd(1);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
                 <div class="col-xs-12 pad_0 mar_t15" id="agenda10">
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <input type="text" class="form-control background_color"  placeholder="Time" required name="time1[]"  id="time_00" data-fv-notempty-message="Time is required and cannot be empty"
                  data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">
                 </div>
-                <div class="col-md-8 mmar_t15">
+                <div class="col-md-6 mmar_t15">
                   <input type="text" class="form-control background_color" name="event1[]" id="event_00" placeholder="Event" >
                 </div>
-                  <div class="more_input_boxess new_input_boxes" id="agenda_1"><a href="javascript:void(0);" onClick="agenda(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
+                  <div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_1"><a href="javascript:void(0);" onClick="agenda(1);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
             </div>
             </div>
@@ -229,17 +230,19 @@
 
             <div class="form-group text-right">
              <span id="loadAddDigital"  style="float:left;display:none">Inserting...</span>
-            <div class="col-sm-offset-3 col-sm-9">
-              <!--<a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>-->
-              <button type="submit" class="btn btn-custom">ADD <span class="mm_show">MORE </span> <span class="m_hide">MORE</span> EVENTS</button>
-            </div>
+
             </div>
 
         </div>
       </div>
+      <div class="box-footer ">
+        <!--<a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>-->
+        <button type="submit" class="btn btn-info pull-right">ADD EVENT</button>
+      </div>
       </form>
     </div>
   </div>
+</div>
 </div>
 </section>
 </div>
@@ -576,7 +579,7 @@
 				html += '<?php if(sizeof($milestoneStatuses) > 0){ foreach($milestoneStatuses as $mstones){ ?><option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option><?php }} ?>';
 
 				html +='</select></div>';
-				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 
 					html += '</div>';
 				html += '</div>';
@@ -628,14 +631,14 @@
       }
 			var html = "";
       html += '<div class="col-xs-12 pad_0 mar_t15" id="agenda'+cnt+count_ct+'">';
-			html += '<div class="col-md-4">';
+			html += '<div class="col-md-5">';
 			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+cnt+'[]"  id="time_'+x+count_ct+'" data-fv-notempty-message="Time is required and cannot be empty"';
 			html +='data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">';
       html +='</div>';
-      html +='<div class="col-md-8 mmar_t15">';
+      html +='<div class="col-md-6 mmar_t15">';
       html += '<input type="text" class="form-control background_color" name="event'+cnt+'[]" id="event_'+x+count_ct+'" placeholder="Event" >';
       html += '</div>';
-      html +='<div class="more_input_boxess new_input_boxes" id="agenda_'+cnt+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+cnt+','+count_ct+');" class="btn btn-primary"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
+      html +='<div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_'+cnt+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+cnt+','+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
       html +='</div>';
 
 			$('#day_'+cnt).append(html);
@@ -688,16 +691,16 @@
       html+= '<input type="hidden" name="agendaBoxesCnt'+count_ct+'"     id="agendaBoxesCnt'+count_ct+'"     value="1">';
 			html += '<div class="col-xs-12 pad_0 day_'+count_ct+' mar_t5" id="day_'+count_ct+'">';
       html +='<div class="col-xs-3"><strong>Day '+count_ct+'</strong></div>';
-			html += '<div class="more_input_boxess col-xs-9" style="position:relative;padding-bottom:5px;" id="day'+count_ct+'"><a href="javascript:void(0);" onClick="dayadd('+count_ct+');" class="btn btn-primary"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
+			html += '<div class="more_input_boxess col-xs-9" style="position:relative;padding-bottom:5px;" id="day'+count_ct+'"><a href="javascript:void(0);" onClick="dayadd('+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>';
       html += '<div class="col-xs-12 pad_0 mar_t15" id="agenda'+count_ct+x+'">';
-      html += '<div class="col-md-4">';
+      html += '<div class="col-md-5">';
 			html +='<input type="text" class="form-control background_color"  placeholder="Time" required name="time'+count_ct+'[]"  id="time_'+count_ct+start+'" data-fv-notempty-message="Time is required and cannot be empty"';
 			html +='data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">';
       html +='</div>';
-      html +='<div class="col-md-8 mmar_t15">';
+      html +='<div class="col-md-6 mmar_t15">';
       html += '<input type="text" class="form-control background_color" name="event'+count_ct+'[]" id="event_'+count_ct+ start +'" placeholder="Event" >';
       html += '</div>';
-      html +='<div class="more_input_boxess new_input_boxes" id="agenda_'+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+      html +='<div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_'+count_ct+'"><a href="javascript:void(0);" onClick="agenda('+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
           html += '</div>';
 
@@ -741,15 +744,16 @@
 			$('#coreteam_'+cnt+' span ').addClass( "fa fa-minus" );
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
-			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
+			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-5">';
 			html += '<input class="form-control background_color" placeholder="Name" name="sp_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
+      html +='<div  class="col-md-1 form-group more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+
       html +='<div class="col-md-12 mar_t15">';
       html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
       html += '</div>';
-      html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
-					html += '</div>';
+    	html += '</div>';
 				html += '</div>';
 			html += '</div>';
 
@@ -797,7 +801,7 @@
 			html += '<input class="form-control background_color" placeholder="Advisory Team" name="adt_name[]"  id="adt_name_'+count_advisory+'" type="text" value="">';
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden URL" name="adt_profile_url[]" id="adt_profile_url_'+count_advisory+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The Linkden url must be less than 100 characters" ></div>';
-			html +='<div class="more_input_boxes" id="advisory_btn_'+count_advisory+'"><a href="javascript:void(0);" OnClick="advisory_team('+count_advisory+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+			html +='<div class="more_input_boxes" id="advisory_btn_'+count_advisory+'"><a href="javascript:void(0);" OnClick="advisory_team('+count_advisory+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
 			html += '</div>';
@@ -845,7 +849,7 @@
 			html += '<input class="form-control background_color" placeholder="Escrow Details" name="escrow_name[]"  id="escrow_name_'+count_escrow+'" type="text" value="">';
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden URL/Organzation URL" name="escrow_profile_url[]" id="escrow_profile_url_'+count_escrow+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
-			html +='<div class="more_input_boxes" id="escrow_btn_'+count_escrow+'"><a href="javascript:void(0);" OnClick="escrow_details('+count_escrow+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+			html +='<div class="more_input_boxes" id="escrow_btn_'+count_escrow+'"><a href="javascript:void(0);" OnClick="escrow_details('+count_escrow+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
 			html += '</div>';
@@ -894,7 +898,7 @@
 
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Exchange URL" name="trading_exchange_url[]" id="trading_exchange_url_'+count_treading+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
-			html +='<div class="more_input_boxes" id="te_btn_'+count_treading+'"><a href="javascript:void(0);" onClick="treading_exchange('+count_treading+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+			html +='<div class="more_input_boxes" id="te_btn_'+count_treading+'"><a href="javascript:void(0);" onClick="treading_exchange('+count_treading+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
 			html += '</div>';
@@ -942,7 +946,7 @@
 
 			html +='</div><div class="col-md-6 mmar_t15">';
 			html +=' <input type="text" class="form-control background_color" name="resource_url[]" id="resource_url_'+count_resources+'" placeholder="URL" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
-			html +='<div class="more_input_boxes" id="resource_btn_'+count_resources+'"><a href="javascript:void(0);" onClick="resources('+count_resources+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+			html +='<div class="more_input_boxes" id="resource_btn_'+count_resources+'"><a href="javascript:void(0);" onClick="resources('+count_resources+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
 			html += '</div>';
@@ -987,7 +991,7 @@
 			html = '<div class="form-group" id="uploads_div_'+count_upload+'">';
 			html += '<label for="telegram " class="col-sm-3 control-label">Upload</label><div class="col-sm-9 pos_r">';
 			html += '<input class="form-control background_color" placeholder="Trading exange" name="cp_picture[]"  id="cp_picture_'+count_upload+'" type="file" value="" style="height:auto;"><p class="small mar_t5 text-right"><em>PDF, IMAGE, WORD, etc... </em></p>';
-			html +='<div class="more_input_boxes" id="upload_btn_'+count_upload+'"><a href="javascript:void(0);" onClick="upload_muliple_files('+count_upload+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
+			html +='<div class="more_input_boxes" id="upload_btn_'+count_upload+'"><a href="javascript:void(0);" onClick="upload_muliple_files('+count_upload+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 			html += '</div>';
 			html += '</div>';
 			$('#upload_file_divs').append(html);

@@ -215,7 +215,7 @@ class Companies extends MY_Controller {
 		}
 		echo json_encode($faqqstns); exit;
 	}
-	
+
 	public function eventsList(){
 
 		if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') != 1){
@@ -250,7 +250,7 @@ class Companies extends MY_Controller {
 					}else{
 						$data[$key]['ev_sd']  = "";
 					}
-					
+
 					/* if(isset($ad->u_picture) && $ad->u_picture!=""){
 						$imagePath = base_url().'asset/img/users/'.$ad->u_picture;
 					}else{
@@ -271,12 +271,12 @@ class Companies extends MY_Controller {
 
 					if($ad->ev_status == 1){
 						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
-												<a href="javascript:void(0);" title="Disapprove" onclick="userConfirmation('.$ad->cm_id.',0,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>
-												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->cm_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+												<a href="javascript:void(0);" title="Disapprove" onclick="userConfirmation('.$ad->ev_id.',0,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
 					}else{
 						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
-												<a href="javascript:void(0);" title="Approve" onclick="userConfirmation('.$ad->cm_id.',1,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>
-												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->cm_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+												<a href="javascript:void(0);" title="Approve" onclick="userConfirmation('.$ad->ev_id.',1,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
 					}
 				}
 				$faqqstns['aaData'] = $data;
@@ -536,7 +536,7 @@ class Companies extends MY_Controller {
 			$this->show_admin('admin/add-event',$data);
 		}
 	}
-	
+
 
 	public function adddigitalAsset()
 	{
@@ -874,9 +874,9 @@ class Companies extends MY_Controller {
 		$result = $this->Companies_model->getEventInfoForAdmin($ev_id);
 		$data['cities'] = $this->Companies_model->getCities(1);
 		if (count($result) > 0)
-		{	
+		{
 			foreach($result as $k=>$v)
-			{   
+			{
 				if (isset($v->ev_name) && $v->ev_name != ''){
 					$data['event_name'] = $v->ev_name;
 				}else{
@@ -896,7 +896,7 @@ class Companies extends MY_Controller {
 					$data['event_decript'] = $v->ev_decript;
 				}else{
 					$data['event_decript'] = '';
-				} 
+				}
 				if (isset($v->ev_price) && $v->ev_price != ''){
 					$data['event_price'] = $v->ev_price;
 				}else{
@@ -906,17 +906,17 @@ class Companies extends MY_Controller {
 					$data['event_sd'] = $v->ev_sd;
 				}else{
 					$data['event_sd'] = '';
-				}  
+				}
 				if (isset($v->ev_st) && $v->ev_st != ''){
 					$data['event_st'] = $v->ev_st;
 				}else{
 					$data['event_st'] = '';
-				}  
+				}
 				if (isset($v->ev_ed) && $v->ev_ed != ''){
 					$data['event_ed'] = $v->ev_ed;
 				}else{
 					$data['event_ed'] = '';
-				}  
+				}
 				if (isset($v->ev_et) && $v->ev_et != ''){
 					$data['event_et'] = $v->ev_et;
 				}else{
@@ -931,8 +931,8 @@ class Companies extends MY_Controller {
 					$data['event_picture'] = $v->ev_picture;
 				}else{
 					$data['event_picture'] = '';
- 				}              
-				
+ 				}
+
 			}
 			$speakers = $this->Companies_model->getSpeakersForEvent($ev_id);
 			foreach ($speakers as $n=>$speaker){
@@ -945,8 +945,8 @@ class Companies extends MY_Controller {
 			for($i = 1; $i <= $daycount;$i++){
 				$data['Agenda'][$i] = $this->Companies_model->getAgenda($ev_id,$i);
 			}
-			
-			$this->show_admin('admin/edit-event',$data);	
+
+			$this->show_admin('admin/edit-event',$data);
 		}else{
 			show_404();
 		}

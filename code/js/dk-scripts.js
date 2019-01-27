@@ -291,7 +291,7 @@ function filterCompanies(type) {
         $("#filter_id").val(6);
 
     }
-    if (type == 'rating') {       
+    if (type == 'rating') {
 	    filterTitle = "Highest rating";
     } else if (type == 'viewed') {
 		$("#filter_id").val(2);
@@ -560,20 +560,20 @@ function subFeedback() {
 			url:  baseUrl+'/Careers/addEmails?expireTime='+time,
 			data:{email:email},
 			dataType	:	'json',
-			success: function(data){	
+			success: function(data){
 				console.log(data.output);
 				if(data.output=='success'){
 				$("#successMsg").html('Email added sucessfully.');
-				setTimeout(function(){ 
-					
+				setTimeout(function(){
+
 						window.location=baseUrl;
-					
-				}, 1000);							
-			}					
+
+				}, 1000);
 			}
-		});			
+			}
+		});
 		e.preventDefault();
-	});		
+	});
 } */
 function subscriber() {
     $('#successMsg').html('');

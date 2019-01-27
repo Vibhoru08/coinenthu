@@ -35,6 +35,15 @@
 	}else if($page=="ico-trackers"){
 		$icotrac = "active";
 		$tab3  = "active";
+	}else if($page=="events"){
+		$events = "active";
+		$tab3  = "active";
+	}else if($page=="edit-event"){
+		$events = "active";
+		$tab3  = "active";
+	}else if($page=="add-event"){
+		$events = "active";
+		$tab3  = "active";
 	}else if($page=="edit-ico-tracker"){
 		$icotrac = "active";
 		$tab3  = "active";
@@ -209,6 +218,10 @@
 								<li class="<?php echo $icotrac; ?>">
 									<a href="<?php echo base_url();?>admin/ico-trackers">
 									<i class="fa fa-circle"></i> <span>ICO Trackers</span></a>
+								</li>
+								<li class="<?php echo $events; ?>">
+									<a href="<?php echo base_url();?>admin/events">
+									<i class="fa fa-circle"></i> <span>Events</span></a>
 								</li>
 							</ul>
 						</li>
