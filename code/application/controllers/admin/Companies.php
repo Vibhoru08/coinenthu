@@ -873,6 +873,7 @@ class Companies extends MY_Controller {
 		$ev_id = $this->uri->segment(3);
 		$result = $this->Companies_model->getEventInfoForAdmin($ev_id);
 		$data['cities'] = $this->Companies_model->getCities(1);
+		$data['event_id'] = $ev_id;
 		if (count($result) > 0)
 		{
 			foreach($result as $k=>$v)
@@ -935,6 +936,7 @@ class Companies extends MY_Controller {
 
 			}
 			$speakers = $this->Companies_model->getSpeakersForEvent($ev_id);
+			$data['speaker_count'] = $this->Companies_model->CountSpeakers($ev_id);
 			foreach ($speakers as $n=>$speaker){
 				$data['speakers'][$n] = $speaker->sp_name;
 				$data['speakers_url'][$n] = $speaker->sp_url;
@@ -942,6 +944,7 @@ class Companies extends MY_Controller {
 			}
 			$lastagenda = $this->Companies_model->getAgendaLast($ev_id);
 			$daycount = $lastagenda['ag_day'];
+			$data['day_count'] = $daycount;
 			for($i = 1; $i <= $daycount;$i++){
 				$data['Agenda'][$i] = $this->Companies_model->getAgenda($ev_id,$i);
 			}
@@ -952,6 +955,98 @@ class Companies extends MY_Controller {
 		}
 
 
+	}
+
+	public function editEventView()
+	{   $this->load->helper('common');
+		if(isset($_FILES['event_uploaded_file']['name']) && $_FILES['event_uploaded_file']['name'] != ""){
+			$evntName = $_POST['ev_name'];
+			$eventName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $evntName));
+			$fileName = $_FILES["event_uploaded_file"]["name"];
+			$fileTmpLoc = $_FILES["event_uploaded_file"]["tmp_name"];
+			$target_dir     = base_url().'asset/img/events/main/';
+			$temp           = explode(".", $_FILES['event_uploaded_file']["name"]);
+			$newfilename    = date('Ymd_His') . '.' . end($temp);
+			move_uploaded_file($_FILES["event_uploaded_file"]["tmp_name"], 'asset/img/events/main/'.$newfilename);
+			// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+			$kaboom = explode(".", $fileName);
+			$fileExt = end($kaboom);
+			$target_file = 'asset/img/events/main/'.$newfilename;
+			$resized_file = 'asset/img/events/main/event_'.$eventName.'_'.$newfilename;
+			$wmax = 160;
+			$getImagNames = ak_img_resize($target_file, $resized_file, $wmax, $fileExt);
+			$reImage = explode('/',$getImagNames);
+			$resizeImg = $reImage[4];
+		}else{
+			$resizeImg = $_POST["userhidImage"];
+		}
+		$user_id = $this->session->userdata('user_id');
+		$updateEventStatus = $this->Companies_model->UpdateEvent($this->input->post(),$user_id,$resizeImg);
+		$event_id = $_POST['event_unique_id'];
+		if(!empty($_POST['sp_name'])){
+			$deleteSpkrs = $this->Companies_model->deleteSpeakers($event_id);
+			foreach($_POST['sp_name'] as $key=>$spname)
+			{
+				if(isset($_FILES['sp_profile_image']['name'][$key]) && $_FILES['sp_profile_image']['name'][$key] != ""){
+					$spkrName = $_POST['sp_name'][$key];
+					$speakerName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $spkrName));
+					$fileName2 = $_FILES["sp_profile_image"]["name"][$key];
+					$fileTmpLoc2 = $_FILES["sp_profile_image"]["tmp_name"][$key];
+					$target_dir2     = base_url().'asset/img/events/speakers/';
+					$temp2           = explode(".", $_FILES['sp_profile_image']["name"][$key]);
+					$newfilename2    = date('Ymd_His') . '.' . end($temp2);
+					move_uploaded_file($_FILES["sp_profile_image"]["tmp_name"][$key], 'asset/img/events/speakers/'.$newfilename2);
+					// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
+					$kaboom2 = explode(".", $fileName2);
+					$fileExt2 = end($kaboom2);
+					$target_file2 = 'asset/img/events/speakers/'.$newfilename2;
+					$resized_file2 = 'asset/img/events/speakers/speaker_'.$speakerName.'_'.$newfilename2;
+					$wmax2 = 160;
+					$getImagNames2 = ak_img_resize($target_file2, $resized_file2, $wmax2, $fileExt2);
+					$reImage2 = explode('/',$getImagNames2);
+					$spimage = $reImage2[4];
+
+				}else{
+					$spimage = '';
+				}
+				$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+			}
+		}
+		if(!empty($_POST['time1'])){
+			foreach($_POST['time1'] as $key=>$agtime){
+				if($agtime != ""){
+					$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event1'][$key]);
+				}
+			}
+		}
+		if(!empty($_POST['time2'])){
+			foreach($_POST['time2'] as $key2=>$agtime2){
+				if($agtime2 != ""){
+					$agendaStatus2 = $this->Companies_model->addEventAgenda2($event_id,$agtime2,$_POST['event2'][$key2]);
+				}
+			}
+		}
+		if(!empty($_POST['time3'])){
+			foreach($_POST['time3'] as $key3=>$agtime3){
+				if($agtime3 != ""){
+					$agendaStatus3 = $this->Companies_model->addEventAgenda3($event_id,$agtime3,$_POST['event3'][$key3]);
+				}
+			}
+		}
+		if(!empty($_POST['time4'])){
+			foreach($_POST['time4'] as $key4=>$agtime4){
+				if($agtime4 != ""){
+					$agendaStatus4 = $this->Companies_model->addEventAgenda4($event_id,$agtime4,$_POST['event4'][$key4]);
+				}
+			}
+		}
+		if(!empty($_POST['time5'])){
+			foreach($_POST['time5'] as $key5=>$agtime5){
+				if($agtime5 != ""){
+					$agendaStatus5 = $this->Companies_model->addEventAgenda5($event_id,$agtime5,$_POST['event5'][$key5]);
+				}
+			}
+		}	
 	}
 
 	public function updateDigitalAsset()

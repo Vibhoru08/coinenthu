@@ -128,6 +128,20 @@ class Companies_model extends CI_Model
 		return 1;
 	}
 
+	public function deleteSpeakers($event_id)
+	{
+		$this->db->where('sp_evid',$event_id);
+		$this->db->delete('bop_events_speakers');
+		return 1;
+	}
+
+	public function deleteAgenda($event_id)
+	{
+		$this->db->where('ag_evid',$event_id);
+		$this->db->where('bop_events_agenda');
+		return 1;
+	}
+
 	public function deleteReplyStatus($crr_id,$statusMode){
 		$this->db->where('crr_id', $crr_id);
         $this->db->delete('bop_company_review_replies');
@@ -1580,6 +1594,102 @@ class Companies_model extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
+
+	public function UpdateEvent($post,$uid,$resizeImg)
+	{
+		if(isset($post['ev_name']) && $post['ev_name'] != "")
+		{
+			$ev_name = $post['ev_name'];
+		}else{
+			$ev_name = '';
+		}
+
+		if(isset($post['ev_loc']) && $post['ev_loc'] != "")
+		{
+			$ev_loc = $post['ev_loc'];
+		}else{
+			$ev_loc = '';
+		}
+
+		if(isset($post['ev_sd']) && $post['ev_sd'] != "")
+		{
+			$ev_sd = $post['ev_sd'];
+		}else{
+			$ev_sd = '';
+		}
+
+		if(isset($post['ev_st']) && $post['ev_st'] != "")
+		{
+			$ev_st = $post['ev_st'];
+		}else{
+			$ev_st = '';
+		}
+
+		if(isset($post['ev_ed']) && $post['ev_ed'] != "")
+		{
+			$ev_ed = $post['ev_ed'];
+		}else{
+			$ev_ed = '';
+		}
+
+		if(isset($post['ev_et']) && $post['ev_et'] != "")
+		{
+			$ev_et = $post['ev_et'];
+		}else{
+			$ev_et = '';
+		}
+
+		if(isset($post['ev_decript']) && $post['ev_decript'] != "")
+		{
+			$ev_decript = $post['ev_decript'];
+		}else{
+			$ev_decript = '';
+		}
+
+		if(isset($post['ev_price']) && $post['ev_price'] != "")
+		{
+			$ev_price = $post['ev_price'];
+		}else{
+			$ev_price = '';
+		}
+
+		if(isset($post['ev_num']) && $post['ev_num'] != "")
+		{
+			$ev_num = $post['ev_num'];
+		}else{
+			$ev_num = '';
+		}
+
+		if(isset($post['ev_city']) && $post['ev_city'] != "")
+		{
+			$ev_city = $post['ev_city'];
+		}else{
+			$ev_city = '';
+		}
+		
+		$data = array(
+            'ev_name'  							=> $ev_name,
+			'ev_decript'   						=> $ev_decript,
+			'ev_picture'    					=> $resizeImg,
+			'ev_loc'                            => $ev_loc,
+			'ev_sd'                             => $ev_sd,
+			'ev_st'                             => $ev_st,
+			'ev_ed'                             => $ev_ed,
+			'ev_et'                             => $ev_et,
+			'ev_price'                          => $ev_price,
+			'ev_num'                            => $ev_num,
+			'ev_city'                           => $ev_city,
+			'ev_md'  					        => date('Y-m-d H:i:s'),
+
+        );
+        $this->db->where('ev_id',$post['event_unique_id']);
+		if($this->db->update('bop_events',$data) === FALSE){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}	
+
 	public function UpdateDigitalAsset($post,$uid,$resizeImg)
 	{
 		if(isset($post['cm_total_token_supply']) && $post['cm_total_token_supply'] != "")

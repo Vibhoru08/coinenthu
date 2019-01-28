@@ -39,7 +39,8 @@
         </div>
         <div class="col-md-7">
 
-          <input type="hidden" id="userhidImage" name="userhidImage">
+          <input type="hidden" id="userhidImage" name="userhidImage" value = "<?php echo $event_picture; ?>">
+		  <input type = "hidden" id = "event_unique_id" name = "event_unique_id" value = <?php echo $event_id; ?>>
 
             <div class="form-group">
             <label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">Title<span class="mstar">*</span></label>
@@ -196,7 +197,7 @@
                 <div class="col-md-6 mmar_t15">
                   <input type="text" value = "<?php echo $speakers_url[$n]; ?>" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $n + 1; ?>" placeholder="LinkedIn URL" >
                 </div>
-                <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $n + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php $n + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+                <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $n + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $n + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
 
                 <div class="col-md-12 mar_t15">
                   Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $n + 1; ?>" accept="image/x-png,image/jpeg" />
@@ -205,6 +206,26 @@
               </div>
               </div>
 			<?php } ?>
+			<div class="form-group" id="core_team_<?php echo $speaker_count + 1; ?>">
+              <label for="Core Team" class="col-sm-3 control-label">Speakers</label>
+              <div class="col-sm-9">
+              <div class="row pos_r">
+                <div class="col-md-5">
+                  <input type="text" value = "" class="form-control background_color"  placeholder="Name" name="sp_name[]"  id="cot_name_<?php echo $speaker_count + 1; ?>"  data-fv-regexp="true"
+                data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
+                </div>
+                <div class="col-md-6 mmar_t15">
+                  <input type="text" value = "" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $speaker_count + 1; ?>" placeholder="LinkedIn URL" >
+                </div>
+                <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $speaker_count + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $speaker_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+
+                <div class="col-md-12 mar_t15">
+                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $speaker_count + 1; ?>" accept="image/x-png,image/jpeg" />
+                </div>
+                  </div>
+              </div>
+              </div>
+
             </span>
 
 
@@ -234,6 +255,23 @@
 				<?php } ?>
             </div>
 			<?php } ?>
+			<div class="day_<?php echo $day_count + 1; ?> mar_t5" id="day_<?php echo $day_count + 1; ?>">
+                <div class="col-xs-3"><strong>Day <?php echo $day_count + 1; ?></strong></div>
+                <div class="form-group more_input_boxess col-xs-9" id="day<?php echo $day_count + 1; ?>"><a href="javascript:void(0);" onClick="dayadd(<?php echo $day_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+                <div class="col-xs-12 pad_0 mar_t15" id="agenda<?php echo $day_count + 1; ?>1">
+				<input type="hidden" id="agenda_cnt<?php echo $day_count + 1; ?>" value="1" />
+                <input type="hidden" name="agendaBoxesCnt"     id="agendaBoxesCnt<?php echo $day_count + 1; ?>"     value="1">
+                <div class="col-md-5">
+                  <input type="text" class="form-control background_color"  placeholder="Time" name="time<?php echo $day_count + 1; ?>[]" id="time_<?php echo $day_count + 1; ?>1"
+                 data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">
+                </div>
+                <div class="col-md-6 mmar_t15">
+                  <input type="text" class="form-control background_color" name="event<?php echo $day_count + 1; ?>[]" value = "" id="event_<?php echo $day_count + 1; ?>1" placeholder="Event" >
+                </div>
+                  <div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_<?php echo $day_count + 1; ?>1"><a href="javascript:void(0);" onClick="agenda(<?php echo $day_count + 1; ?>,1);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+              </div>
+				
+            </div>
             </div>
               </div>
 
@@ -241,7 +279,7 @@
 
             </span>
 
-              <input type="hidden" id="day_cnt" value="<?php echo $k + 1; ?>" />
+              <input type="hidden" id="day_cnt" value="<?php echo $day_count + 1; ?>" />
             <input type="hidden" id="treadin_exchange_cnt" value="1" />
 
 
@@ -1085,7 +1123,7 @@
 					$("#loadUpdateDigital").show();
 					var form_data = new FormData($('#add_digital_asset')[0]);
 					$.ajax({
-						url: baseUrl+'/Companies/addEvent?id='+time,
+						url: baseUrl+'/Companies/editEventView?id='+time,
 						cache: false,
 						contentType: false,
 						processData: false,
