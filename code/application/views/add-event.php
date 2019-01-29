@@ -163,11 +163,14 @@
               <label for="Core Team" class="col-sm-3 control-label">Speakers<span class="mstar">*</span></label>
               <div class="col-sm-9">
               <div class="row pos_r">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <input type="text" class="form-control background_color"  placeholder="Name" required name="sp_name[]"  id="cot_name_0" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
                 data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
-                <div class="col-md-6 mmar_t15">
+                <div class="col-md-4 mmar_t15">
+                  <input type="text" class="form-control background_color" name="sp_designation[]" id="cot_designation_0" placeholder="Designation" >
+                </div>
+                <div class="col-md-4 mmar_t15">
                   <input type="text" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
                 </div>
                 <div class="col-md-12 mar_t15">
@@ -741,9 +744,13 @@
 			$('#coreteam_'+cnt+' span ').addClass( "fa fa-minus" );
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
-			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
+			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-4">';
 			html += '<input class="form-control background_color" placeholder="Name" name="sp_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
-			html +='</div><div class="col-md-6 mmar_t15">';
+			html +='</div>';
+      html +='<div class="col-md-4 mmar_t15">';
+      html +='<input type="text" class="form-control background_color" name="sp_designation[]" id="cot_designation_'+count_ct+'" placeholder="Designation" >';
+      html +='</div>';
+      html +='<div class="col-md-4 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
       html +='<div class="col-md-12 mar_t15">';
       html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';

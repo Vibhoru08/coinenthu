@@ -41,7 +41,7 @@
 	}else if($page=="edit-event"){
 		$events = "active";
 		$tab3  = "active";
-	}else if($page=="add-event"){
+	}else if($page=="add-events"){
 		$events = "active";
 		$tab3  = "active";
 	}else if($page=="edit-ico-tracker"){

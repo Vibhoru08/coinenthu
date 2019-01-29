@@ -23,7 +23,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                     <span class="col-xs-4" title="Event Location"><i class="fa fa-map-marker"></i>&nbsp; <?php echo $event['event_location']; ?></span>
                     <span class="col-xs-4" title="Event Date"><i class="fa fa-calendar"></i>&nbsp; <?php echo $event['event_date']; ?></span>
                     <span class="col-xs-4" title="Price in USD"><i class="fa fa-money"></i>&nbsp; <?php echo '$'.$event['event_price'];?></span>
-                    
+
                   </div>
                 </div>
               </div>
@@ -60,9 +60,9 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
            <div class = "row mar_b30">
             <div class = "col-xs-10 col-xs-offset-1 eevent_divs asset-boxes event_padding text-center pad_b20" style="border-top: 1px solid #E4E3E3;">
               <h4 class="mar_t20">Agenda</h4>
-                  
-                           
-             
+
+
+
               <?php foreach($event['Agenda'] as $k=>$v){?>
               <div class = "col-xs-12 col-md-6 pad_0 event_table">
               <div class = "col-xs-12 pad_0">
@@ -73,12 +73,12 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
               <div class = "col-xs-12 event_table_row">
                 <span class = "col-xs-4 event_table_smallrow"><?php echo $value->ag_time; ?></span>
                 <span class = "col-xs-8 event_table_smallrow2"><?php echo $value->ag_event; ?></span>
-              </div>    
+              </div>
               <?php } ?>
               </div>
               </div>
               <?php } ?>
-              
+
             </div>
            </div>
           </div>
@@ -91,10 +91,15 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
 $(document).ready(function(){
   var divs = document.getElementsByClassName("event_table");
 for(var i = 0; i < divs.length; i+=2){
+  if(divs.length==1){
+    divs[i].className +=' col-md-offset-3';
+  }
   if(i!=divs.length-1){
   var height=Math.max(divs[i].offsetHeight,divs[i+1].offsetHeight);
    divs[i].style.height = height+"px";
     divs[i+1].style.height = height+"px";
+    var y=i+3;
+    $('<style>.event_table:nth-child('+y+'):before{height:'+height+'px'+';}</style>').appendTo('head');
  }
 }
 });

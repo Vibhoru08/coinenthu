@@ -217,7 +217,7 @@
                 <div class="col-md-6 mmar_t15">
                   <input type="text" value = "" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $speaker_count + 1; ?>" placeholder="LinkedIn URL" >
                 </div>
-                <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $speaker_count + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $speaker_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+                <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $speaker_count + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $speaker_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 
                 <div class="col-md-12 mar_t15">
                   Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $speaker_count + 1; ?>" accept="image/x-png,image/jpeg" />
@@ -257,7 +257,7 @@
 			<?php } ?>
 			<div class="day_<?php echo $day_count + 1; ?> mar_t5" id="day_<?php echo $day_count + 1; ?>">
                 <div class="col-xs-3"><strong>Day <?php echo $day_count + 1; ?></strong></div>
-                <div class="form-group more_input_boxess col-xs-9" id="day<?php echo $day_count + 1; ?>"><a href="javascript:void(0);" onClick="dayadd(<?php echo $day_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+                <div class="form-group more_input_boxess col-xs-9" id="day<?php echo $day_count + 1; ?>"><a href="javascript:void(0);" onClick="dayadd(<?php echo $day_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
                 <div class="col-xs-12 pad_0 mar_t15" id="agenda<?php echo $day_count + 1; ?>1">
 				<input type="hidden" id="agenda_cnt<?php echo $day_count + 1; ?>" value="1" />
                 <input type="hidden" name="agendaBoxesCnt"     id="agendaBoxesCnt<?php echo $day_count + 1; ?>"     value="1">
@@ -268,9 +268,9 @@
                 <div class="col-md-6 mmar_t15">
                   <input type="text" class="form-control background_color" name="event<?php echo $day_count + 1; ?>[]" value = "" id="event_<?php echo $day_count + 1; ?>1" placeholder="Event" >
                 </div>
-                  <div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_<?php echo $day_count + 1; ?>1"><a href="javascript:void(0);" onClick="agenda(<?php echo $day_count + 1; ?>,1);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
+                  <div class="col-md-1 form-group more_input_boxess new_input_boxes" id="agenda_<?php echo $day_count + 1; ?>1"><a href="javascript:void(0);" onClick="agenda(<?php echo $day_count + 1; ?>,1);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
-				
+
             </div>
             </div>
               </div>
@@ -816,9 +816,13 @@
 			$('#coreteam_'+cnt+' span ').addClass( "fa fa-minus" );
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
-			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-5">';
+			html += '<label for="Core Team" class="col-sm-3 control-label">Speakers</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-3">';
 			html += '<input class="form-control background_color" placeholder="Name" name="sp_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
-			html +='</div><div class="col-md-6 mmar_t15">';
+			html +='</div>';
+      html +='<div class="col-md-4 mmar_t15">';
+      html +='<input type="text" class="form-control background_color" name="sp_designation[]" id="cot_designation_'+count_ct+'" placeholder="Designation" >';
+      html +='</div>';
+      html +='<div class="col-md-4 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
       html +='<div  class="col-md-1 form-group more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
       html +='<div class="col-md-12 mar_t15">';

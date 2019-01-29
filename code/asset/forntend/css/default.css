@@ -3126,20 +3126,32 @@ textarea { resize: vertical; }
   padding-bottom:5px;
 }
 .event_table{
-  border:1px solid #cccccc;
+  border:1px solid #E4E3E3;
   border-left:none;
   border-top:none;
 }
 .event_table:nth-child(2){
-  border-left:1px solid #cccccc;
-  border-top:1px solid #cccccc;
+  border-left:1px solid #E4E3E3;
+  border-top:1px solid #E4E3E3;
 }
 .event_table:nth-child(3){
-  border-top:1px solid #cccccc;
+  border-top:1px solid #E4E3E3;
 }
 .event_table:nth-child(even){
-  border-left:1px solid #cccccc;
+  border-left:1px solid #E4E3E3;
 }
+@media (min-width:990px) {
+  .event_table:nth-child(odd):before{
+    position:absolute;
+  	top:0px;
+  	background:transparent;
+  	width:80%;
+  	content:"";
+  	left:4px;
+    border-left:1px solid #E4E3E3;
+  }
+}
+
 .event_padding{
   padding-left:30px;
   padding-right:30px;
