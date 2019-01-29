@@ -46,6 +46,13 @@
               <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
             </div>
             </div>
+            <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Event Url<span class="mstar">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty"
+             >
+            </div>
+            </div>
 			<div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">City<span class="mstar">*</span></label>
             <div class="col-sm-9">
@@ -200,7 +207,8 @@
                  data-fv-stringlength="true" data-fv-stringlength-max="10" data-fv-stringlength-message="Time must be less than 10 characters">
                 </div>
                 <div class="col-md-8 mmar_t15">
-                  <input type="text" class="form-control background_color" name="event1[]" id="event_00" placeholder="Event" >
+                  <input type="text" required class="form-control background_color" name="event1[]" id="event_00" placeholder="Event" data-fv-notempty-message="Event is required and cannot be empty"
+                 data-fv-stringlength="true" data-fv-stringlength-max="30" data-fv-stringlength-message="Event must be less than 30 characters" >
                 </div>
                   <div class="more_input_boxess new_input_boxes" id="agenda_1"><a href="javascript:void(0);" onClick="agenda(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
@@ -234,7 +242,7 @@
              <span id="loadAddDigital"  style="float:left;display:none">Inserting...</span>
             <div class="col-sm-offset-3 col-sm-9">
               <!--<a href="<?php echo base_url();?>my-digital-assets" class="btn btn-default">CANCEL</a>-->
-              <button type="submit" class="btn btn-custom">ADD <span class="mm_show">MORE </span> <span class="m_hide">MORE</span> EVENTS</button>
+              <button type="submit" class="btn btn-custom">ADD EVENT</button>
             </div>
             </div>
 
