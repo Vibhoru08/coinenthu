@@ -7,10 +7,10 @@
 						<!--<hr style="width:5%;border:2px solid #ffff">-->
                         <div class = "mar_t30 text-left row">
                           <div class = "col-md-9 col-xs-12 mar_l40 profile_desx m_hide pad_0">
-                              <h2 class="mar_0">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
+                              <!--<h2 class="mar_0">Hi <?php// echo ucfirst($userinfo->u_firstname); ?>!</h2>-->
                           </div>
-                            <div class = "col-md-5 mar_l40 pad_0 m_hide">
-                            <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
+                            <div class = "col-md-5 col-md-offset-2  pad_0 m_hide">
+                            <!--<span style = "font-size:15px;"><?php //echo ucfirst($userinfo->u_about); ?></span>-->
                             </div>
                         </div>
 					</div>
@@ -31,15 +31,61 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
+            <div class = "col-md-2 col-xs-12 profile_desx m_hide pad_0">
+              <div style = "font-size:15px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
+                <h1 class="mar_t5">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
+            </div>
             <div class = "col-md-2 col-xs-12 profile_desx pad_0 big_hide">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
             </div>
+            <div class="col-md-6 col-md-offset-1 m_hide like_upvote text-left">
+              <div class = "text-left col-xs-4 col-lg-2">
+                  <div id="no_rev" class = "text-center"><?php echo $nor; ?></div>&nbsp;
+                  <i class="fa fa-commenting" aria-hidden="true"></i>
+                  <span class="dis_block">
+          <?php
+                  if ($nor == 1){
+                      echo "Review";
+                  }
+                  else{
+                      echo "Reviews";
+                  }
+                  ?></span>
+         </div>
+              <div class = "text-left col-xs-4 col-lg-2 col-lg-offset-2">
+                  <div id = "nor" class = "text-center"><?php echo $nore; ?></div>&nbsp;
+
+                  <i class="fa fa-reply" aria-hidden="true"></i>
+                  <span class="dis_block">
+          <?php
+                  if ($nore == 1){
+                      echo "Reply";
+                  }
+                  else{
+                      echo "Replies";
+                  }
+                  ?></span>
+        </div>
+              <div class = "text-left col-xs-4 col-lg-2 col-lg-offset-2">
+                  <div id="nou" class = "text-center"><?php echo $nou; ?></div>&nbsp;
+                  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                  <span class="dis_block">
+                  <?php
+                  if ($nou == 1){
+                      echo "Upvote";
+                  }
+                  else{
+                      echo "Upvotes";
+                  }
+                  ?></span>
+                </div>
             <div class = "col-md-5 col-xs-12 profile_desx pad_0 big_hide">
             <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
             </div>
+          </div>
           <br>
         </div>
-        <div class="row like_upvote">
+        <div class="row like_upvote big_hide">
           <div class = "text-center col-xs-4">
               <div id="no_rev"><?php echo $nor; ?></div>&nbsp;
               <i class="fa fa-commenting" aria-hidden="true"></i>
@@ -67,7 +113,7 @@
               ?></span>
     </div>
           <div class = "text-center col-xs-4">
-              <div><?php echo $nou; ?></div>&nbsp;
+              <div id="nou"><?php echo $nou; ?></div>&nbsp;
               <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               <span class="dis_block">
               <?php
@@ -81,7 +127,7 @@
             </div>
           </div>
         <div class = "row mar_t40">
-                <div class ="col-md-8 col-md-offset-1">
+                <div class ="col-md-7 col-md-offset-1">
 					<?php if(sizeof($reviews) > 0){foreach($reviews as $cr=>$review){?>
 					<div class = "row new_boxes upcoming_box_padding" id="review_<?php echo $review->re_id; ?>">
 						<div class = "col-md-2 text-center">
