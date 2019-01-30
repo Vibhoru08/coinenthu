@@ -10,7 +10,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                 <div class="col-xs-10 col-xs-offset-1">
                   <div class="col-xs-2">
                 <?php
-                if(isset($event['event_picture'])){
+                if(isset($event['event_picture']) && $event['event_picture'] != '' ){
                     $imagepath = base_url().'asset/img/events/main/'.$event['event_picture'];
                 }else{
                     $imagepath = base_url().'images/empty_thumb.jpg';
@@ -34,7 +34,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
             <div class="col-xs-10 col-xs-offset-1 asset-boxes event_padding text-center pad_b20">
               <h4 class="mar_t20">About </h4>
               <p class="text-justify event_description"><?php echo $event['event_description']; ?></p>
-              <a href="#" class="btn btn-cstm btn-review mar_t10 NoirProRegular" type="button">Join Event</a>
+              <a href="<?php echo $event['event_url']; ?>" class="btn btn-cstm btn-review mar_t10 NoirProRegular" type="button">Join Event</a>
             </div>
           </div>
           <div class="row" >
@@ -50,7 +50,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                         }
                         echo '<p><img class="speaker-image" src = "'.$spimage.'" alt = "'.$speaker->sp_name.'"></p>';
                         echo '<h5 class="speaker_name">'.$speaker->sp_name.'</h5>';
-                        echo '<div>Designation</div>';
+                        echo '<div>'.$speaker->sp_desig.'</div>';
                         echo '<a href="'.$speaker->sp_url.'" >Linkedin</a>';
                         ?>
                       </div><?php

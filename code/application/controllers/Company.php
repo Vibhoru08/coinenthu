@@ -780,6 +780,7 @@
 					$data['event_date'] = CombineDate($startdate,$enddate);
 					$data['event_name'] = $value->ev_name;
 					$data['event_location'] = $value->ev_loc;
+					$data['event_url']      = $value->ev_url;   
 					$data['event_city'] = $value->ev_city;
 					$data['event_picture'] = $value->ev_picture;
 					$data['event_att'] = $value->ev_num;
@@ -1942,7 +1943,7 @@
 						}else{
 							$spimage = '';
 						}
-						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
 					}
 				}
 				if(!empty($_POST['time1'])){
@@ -1980,6 +1981,27 @@
 						}
 					}
 				}
+				$getAdminDtls = $this->Companies_model->getAdminDetails( );
+				$mailDetails = Array();
+				$mailDetails['name'] = $_POST['ev_name'];
+				$config = array (
+					'mailtype' => 'html',
+					'charset'  => 'utf-8',
+					'priority' => '1'
+				);
+				$email = $getAdminDtls->u_email;
+				$this->email->initialize($config);
+				$this->load->library('email');
+				$from_email = $this->input->post('cm_email');
+				$to_email   = 'info@coinenthu.com';
+				$this->email->from($from_email, 'Coinenthu');
+				$this->email->to($to_email);
+				$this->email->subject('Event Approval.');
+				$message = $this->load->view('mail_templates/daico-mail-template',$mailDetails,TRUE);
+				$this->email->message($message);
+				$this->email->send();
+				// echo $message;exit;
+				echo $companyId;exit;
 
 			}
 

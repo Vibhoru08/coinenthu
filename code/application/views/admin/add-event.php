@@ -49,8 +49,7 @@
             <div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">Event Url<span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty"
-             >
+              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty">
             </div>
             </div>
 			<div class="form-group">

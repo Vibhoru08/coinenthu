@@ -491,7 +491,7 @@ class Companies extends MY_Controller {
 						}else{
 							$spimage = '';
 						}
-						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
 					}
 				}
 				if(!empty($_POST['time1'])){
@@ -893,6 +893,13 @@ class Companies extends MY_Controller {
 				}else{
 					$data['event_city'] = '';
 				}
+
+				if (isset($v->ev_url) && $v->ev_url != ''){
+					$data['event_url'] = $v->ev_url;
+				}else{
+					$data['event_url'] = '';
+				}
+
 				if (isset($v->ev_decript) && $v->ev_decript != ''){
 					$data['event_decript'] = $v->ev_decript;
 				}else{
@@ -940,6 +947,8 @@ class Companies extends MY_Controller {
 			foreach ($speakers as $n=>$speaker){
 				$data['speakers'][$n] = $speaker->sp_name;
 				$data['speakers_url'][$n] = $speaker->sp_url;
+				$data['speakers_images'][$n] = $speaker->sp_image;
+				$data['speakers_desig'][$n] = $speaker->sp_desig;
 
 			}
 			$lastagenda = $this->Companies_model->getAgendaLast($ev_id);
@@ -1007,11 +1016,13 @@ class Companies extends MY_Controller {
 					$spimage = $reImage2[4];
 
 				}else{
-					$spimage = '';
+					$spimage = $_POST['speaker_images'][$key];
 				}
-				$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_profile_url'][$key],$spimage);
+				$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
 			}
-		}
+		}		
+		
+		$deleteAgendaStatus = $this->Companies_model->deleteAgenda($event_id);
 		if(!empty($_POST['time1'])){
 			foreach($_POST['time1'] as $key=>$agtime){
 				if($agtime != ""){

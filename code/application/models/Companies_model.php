@@ -138,7 +138,7 @@ class Companies_model extends CI_Model
 	public function deleteAgenda($event_id)
 	{
 		$this->db->where('ag_evid',$event_id);
-		$this->db->where('bop_events_agenda');
+		$this->db->delete('bop_events_agenda');
 		return 1;
 	}
 
@@ -1505,6 +1505,12 @@ class Companies_model extends CI_Model
 			$ev_loc = '';
 		}
 
+		if(isset($post['ev_url']) && $post['ev_url'] != ""){
+			$ev_url = $post['ev_url'];
+		}else{
+			$ev_url = '';
+		}
+
 		if(isset($post['ev_sd']) && $post['ev_sd'] != "")
 		{
 			$ev_sd = $post['ev_sd'];
@@ -1575,6 +1581,7 @@ class Companies_model extends CI_Model
             'ev_name'  							=> $ev_name,
 			'ev_decript'   						=> $ev_decript,
 			'ev_picture'    					=> $resizeImg,
+			'ev_url'                            => $ev_url,  
 			'ev_loc'                            => $ev_loc,
 			'ev_sd'                             => $ev_sd,
 			'ev_st'                             => $ev_st,
@@ -1616,6 +1623,13 @@ class Companies_model extends CI_Model
 			$ev_sd = $post['ev_sd'];
 		}else{
 			$ev_sd = '';
+		}
+
+		if(isset($post['ev_url']) && $post['ev_url'] != "")
+		{
+			$ev_url = $post['ev_url'];
+		}else{
+			$ev_url = '';
 		}
 
 		if(isset($post['ev_st']) && $post['ev_st'] != "")
@@ -1671,6 +1685,7 @@ class Companies_model extends CI_Model
             'ev_name'  							=> $ev_name,
 			'ev_decript'   						=> $ev_decript,
 			'ev_picture'    					=> $resizeImg,
+			'ev_url'                            => $ev_url,
 			'ev_loc'                            => $ev_loc,
 			'ev_sd'                             => $ev_sd,
 			'ev_st'                             => $ev_st,
@@ -1799,11 +1814,12 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
-	public function addEventSpeakers($event_id,$spname,$url,$spimage)
+	public function addEventSpeakers($event_id,$spname,$spdesig,$url,$spimage)
 	{
 		$data = array(
 			'sp_evid'           => $event_id,
 			'sp_name'           => $spname,
+			'sp_desig'          => $spdesig,
 			'sp_url'            => $url,
 			'sp_image'          => $spimage,
 			'sp_status'         => 1,

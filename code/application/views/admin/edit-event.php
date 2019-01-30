@@ -55,7 +55,13 @@
               <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"><?php echo $event_location; ?></textarea>
             </div>
             </div>
-			<div class="form-group">
+						<div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Event Url<span class="mstar">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" value = "<?php echo $event_url; ?>" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty">
+            </div>
+            </div>
+						<div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">City<span class="mstar">*</span></label>
             <div class="col-sm-9">
               <select name = "ev_city" required>
@@ -186,15 +192,19 @@
             </div>
             <span id="core_team_divs">
 			<?php foreach($speakers as $n=>$speaker){ ?>
+							<input type = "hidden" id = "speaker_images" name = "speaker_images[]" value = "<?php echo $speakers_images[$n]; ?>" > 	
               <div class="form-group" id="core_team_<?php echo $n + 1; ?>">
               <label for="Core Team" class="col-sm-3 control-label">Speakers<span class="mstar">*</span></label>
               <div class="col-sm-9">
               <div class="row pos_r">
-                <div class="col-md-5">
+                <div class="col-md-3">
                   <input type="text" value = "<?php echo $speaker; ?>" class="form-control background_color"  placeholder="Name" required name="sp_name[]"  id="cot_name_<?php echo $n + 1; ?>" data-fv-notempty-message="Name is required and cannot be empty" data-fv-regexp="true"
                 data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
-                <div class="col-md-6 mmar_t15">
+								<div class="col-md-4 mmar_t15">
+                  <input type="text" class="form-control background_color" value = "<?php echo $speakers_desig[$n]; ?>" name="sp_designation[]" id="cot_designation_0" placeholder="Designation" >
+                </div>
+                <div class="col-md-4 mmar_t15">
                   <input type="text" value = "<?php echo $speakers_url[$n]; ?>" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $n + 1; ?>" placeholder="LinkedIn URL" >
                 </div>
                 <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $n + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $n + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
@@ -210,12 +220,15 @@
               <label for="Core Team" class="col-sm-3 control-label">Speakers</label>
               <div class="col-sm-9">
               <div class="row pos_r">
-                <div class="col-md-5">
+                <div class="col-md-3">
                   <input type="text" value = "" class="form-control background_color"  placeholder="Name" name="sp_name[]"  id="cot_name_<?php echo $speaker_count + 1; ?>"  data-fv-regexp="true"
                 data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" data-fv-regexp-message="Name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="Name must be less than 100 characters">
                 </div>
-                <div class="col-md-6 mmar_t15">
-                  <input type="text" value = "" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $speaker_count + 1; ?>" placeholder="LinkedIn URL" >
+                <div class="col-md-4 mmar_t15">
+                  <input type="text" value = "" class="form-control background_color" name="sp_designation[]" id="cot_profile_url_<?php echo $speaker_count + 1; ?>" placeholder="Designation" >
+                </div>
+								<div class="col-md-4 mmar_t15">
+                  <input type="text" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_<?php echo $n + 1; ?>" placeholder="LinkedIn URL" >
                 </div>
                 <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $speaker_count + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $speaker_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 
