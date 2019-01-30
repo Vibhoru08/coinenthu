@@ -690,6 +690,21 @@ function confirmActions() {
                 reportsReplies('reviews');
             }
         });
+    } else if (whitchPage == "eventsList") {
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: baseUrl + '/Companies/EventActions?srch=' + time,
+            data: { id: id, statusMode: statusMode },
+            success: function(res) {
+                $('#confirmationDeleteModal').modal('hide');
+                if (statusMode == 1) {
+                    loadEventsList(1);
+                } else {
+                    loadEventsList(1);
+                }
+            }
+        });    
     } else if (whitchPage == "reviewsReply") {
         $.ajax({
             type: "POST",

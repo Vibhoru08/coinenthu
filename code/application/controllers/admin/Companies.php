@@ -267,7 +267,7 @@ class Companies extends MY_Controller {
 					$data[$key]['ev_status']          	= 	$fqf_status;
 
 					$goUrl = 'edit-event';
-					$whitchPage = "'icotracker'";
+					$whitchPage = "'eventsList'";
 
 					if($ad->ev_status == 1){
 						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
@@ -608,6 +608,24 @@ class Companies extends MY_Controller {
 			echo json_encode(array('status'=>FALSE,'data'=>'notsuccess'));
 		}
 	}
+
+	public function EventActions(){
+		if(isset($_POST['id']) && $_POST['id']!=""){
+			$tcm_id 	= $_POST['id'];
+			$statusMode = $_POST['statusMode'];
+			//Overall Rating
+			
+			// $deleteStatus = $this->Companies_model->UpdateDigitalstatus($tcm_id,$statusMode);
+			$deleteStatus = $this->Companies_model->UpdateEventStatus($tcm_id,$statusMode);
+			//Mail
+				
+				// echo $message;exit;
+			echo json_encode(array('status'=>TRUE,'data'=>'success'));
+		}else{
+			echo json_encode(array('status'=>FALSE,'data'=>'notsuccess'));
+		}
+	}
+
 	public function editDigitalAsset()
 	{
 		$data = array();

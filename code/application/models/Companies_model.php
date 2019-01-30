@@ -2055,6 +2055,14 @@ class Companies_model extends CI_Model
         $this->db->where('cm_id',$id);
 		$this->db->update('bop_compaines',$status);
 	}
+
+	public function UpdateEventStatus($id,$statusMode)
+	{
+		$status = array('ev_status' => $statusMode, );
+		$this->db->where('ev_id',$id);
+		$this->db->update('bop_events',$status);
+	}
+
 	public function getDigitalAssetDetails($cmp_id,$user_id,$companyType)
 	{
 		$this->db->select('*');
@@ -2263,6 +2271,16 @@ class Companies_model extends CI_Model
 		$this->db->where('ev_id',$event_id);
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	public function getEventInfoForApproval($event_id)
+	{
+		$this->db->select('*');
+        $this->db->from('bop_events');
+
+		$this->db->where('ev_id',$event_id);
+		$query = $this->db->get();
+		return $query->row();
 	}
 
 	public function getAgendaLast($event_id)
