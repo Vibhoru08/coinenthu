@@ -35,7 +35,7 @@
      <!--<li><a href="#" class="github" title="Github"><i class="fa fa-github"></i></a></li>-->
      <li><a href="https://twitter.com/coinenthu" class="icoTwitter footer_social_icon" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
      <!--<li><a href="https://discord.gg/MHwEEXd" target="_blank" class="discord" title="Discord"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/discord.png"/></i></a></li>-->
-     <li><a href="https://t.me/joinchat/FXFSjQ2ZWlb9B4w9aRbP3w" class="telegram" target="_blank" title="Telegram"><i class="fa "><img style="margin-top:5px;margin-left:4px;width:14px" src="<?php echo base_url();?>asset/forntend/images/telegram-app.png"/></i></a></li>
+     <li><a href="https://t.me/joinchat/FXFSjQ2ZWlb9B4w9aRbP3w" class="telegram" target="_blank" title="Telegram"><i class="fa fa-telegram" style="color:#000046;"><img style="margin-top:5px;margin-left:4px;width:14px" src="<?php echo base_url();?>asset/forntend/images/telegram-app.png"/></i></a></li>
 
      <!--<li><a href="https://Coinenthu.slack.com/shared_invite/MTgyMDI4MDM3NjM5LTE0OTQzODMzNzgtZGEyMjc0ODBhNQ" target="_blank" class="icoGoogle" title="Slack"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/slack_ie11.png"/></i></a></li>
      <li><a href="#" class="icon_market" title="Coinmarketcap"><i class="fa "><img style="margin-top:5px;margin-left:4px" src="<?php echo base_url();?>asset/forntend/images/bitcoin.png"/></i></a></li>-->
@@ -46,7 +46,7 @@
      <p class="mar_t20 NoirProLight m_hide">&nbsp;info@coinenthu.com</p>
 
 
-     <div class="input-group input-group-sm m_hide">
+     <div class="mar_t10 input-group input-group-sm m_hide">
                <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                    <span class="input-group-btn">
                      <button type="button" class="btn btn-info btn-cstm mar_left10" onClick="subscriber();">Subscribe</button>
@@ -61,7 +61,7 @@
    <p class="mar_t30 NoirProLight">&nbsp;info@coinenthu.com</p>
 
 
-   <div class="input-group input-group-sm">
+   <div class="mar_t10 col-xs-8 col-xs-offset-2 input-group input-group-sm">
              <input class="form-control" type="text" placeholder="Enter Your Email" id="subemail" name="subemail">
                  <span class="input-group-btn">
                    <button type="button" class="btn btn-info btn-cstm mar_left10" onClick="subscriber();">Subscribe</button>
@@ -241,7 +241,7 @@
        </form>
      </div>
      <div class="modal-footer">
-       <a href="<?php echo base_url().'login'; ?>" class="btn btn-primary">Sign In</a>
+       <a id="not_login_footer_modal" href="<?php echo base_url().'login'; ?>" class="btn btn-primary" style="display:none;">Sign In</a>
        <button id="change_btn_name" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
      </div>
    </div>
@@ -938,6 +938,9 @@ function changePassword() {
                         $('#uChangePwd').data('formValidation').resetForm();
                         $('#errMesg').html('');
                         $('#success').html('Password updated successfully');
+                        setTimeout(function(){
+                    			$("#ChangePass").modal('hide');
+                  			}, 1000);
                     } else {
                         $('#errMesg').html('');
                         $('#errMesg').html('Entered current password is wrong.');

@@ -2053,6 +2053,7 @@ a.socialIcon:hover, .socialHoverClass {
 #subemail{
   font-family: NoirPro Light;
   margin-right:10px;
+  width:95%;
 }
 @media (min-width:768px) and (max-width:820px){
   #subemail{
@@ -2126,7 +2127,7 @@ color:#fff;
 	background-color: #7084cb;
 }
 .telegram{
-	background-color: transparent ;
+	background-color: #fff ;
   color:#1546a5;
 }
 .github{
@@ -2984,6 +2985,7 @@ font-family: NoirPro;
 .linear_color_home{
   background-image:url('../images/homebanner.png');
   background-repeat:no-repeat;
+  background-size:100%;
 }
 .crr_decript{
   border:1px solid black;
@@ -3302,14 +3304,21 @@ textarea { resize: vertical; }
 .mar_login{
 margin:0 -15%;
 }
+.set_height_br{
+  display: block;
+  height:16px;
+}
+@media(max-width:767px){
+  .linear_color_home{
+
+  }
+}
 @media(max-width:768px){
 .review-asset-image{
  height:100px!important;
  margin-top:-50px!important;
  }
- .linear_color_home{
-   margin-top:64px!important;
- }
+
  .su_home{
     font-size: 16px;
  }
@@ -3382,6 +3391,11 @@ margin:0 -15%;
   width:220px;
   z-index: 998;
   font-size: 18px;
+}
+@media(max-width:768px){
+  .button_placemnt{
+    top:250px;
+  }
 }
 .btn-cstm_upc{
   float:none;
@@ -3883,7 +3897,9 @@ a.left_panel_desc{
 	}
 	.logo_one img{
 		width:170px;
-    height:65px;
+    height:40px;
+    margin-top:5px;
+    margin-left:10px;
 	}
 	.content_w{
 		width:100%;
@@ -3996,9 +4012,7 @@ a.left_panel_desc{
  .mm_no_padding{
 		padding:0 7px;
 	}
-  .dis_block{
-    display:block;
-  }
+
   .dis2_block{
     display: block;
   }

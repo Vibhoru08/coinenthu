@@ -780,7 +780,7 @@
 					$data['event_date'] = CombineDate($startdate,$enddate);
 					$data['event_name'] = $value->ev_name;
 					$data['event_location'] = $value->ev_loc;
-					$data['event_url']      = $value->ev_url;   
+					$data['event_url']      = $value->ev_url;
 					$data['event_city'] = $value->ev_city;
 					$data['event_picture'] = $value->ev_picture;
 					$data['event_att'] = $value->ev_num;
@@ -1486,7 +1486,7 @@
 						if($last_review_details->u_about != ""){
 							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{
-							$html.='<br/><br/>';
+							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}
                         $string = strip_tags($last_review['re_decript']);
 							if (strlen($string) > 100) {
@@ -1502,7 +1502,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><br/></br><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
+						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
 						}
 						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
@@ -1771,7 +1771,7 @@
 						if($last_review_details->u_about != ""){
 							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{
-							$html.='<br/><br/>';
+							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}
                         $string = strip_tags($last_review['re_decript']);
 							if (strlen($string) > 100) {
@@ -1787,7 +1787,7 @@
 								$stringCut = substr($string, 0, 100);
 								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
 							}
-						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><br/></br><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
+						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
 						}
 						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';

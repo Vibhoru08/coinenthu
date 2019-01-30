@@ -4486,8 +4486,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-brand-logo >img{
-  height:60px;
+  height:40px;
   width:156.5px;
+  margin-top:10px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {

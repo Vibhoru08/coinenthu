@@ -1845,6 +1845,7 @@ function reply_show(id){
 					$("#common_heading").html('Warning Message');
 					$("#common_message").html('Login required');
 					$('#common_modal_pop').modal('show');
+					$('#not_login_footer_modal').show();
 				}, 1000);
 			}
 		}
@@ -1910,6 +1911,7 @@ function reply_show(id){
 							setTimeout(function(){
 								$("#common_heading").html('Warning Message');
 								$("#common_message").html('Login required');
+								$('#not_login_footer_modal').show();
 								$('#common_modal_pop').modal('show');
 							}, 1000);
 						}
@@ -1925,6 +1927,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2064,6 +2067,7 @@ function reply_show(id){
 								$("#common_heading").html('Warning Message');
 								$("#common_message").html('Login required');
 								$('#common_modal_pop').modal('show');
+								$('#not_login_footer_modal').show();
 							}, 2000);
 						}
 					}
@@ -2077,6 +2081,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2138,6 +2143,7 @@ function reply_show(id){
 								$("#common_heading").html('Warning Message');
 								$("#common_message").html('Login required');
 								$('#common_modal_pop').modal('show');
+								$('#not_login_footer_modal').show();
 							}, 2000);
 						}
 					},error:function(jqXHR,textStatus, errorThrown){
@@ -2157,6 +2163,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2177,6 +2184,7 @@ function reply_show(id){
 					$("#common_heading").html('Warning Message');
 					$("#common_message").html('Login required');
 					$('#common_modal_pop').modal('show');
+					$('#not_login_footer_modal').show();
 				}, 100);
 			}
 	}
@@ -2222,6 +2230,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2273,6 +2282,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2471,6 +2481,7 @@ function reply_show(id){
 							$("#common_heading").html('Warning Message');
 							$("#common_message").html('Login required');
 							$('#common_modal_pop').modal('show');
+							$('#not_login_footer_modal').show();
 						}, 1000);
 					}
 				}
@@ -2483,6 +2494,7 @@ function reply_show(id){
 				$("#common_heading").html('Warning Message');
 				$("#common_message").html('Login required');
 				$('#common_modal_pop').modal('show');
+				$('#not_login_footer_modal').show();
 			}, 1000);
 		}
 	}
@@ -2567,6 +2579,7 @@ function reply_show(id){
 							$("#common_heading").html('Warning Message');
 							$("#common_message").html('Login required');
 							$('#common_modal_pop').modal('show');
+							$('#not_login_footer_modal').show();
 						}, 1000);
 					}
 				}

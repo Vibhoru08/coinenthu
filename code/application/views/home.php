@@ -1,7 +1,7 @@
-<div class = "content-wrapper" style="min-height:0!important;">
-    <section class = "content">
+<div class = "content-wrapper" >
+
         <div class = "container-fluid banner_margin linear_color_home">
-            <div class = "row text-center mar_t30 mmar_th0">
+            <div class = "row text-center mar_t30">
                 <div class = "col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 banner_headh">
                     COMMUNITY BASED CRYPTO REVIEWS
                   <!--  <hr style="width:5%;border:2px solid #ffff">-->
@@ -38,7 +38,7 @@
   			<input type="hidden" id="pageMode" value="digital" />
         <input type="hidden" id="filter_id" value="2" />
         <input type="hidden" id="home_no_display" value="3" />
-        <div class="row company_list"></div>
+        <div class="row company_list col-md-10 col-md-offset-1"></div>
         <div class="row companiesy_list mar_b80">
           <div class="col-xs-12 col-md-10 col-md-offset-1">
             <?php //echo "<pre>";print_r($digitalAssets);echo "</pre>";die()?>
@@ -597,7 +597,7 @@
  </div>
 
 
-    </section>
+</div>
 </div>
 <script>
 $(document).ready(function(){

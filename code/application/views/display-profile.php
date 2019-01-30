@@ -41,7 +41,7 @@
         </div>
         <div class="row like_upvote">
           <div class = "text-center col-xs-4">
-              <span id="no_rev"><?php echo $nor; ?></span>&nbsp;
+              <div id="no_rev"><?php echo $nor; ?></div>&nbsp;
               <i class="fa fa-commenting" aria-hidden="true"></i>
               <span class="dis_block">
       <?php
@@ -54,7 +54,7 @@
               ?></span>
      </div>
           <div class = "text-center col-xs-4">
-              <span id = "nor"><?php echo $nore; ?></span>&nbsp;
+              <div id = "nor"><?php echo $nore; ?></div>&nbsp;
               <i class="fa fa-reply" aria-hidden="true"></i>
               <span class="dis_block">
       <?php
@@ -67,7 +67,7 @@
               ?></span>
     </div>
           <div class = "text-center col-xs-4">
-              <?php echo $nou; ?>&nbsp;
+              <div><?php echo $nou; ?></div>&nbsp;
               <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               <span class="dis_block">
               <?php
