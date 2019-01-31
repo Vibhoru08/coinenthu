@@ -2,7 +2,20 @@ $(document).ready(function(){
 	  $('.collapsed').click(function(){
 		$('body').toggleClass('body_h');
 	});
-
+	CKEDITOR.on('dialogDefinition', function(e) {
+	    if (e.data.name === 'link') {
+	        var target = e.data.definition.getContents('target');
+	        var options = target.get('linkTargetType').items;
+	        for (var i = options.length-1; i >= 0; i--) {
+	            var label = options[i][0];
+	            if (!label.match(/new window/i)) {
+	                options.splice(i, 1);
+	            }
+	        }
+	        var targetField = target.get( 'linkTargetType' );
+	        targetField['default'] = '_blank';
+	    }
+	});
 	// if menu is open then true, if closed then false
 	// we start with false
 	var open = false;

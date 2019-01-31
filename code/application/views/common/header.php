@@ -211,7 +211,7 @@ $img =  base_url().'images/logo.png';
 						}
 					?>
 					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){?>
-					<div class="dropdown mar_t5 float_right mar_r30 p_hover">
+					<div class="dropdown mar_t12 float_right mar_r30 p_hover">
 					<button type="button" class="dropdown-toggle nav_user" data-toggle="dropdown" style="position:relative;">
 						<img src = "<?php echo $imagePath; ?>" class = "img-circle reply-image">&nbsp;&nbsp;<span class="caret_change"><span class="caret"></span></span></button>
 

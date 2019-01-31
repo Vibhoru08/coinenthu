@@ -93,6 +93,14 @@
 		</section>
 	</div>
 </div>-->
+<?php
+	$cm_name = str_replace(' ','_',$companyview['company_name']);
+	$cm_unique_id = $companyview['cm_unique_id'];
+	$shareUrl = base_Url().'company-full-view/'.$cm_name;
+	$shareVia = '';
+	$shareText = '';
+
+?>
     <div class = "container-fluid mar_b400 mar_tn10 mar_tm30">
 		<div class ="row">
 			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left md_equal_margin">
@@ -214,7 +222,7 @@
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
-							<div class="text-left" style="margin-left:-8px;"><table class="table">
+							<div class="text-left"><table class="table">
 								<?php if($companyview['cm_ctid'] != 2){ ?>
 								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
@@ -224,7 +232,7 @@
 								</table></div>
 							<?php
 							}else if(isset($companyview['api_data']) && $companyview['api_data'] == 0)
-							{?><div class="" style="margin-left:-8px"><table class="table">
+							{?><div class=""><table class="table">
 								<?php if($companyview['cm_ctid'] == 1){ ?>
 									<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
@@ -375,7 +383,7 @@
 						<?php if($companyview['ms_title'] != "") { ?>
 						<div class="mar_t10">
 						<hr>
-						<h4 class="no-margin asset-heading pad_b10">Milestones</h4>
+						<h4 class="no-margin asset-heading pad_b10">Project Updates</h4>
 							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
 							if($i==1){
 								$mar_t10 = '';
@@ -626,9 +634,9 @@
 							{
 								if($uid == $review->re_uid){
 							?>
-							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new clickable"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
 							<?php } else { ?>
-								<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+								<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new clickable"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
 							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><?php $checkedRes1 = $this->Companies_model->checkUserLiked($uid,$review->re_id,'like');
 							      if(isset($checkedRes1->rr_id) && $checkedRes1->rr_id!=''){
 									echo ' <i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class = "like-button-text" style="color:#065FD4;">Liked</span>';
@@ -655,7 +663,7 @@
 							<span id="reviewReportId_<?php echo $review->re_id; ?>"><button onclick="reviewReportMethod('<?php echo $review->re_id; ?>','reviewpreport','');" class="btn btn-default btn_dislike_new"><i class="fa fa-flag" aria-hidden="true"></i><span class = "report-button-text">Report</span></button></span>
 							<?php } ?>
 							<?php }}else{ ?>
-							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
+							<button id="reply_dislike_pop<?php echo $review->re_id; ?>" onClick="reply_Message('<?php echo $review->re_id; ?>');" class="btn btn-default btn_dislike_new clickable"><i class="fa fa-reply" aria-hidden="true"></i><span class = "reply-button-text">Reply</span></button>
 							<button id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class = "like-button-text">Like</span></button>
 							<button id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" class="btn btn-default btn_dislike_new"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class = "dislike-button-text">Dislike</span></button>
 							<?php
@@ -1017,7 +1025,7 @@
 						<?php
 							if(isset($companyview['api_data']) && $companyview['api_data'] == 1)
 							{?>
-							<div class="" style="margin-left:-8px"><table class="table">
+							<div class="" ><table class="table">
 								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<?php if($companyview['cm_ctid'] == 2){ ?>
 								<tr><td><h4 class="no-margin">Total token supply </h4></td><td ><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default" id="tokId"><?php echo  number_format($companyview['total_supply']); ?></a></h4></td></tr>
@@ -1031,7 +1039,7 @@
 								</table></div>
 							<?php
 							}else if(isset($companyview['api_data']) && $companyview['api_data'] == 0)
-							{?><div class="" style="margin-left:-8px"><table class="table">
+							{?><div class=""><table class="table">
 								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
 								<?php if($companyview['cm_ctid'] == 2){ ?>
 								<tr><td><h4 class="no-margin">Total token supply  </h4></td><td><h4 class="no-margin"><a href="javascript:void('')" style="cursor :default"><?php echo  number_format($companyview['total_supply']); ?> </a></h4></td></tr>

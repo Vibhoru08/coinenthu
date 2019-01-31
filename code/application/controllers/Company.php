@@ -1889,7 +1889,7 @@
 				$data['cities'] = $this->Companies_model->getCities(1);
 				$this->show('add-event',$data);
 			}else{
-				$this->session->set_userdata('redirect_page', 1);
+				$this->session->set_userdata('redirect_page', 3);
 				redirect(base_url().'login');
 			}
 		}
