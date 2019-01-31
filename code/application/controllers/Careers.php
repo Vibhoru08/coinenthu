@@ -82,7 +82,7 @@ class Careers extends MY_Controller {
 	}
 	public function contactMail(){
 		if(isset($_POST['email']) && $_POST['email']!=""){
-			$email = $_POST['email'];
+			$email = strtolower($_POST['email']);
 			$type = $_POST['type'];
 			$message_sub = $_POST['message_sub'];
 			$body = $_POST['body'];
@@ -116,15 +116,9 @@ class Careers extends MY_Controller {
 	}
 	public function feedbackMail(){
 		if(isset($_POST['feedbackemail']) && $_POST['feedbackemail']!=""){
-			$email     = $_POST['feedbackemail'];
+			$email     = strtolower($_POST['feedbackemail']);
 			$comments  = $_POST['comments'];
-			$countryid = $_POST['countryid'];
-			$getCountryName = $this->User_model->getCountryName($countryid);
-			if(isset($getCountryName->name) && $getCountryName->name!=""){
-				$countryName = ucfirst($getCountryName->name);
-			}else{
-				$countryName = "";
-			}
+			$countryName = "";
 			//Mail
 			$mailDetails = Array();
 			$mailDetails['comments'] = $comments;

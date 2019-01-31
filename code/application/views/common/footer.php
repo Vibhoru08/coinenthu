@@ -598,21 +598,13 @@
          <div class="">
            <div class="form-group">
              <label>Please provide your email(so we can follow up!) :</label>
-               <input type="text" class="form-control" id="feedbackemail" name="feedbackemail" class="form-control" required data-fv-notempty-message="Email reqired" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
+               <input type="text" class="form-control" id="feedbackemail" name="feedbackemail" class="form-control" required data-fv-notempty-message="Email reqired" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
            </div>
            <div class="form-group">
              <label>Please submit any comments for us below.</label>
                <textarea type="text" class="form-control" id="comments" name="comments" class="form-control" required data-fv-notempty-message="Comments reqired"></textarea>
            </div>
-           <div class="form-group">
-             <label>Would you like to speak with us to share your site experience?</label>
-               <button type="button" id="site" name="site" class="form-control btn btn-default" onClick="country()">Yes</button>
-           </div>
-           <div class="form-group" id="show_country" style="display:none;">
-               <select id = "countryid" class="form-control" name="countryid" required data-fv-notempty-message="Country reqired.">
-                 <option value="">-Please Select-</option>
-               </select>
-           </div>
+           
          </div>
          </div>
          <div class="box-footer" style="padding: 10px 0">

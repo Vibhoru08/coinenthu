@@ -2177,7 +2177,7 @@
 					foreach($_POST['ms_title'] as $mkey=>$milestonename)
 					{
 						if($milestonename != ""){
-							$mileStResult 	= $this->Companies_model->addMileStone($companyId,$milestonename,$_POST['ms_mss_id'][$mkey]);
+							$mileStResult 	= $this->Companies_model->addMileStone($companyId,$milestonename,2);
 						}
 					}
 				}

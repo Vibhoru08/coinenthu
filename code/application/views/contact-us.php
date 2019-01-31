@@ -42,7 +42,7 @@
 											<div class="form-group">
 												<label for="inputPassword3" class="col-sm-2 col-xs-3 pad_t7 pad_m0 control-label"> Your Email</label>
 												<div class="col-sm-7 col-md-6 col-xs-9 pad_m0">
-													<input type="text" class="form-control" id="email" name="email" placeholder="abc@gmail.com" required data-fv-notempty-message="Email required" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  data-fv-regexp-message="Not A Valid Email">
+													<input type="text" class="form-control" id="email" name="email" placeholder="abc@gmail.com" required data-fv-notempty-message="Email required" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$"  data-fv-regexp-message="Not A Valid Email">
 												</div>
 											</div>
 											<div class="form-group">

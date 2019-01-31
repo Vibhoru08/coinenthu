@@ -58,27 +58,13 @@
 									  </div>
 									  <span id="milestones_boxes">
 										  <div class="form-group" id="milestone_div_1">
-											<label for="inputPassword3" class="col-sm-3 control-label">Milestones</label>
+											<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label>
 											<div class="col-sm-9">
 											<div class="row no-margin mailstone_pad_bg">
 												<div class="col-md-8">
-													<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_0"></textarea>
+													<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
-												<div class="col-md-4 mmar_t15 select_style">
-													<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_0">
-													<option value="0">Select Status </option>
-													<?php
-														if(sizeof($milestoneStatuses)>0){
-															foreach($milestoneStatuses as $mstones)
-															{?>
-																 <option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option>
-															<?php
-
-															}
-														}
-													?>
-													</select>
-												</div>
+												
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>
 											</div>
@@ -733,15 +719,10 @@
 			$('#milestonesboxesCnt').val(parseInt(TotMileStonesBoxesCnt)+parseInt(1));
 			var html = "";
 			html = '<div class="form-group" id="milestone_div_'+count_mb+'">';
-				html += '<label for="inputPassword3" class="col-sm-3 control-label">Milestones</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-md-8">';
+				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-md-8">';
 
-				html += '<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
+				html += '<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
 				html +='</div>';
-				html +='<div class="col-md-4 mmar_t15 select_style"><select class="form-control" name="ms_mss_id[]" id="ms_mss_id_'+count_mb+'"><option value="0">Select Status</option>';
-
-				html += '<?php if(sizeof($milestoneStatuses) > 0){ foreach($milestoneStatuses as $mstones){ ?><option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option><?php }} ?>';
-
-				html +='</select></div>';
 				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 
 					html += '</div>';
