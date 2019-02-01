@@ -322,7 +322,11 @@ function filterEvents(type) {
     var limitpage = $("#limitpage").val();
     var pageMode = $("#pageMode").val();
     var filterId = $("#filter_id").val();
-	var searchterms = $("#searchterms").val();
+		if($("#searchterms1").val() ==""){
+				var searchterms = $("#searchterms").val();
+			} else {
+				var searchterms = $("#searchterms1").val();
+			}
     if (searchterms.length >= 3) {
         searchterms = searchterms;
     } else {
@@ -421,7 +425,11 @@ function filterCompanies(type,pagemode,limit) {
     var limitpage = $("#limitpage").val();
     var pageMode = $("#pageMode").val();
     var filterId = $("#filter_id").val();
-	var searchterms = $("#searchterms").val();
+		if($("#searchterms1").val() ==""){
+				var searchterms = $("#searchterms").val();
+			} else {
+				var searchterms = $("#searchterms1").val();
+			}
     if (searchterms.length >= 3) {
         searchterms = searchterms;
     } else {
@@ -540,7 +548,11 @@ function sreachterm() {
 		if($("#home_no_display").val()==3){
 				$(".company_list").fadeIn();
 		}
-    var searchterms = $("#searchterms").val();
+		if($("#searchterms1").val() ==""){
+    		var searchterms = $("#searchterms").val();
+			} else {
+				var searchterms = $("#searchterms1").val();
+			}
     if (searchterms == '' || searchterms == 'undefined') {
         var type = $("#filter_id").val();
         filterCompanies(type);

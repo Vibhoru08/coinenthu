@@ -3724,7 +3724,7 @@ tbody.collapse.in {
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #f2f2f2;
-  border: 1px solid #f2f2f2;
+  border: none;
   border-radius: 2px;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -4584,10 +4584,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
             box-shadow: none;
   }
   .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .dropdown-menu > li > a,
   .navbar-nav .open .dropdown-menu .dropdown-header {
     padding: 5px 15px 5px 25px;
   }
-  .navbar-nav .open .dropdown-menu > li > a {
+  .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .dropdown-menu > li > a {
     line-height: 20px;
   }
   .navbar-nav .open .dropdown-menu > li > a:hover,

@@ -2546,7 +2546,7 @@ color:#fff;
 .arrow_down{
 	position:absolute;
 	top:6px;
-	right:19px;
+	right:14px;
 }
 .mtop_30{
 	margin-top:30px;
@@ -2920,7 +2920,7 @@ font-family: NoirPro;
 .signup_box > a{
   border:2px solid transparent;
 }
-#searchterms{
+#searchterms,#searchterms1{
   border:2px solid #e31c77;
 }
 .forgot_password{
