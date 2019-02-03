@@ -75,10 +75,32 @@
 				if(isset($_POST['Id']) && $_POST['Id']!=""){
 					$user_id = $this->session->userdata('user_id');
 					$review_id = $_POST['Id'];
+					$review_details = $this->Companies_model->getReviewInfo($review_id);
+					$re_cmid = $review_details->re_cmid;
 					$statusReview = $this->Companies_model->deleteReview($review_id);
 					$statusReply = $this->Companies_model->deleteReviewReply($review_id);
 					$no_of_replies_details = $this->Companies_model->userReplies($user_id);
 					$no_of_replies = $no_of_replies_details->num_rows();
+					$ratingv  = 0;
+					$getCRRating = $this->Companies_model->getCompanyReviewRating($re_cmid);
+					// $getCRRating = $this->Companies_model->getCompanyRwRating($re_cmid);
+					if(count($getCRRating)>0){
+						foreach($getCRRating as $rRating){
+							$ratingv += $rRating->re_rating;
+						}
+						$companyAvrgRating = $ratingv/count($getCRRating);
+					}else{
+						$companyAvrgRating = 0;
+					}
+					$companyAvrgRating = round($companyAvrgRating,1, PHP_ROUND_HALF_UP);
+					$updateRating = $this->Companies_model->updateCompanyOverallRating($re_cmid,$companyAvrgRating);
+					$reviewA  = 0;
+					$getCRReviews = $this->Companies_model->getCompanyReviewReviews($re_cmid);
+					// $getCRReviews = $this->Companies_model->record_count($re_cmid);
+					if(count($getCRReviews)>0){
+						$reviewA = count($getCRReviews);
+					}
+					$updateReviews = $this->Companies_model->updateCompanyOverallReviews($re_cmid,$reviewA);
 					if($statusReview == 1 && $statusReply == 1){
 						echo json_encode(array('status'=>TRUE,'output'=>'success','no_of_replies'=>$no_of_replies));
 					}

@@ -389,13 +389,14 @@ function filterCompanies(type,pagemode,limit) {
 	}
     if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
         var filterTitle = 'Most reviewed';
-        $("#filter_id").val(1);
+        $("#filter_id").val(2);
     } else {
         var filterTitle = 'Ending soon';
         $("#filter_id").val(6);
 
     }
     if (type == 'rating') {
+        $("#filter_id").val(1);
 	    filterTitle = "Highest rating";
     } else if (type == 'viewed') {
 		$("#filter_id").val(2);

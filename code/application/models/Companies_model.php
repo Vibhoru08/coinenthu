@@ -42,7 +42,7 @@ class Companies_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('bop_events');
 		$this->db->where('ev_status',$status);
-    $this->db->limit($limit,$offset);
+    	$this->db->limit($limit,$offset);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -1257,7 +1257,7 @@ class Companies_model extends CI_Model
 			{
 				$orderbyTime = 'cm_ico_start_time';
 				$this->db->order_by($orderbyTime,$ascDesc);
-			}else if($order_by == 'cm_ico_end_time'){
+			}else if($order_by == 'cm_ico_end_date'){
 				$orderbyTime = 'cm_ico_end_time';
 				$this->db->order_by($orderbyTime,$ascDesc);
 			}
