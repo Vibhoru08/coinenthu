@@ -35,8 +35,10 @@ CKEDITOR.editorConfig = function( config ) {
 	config.ignoreEmptyParagraph = false;
 	config.title = false;
 	// Simplify the dialog windows.
-	config.removeDialogTabs = 'image:advanced;link:advanced';
-  config.extraPlugins = 'wordcount,notification';
+	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;html5video:advanced';
+  config.removePlugins = 'PasteFromWord';
+  config.removeButtons = 'PasteFromWord,Anchor,SpecialChar,Source';
+  config.extraPlugins = 'wordcount,notification,html5video';
   config.wordcount = {
 
     // Whether or not you want to show the Paragraphs Count
@@ -73,3 +75,17 @@ CKEDITOR.editorConfig = function( config ) {
     })
 };
 };
+CKEDITOR.on('dialogDefinition', function(e) {
+    if (e.data.name === 'link') {
+        var target = e.data.definition.getContents('target');
+        var options = target.get('linkTargetType').items;
+        for (var i = options.length-1; i >= 0; i--) {
+            var label = options[i][0];
+            if (!label.match(/new window/i)) {
+                options.splice(i, 1);
+            }
+        }
+        var targetField = target.get( 'linkTargetType' );
+        targetField['default'] = '_blank';
+    }
+});
