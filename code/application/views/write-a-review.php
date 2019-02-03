@@ -169,7 +169,14 @@
 
 	$(document).ready(function() {
 
+		CKFinder.setupCKEditor();
 		CKEDITOR.replace('re_decript', {
+			filebrowserBrowseUrl :'', //baseUrl +'asset/ckfinder/ckfinder.html',
+	    filebrowserImageBrowseUrl :'',// baseUrl +'asset/ckfinder/ckfinder.html?type=Images',
+	    filebrowserFlashBrowseUrl :'', //baseUrl +'asset/ckfinder/ckfinder.html?type=Flash',
+	    filebrowserUploadUrl : baseUrl +'asset/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+	    filebrowserImageUploadUrl : baseUrl +'asset/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+	    filebrowserFlashUploadUrl : baseUrl +'asset/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 			height: '300',
    maxlength: '400' ,
 			 on: {

@@ -125,6 +125,7 @@ $img =  base_url().'images/logo.png';
     <script src="<?php echo base_url();?>asset/forntend/js/dk-scripts.js?type='<?php echo time(); ?>'"></script>
 	<script async src="<?php echo base_url(); ?>js/twitter.js" charset="utf-8"></script>
 	<script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
+	<script src="<?php echo base_url(); ?>asset/ckfinder/ckfinder.js" type="text/javascript"></script>
 
 <script> var baseUrl      = '<?php echo base_url(); ?>';$(document).ready(function() {
     FastClick.attach(document.body);

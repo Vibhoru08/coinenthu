@@ -63,7 +63,7 @@
 												<div class="col-md-8">
 													<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
-												
+
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>
 											</div>
@@ -587,7 +587,7 @@
 
 				html += '<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
 				html +='</div>';
-				
+
 				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 
 					html += '</div>';
@@ -892,6 +892,7 @@
 		$('#add_digital_asset').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
 			$('#loadAddDigital').html("Inserting...");
+      $('#loadAddDigital').show();
 				var flag = true;
 				var filesNotGiven = false;
 				var cm_marketcap = $('#cm_marketcap').val();
@@ -949,8 +950,8 @@
 							    $('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
-									window.location = baseUrl+'my-digital-assets';
-								}, 3000);
+									window.location = baseUrl+'digital-assets';
+								}, 2000);
 							}
 						}
 

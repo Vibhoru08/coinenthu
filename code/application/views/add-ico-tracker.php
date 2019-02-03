@@ -64,7 +64,7 @@
 												<div class="col-md-8">
 													<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
-												
+
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>
 											</div>
@@ -1107,8 +1107,8 @@
 								$('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
-									window.location = baseUrl+'my-ico-trackers';
-								}, 3000);
+									window.location = baseUrl+'ico-tracker';
+								}, 1000);
 							}
 						}
 
