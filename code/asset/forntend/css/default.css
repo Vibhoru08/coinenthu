@@ -1317,6 +1317,9 @@ a.ui-button:active,
 .mar_0{
   margin:0;
 }
+.mar_r10{
+  margin-right:10px;
+}
 .mar_r30{
   margin-right:30px;
 }
@@ -1542,7 +1545,7 @@ a.ui-button:active,
 	vertical-align:middle;
 }
 .font_s22{
-	font-size:22px;
+	font-size:15px;
 }
 .pos_r{
 	position:relative;
@@ -3513,7 +3516,7 @@ a.left_panel_desc{
   color:#1546a5;
 }
 .review-image{
- height:100px;
+ height:65px;
 }
 .reply-image{
  height:25px;

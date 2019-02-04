@@ -164,7 +164,7 @@
 						<?php echo $target;?>>View Site</a></span>
 					</p>
 					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 pad_0 mar_t10">
+						<div class="col-xs-6 col-xs-offset-3 pad_0 mar_t10">
 					<a href="javascript:void(0)" onclick="ReviewAllow();" class="col-xs-12 btn btn-cstm btn-review">Leave a Review</a>
 				</div>
 			</div>
@@ -586,7 +586,17 @@
 										if($uid!=""){
 											if($uid == $review->re_uid){
 									?>
-									<a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit Review</span></a>
+									<div class="dropdown" style="float:right;">
+	                  <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
+	                  <span class="fa fa-ellipsis-h"></span></button>
+	                  <ul class="dropdown-menu display-dropdown">
+	                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit</span></a></li>
+	                    <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
+	      								       Delete
+	      							</a></li>
+	                  </ul>
+	                </div>
+
 									<?php } } ?>
 							</span>
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
@@ -1760,6 +1770,45 @@ function reply_show(id){
 		$("#replypopup_m"+id).show();
 	}
 }
+function deleteComment(id){
+  if($("#hid_sessionid").val()!=""){
+  $("#delete_confirmation_modal_pop").modal('show');
+  $("#delete_button").val(id);
+}else{
+  alert('Login Required');
+}
+}
+function confirmDeleteActions(){
+
+  var Id= $("#delete_button").val();
+  $.ajax({
+  type 		: "POST",
+  url			: baseUrl+'Company/deleteComment?expireTime='+time,
+  cache       : false,
+  data        : {Id:Id},
+  dataType	: "json",
+  success: function(data){
+    if(data.output=='success')
+    {
+      $("#delete_confirmation_modal_pop").modal('hide');
+	  $("#review_"+ Id).hide();
+	  $("#nor").html(data.no_of_replies);
+    var no_rev=parseInt(($("#no_rev").text())) - 1;
+    $("#no_rev").html(no_rev);
+
+    }
+    else if(data.output=='fail'){
+        $("#delete_confirmation_modal_pop").modal('hide');
+      setTimeout(function(){
+        $("#common_heading").html('Warning Message');
+        $("#common_message").html('Login required');
+        $('#common_modal_pop').modal('show');
+                  }, 2000);
+                }
+
+            }
+          });
+        }
 	function shareCoin(){
 		//document.getElementById(".social_share").style.display = "inline";
 

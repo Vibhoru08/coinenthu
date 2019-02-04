@@ -33,12 +33,16 @@
             </div>
         </div>
         <input type="hidden" id="totcntcompanies" value="<?php echo $totCntDigitals; ?>" />
-  			<input type="hidden" id="limitpage"  value="3" />
-  			<input type="hidden" id="offsetpage" value="3" />
+  			<input type="hidden" id="limitpage"  value="6" />
+  			<input type="hidden" id="offsetpage" value="6" />
   			<input type="hidden" id="pageMode" value="digital" />
         <input type="hidden" id="filter_id" value="2" />
         <input type="hidden" id="home_no_display" value="3" />
-        <div class="row company_list col-md-10 col-md-offset-1"></div>
+        <div class="row company_list col-md-10 col-md-offset-1 mar_t20" style="display:none;"></div>
+
+  			<div id="loadingHash1" class="text-center font_s22 mar_t20 mar_b30" style="display:none;"><a href="javascript:void(0);" onClick="GetMoreCompaniesLoad();" class="btn btn-custom">&nbsp;&nbsp;&nbsp;LOAD MORE &nbsp;&nbsp;&nbsp;</a></div>
+  			<span id="m_hide"><br/></span>
+
         <div class="row companiesy_list mar_b80">
           <div class="col-xs-12 col-md-10 col-md-offset-1">
             <?php //echo "<pre>";print_r($digitalAssets);echo "</pre>";die()?>

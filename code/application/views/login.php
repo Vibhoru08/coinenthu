@@ -105,10 +105,14 @@
 													$redirect = 2;
 												}else if($this->session->userdata('redirect_page')==3){
 													$redirect = 3;
+												}else if($this->session->userdata('redirect_page')==4){
+													$redirect = 4;
+													$redirectname=$this->session->userdata('redirect_page_name');
 												}else{
 													$redirect = 0;
 												}
 												  ?>
+													<input type="hidden" id="redirectPageName" value="<?php echo $redirectname; ?>">
 												  <input type="hidden" id="redirectPage" value="<?php echo $redirect; ?>">
 												  <div class="form-group">
 													  <label for="password" class="control-label">Password</label>

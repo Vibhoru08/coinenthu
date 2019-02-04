@@ -181,6 +181,7 @@ function userLogin() {
         var upassword = $("#u_password").val();
         var rememberme = $("#remember").val();
         var redirectPage = $("#redirectPage").val();
+				var redirectPageName = $("#redirectPageName").val();
         $('#loading').removeClass("hide").addClass("show");
         $.ajax({
             type: 'POST',
@@ -205,6 +206,8 @@ function userLogin() {
                         window.location = baseUrl + 'add-ico-tracker';
                     } else if (redirectPage == 3) {
                         window.location = baseUrl + 'add-event';
+                    } else if (redirectPage == 4) {
+                        window.location = baseUrl + 'write-a-review/'+redirectPageName;
                     }else {
                         window.location = baseUrl;
                     }
@@ -549,10 +552,10 @@ function sreachterm() {
 		if($("#home_no_display").val()==3){
 				$(".company_list").fadeIn();
 		}
-		if($("#searchterms1").val() ==""){
-    		var searchterms = $("#searchterms").val();
+		if($("#searchterms").val() ==""){
+    		var searchterms = $("#searchterms1").val();
 			} else {
-				var searchterms = $("#searchterms1").val();
+				var searchterms = $("#searchterms").val();
 			}
     if (searchterms == '' || searchterms == 'undefined') {
         var type = $("#filter_id").val();

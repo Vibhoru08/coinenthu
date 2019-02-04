@@ -60,7 +60,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 						<div class = "col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-6 col-xs-offset-2  ss_width">
 						<input class="form-control brg_focus_n" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms1" placeholder="Search ICOs">
 					</div>
-          <div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:#e31c77;border-radius:10px;">
+          <div class = "col-md-2 col-sm-1 col-xs-3 pad_l0" style = "height:34px;width:34px;background-color:#e31c77;border-radius:5px;">
           <img src="<?php echo base_url().'asset/img/search.png'; ?>" alt="search button" style = "height:23px;padding-top:10px;padding-left:10px;">
         </div>
           </div>

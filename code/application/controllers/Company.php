@@ -1282,6 +1282,7 @@
 		public function writeAreview(){
 			$data = array();
 			$cm_name_initial = str_replace("_"," ",$this->uri->segment(2));
+			$red_name = $this->uri->segment(2);
 			$this->load->library('ckeditor');
 			$this->load->library('ckfinder');
 			$this->ckeditor->basePath = base_url().'asset/ckeditor/';
@@ -1290,6 +1291,8 @@
 			$this->ckfinder->SetupCKEditor($this->ckeditor,'../../asset/ckfinder/');
 
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
+				$this->session->set_userdata('redirect_page', 4);
+				$this->session->set_userdata('redirect_page_name', $red_name);
 				redirect('login', 'refresh');
 			}else{
 				$results = $this->Companies_model->getcompanyinfobyname($cm_name_initial);

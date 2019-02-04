@@ -1,7 +1,7 @@
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
 
 <footer >
- <div class="container-fluid pad_b30">
+ <div class="container-fluid pad_b10">
    <div class="row" >
      <div class="col-xs-10 col-xs-offset-1 pad_0">
      <div class="col-md-4 col-xs-6 paddingtop-bottom">
@@ -80,7 +80,7 @@
 
  <div class="sub_footer">
    <div class="container-fluid">
-     <div class="row">
+     <div class="row mar_b20">
        <div class="col-xs-offset-1 col-xs-10 pad_0">
    © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions.</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
    </div>
@@ -604,7 +604,7 @@
              <label>Please submit any comments for us below.</label>
                <textarea type="text" class="form-control" id="comments" name="comments" class="form-control" required data-fv-notempty-message="Comments reqired"></textarea>
            </div>
-           
+
          </div>
          </div>
          <div class="box-footer" style="padding: 10px 0">
@@ -836,7 +836,11 @@ function GetMoreCompaniesLoad()
        var minCount    = $("#totcntcompanies").val();
        var pageMode    = $("#pageMode").val();
        var filterId    = $("#filter_id").val();
-       var searchterms = $("#searchterms").val();
+       if($("#searchterms").val() ==""){
+       		var searchterms = $("#searchterms1").val();
+   			} else {
+   				var searchterms = $("#searchterms").val();
+   			}
        if(searchterms.length>=4){
          searchterms = searchterms;
        }else{
