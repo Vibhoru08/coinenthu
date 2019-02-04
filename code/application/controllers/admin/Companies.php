@@ -494,40 +494,128 @@ class Companies extends MY_Controller {
 						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
 					}
 				}
+				$day_of_agenda = 1;
 				if(!empty($_POST['time1'])){
 					foreach($_POST['time1'] as $key=>$agtime){
 						if($agtime != ""){
-							$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event1'][$key]);
+							$agendaStatus = $this->Companies_model->addEventAgendaZ($event_id,$agtime,$_POST['event1'][$key],$day_of_agenda);
 						}
 					}
+					$day_of_agenda++;
 				}
 				if(!empty($_POST['time2'])){
 					foreach($_POST['time2'] as $key2=>$agtime2){
 						if($agtime2 != ""){
-							$agendaStatus2 = $this->Companies_model->addEventAgenda2($event_id,$agtime2,$_POST['event2'][$key2]);
+							$agendaStatus2 = $this->Companies_model->addEventAgendaZ($event_id,$agtime2,$_POST['event2'][$key2],$day_of_agenda);
 						}
 					}
+					$day_of_agenda++;
 				}
 				if(!empty($_POST['time3'])){
 					foreach($_POST['time3'] as $key3=>$agtime3){
 						if($agtime3 != ""){
-							$agendaStatus3 = $this->Companies_model->addEventAgenda3($event_id,$agtime3,$_POST['event3'][$key3]);
+							$agendaStatus3 = $this->Companies_model->addEventAgendaZ($event_id,$agtime3,$_POST['event3'][$key3],$day_of_agenda);
 						}
 					}
+					$day_of_agenda++;
 				}
 				if(!empty($_POST['time4'])){
 					foreach($_POST['time4'] as $key4=>$agtime4){
 						if($agtime4 != ""){
-							$agendaStatus4 = $this->Companies_model->addEventAgenda4($event_id,$agtime4,$_POST['event4'][$key4]);
+							$agendaStatus4 = $this->Companies_model->addEventAgendaZ($event_id,$agtime4,$_POST['event4'][$key4],$day_of_agenda);
 						}
 					}
+					$day_of_agenda++;
 				}
+
 				if(!empty($_POST['time5'])){
 					foreach($_POST['time5'] as $key5=>$agtime5){
 						if($agtime5 != ""){
-							$agendaStatus5 = $this->Companies_model->addEventAgenda5($event_id,$agtime5,$_POST['event5'][$key5]);
+							$agendaStatus5 = $this->Companies_model->addEventAgendaZ($event_id,$agtime5,$_POST['event5'][$key5],$day_of_agenda);
 						}
 					}
+					$day_of_agenda++;
+				}
+
+				if(!empty($_POST['time6'])){
+					foreach($_POST['time6'] as $key6=>$agtime6){
+						if($agtime6 != ""){
+							$agendaStatus6 = $this->Companies_model->addEventAgendaZ($event_id,$agtime6,$_POST['event6'][$key6],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time7'])){
+					foreach($_POST['time7'] as $key7=>$agtime7){
+						if($agtime7 != ""){
+							$agendaStatus7 = $this->Companies_model->addEventAgendaZ($event_id,$agtime7,$_POST['event7'][$key7],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time8'])){
+					foreach($_POST['time8'] as $key8=>$agtime8){
+						if($agtime8 != ""){
+							$agendaStatus8 = $this->Companies_model->addEventAgendaZ($event_id,$agtime8,$_POST['event8'][$key8],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time9'])){
+					foreach($_POST['time9'] as $key9=>$agtime9){
+						if($agtime9 != ""){
+							$agendaStatus9 = $this->Companies_model->addEventAgendaZ($event_id,$agtime9,$_POST['event9'][$key9],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time10'])){
+					foreach($_POST['time10'] as $key10=>$agtime10){
+						if($agtime10 != ""){
+							$agendaStatus10 = $this->Companies_model->addEventAgendaZ($event_id,$agtime10,$_POST['event10'][$key10],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time11'])){
+					foreach($_POST['time11'] as $key11=>$agtime11){
+						if($agtime11 != ""){
+							$agendaStatus11 = $this->Companies_model->addEventAgendaZ($event_id,$agtime11,$_POST['event11'][$key11],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time12'])){
+					foreach($_POST['time12'] as $key12=>$agtime12){
+						if($agtime12 != ""){
+							$agendaStatus12 = $this->Companies_model->addEventAgendaZ($event_id,$agtime12,$_POST['event12'][$key12],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time13'])){
+					foreach($_POST['time13'] as $key13=>$agtime13){
+						if($agtime13 != ""){
+							$agendaStatus13 = $this->Companies_model->addEventAgendaZ($event_id,$agtime13,$_POST['event13'][$key13],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time14'])){
+					foreach($_POST['time14'] as $key14=>$agtime14){
+						if($agtime14 != ""){
+							$agendaStatus14 = $this->Companies_model->addEventAgendaZ($event_id,$agtime14,$_POST['event14'][$key14],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time15'])){
+					foreach($_POST['time15'] as $key15=>$agtime15){
+						if($agtime15 != ""){
+							$agendaStatus15 = $this->Companies_model->addEventAgendaZ($event_id,$agtime15,$_POST['event15'][$key15],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
 
 			}else{
@@ -1041,41 +1129,129 @@ class Companies extends MY_Controller {
 		}		
 		
 		$deleteAgendaStatus = $this->Companies_model->deleteAgenda($event_id);
-		if(!empty($_POST['time1'])){
-			foreach($_POST['time1'] as $key=>$agtime){
-				if($agtime != ""){
-					$agendaStatus = $this->Companies_model->addEventAgenda($event_id,$agtime,$_POST['event1'][$key]);
+		$day_of_agenda = 1;
+				if(!empty($_POST['time1'])){
+					foreach($_POST['time1'] as $key=>$agtime){
+						if($agtime != ""){
+							$agendaStatus = $this->Companies_model->addEventAgendaZ($event_id,$agtime,$_POST['event1'][$key],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
-			}
-		}
-		if(!empty($_POST['time2'])){
-			foreach($_POST['time2'] as $key2=>$agtime2){
-				if($agtime2 != ""){
-					$agendaStatus2 = $this->Companies_model->addEventAgenda2($event_id,$agtime2,$_POST['event2'][$key2]);
+				if(!empty($_POST['time2'])){
+					foreach($_POST['time2'] as $key2=>$agtime2){
+						if($agtime2 != ""){
+							$agendaStatus2 = $this->Companies_model->addEventAgendaZ($event_id,$agtime2,$_POST['event2'][$key2],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
-			}
-		}
-		if(!empty($_POST['time3'])){
-			foreach($_POST['time3'] as $key3=>$agtime3){
-				if($agtime3 != ""){
-					$agendaStatus3 = $this->Companies_model->addEventAgenda3($event_id,$agtime3,$_POST['event3'][$key3]);
+				if(!empty($_POST['time3'])){
+					foreach($_POST['time3'] as $key3=>$agtime3){
+						if($agtime3 != ""){
+							$agendaStatus3 = $this->Companies_model->addEventAgendaZ($event_id,$agtime3,$_POST['event3'][$key3],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
-			}
-		}
-		if(!empty($_POST['time4'])){
-			foreach($_POST['time4'] as $key4=>$agtime4){
-				if($agtime4 != ""){
-					$agendaStatus4 = $this->Companies_model->addEventAgenda4($event_id,$agtime4,$_POST['event4'][$key4]);
+				if(!empty($_POST['time4'])){
+					foreach($_POST['time4'] as $key4=>$agtime4){
+						if($agtime4 != ""){
+							$agendaStatus4 = $this->Companies_model->addEventAgendaZ($event_id,$agtime4,$_POST['event4'][$key4],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
-			}
-		}
-		if(!empty($_POST['time5'])){
-			foreach($_POST['time5'] as $key5=>$agtime5){
-				if($agtime5 != ""){
-					$agendaStatus5 = $this->Companies_model->addEventAgenda5($event_id,$agtime5,$_POST['event5'][$key5]);
+
+				if(!empty($_POST['time5'])){
+					foreach($_POST['time5'] as $key5=>$agtime5){
+						if($agtime5 != ""){
+							$agendaStatus5 = $this->Companies_model->addEventAgendaZ($event_id,$agtime5,$_POST['event5'][$key5],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
 				}
-			}
-		}	
+
+				if(!empty($_POST['time6'])){
+					foreach($_POST['time6'] as $key6=>$agtime6){
+						if($agtime6 != ""){
+							$agendaStatus6 = $this->Companies_model->addEventAgendaZ($event_id,$agtime6,$_POST['event6'][$key6],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time7'])){
+					foreach($_POST['time7'] as $key7=>$agtime7){
+						if($agtime7 != ""){
+							$agendaStatus7 = $this->Companies_model->addEventAgendaZ($event_id,$agtime7,$_POST['event7'][$key7],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time8'])){
+					foreach($_POST['time8'] as $key8=>$agtime8){
+						if($agtime8 != ""){
+							$agendaStatus8 = $this->Companies_model->addEventAgendaZ($event_id,$agtime8,$_POST['event8'][$key8],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time9'])){
+					foreach($_POST['time9'] as $key9=>$agtime9){
+						if($agtime9 != ""){
+							$agendaStatus9 = $this->Companies_model->addEventAgendaZ($event_id,$agtime9,$_POST['event9'][$key9],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time10'])){
+					foreach($_POST['time10'] as $key10=>$agtime10){
+						if($agtime10 != ""){
+							$agendaStatus10 = $this->Companies_model->addEventAgendaZ($event_id,$agtime10,$_POST['event10'][$key10],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time11'])){
+					foreach($_POST['time11'] as $key11=>$agtime11){
+						if($agtime11 != ""){
+							$agendaStatus11 = $this->Companies_model->addEventAgendaZ($event_id,$agtime11,$_POST['event11'][$key11],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time12'])){
+					foreach($_POST['time12'] as $key12=>$agtime12){
+						if($agtime12 != ""){
+							$agendaStatus12 = $this->Companies_model->addEventAgendaZ($event_id,$agtime12,$_POST['event12'][$key12],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time13'])){
+					foreach($_POST['time13'] as $key13=>$agtime13){
+						if($agtime13 != ""){
+							$agendaStatus13 = $this->Companies_model->addEventAgendaZ($event_id,$agtime13,$_POST['event13'][$key13],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time14'])){
+					foreach($_POST['time14'] as $key14=>$agtime14){
+						if($agtime14 != ""){
+							$agendaStatus14 = $this->Companies_model->addEventAgendaZ($event_id,$agtime14,$_POST['event14'][$key14],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}
+				if(!empty($_POST['time15'])){
+					foreach($_POST['time15'] as $key15=>$agtime15){
+						if($agtime15 != ""){
+							$agendaStatus15 = $this->Companies_model->addEventAgendaZ($event_id,$agtime15,$_POST['event15'][$key15],$day_of_agenda);
+						}
+					}
+					$day_of_agenda++;
+				}	
 	}
 
 	public function updateDigitalAsset()

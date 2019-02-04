@@ -34,7 +34,14 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
             <div class="col-xs-10 col-xs-offset-1 asset-boxes event_padding text-center pad_b20">
               <h4 class="mar_t20">About </h4>
               <p class="text-justify event_description"><?php echo $event['event_description']; ?></p>
-              <a href="<?php echo $event['event_url']; ?>" class="btn btn-cstm btn-review mar_t10 NoirProRegular" type="button">Join Event</a>
+              <?php
+              if(strpos($event['event_url'],'http') !== false){
+                $event_url = $event['event_url'];
+              }else{
+                $event_url = '//'.$event['event_url'];
+              }
+              ?>
+              <a href="<?php echo $event_url; ?>" target = "_blank" class="btn btn-cstm btn-review mar_t10 NoirProRegular" type="button">Join Event</a>
             </div>
           </div>
           <div class="row" >
@@ -50,8 +57,17 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                         }
                         echo '<p><img class="speaker-image" src = "'.$spimage.'" alt = "'.$speaker->sp_name.'"></p>';
                         echo '<h5 class="speaker_name">'.$speaker->sp_name.'</h5>';
-                        echo '<div>'.$speaker->sp_desig.'</div>';
-                        echo '<a href="'.$speaker->sp_url.'" >Linkedin</a>';
+                        if(isset($speaker->sp_desig) && $speaker->sp_desig != ""){ 
+                          echo '<div>'.ucfirst($speaker->sp_desig).'</div>';
+                        }else{
+                          echo '<div>&nbsp;</div>';    
+                        }
+                        if (strpos($speaker->sp_url,'http') !== false){
+                          $speaker_linkedin = $speaker->sp_url;                          
+                        }else{
+                          $speaker_linkedin = '//'.$speaker->sp_url;
+                        }
+                        echo '<a href="'.$speaker_linkedin.'" target = "_blank">Linkedin</a>';
                         ?>
                       </div><?php
                     }

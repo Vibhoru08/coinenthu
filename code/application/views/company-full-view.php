@@ -390,15 +390,11 @@
 							}else{
 								$mar_t10 = 'mar_t10';
 							}
-							if($companyview['ms_id'][$key]==1){ ?>
-								<div class="btn_like pos_r <?php echo $mar_t10; ?>" style="padding:10px;">
-								<div class="fa fa-check-circle-o ok_g" aria-hidden="true"
-								title="Completed"></div> <div class="mailston_bg"><?php echo ucfirst($milestones); ?></div></div>
-							<?php }else{ ?>
+							?>
 							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px;">
-							<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30" title="Pending"></div>
+							<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30"></div>
 							<div class="mailston_bg" style="border-left:1px solid #f7e3bb"><?php echo $milestones; ?></div></div>
-							<?php } $i++; } } else{ echo "No Milestones Box "; } ?>
+							<?php $i++; } } else{ echo "No Project Updates"; } ?>
 						</div>
 						<?php } ?>
 						<div class="mar_t10 text-center">
