@@ -954,6 +954,21 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function getDigitalIcosHome($limit,$offset,$order_by,$ascDesc){
+		$this->db->select('*');
+        $this->db->from('bop_compaines');
+		$this->db->join('bop_users','bop_users.u_uid = bop_compaines.cm_uid');
+		$this->db->where('cm_status !=',2,False);
+		$this->db->where('cm_status ',1);
+		$this->db->where('bop_users.u_status ',1);
+		$this->db->order_by($order_by,$ascDesc);
+		$this->db->limit($limit,$offset);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function getDigitalIcosCount($cm_cpid,$limit,$offset,$order_by,$ascDesc,$uuid,$checkQuery){
 		$this->db->select('*');
         $this->db->from('bop_compaines');
@@ -1121,6 +1136,22 @@ class Companies_model extends CI_Model
 		}
 		 return $this->db->count_all_results();
 	}
+
+	public function getSerachDigitalIcosCountHome($limit,$offset,$order_by,$ascDesc,$serachTerm,$uuid)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_compaines');
+		$this->db->join('bop_users','bop_users.u_uid = bop_compaines.cm_uid');
+		$this->db->where('cm_status !=',2,False);
+		$this->db->where('cm_status',1);
+		$this->db->where('bop_users.u_status',1);
+		$this->db->like('cm_name', $serachTerm);
+
+
+		$this->db->order_by($order_by,$ascDesc);
+		 return $this->db->count_all_results();
+	}
+
 	public function getSearchDgtlIcos($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)
 	{
 		if(isset($filterId) && $filterId != '')
@@ -1199,6 +1230,37 @@ class Companies_model extends CI_Model
 
 
 	}
+
+	public function getSearchDgtlIcosHome($limit,$offset,$order_by,$ascDesc,$serachTerm=null,$uuid)
+	{
+		if(isset($offset) && $offset != '')
+		{
+			$off = $offset;
+
+		}else{
+			$off = '0';
+
+		}
+			$this->db->select('*');
+			$this->db->from('bop_compaines');
+			$this->db->join('bop_users','bop_users.u_uid = bop_compaines.cm_uid');
+			$this->db->where('cm_status !=',2,False);
+			$this->db->where('cm_status',1);
+			$this->db->where('bop_users.u_status',1);
+			$this->db->like('cm_name', $serachTerm);
+
+			$this->db->order_by($order_by,$ascDesc);
+			
+			$this->db->limit($limit,$off);
+			// echo $this->db->get_compiled_select();exit;
+			$query = $this->db->get();
+			return $query->result();
+
+		
+
+
+	}
+
 	public function getSearchDgtlIcosCounts($cm_cpid,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)
 	{
 
@@ -1270,6 +1332,30 @@ class Companies_model extends CI_Model
 
 
 	}
+
+	public function getSearchDgtlIcosCountsHome($order_by,$ascDesc,$serachTerm=null,$uuid)
+	{
+
+			$this->db->select('*');
+			$this->db->from('bop_compaines');
+			$this->db->join('bop_users','bop_users.u_uid = bop_compaines.cm_uid');
+			$this->db->where('cm_status !=',2,False);
+			$this->db->where('cm_status',1);
+			$this->db->where('bop_users.u_status',1);
+			$this->db->like('cm_name', $serachTerm);
+
+			$this->db->order_by($order_by,$ascDesc);
+			
+			// $this->db->limit($limit,$offset);
+			// echo $this->db->get_compiled_select();exit;
+			$query = $this->db->get();
+			return $query->result();
+
+		
+
+
+	}
+
 	public function getSerachDigitalIcos1($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm,$uuid,$checkQuery){
 		$this->db->select('*');
 		$this->db->select('str_to_date('.$order_by.', "%Y-%m-%d") dayy',false);
@@ -1362,6 +1448,20 @@ class Companies_model extends CI_Model
 		// }
 		return $this->db->count_all_results();
 	}
+
+	public function totalCountCompainesHome($uuid){
+		$this->db->select('*');
+        $this->db->from('bop_compaines');
+		// if($cm_cpid!="all"){
+			$this->db->where('cm_status !=',2,False);
+		// }else{
+			if($uuid!=""){
+				$this->db->where('cm_uid',$uuid);
+			}
+		// }
+		return $this->db->count_all_results();
+	}	
+
 	public function getMilestoneStatuses(){
 
 		$this->db->select('mss_id,mss_status');

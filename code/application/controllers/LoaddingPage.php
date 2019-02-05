@@ -32,11 +32,9 @@ class LoaddingPage extends MY_Controller {
 		$checkQuery = 'digital';
 		$reviewscount = Array();
 		$reviewsIcoscount = Array();
-		$data['topda']          = $this->Companies_model->getTopCompanies($cm_cpid);
-
-		$data['totCntDigitals'] = $this->Companies_model->totalCountCompaines($cm_cpid,$uuid);
-		$data['digitalAssets']  = $this->Companies_model->getDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$uuid,$checkQuery);
-		$data['digitalAssetsImages']  = $this->Companies_model->getDigtalImageList();
+		$data['totCntDigitals'] = $this->Companies_model->totalCountCompainesHome($uuid);
+		$data['digitalAssets']  = $this->Companies_model->getDigitalIcosHome($limit,$offset,$oderBy,$ascDesc);
+		
 
 		$this->show('home',$data);
 	}
