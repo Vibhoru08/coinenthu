@@ -655,7 +655,7 @@ $(".carousel").on("touchstart", function(event){
 
 $( "#searchterms" ).keypress(function( event ) {
   if ( event.which == 13 ) {
-    sreachterm();
+    sreachtermhome();
   }
 });
 

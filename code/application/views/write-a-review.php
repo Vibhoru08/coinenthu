@@ -171,6 +171,7 @@
 
 		CKFinder.setupCKEditor();
 		CKEDITOR.replace('re_decript', {
+			disallowedContent: 'img{width,height,border*,margin*,alignment,float,htmlPreview};',
 			filebrowserBrowseUrl :'', //baseUrl +'asset/ckfinder/ckfinder.html',
 	    filebrowserImageBrowseUrl :'',// baseUrl +'asset/ckfinder/ckfinder.html?type=Images',
 	    filebrowserFlashBrowseUrl :'', //baseUrl +'asset/ckfinder/ckfinder.html?type=Flash',
@@ -202,12 +203,15 @@
 	 }
 }
 });
+
 		$('.gl-star-rating-tex').text('Rate me');
 		$('#wirte_review').formValidation({
 			ignore:[]
 		});
 		CKEDITOR.instances.re_decript.on('change', function() {
+			var frameBody = $(CKEDITOR.instances.re_decript.editable().$);
 
+    frameBody.find("a").css("color", "#0782C1").attr("target", "_blank");
 			CKEDITOR.instances.re_decript.updateElement();
 			var text=CKEDITOR.instances.re_decript.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/\&nbsp;/g, '').replace(/^\s+|\s+$/g, '');
 

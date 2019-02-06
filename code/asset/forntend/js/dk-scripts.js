@@ -489,6 +489,98 @@ function filterCompanies(type,pagemode,limit) {
     });
     $(".hide_menu").css("display", "none");
 }
+
+function sreachtermhome() {
+    $("#offsetpage").val(1);
+    // $("#limitpage").val(4);
+    $('#loadingHash1').hide();
+		if($("#home_no_display").val()==3){
+				$(".company_list").fadeIn();
+		}
+		if($("#searchterms").val() ==""){
+    		var searchterms = $("#searchterms1").val();
+			} else {
+				var searchterms = $("#searchterms").val();
+			}
+    if (searchterms == '' || searchterms == 'undefined') {
+        var type = $("#filter_id").val();
+        filterCompanies(type);
+    } else if (searchterms.length >= 3) {
+        var offsetpage = 0;
+        var limitpage = $("#limitpage").val();
+        var pageMode = $("#pageMode").val();
+        var filterId = $("#filter_id").val();
+		if(filterId == '1'){
+			var type = "rating";
+		}else if(filterId == '2'){
+			var type = "viewed";
+		}else if(filterId == '3'){
+			var type = "mch";
+		}else if(filterId == '4'){
+			var type = "mcl";
+		}else if(filterId == '5'){
+			var type = "sdtA";
+		}else if(filterId == '6'){
+			var type = "sdtD";
+		}else if(filterId == '7'){
+			var type = "edtA";
+		}else if(filterId == '8'){
+			var type = "edtD";
+		}
+		if(pageMode=='digital'){
+			var pagemodebtn = 1;
+		}else if(pageMode=='icos'){
+			var pagemodebtn = 2;
+		}else if(pageMode=='mylist_digital'){
+			var pagemodebtn = 3;
+		}else if(pageMode=='mylist_icos'){
+			var pagemodebtn = 4;
+		}
+		localStorage.setItem('type',type);
+		localStorage.setItem('page_name',pagemodebtn);
+
+        $('.company_list').html('');
+        var url = baseUrl + 'Company/loadmoreCompaniesHome?expireTime=' + time;
+        var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
+        $('.company_list').html(relaoding);
+        $.ajax({
+            type: "POST",
+            url: url,
+            cache: false,
+            data: {
+                limitpage: limitpage,
+                offsetpage: offsetpage,
+                pageMode: pageMode,
+                filterId: filterId,
+                filter: "filetrfrom",
+                searchterms: searchterms
+            },
+            dataType: "json",
+            success: function(data) {
+                console.log(data.output);
+                if (data.output == 'success') {
+                    setTimeout(function() {
+                        $(".company_list").html(data.resData);
+                        if (data.cnt > 6) {
+                            $('#loadingHash1').show();
+                            $('#loadingHash1').removeClass('mm_bttom hide');
+                        }
+                        $('#offsetpage').val(parseInt($('#limitpage').val()) + parseInt(offsetpage));
+                        var $input = $('.rating-loading');
+                        $input.rating();
+                        $('.caption').hide();
+                        $('.clear-rating').hide();
+                    }, 1000);
+                } else if (data.output == 'norecoreds') {
+                    setTimeout(function() {
+                        $(".company_list").html(data.resData);
+                        // $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt(offsetpage) );
+                    }, 1000);
+                }
+            }
+        });
+    }
+}
 function sreachterm2() {
     $("#offsetpage").val(1);
     // $("#limitpage").val(4);

@@ -35,10 +35,13 @@ CKEDITOR.editorConfig = function( config ) {
 	config.ignoreEmptyParagraph = false;
 	config.title = false;
 	// Simplify the dialog windows.
-	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;html5video:advanced';
+	config.image_previewText = ' ';
+	config.hideDialogFields="image:info:htmlPreview";
+	config.embed_provider = '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}';
+	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;link:target;link:upload;html5video:advanced';
   config.removePlugins = 'PasteFromWord';
   config.removeButtons = 'PasteFromWord,Anchor,SpecialChar,Source';
-  config.extraPlugins = 'wordcount,notification,html5video';
+  config.extraPlugins = 'wordcount,notification,embed,embedbase';
   config.wordcount = {
 
     // Whether or not you want to show the Paragraphs Count
@@ -87,5 +90,16 @@ CKEDITOR.on('dialogDefinition', function(e) {
         }
         var targetField = target.get( 'linkTargetType' );
         targetField['default'] = '_blank';
+    }
+
+		if (e.data.name == 'img') {
+				var dialog = e.data.definition;
+        var oldOnShow = dialog.onShow;
+        dialog.onShow = function() {
+             oldOnShow.apply(this, arguments);
+             this.selectPage('upload');
+        };
+
+        //Remove tab Link
     }
 });

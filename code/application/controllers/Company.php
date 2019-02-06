@@ -1460,7 +1460,7 @@
 						$last_review = $company_reviews->last_row('array');
 						$last_review_userid = $last_review['re_uid'];
 						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
-						$html .='<div class="col-md-4 mar_t40" style = "min-height:454px;">
+						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1639,7 +1639,7 @@
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
-				
+
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 					$uuid = "";
 				}else{
@@ -1662,7 +1662,7 @@
 						$cnt		 = $this->Companies_model->getSerachDigitalIcosCountHome($limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid);
 						$counts = $this->Companies_model->getSearchDgtlIcosCountsHome($oderBy,$ascdesc,$searchterms,$uuid);
 					}
-				
+
 				if(sizeof($getCompanies)>0){
 					$checkRecords =1;
 					foreach($getCompanies as $key=>$value){
@@ -1692,7 +1692,7 @@
 						$last_review = $company_reviews->last_row('array');
 						$last_review_userid = $last_review['re_uid'];
 						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
-						$html .='<div class="col-md-4 mar_t40" style = "min-height:454px;">
+						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1962,7 +1962,7 @@
 						$last_review = $company_reviews->last_row('array');
 						$last_review_userid = $last_review['re_uid'];
 						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
-						$html .='<div class="col-md-4 mar_t40" style = "min-height:454px;">
+						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">

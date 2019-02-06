@@ -50,8 +50,8 @@ $config['privateDir'] = array(
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_images
 
 $config['images'] = array(
-    'maxWidth'  => 1600,
-    'maxHeight' => 1200,
+    'maxWidth'  => 480,
+    'maxHeight' => 320,
     'quality'   => 80,
     'sizes' => array(
         'small'  => array('width' => 480, 'height' => 320, 'quality' => 80),
@@ -86,7 +86,7 @@ $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
     'directory'         => 'files',
     'maxSize'           => 0,
-    'allowedExtensions' => 'avi,flv,gif,jpeg,jpg,mov,mp3,mp4,mpeg,png,wmv',
+    'allowedExtensions' => 'gif,jpeg,jpg,png',
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );

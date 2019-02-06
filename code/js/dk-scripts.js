@@ -431,63 +431,6 @@ function sreachterm() {
     }
 }
 
-function sreachtermhome() {
-    $("#offsetpage").val(1);
-    // $("#limitpage").val(4);
-    $('#loadingHash1').hide();
-
-    var searchterms = $("#searchterms").val();
-    if (searchterms == '' || searchterms == 'undefined') {
-        var type = $("#filter_id").val();
-        filterCompanies(type);
-    } else if (searchterms.length >= 3) {
-        var offsetpage = 0;
-        var limitpage = $("#limitpage").val();
-        var pageMode = $("#pageMode").val();
-        var filterId = $("#filter_id").val();
-        $('.company_list').html('');
-        var url = baseUrl + 'Company/loadmoreCompaniesHome?expireTime=' + time;
-        var relaoding = '<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading'
-        $('.company_list').html(relaoding);
-        $.ajax({
-            type: "POST",
-            url: url,
-            cache: false,
-            data: {
-                limitpage: limitpage,
-                offsetpage: offsetpage,
-                pageMode: pageMode,
-                filterId: filterId,
-                filter: "filetrfrom",
-                searchterms: searchterms
-            },
-            dataType: "json",
-            success: function(data) {
-                console.log(data.output);
-                if (data.output == 'success') {
-                    setTimeout(function() {
-                        $(".company_list").html(data.resData);
-                        if (data.cnt > 12) {
-                            $('#loadingHash1').show();
-                            $('#loadingHash1').removeClass('mm_bttom hide');
-                        }
-                        $('#offsetpage').val(parseInt($('#limitpage').val()) + parseInt(offsetpage));
-                        var $input = $('.rating-loading');
-                        $input.rating();
-                        $('.caption').hide();
-                        $('.clear-rating').hide();
-                    }, 1000);
-                } else if (data.output == 'norecoreds') {
-                    setTimeout(function() {
-                        $(".company_list").html(data.resData);
-                        // $('#offsetpage').val( parseInt($('#limitpage').val()) +parseInt(offsetpage) );
-                    }, 1000);
-                }
-            }
-        });
-    }
-}
-
 function eidtCompanyView(cm_id, cmtype) {
     if (cmtype == '1') {
         window.location = baseUrl + 'digital-asset-edit/' + cmtype + '-' + cm_id;
