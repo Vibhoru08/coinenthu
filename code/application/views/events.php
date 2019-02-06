@@ -70,13 +70,13 @@
 								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right select_dropdown" id="change_u"><span class="for-border">
 								  <span id="sort_by">Sort By</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
-								  Most reviewed</span><div class="arrow_down"><span class="caret"></span></div>
+								  Select</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
-								  <input type="hidden" id="filter_id" value="1">
+								  <input type="hidden" id="filter_id" value="Select">
 								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;">
 									<?php
 								 	foreach($cities as $city){?>
-									<li><a onClick="filterEvents('<?php echo $city->ci_value; ?>','1');" href = "javascript:void('0');"><?php echo $city->ci_name; ?></li>
+									<li><a onClick="filterEvents('<?php echo $city->ci_value; ?>','1');" href = "javascript:void('0');"><?php echo $city->ci_name; ?></a></li>
 									<?php } ?>
 									
 

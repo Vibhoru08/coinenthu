@@ -1389,8 +1389,10 @@
 			$data = array();
 			$limit    = 9;
 			$offset   = 0;
+			$order_by = 'ev_price';
+			$ascdesc = 'asc';
 			$data['totCntEvents'] = $this->Companies_model->totalCountEvents(1);
-			$data['event_list'] = $this->Companies_model->getEventList(1,$limit,$offset);
+			$data['event_list'] = $this->Companies_model->getEventList($limit,$offset,$order_by,$ascdesc);
 			$data['cities'] = $this->Companies_model->getCities(1);
 			$this->show('events',$data);
 		}
@@ -1403,10 +1405,11 @@
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
-				if(isset($_POST['filterId']) && $_POST['filterId'] != ''){
-					$city = $_POST['filterId'];
-				}else{
+				if($_POST['filterId'] == 'Select')
+				{
 					$city = '';
+				}else{
+					$city = $_POST['filterId']; 
 				}
 
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
@@ -1440,6 +1443,48 @@
 					foreach($getEvents as $key=>$value){
 						$data = array();
 						$event_id = $value->ev_id;
+						$speakers_num =  $this->Companies_model->CountSpeakers($event_id);
+						$dateBreak = explode('/',$value->ev_sd);
+										$edm = $dateBreak[0];
+										$edd = $dateBreak[1];
+										$edy = $dateBreak[2];
+										if($edm == '01'){
+											$edmn = 'Jan';
+										}
+										elseif($edm == '02'){
+											$edmn = 'Feb';
+										}
+										elseif($edm == '03'){
+											$edmn = 'Mar';
+										}
+										elseif($edm == '04'){
+											$edmn = 'Apr';
+										}
+										elseif($edm == '05'){
+											$edmn = 'May';
+										}
+										elseif($edm == '06'){
+											$edmn = 'Jun';
+										}
+										elseif($edm == '07'){
+											$edmn = 'Jul';
+										}
+										elseif($edm == '08'){
+											$edmn = 'Aug';
+										}
+										elseif($edm == '09'){
+											$edmn = 'Sept';
+										}
+										elseif($edm == '10'){
+											$edmn = 'Oct';
+										}
+										elseif($edm == '11'){
+											$edmn = 'Nov';
+										}
+										else{
+											$edmn = 'Dec';
+										}
+										$eventDate = $edd.' '.$edmn.', '.$edy;
 						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
@@ -1458,8 +1503,16 @@
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
 						$html.='<div class="row">';
-						$html.='<br/><a class="col-xs-12" href="'.base_url().'event-full-view/'.$event_id.'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						$html.='<br/>';
+						$html.='<p style = "margin-left:20px;"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location: '.$value->ev_city.'<p>';
+						$html.='<p style = "margin-left:20px;"><i class="fa fa-calendar" aria-hidden="true"></i> Date : '.$eventDate.'</p>';
+						$html.='<p style = "margin-left:20px;"><i class="fa fa-money" aria-hidden="true"></i> Price : $ '.$value->ev_price.'</p>';
+						$html.='<p style = "margin-left:20px;"><i class="fa fa-microphone" aria-hidden="true"></i> Speakers : '.$speakers_num.'</p>';
+						$html.='<p style = "margin-left:20px;"><i class="fa fa-users"></i> Attendees : '.$value->ev_num.'</p>';
 						$html.='<hr class="col-xs-12">';
+						$html.='<div class = "text-right">';
+						$html.='<a href = "'.base_url().'event-full-view/'.$event_id.'" class = "btn btn-default" role ="button">View More</a>';
+						$html.='</div>';
 
 
 
@@ -2235,7 +2288,7 @@
 				$this->email->message($message);
 				$this->email->send();
 				// echo $message;exit;
-				echo $companyId;exit;
+				echo $event_id;exit;
 
 			}
 

@@ -37,11 +37,12 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getEventList($status,$limit,$offset)
+	public function getEventList($limit,$offset,$order_by,$ascdesc)
 	{
 		$this->db->select('*');
 		$this->db->from('bop_events');
-		$this->db->where('ev_status',$status);
+		$this->db->where('ev_status',1);
+		$this->db->order_by($order_by,$ascdesc);
     	$this->db->limit($limit,$offset);
 		$query = $this->db->get();
 		return $query->result();
