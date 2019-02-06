@@ -1018,6 +1018,7 @@
 		$('#add_digital_asset').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
 			$('#loadAddDigital').html("Inserting...");
+      $('#loadAddDigital').show();
 				var flag = true;
 				var filesNotGiven = false;
 				var cm_marketcap = $('#cm_marketcap').val();
@@ -1034,7 +1035,7 @@
 					$("#cm_marketcap").css("box-shadow", "none");
 					$("#label_mar").css("color", "#00a65a");
 					$("#cm_marketcap_error").html('');
-				}
+				}debugger;
 				$("input[id^='cp_picture_']").each(function()
 				{
 					var textboxId = parseInt(this.id.replace("cp_picture_", ""));
@@ -1070,16 +1071,22 @@
 						data: form_data,
 						type: 'post',
 						dataType:'json',
-						success: function(data){
+						success: function(data){debugger;
 							if(data != 0){
                 debugger;
 							    $('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
-									window.location = baseUrl+'my-digital-assets';
+									window.location = baseUrl+'events';
 								}, 3000);
 							}
-						}
+						},error:function(jqXHR,textStatus, errorThrown){
+  						console.log( jqXHR);
+  							console.log( textStatus);
+  								console.log(errorThrown);
+  							console.log(jqXHR.output);
+  		        console.log('ERROR: ' + jqXHR.status);
+  		    }
 
 					});
 				}

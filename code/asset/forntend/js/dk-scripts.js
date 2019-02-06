@@ -312,7 +312,7 @@ function filterEvents(type) {
     $("#limitpage").val(9);
     var filterTitle = type;
     $("#filter_id").val(type);
-    
+
     var htmlReload = filterTitle + '<div class="arrow_down"><span class="caret"></span></div>';
     $("#filtername").html(htmlReload);
     var offsetpage = 0;
@@ -580,7 +580,11 @@ function sreachterm2() {
     // $("#limitpage").val(4);
   //  $('#loadingHash1').hide();
 
-    var searchterms = $("#searchterms").val();
+	if($("#searchterms").val() ==""){
+			var searchterms = $("#searchterms1").val();
+		} else {
+			var searchterms = $("#searchterms").val();
+		}
     if (searchterms == '' || searchterms == 'undefined') {
         var type = $("#filter_id").val();
         filterEvents(type);
