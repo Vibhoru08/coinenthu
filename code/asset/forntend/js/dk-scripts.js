@@ -309,16 +309,10 @@ function changePassword() {
 }
 function filterEvents(type) {
 	$("#offsetpage").val(1);
-    $("#limitpage").val(12);
-    if ($("#pageMode").val() == 'digital' || $("#pageMode").val() == 'mylist_digital') {
-        var filterTitle = 'Most reviewed';
-        $("#filter_id").val(1);
-    } else {
-        var filterTitle = 'Ending soon';
-        $("#filter_id").val(6);
-
-    }
-
+    $("#limitpage").val(9);
+    var filterTitle = type;
+    $("#filter_id").val(type);
+    
     var htmlReload = filterTitle + '<div class="arrow_down"><span class="caret"></span></div>';
     $("#filtername").html(htmlReload);
     var offsetpage = 0;

@@ -78,10 +78,7 @@
 								 	foreach($cities as $city){?>
 									<li><a onClick="filterEvents('<?php echo $city->ci_value; ?>','1');" href = "javascript:void('0');"><?php echo $city->ci_name; ?></li>
 									<?php } ?>
-									<li><a onClick="filterCompanies('viewed','1');" href="javascript:void('0');">Most reviewed</a></li>
-									<li><a onClick="filterCompanies('rating','1');" href="javascript:void('0');">Highest rating</a></li>
-									<li><a onClick="filterCompanies('mch','1');" href="javascript:void('0');">Market cap(High to Low)</a></li>
-									<li><a onClick="filterCompanies('mcl','1');" href="javascript:void('0');">Market cap(Low to High)</a></li>
+									
 
 								  </ul>
 								  </li>

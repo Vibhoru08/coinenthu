@@ -969,6 +969,17 @@ class Companies_model extends CI_Model
 		return $query->result();
 	}
 
+	public function getEventsCount($limit,$offset,$order_by,$ascdesc)
+	{
+		$this->db->select('*');
+        $this->db->from('bop_events');
+		$this->db->join('bop_users','bop_users.u_uid = bop_events.ev_uid');
+		$this->db->where('ev_status ',1);
+		$this->db->where('bop_users.u_status ',1);
+		$this->db->order_by($order_by,$ascdesc);
+		return $this->db->count_all_results();
+	}
+
 	public function getDigitalIcosCount($cm_cpid,$limit,$offset,$order_by,$ascDesc,$uuid,$checkQuery){
 		$this->db->select('*');
         $this->db->from('bop_compaines');
@@ -1106,6 +1117,20 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function getSearchEventsCnt($limit,$offset,$order_by,$ascdesc,$searchterms)
+	{
+		$this->db->select('*');
+		$this->db->from('bop_events');
+		$this->db->join('bop_users','bop_users.u_uid = bop_events.ev_uid');
+		$this->db->where('ev_status',1);
+		$this->db->where('bop_users.u_status',1);
+		$this->db->like('ev_name',$searchterms);
+		$this->db->order_by($order_by,$ascdesc);
+		return $this->db->count_all_results();
+
+	}	
+
 	public function getSerachDigitalIcosCount($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm,$uuid,$checkQuery){
 		$this->db->select('*');
 		$this->db->from('bop_compaines');
@@ -1150,6 +1175,31 @@ class Companies_model extends CI_Model
 
 		$this->db->order_by($order_by,$ascDesc);
 		 return $this->db->count_all_results();
+	}
+
+	public function getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms=null,$city)
+	{	
+		if(isset($offset) && $offset != '')
+		{
+			$off = $offset;
+		}else{
+			$off = 0;
+		}
+		$this->db->select('*');
+		$this->db->from('bop_events');
+		$this->db->join('bop_users','bop_users.u_uid=bop_events.ev_uid');
+		if(isset($city) && $city != '')
+		{
+			$this->db->where('ev_city',$city);
+		}
+		$this->db->where('ev_status',1);
+		$this->db->where('bop_users.u_status',1);
+		$this->db->like('ev_name',$searchterms);
+		$this->db->order_by($oderBy,$ascdesc); 
+		$this->db->limit($limit,$off);
+		$query = $this->db->get();
+		return $query->result();
+		
 	}
 
 	public function getSearchDgtlIcos($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)
@@ -1259,6 +1309,22 @@ class Companies_model extends CI_Model
 		
 
 
+	}
+
+	public function getSearchEventsCount($order_by,$ascdesc,$searchterms=null,$city)
+	{
+		$this->db->select('*');
+			$this->db->from('bop_events');
+			$this->db->join('bop_users','bop_users.u_uid = bop_events.ev_uid');
+			$this->db->where('ev_status',1);
+			$this->db->where('bop_users.u_status',1);
+			$this->db->like('ev_name', $searchterms);
+
+			$this->db->order_by($order_by,$ascdesc);
+			// $this->db->limit($limit,$offset);
+			// echo $this->db->get_compiled_select();exit;
+			$query = $this->db->get();
+			return $query->result();
 	}
 
 	public function getSearchDgtlIcosCounts($cm_cpid,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)

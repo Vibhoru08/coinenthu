@@ -1399,11 +1399,15 @@
 			$checkRecords = 0;
 			$cnt = 0;
 			$counts = "";
-			$checkQuery = '';
-			$reviewsCompcount = Array();
+			
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
+				if(isset($_POST['filterId']) && $_POST['filterId'] != ''){
+					$city = $_POST['filterId'];
+				}else{
+					$city = '';
+				}
 
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 					$uuid = "";
@@ -1411,158 +1415,63 @@
 					$uuid = $this->session->userdata('user_id');
 				}
 				// $oderBy = "cm_overallrating";
-				$oderBy 	= "cm_ico_end_date";
+				$oderBy 	= "ev_price";
 				$ascDesc 	= "asc";
 
 					if(isset($_POST['searchterms']) && $_POST['searchterms']!=""){
 						// $searchterms  = $_POST['searchterms'];
 						// $getCompanies = $this->Companies_model->getSerachDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
 						$searchterms  = $_POST['searchterms'];
-						$getCompanies = $this->Companies_model->getSearchDgtlIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery,$_POST['filterId']);
-						$cnt		 = $this->Companies_model->getSerachDigitalIcosCount($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
-						$counts = $this->Companies_model->getSearchDgtlIcosCounts($cm_cpid,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery,$_POST['filterId']);
-
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
+						$cnt = $this->Companies_model->getSearchEventsCnt($limit,$offset,$oderBy,$ascdesc,$searchterms);
+						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
+						
 					}else{
 						// $searchterms = '';
 						// $getCompanies = $this->Companies_model->getDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$uuid,$checkQuery);
 						$searchterms = '';
-						$getCompanies = $this->Companies_model->getSearchDgtlIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery,$_POST['filterId']);
-						$cnt = $this->Companies_model->getDigitalIcosCount($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
-						$counts = $this->Companies_model->getSearchDgtlIcosCounts($cm_cpid,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery,$_POST['filterId']);
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
+						$cnt = $this->Companies_model->getEventsCount($limit,$offset,$oderBy,$ascdesc);
+						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
 					}
 
-				if(sizeof($getCompanies)>0){
+				if(sizeof($getEvents)>0){
 					$checkRecords =1;
-					foreach($getCompanies as $key=>$value){
+					foreach($getEvents as $key=>$value){
 						$data = array();
-						$company_id = $value->cm_id;
-						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
-						$company_reviews = $this->Companies_model->assetLastReview($company_id);
-						$total_likes_count = 0;
-						$total_dislikes_count = 0;
-						foreach($company_reviews->result_array() as $row){
-							if(isset($row['re_likes_cnt'])){
-								$re_likes_cnt = $row['re_likes_cnt'];
-							}
-							else{
-								$re_likes_cnt = 0;
-							}
-							$total_likes_count = $total_likes_count + $re_likes_cnt;
-
-							if(isset($row['re_dislike_cnt'])){
-								$re_dislikes_cnt = $row['re_dislike_cnt'];
-							}
-							else{
-								$re_dislikes_cnt = 0;
-							}
-							$total_dislikes_count = $total_dislikes_count + $re_dislikes_cnt;
-						}
-						$last_review = $company_reviews->last_row('array');
-						$last_review_userid = $last_review['re_uid'];
-						$last_review_details = $this->User_model->getUserDetails($last_review_userid);
+						$event_id = $value->ev_id;
 						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
 							  <div class="product-img company_img_width">';
-							  if($value->cm_picture!=""){
-								  if($value->cm_ctid == 1){
-									 if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-									 }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-									 }else if($value->cm_picture!=""){
-					$srcc = base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
-										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-										}
-									 }else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-									}
-								}else if($value->cm_ctid == 2){
-									if($value->cm_picture!=""){
-										$srcc = base_url().'asset/img/companies/icotracker/'.$value->cm_picture;
-										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
-										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
-											class="img-responsive  img-circle digital_box_image"></a>';
-										}
-									}else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
-										class="img-responsive img-circle digital_box_image"></a>';
-									}
-								}
+							  if($value->ev_picture!="" && $value->ev_picture != ''){
+								$html.='<a href="'.base_url().'event-full-view/'.$event_id.'"><img src = "'.base_url().'asset/img/events/main/'.$value->ev_picture.'" alt = "'.$value->ev_name.'" class = "img-responsive img-circle digital_box_image"></a>';
+								 
 							  }else{
-								$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+								$html.='<a href="'.base_url().'event-full-view/'.$event_id.'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="'.$value->ev_name.'" class="img-responsive img-circle digital_box_image"></a>';
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						$html.='<a title="'.$value->ev_name.'" href="'.base_url().'event-full-view/'.$event_id.'" class="product-title NoirProSemiBold">'.$value->ev_name.'</a>';
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
 						$html.='<div class="row">';
-
-						if(isset($last_review)){
-						$html.='<div class="col-xs-12 NoirProMedium">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';
-						if($last_review_details->u_about != ""){
-							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
-						}else{
-							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
-						}
-                        $string = strip_tags($last_review['re_decript']);
-							if (strlen($string) > 100) {
-
-								$stringCut = substr($string, 0, 100);
-								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-							}
-						$html.='<div class="col-xs-12" style="height:90px;">'.ucfirst($string).'</div>';
-						}else{
-						$string = strip_tags($value->cm_decript);
-							if (strlen($string) > 100) {
-
-								$stringCut = substr($string, 0, 100);
-								$string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
-							}
-						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
-
-						}
-						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						$html.='<br/><a class="col-xs-12" href="'.base_url().'event-full-view/'.$event_id.'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 						$html.='<hr class="col-xs-12">';
 
 
 
 
 							//$html.=$cm_totalviews. ' Reviews';
-							if ($number_of_reviews == 1){
-								$review_s = 'Review';
-							}
-							else{
-								$review_s = 'Reviews';
-							}
-							if ($total_likes_count == 1){
-								$like_s = 'Like';
-							}
-							else{
-								$like_s = 'Likes';
-							}
-							if ($total_dislikes_count == 1){
-									$dislike_s = 'Dislike';
-							}
-							else{
-									$dislike_s = 'Dislikes';
-							}
-							$html.='<div class="col-xs-12"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> '.$total_likes_count.' '.'<span class="dis2_block">'.$like_s.'</span></span></div><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> '.$total_dislikes_count.' '.'<span class="dis2_block">'.$dislike_s.'</span></span></div><div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> '.$number_of_reviews.' '.'<span class="dis2_block">'.$review_s.'</span></span></div></div>';
+												
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{
 								$cMOvrlRtng = 0;
 							}
 							*/
-							$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;"><button class = "pull-right btn btn-default" style="color:orange;display:none;">View Reviews</button></a>';
 							/*
 
 							$html.='&nbsp;'.number_format($cMOvrlRtng, 1, '.', '').'&nbsp;';
@@ -1578,12 +1487,7 @@
 							$html.='</span>
 
 							  </div>';
-							if($_POST['pageMode']=='mylist_digital' || $_POST['pageMode']=='mylist_icos'){
-								$html.='<div class="company_ed_icons">';
-								$html.='<a href="javascript:void(0);" onclick="eidtCompanyView('.$value->cm_id.','.$value->cm_ctid.');" class="btn btn-default c_pad_btn1"><i class="fa fa-pencil-square-o " aria-hidden="true"></i></a>
-							<a href="javascript:void(0);" onClick="deleteCompanyview('.$value->cm_id.','.$value->cm_ctid.')"class="btn btn-default c_pad_btn2"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-						  </div>';
-							}
+					
 						$html.='</li>
 						</ul>
 						</div>';
