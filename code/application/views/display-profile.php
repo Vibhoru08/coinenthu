@@ -195,10 +195,10 @@
 						</div>
 						<div class = "col-md-10">
 							<div>
-                <div class="dropdown" style="float:right;">
+                <div class="dropdown edde_hover" style="float:right;">
                   <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
                   <span class="fa fa-ellipsis-h"></span></button>
-                  <ul class="dropdown-menu display-dropdown">
+                  <ul class="dropdown-menu display-dropdown dropdown_style">
                     <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>">Edit</a></li>
                     <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
       								       Delete

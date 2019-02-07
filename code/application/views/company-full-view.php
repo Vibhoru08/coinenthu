@@ -106,7 +106,7 @@
 			<div class="col-md-3 col-md-offset-1 col-xs-12 xs-offset-0 asset-boxes text-left md_equal_margin">
 				<div class="text-center">
 					<h3  class="company_name mar_t10 mar_b0"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i>
-						<ul class="social_share social-network social-circle sharing_img sharing_img_new m_hide">
+						<ul class="social_share social-network social-circle sharing_img company_box_shadow sharing_img_new m_hide">
 							<?php
 							$whatsappLink = base_url().'company-full-view/'.$cm_name;
 							?>
@@ -121,7 +121,7 @@
 								</li>
 							</ul>
 					</div>
-					<br>	<ul class="social_share social-network social-circle sharing_img sharing_img_new big_hide">
+					<br>	<ul class="social_share social-network social-circle company_box_shadow sharing_img sharing_img_new big_hide">
 						<?php
 						$whatsappLink = base_url().'company-full-view/'.$cm_name;
 						?>
@@ -224,20 +224,20 @@
 							{?>
 							<div class="text-left"><table class="table">
 								<?php if($companyview['cm_ctid'] != 2){ ?>
-								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
+								<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;" id="mId">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default;color:#404852;" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
 								<?php } ?>
 								</table></div>
 							<?php
 							}else if(isset($companyview['api_data']) && $companyview['api_data'] == 0)
 							{?><div class=""><table class="table">
 								<?php if($companyview['cm_ctid'] == 1){ ?>
-									<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
-								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
+									<tr><td class="mbrg_top_n"><h4 class="no-margin">Market Cap  </h4></td><td class="mbrg_top_n"><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;">$<?php echo  number_format($companyview['cm_marketcap']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Current price </h4></td><td><h4 class="NoirProLight no-margin"> <a href="javascript:void('')" style="cursor :default;color:#404852;" id="curId">$<?php echo  number_format($companyview['price_usd'], 2, '.', ','); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">24 hr Volume  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;" id="volId">$<?php echo  number_format($companyview['24h_volume_usd']); ?> </a></h4></td></tr>
+								<tr><td><h4 class="no-margin">Change (24 hr)  </h4></td><td><h4 class="NoirProLight no-margin"><a href="javascript:void('')" style="cursor :default;color:#404852;" id="chaId"><?php echo  $companyview['percent_change_24h']; ?>%</a></h4></td></tr>
 								<?php } ?>
 								<!--<h4 class="no-margin pad_b5">Market Cap : $<a href="javascript:void('')" style="cursor :default"><?php // echo  $companyview['cm_marketcap']; ?> </a></h4>-->
 								</table></div>
@@ -391,9 +391,9 @@
 								$mar_t10 = 'mar_t10';
 							}
 							?>
-							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px;">
-							<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30"></div>
-							<div class="mailston_bg" style="border-left:1px solid #f7e3bb"><?php echo $milestones; ?></div></div>
+							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px 0px;">
+							<!--<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30"></div>-->
+							<div class="mailston_bg" style="border-left:none;"><?php echo $milestones; ?></div></div>
 							<?php $i++; } } else{ echo "No Project Updates"; } ?>
 						</div>
 						<?php } ?>
@@ -586,10 +586,10 @@
 										if($uid!=""){
 											if($uid == $review->re_uid){
 									?>
-									<div class="dropdown" style="float:right;">
+									<div class="dropdown edde_hover" style="float:right;">
 	                  <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
 	                  <span class="fa fa-ellipsis-h"></span></button>
-	                  <ul class="dropdown-menu display-dropdown">
+	                  <ul class="dropdown-menu display-dropdown dropdown_style">
 	                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit</span></a></li>
 	                    <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
 	      								       Delete

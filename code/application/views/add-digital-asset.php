@@ -60,7 +60,7 @@
 											<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label>
 											<div class="col-sm-9">
 											<div class="row no-margin mailstone_pad_bg">
-												<div class="col-md-8">
+												<div class="col-xs-12 pad_0">
 													<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
 
@@ -583,7 +583,7 @@
 			$('#milestonesboxesCnt').val(parseInt(TotMileStonesBoxesCnt)+parseInt(1));
 			var html = "";
 			html = '<div class="form-group" id="milestone_div_'+count_mb+'">';
-				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-md-8">';
+				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-xs-12 pad_0">';
 
 				html += '<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
 				html +='</div>';

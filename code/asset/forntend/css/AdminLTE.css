@@ -2344,9 +2344,10 @@ border-radius:5px!important;
   border-color: #e31c77!important;
 }
 .btn-dis{
+  color:#fff;
   border-radius: 50%;
-  background-color: #f9f9f9;
-  border:0.5px solid grey;
+  background-color: #dad8d8;
+  border:none;
 }
 .btn-custom{
   background-color: #8e44ad;
@@ -2722,8 +2723,8 @@ border-radius:5px!important;
   padding:4px;
 }
 .products-list .product-img img {
-   width: 96px;
-   height: 96px;
+   width: 91px;
+   height: 91px;
 }
 .products-list .product-info {
   margin-left: 110px;

@@ -2,7 +2,7 @@ $(document).ready(function(){
 	  $('.collapsed').click(function(){
 		$('body').toggleClass('body_h');
 	});
-	
+
 	// if menu is open then true, if closed then false
 	// we start with false
 	var open = false;
@@ -189,7 +189,19 @@ else {
 			$(this).toggleClass('open');
 	});
 
+$(".edde_hover").hover(
+	function(){
+		$(this).toggleClass('open');
+		
+	},
+	function(){
+		$(this).toggleClass('open');
 
+	}
+);
+$(".edde_hover").bind('click', function(){
+	$(this).toggleClass('open');
+});
 }
 
 
