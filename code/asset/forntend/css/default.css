@@ -3090,6 +3090,17 @@ font-family: NoirPro;
   .reply_show:hover{
     color:#ff99c2;
   }
+  .sort_by_align_forbig{
+    float:right;
+    padding-right:25px;
+  }
+  .sort_by_align_forbigico{
+    float:right;
+    padding-right:8px;
+  }
+  .a_width{
+    float:right;
+  }
 }
 textarea { resize: vertical; }
 .searchhome{
