@@ -74,7 +74,7 @@ $img =  base_url().'images/logo.png';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta property="og:title" content="<?php echo $title; ?>"/>
-	<meta property="og:url" content="<?php echo $shareUrl; ?>"/>
+	<meta property="og:url" content="https://coinenthu.org/"/>
 	<meta property="og:image" content="<?php echo $img; ?>" />
 	<meta property="og:image:width" content="300" />
 	<meta property="og:image:height" content="300" />
