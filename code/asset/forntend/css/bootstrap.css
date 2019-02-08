@@ -2658,7 +2658,7 @@ output {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
-  background-color: #f9f9f9;
+  background-color: #fff;
   background-image: none;
   border: none;
   border-radius: 4px;
@@ -4051,6 +4051,17 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
   line-height: 1.5;
   border-radius: 5px;
 }
+@media(max-width:767px){
+  .input-group-sm > .form-control,
+  .input-group-sm > .input-group-addon,
+  .input-group-sm > .input-group-btn > .btn {
+    height: 30px;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 5px;
+  }
+}
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
@@ -4496,6 +4507,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand > img {
   display: block;
+}
+.pad_l0{
+  padding-left:0px!important;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

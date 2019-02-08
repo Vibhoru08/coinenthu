@@ -598,11 +598,11 @@
          <div class="">
            <div class="form-group">
              <label>Please provide your email(so we can follow up!) :</label>
-               <input type="text" class="form-control" id="feedbackemail" name="feedbackemail" class="form-control" required data-fv-notempty-message="Email reqired" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
+               <input type="text" class="form-control" id="feedbackemail" style="background-color:#f9f9f9;" name="feedbackemail" class="form-control" required data-fv-notempty-message="Email reqired" data-fv-regexp="true" data-fv-regexp-regexp="^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$"  data-fv-regexp-message="The input is not a valid email address">
            </div>
            <div class="form-group">
              <label>Please submit any comments for us below.</label>
-               <textarea type="text" class="form-control" id="comments" name="comments" class="form-control" required data-fv-notempty-message="Comments reqired"></textarea>
+               <textarea type="text" class="form-control" id="comments" style="background-color:#f9f9f9;" name="comments" class="form-control" required data-fv-notempty-message="Comments reqired"></textarea>
            </div>
 
          </div>

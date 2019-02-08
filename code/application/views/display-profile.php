@@ -234,8 +234,8 @@
               <div id="repliesDiv_<?php echo $review->re_id; ?>" style="display:none;">
 							<?php if(sizeof($replies[$review->re_id] > 0)){foreach($replies[$review->re_id] as $crr=>$reply){ ?>
 
-              <div class = "row mar_t20 br_height" id="individualReplies_<?php echo $reply->crr_id; ?>">
-									<div class = "col-md-2">
+              <div class = "col-xs-12 pad_l0 mar_t20 br_height" id="individualReplies_<?php echo $reply->crr_id; ?>">
+									<div class = "col-md-2 col-xs-4 pad_0">
 									<?php if($reply->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reply->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 									<?php }else if($reply->u_social_pic!=""){ ?>
@@ -244,7 +244,7 @@
 									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 									<?php } ?>
 									</div>
-									<div class = "col-md-10">
+									<div class = "col-md-10 col-xs-12 pad_0">
 									<p>
 									<span class="time_stamp" style="float:right;"><?php
 
@@ -276,7 +276,7 @@
 									</p>
                   <span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" style="display:none;"></span>
                   <span id="r_char_cnt<?php echo $reply->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reply->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
-               <div class = "row" style="padding-bottom:5px;padding-left:10px;">
+               <div class = "col-xs-12" style="padding-bottom:5px;padding-left:0px;">
                  <?php
                  	$uid = $_SESSION['user_id'];
                      if(isset($_SESSION['user_id'])){
@@ -284,7 +284,7 @@
                  ?>
                  <label  id="save<?php echo $reply->crr_id; ?>" for="submit-form<?php echo $reply->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike_new btn-small" style="display:none;" value="">Save</label>
                  <!--<button id="save<?php //echo $reply->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
-                 <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
+                 <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small pad_l0"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
                  <?php } else{ ?>
                    <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
 							$checkedRow1 = $this->Companies_model->checkUserReplyLiked($uid,$reply->crr_id,'like');
@@ -365,9 +365,9 @@
 							}}
 							?>
             </div>
-            <div class="row mar_t30" id="replypopup_m<?php echo $review->re_id; ?>" style="">
+            <div class="col-xs-12 pad_0 mar_t30" id="replypopup_m<?php echo $review->re_id; ?>" style="">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
-									 <div class="col-xs-10">
+									 <div class="col-xs-10 pad_l0">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
 											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php

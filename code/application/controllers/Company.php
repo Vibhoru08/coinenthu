@@ -852,8 +852,8 @@
 				else{
 						$u_username = "Guest User";
 				}
-				$html .='<div class="row" id = "individualReplies_'.$row['crr_id'].'">';
-				$html .='<div class = "col-md-2">';
+				$html .='<div class="col-xs-12" id = "individualReplies_'.$row['crr_id'].'">';
+				$html .='<div class = "col-md-2 col-xs-4 pad_0">';
 				if($user_details->u_picture !=""){
 						$html .= '<img class="img-circle reply-image" src="'.base_url().'asset/img/users/'.$user_details->u_picture.'" alt="'.$u_username.'">';
 				}else if($user_details->u_social_pic !=""){
@@ -862,7 +862,7 @@
 						$html .= '<img class="img-circle reply-image" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
 				}
 				$html .='</div>';
-				$html .="<div class='col-md-10'><div class = 'row mar_0' style = 'padding-top:5px;padding-bottom:5px;'>
+				$html .="<div class='col-md-10 col-xs-12 pad_0'><div class = 'row mar_0' style = 'padding-top:5px;padding-bottom:5px;'>
 				By <span style = 'font-family:NoirPro Medium;font-weight: 500;'>".$u_username."</span>";
 				$old_date = timeago($row['crr_createdat']);
 				$html .="<div class = 'time_stamp'>".$old_date."</div></div>";
@@ -872,7 +872,7 @@
 				$crr_likes_cnt= 0;
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
-				$html .="<div id = 'replyreview_".$row['crr_id']."' class = 'row' style = 'margin:0px;'>";
+				$html .="<div id = 'replyreview_".$row['crr_id']."' class = 'col-xs-12 pad_0' style = 'margin:0px;'>";
 				if (strlen($stringReply) > 150) {
 
 					$stringCut = substr($stringReply, 0, 150);
@@ -884,12 +884,12 @@
 				$html.=' </div>';
 				$html.='<span id = "successMessage_'.$row['crr_id'].'"></span>';
 				$html.='<span id = "r_char_cnt'.$row['crr_id'].'" style = "display:none;"><span id = "review_char_count'.$row['crr_id'].'"></span>&nbsp;&nbsp;character(s) left</span>';
-				$html.='<div class="row" style = "padding-bottom:5px">';
+				$html.='<div class="col-xs-12 pad_0" style = "padding-bottom:5px">';
 
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
 						    $html.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>';
-							$html.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
+							$html.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike_new btn-small pad_l0"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
 				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
@@ -908,7 +908,7 @@
 				$old_date = timeago($row['crr_createdat']);
 				$html2 .="<p><span class = 'time_stamp' style = 'float:right;'>".$old_date."</span>";
 				$html2 .="<span>".$u_username."</span><br style='margin-bottom:0px;'>";
-				$html2 .="<span style= 'font-size:11px;'>".$row['u_about']."</span></p>";
+				$html2 .="<span class='NoirProLight' style= 'font-size:11px;color:#424242;'>".$row['u_about']."</span></p>";
 				$html2 .="<p id='replyreview_".$row['crr_id']."'>";
 				$html2 .="".strip_tags($row['crr_decript'])."</p>";
 				$replylikeval    = "'like'";
@@ -918,16 +918,16 @@
    				$crr_dislike_cnt = 0;
 				$stringReply = strip_tags($row['crr_decript']);
 				$html2.='<span id= "r_char_cnt'.$row['crr_id'].'" style = "display:none;"><span id = "review_char_count'.$row['crr_id'].'"></span>&nbsp;&nbsp;character(s) left</span>';
-				$html2.='<div class="row" style = "padding-bottom:5px">';
+				$html2.='<div class="col-xs-12 pad_0" style = "padding-bottom:5px">';
 
 				if($uid!=""){
 					if($uid == $row['crr_uid']){
 						$html2.='<label id = "save'.$row['crr_id'].'" for = "submit-form'.$row['crr_id'].'" tabindex = "0" class = "btn btn-default btn_dislike_new btn_small" style = "display:none;" value ="">Save</label>';
-						$html2.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
+						$html2.='<button id="reply_reply_pop'.$row['crr_id'].'" onClick="replyReplyMessage('.$row['crr_id'].','.$row['crr_reid'].');" class="btn btn-default btn_dislike_new btn-small pad_l0"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>';
 					}
 				}
 				$html2.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
-				$html2 .= '<span class="btn btn-default btn_dislike btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete('.$row['crr_id'].');">';
+				$html2 .= '<span class="btn btn-default btn_dislike_new btn-small prof_reply_delte" style="margin-left:5px;" id="prof_reply_delete" onclick="showDelete('.$row['crr_id'].');">';
 				$html2 .= "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span></span>";
 				$html2 .='<span id = "reply_delte_confirm'.$row['crr_id'].'" style = "padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
 						  <a style = "color:red;cursor:pointer;" onclick = "reply_delete('.$row['crr_id'].');">Yes</a>
@@ -1401,7 +1401,7 @@
 			$checkRecords = 0;
 			$cnt = 0;
 			$counts = "";
-			
+
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
@@ -1409,7 +1409,7 @@
 				{
 					$city = '';
 				}else{
-					$city = $_POST['filterId']; 
+					$city = $_POST['filterId'];
 				}
 
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
@@ -1428,7 +1428,7 @@
 						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
 						$cnt = $this->Companies_model->getSearchEventsCnt($limit,$offset,$oderBy,$ascdesc,$searchterms);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
-						
+
 					}else{
 						// $searchterms = '';
 						// $getCompanies = $this->Companies_model->getDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$uuid,$checkQuery);
@@ -1492,7 +1492,7 @@
 							  <div class="product-img company_img_width">';
 							  if($value->ev_picture!="" && $value->ev_picture != ''){
 								$html.='<a href="'.base_url().'event-full-view/'.$event_id.'"><img src = "'.base_url().'asset/img/events/main/'.$value->ev_picture.'" alt = "'.$value->ev_name.'" class = "img-responsive img-circle digital_box_image"></a>';
-								 
+
 							  }else{
 								$html.='<a href="'.base_url().'event-full-view/'.$event_id.'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="'.$value->ev_name.'" class="img-responsive img-circle digital_box_image"></a>';
 							  }
@@ -1518,7 +1518,7 @@
 
 
 							//$html.=$cm_totalviews. ' Reviews';
-												
+
 							/* if($value->cm_overallrating != ''){
 								$cMOvrlRtng = $value->cm_overallrating;
 							}else{
@@ -1540,7 +1540,7 @@
 							$html.='</span>
 
 							  </div>';
-					
+
 						$html.='</li>
 						</ul>
 						</div>';

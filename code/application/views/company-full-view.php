@@ -573,7 +573,7 @@
 						<?php } ?>
 					</div>
 					<div class = "col-md-10 col-xs-12">
-						<div class = "row" style="padding-left:30px;padding-top:15px;">
+						<div class = "col-xs-12" style="padding-top:15px;">
 							<span class="pull-right">
 									<?php
 									if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
@@ -618,7 +618,7 @@
 							?>
 
 						</div>
-						<div class = "row" style="padding-left:30px;padding-top:2px;padding-bottom:2px;">
+						<div class = "col-xs-12" style="padding-top:2px;padding-bottom:2px;">
 						<?php
 						    if(strlen($review->re_decript) < 150){
 								$string = $review->re_decript;
@@ -633,7 +633,7 @@
 							<span id="spanLess_<?php echo $review->re_id; ?>" style="overflow-wrap: break-word;"><?php echo $string; ?></span>
 							<span id="expandSpan_<?php echo $review->re_id; ?>" style="display:none;overflow-wrap: break-word;" > <?php echo $review->re_decript.' '.'<a href="javascript:void(0);" onClick="readLessSpan('.$review->re_id.');"><i class="fa fa-angle-double-left font_s16" aria-hidden="true"></i> Less </a>'; ?></span>
 						</div>
-						<div class = "row" style="padding-left:30px;padding-top:2px;padding-bottom:2px;">
+						<div class = "col-xs-12" style="padding-top:2px;padding-bottom:2px;">
 							<div class="col-xs-12 col-sm-8 col-md-12 col-lg-8 pad_0">
 							<?php
 							if(isset($_SESSION['user_id']))
@@ -702,9 +702,9 @@
 						</div>
 						</div>
 						<?php if(isset($this->session->userdata['user_id']) && $this->session->userdata['user_id'] != "" ){ ?>
-						<div class="row mar_t20" id="replypopup_m<?php echo $review->re_id; ?>" style="display:none;">
+						<div class="col-xs-12 mar_t20" id="replypopup_m<?php echo $review->re_id; ?>" style="display:none;">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
-									 <div class="col-xs-10">
+									 <div class="col-xs-10 pad_l0">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
 											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
@@ -738,7 +738,7 @@
 								<div id="repliesDiv_<?php echo $review->re_id; ?>" style="display:none;">
 						<?php if(sizeof($companyview['replies'][$review->re_id])>0){foreach($companyview['replies'][$review->re_id] as $crr=>$reviewReplay){?>
 
-						<div class = "row" id="individualReplies_<?php echo $reviewReplay->crr_id; ?>">
+						<div class = "col-xs-12" id="individualReplies_<?php echo $reviewReplay->crr_id; ?>">
 					        <?php
 								if($reviewReplay->u_username!=""){
 									$u_username = ucfirst($reviewReplay->u_username);
@@ -748,7 +748,7 @@
 									$u_username = "Guest User";
 								}
 							?>
-							<div class = "col-md-2">
+							<div class = "col-md-2 col-xs-4 pad_0">
 							        <?php if($reviewReplay->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reviewReplay->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 									<?php }else if($reviewReplay->u_social_pic!=""){ ?>
@@ -757,8 +757,8 @@
 									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 									<?php } ?>
 							</div>
-							<div class = "col-md-10">
-								<div class = "row mar_0" style="padding-top:5px;padding-bottom:5px;">
+							<div class = "col-md-10 col-xs-12 pad_0">
+								<div class = "col-xs-12 mar_0 pad_0" style="padding-top:5px;padding-bottom:5px;">
 									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
 									<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
@@ -806,7 +806,7 @@
 
 
 
-								<div id="replyreview_<?php echo $reviewReplay->crr_id; ?>" class = "row" style="margin:0px;">
+								<div id="replyreview_<?php echo $reviewReplay->crr_id; ?>" class = "col-xs-12 pad_0" style="margin:0px;">
 									<?php
 
 									$stringReply = strip_tags($reviewReplay->crr_decript);
@@ -823,16 +823,16 @@
 								</div>
 								<span id="successMessage_<?php echo $reviewReplay->crr_id; ?>" ></span>
 									 <span id="r_char_cnt<?php echo $reviewReplay->crr_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $reviewReplay->crr_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
-								<div class = "row" style="padding-bottom:5px">
+								<div class = "col-xs-12 pad_0" style="padding-bottom:5px">
 									<?php
 											if(isset($_SESSION['user_id'])){
 												if($uid == $reviewReplay->crr_uid){
 									?>
 									<label  id="save<?php echo $reviewReplay->crr_id; ?>" for="submit-form<?php echo $reviewReplay->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike_new btn-small" style="display:none;" value="">Save</label>
 									<!--<button id="save<?php //echo $reviewReplay->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
-									<button id="reply_reply_pop<?php echo $reviewReplay->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
+									<button id="reply_reply_pop<?php echo $reviewReplay->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reviewReplay->crr_id; ?>','<?php echo $reviewReplay->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small pad_l0"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
 									<?php } else{ ?>
-										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
+										<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small pad_l0" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
 							$checkedRow1 = $this->Companies_model->checkUserReplyLiked($uid,$reviewReplay->crr_id,'like');
 							if(isset($checkedRow1->rrr_id) && $checkedRow1->rrr_id!=''){
 								echo '<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class = "r-like-button-text" style="color:#065FD4;">Liked</span>';
@@ -859,7 +859,7 @@
 									<span id="replyReportId_<?php echo $reviewReplay->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reviewReplay->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
 									<?php } ?>
 									<?php }}else{ ?>
-									<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+									<button id="reply_btn_like_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small pad_l0" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
 									</button>
 									<button id="reply_btn_dislike_<?php echo $reviewReplay->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reviewReplay->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
 									</button>
@@ -926,6 +926,25 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 	$endDateTime = $companyview['cm_ico_end_date'].' '.'00:00:00';
 }
 ?>
+
+<input type="hidden" id="hid_cmid" name="hid_cmid" value="<?php echo $companyview['company_id']; ?>">
+						<input type="hidden" id="hid_cmname" name="hid_cmname" value="<?php echo $companyview['company_name']; ?>">
+						<?php //echo "<pre>"; print_r($companyview);echo "</pre>";exit; ?>
+						<input type="hidden" id="hid_userid" name="hid_userid" value="<?php
+						if( $this->session->userdata('user_id') )
+						{
+							echo $this->session->userdata('user_id');
+						}else{
+							echo '';
+						}
+						?>">
+						<input type="hidden" name="company_name" id="company_name" value="<?php echo $companyview['company_name']; ?>">
+						<input type="hidden" id="hid_uniqueid" name="hid_uniqueid" value="<?php echo$companyview['cm_unique_id']; ?>">
+
+
+
+
+
 <input type="hidden" id="timeDate" name="timeDate" value="<?php print date("F d, Y H:i:s",strtotime($endDateTime)); ?>">
 <input type="hidden" id="timeDate1" name="timeDate1" value="<?php print date("F d, Y H:i:s",strtotime(date('Y-m-d H:i:s'))); ?>">
 
@@ -1311,7 +1330,7 @@ function confirmDeleteActions(){
 	}
 
 	function wirteareplySubmit(re_id){
-		$('#replypopup'+re_id).formValidation();
+		$('#replypopup'+re_id).formValidation();debugger;
 		replyMessage(re_id);
 		$("#change_btn_name").html('Cancel');
 		$("#successmessage"+re_id).html('');
@@ -1319,7 +1338,7 @@ function confirmDeleteActions(){
 			$('#common_modal_pop').modal('hide');
 		  var reply='#replypopup'+re_id;
 			$('#replypopup'+re_id).formValidation().on('success.form.fv', function(e) {
-				e.stopImmediatePropagation();
+				e.stopImmediatePropagation();debugger;
 				var crr_reid    = $("#crr_reid"+re_id).val();
 				var crr_decript = $("#crr_decript"+re_id).val();
 				var url = baseUrl+'Company/replySaveMethod?expireTime='+time;
@@ -1333,9 +1352,9 @@ function confirmDeleteActions(){
 					success: function(data){
 						$("#tp7"+re_id).hide();
 						console.log(data.output);
-						if(data.output=='success'){
+						if(data.output=='success'){debugger;
 							$("#successmessage"+re_id).html('Reply successfully saved').css('color','green');
-							setTimeout(function(){
+							setTimeout(function(){debugger;
 								$("#successmessage"+re_id).html('');
 								var filterType = 'likes';
 								var hid_filter = $("#hid_filter").val();
@@ -1579,7 +1598,7 @@ function confirmDeleteActions(){
 		});
 	}
 	function reviewReplyFilter(type,crr_reid,re_id){
-		$("#change_btn_name").html('Cancel');
+		$("#change_btn_name").html('Cancel');debugger;
 		var hid_filter = $("#hid_filter").val();
 		var filterTitle = 'Up Votes';
 		if(type =='likes'){
@@ -1608,7 +1627,7 @@ function confirmDeleteActions(){
 			cache       : false,
 			data        : {cm_id:cm_id,order_by:type,crr_reid:crr_reid,re_id:re_id},
 			dataType	: "json",
-			success: function(data){
+			success: function(data){debugger;
 				console.log(data.output);
 				console.log(data.resData);
 				console.log(data.repliesCntt);

@@ -3020,7 +3020,7 @@ font-family: NoirPro;
 .linear_color_home{
   background-image:url('../images/homebanner.png');
   background-repeat:no-repeat;
-  background-size:105%;
+  background-size:105% 100%;
   background-position: -1px 0;
 }
 .crr_decript{
