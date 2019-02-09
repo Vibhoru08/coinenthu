@@ -117,7 +117,7 @@
 								</a>
 							  </div>
 							  <div class="product-info text-left">
-							  	<a title="<?php echo $event->ev_name; ?>" href="<?php echo base_url();?>event-full-view/<?php echo $event->ev_id; ?>" class="product-title"><?php echo ucfirst($event->ev_name); ?></a>
+							  	<a title="<?php echo $event->ev_name; ?>" href="<?php echo base_url();?>event-full-view/<?php echo $event->ev_id; ?>" class="product-title NoirProSemiBold"><?php echo ucfirst($event->ev_name); ?></a>
 								<div style = "padding:5px 0px 0px 5px";>
 									<?php
 										$event_id = $event->ev_id;

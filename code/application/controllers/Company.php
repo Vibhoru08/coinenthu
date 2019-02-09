@@ -1485,7 +1485,7 @@
 											$edmn = 'Dec';
 										}
 										$eventDate = $edd.' '.$edmn.', '.$edy;
-						$html .='<div class="col-md-4 mar_t40" style = "min-height:410px;">
+						$html .='<div class="col-md-4 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
 							<div class="product_zorder">
@@ -1498,18 +1498,15 @@
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-						$html.='<a title="'.$value->ev_name.'" href="'.base_url().'event-full-view/'.$event_id.'" class="product-title NoirProSemiBold">'.$value->ev_name.'</a>';
-						$html.='<span class="product-description">';
-						$html.='<div class="star_in"><div class="rating_value">
-								<span>';
-						$html.='<div class="row">';
-						$html.='<br/>';
-						$html.='<p style = "margin-left:20px;"><i class="fa fa-location-arrow" aria-hidden="true"></i> Location: '.$value->ev_city.'<p>';
-						$html.='<p style = "margin-left:20px;"><i class="fa fa-calendar" aria-hidden="true"></i> Date : '.$eventDate.'</p>';
-						$html.='<p style = "margin-left:20px;"><i class="fa fa-money" aria-hidden="true"></i> Price : $ '.$value->ev_price.'</p>';
-						$html.='<p style = "margin-left:20px;"><i class="fa fa-microphone" aria-hidden="true"></i> Speakers : '.$speakers_num.'</p>';
-						$html.='<p style = "margin-left:20px;"><i class="fa fa-users"></i> Attendees : '.$value->ev_num.'</p>';
-						$html.='<hr class="col-xs-12">';
+						$html.='<a title="'.$value->ev_name.'" href="'.base_url().'event-full-view/'.$event_id.'" class="product-title NoirProSemiBold">'.ucfirst($value->ev_name).'</a>';
+						$html.='<div style = "padding:5px 0px 0px 5px";>';
+						$html.='<p><i class="fa fa-location-arrow" aria-hidden="true"></i> Location: '.ucfirst($value->ev_city).'<p>';
+						$html.='<p><i class="fa fa-calendar" aria-hidden="true"></i> Date : '.$eventDate.'</p>';
+						$html.='<p><i class="fa fa-money" aria-hidden="true"></i> Price : $ '.$value->ev_price.'</p>';
+						$html.='<p><i class="fa fa-microphone" aria-hidden="true"></i> Speakers : '.$speakers_num.'</p>';
+						$html.='<p><i class="fa fa-users"></i> Attendees : '.$value->ev_num.'</p>';
+						$html.='</div>';
+						$html.='<hr>';
 						$html.='<div class = "text-right">';
 						$html.='<a href = "'.base_url().'event-full-view/'.$event_id.'" class = "btn btn-default" role ="button">View More</a>';
 						$html.='</div>';
@@ -1537,9 +1534,7 @@
 
 
 							$html.=	'</div>	';
-							$html.='</span>
-
-							  </div>';
+							$html.='</div>';
 
 						$html.='</li>
 						</ul>
@@ -1657,39 +1652,47 @@
 							  if($value->cm_picture!=""){
 								  if($value->cm_ctid == 1){
 									 if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if($value->cm_picture!=""){
 					$srcc = base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}
 									 }else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}else if($value->cm_ctid == 2){
 									if($value->cm_picture!=""){
 										$srcc = base_url().'asset/img/companies/icotracker/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
 										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
+											$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
 											class="img-responsive  img-circle digital_box_image"></a>';
 										}
 									}else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
+										$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
 										class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}
 							  }else{
-								$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+								  if($value->cm_ctid == 1){
+								$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+								  }elseif($value->cm_ctid == 2){
+									$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';	  
+								  }
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						if($value->cm_ctid == 1){	  
+							$html.='<a title="'.$value->cm_name.'" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						}elseif($value->cm_ctid == 2){
+							$html.='<a title="'.$value->cm_name.'" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+						}
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
@@ -1719,7 +1722,11 @@
 						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
 						}
-						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						if($value->cm_ctid == 1){
+							$html.='<br/><a class="col-xs-12" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						}elseif($value->cm_ctid == 2){
+							$html.='<br/><a class="col-xs-12" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						}
 						$html.='<hr class="col-xs-12">';
 
 
@@ -1927,39 +1934,47 @@
 							  if($value->cm_picture!=""){
 								  if($value->cm_ctid == 1){
 									 if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									 }else if($value->cm_picture!=""){
 					$srcc = base_url().'asset/img/companies/digitalasset/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 										}
 									 }else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+										$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}else if($value->cm_ctid == 2){
 									if($value->cm_picture!=""){
 										$srcc = base_url().'asset/img/companies/icotracker/'.$value->cm_picture;
 										if(@getimagesize($srcc)){
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
+											$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'asset/img/companies/icotracker/'.$value->cm_picture.'" alt="Coinenthu" class="img-responsive  img-circle digital_box_image"></a>';
 										}else{
-											$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
+											$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
 											class="img-responsive  img-circle digital_box_image"></a>';
 										}
 									}else{
-										$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
+										$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu"
 										class="img-responsive img-circle digital_box_image"></a>';
 									}
 								}
 							  }else{
-								$html.='<a href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
-							  }
+								  if($value->cm_ctid == 1){
+									$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+								  }else if($value->cm_ctid == 2){
+									$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
+								  }
+								}
 						$html.='</div>
 							  <div class="product-info text-left">';
-						$html.='<a title="'.$value->cm_name.'" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+							  if($value->cm_ctid == 1){
+									$html.='<a title="'.$value->cm_name.'" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
+							  }elseif($value->cm_ctid == 2){
+								$html.='<a title="'.$value->cm_name.'" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">'; 
+							  }
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
 								<span>';
@@ -1988,8 +2003,13 @@
 							}
 						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
+						
 						}
-						$html.='<br/><a class="col-xs-12" href="'.base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						if($value->cm_ctid == 1){
+							$html.='<br/><a class="col-xs-12" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+						}elseif($value->cm_ctid ==2){
+							$html.='<br/><a class="col-xs-12" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';			
+						}
 						$html.='<hr class="col-xs-12">';
 
 

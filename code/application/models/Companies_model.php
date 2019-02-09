@@ -2323,7 +2323,7 @@ class Companies_model extends CI_Model
 	}
 
 	public function getcompanyidfromreview($re_id){
-		$this->db->select('re_cmid');
+		$this->db->select('*');
 		$this->db->from('bop_company_reviews');
 		$this->db->where('bop_company_reviews.re_id',$re_id);
 		$this->db->where('bop_company_reviews.re_status',1);

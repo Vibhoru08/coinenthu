@@ -60,6 +60,7 @@
     <div class="item active">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
       <?php $company_id = $value->cm_id;
+            $type = $value->cm_ctid;
 						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
             $company_reviews = $this->Companies_model->assetLastReview($company_id);
             $total_likes_count = 0;
@@ -109,7 +110,11 @@
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php if ($type ==1){ ?>
+              <a href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php }elseif($type == 2){ ?>
+                <a href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php } ?>
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -134,7 +139,11 @@
                   $string = substr($string, 0, 18).'...';
                 }
               ?>
-              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php if($type == 1){ ?>
+              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php }elseif($type == 2){ ?>
+                <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>  
+              <?php } ?>
               <span class="product-description">
               <div>
 
@@ -171,8 +180,12 @@
                 <div class = "col-xs-12 pad_0"><br></div>
                 <span class="col-xs-12 pad_0" style="height:90px;"><?php echo ucfirst($string); ?></span><br><br>
                 <?php } ?>
-                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-						    <hr class="col-xs-12 pad_0">
+                <?php if($type == 1){ ?>
+                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <?php }elseif($type == 2){ ?>
+                  <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'ICOs/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <?php } ?>
+                <hr class="col-xs-12 pad_0">
                 <div class="col-xs-12 pad_0"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
@@ -191,6 +204,7 @@
     <div class="item">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
         <?php $company_id = $value->cm_id;
+            $type = $value->cm_ctid;
 						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
             $company_reviews = $this->Companies_model->assetLastReview($company_id);
             $total_likes_count = 0;
@@ -240,7 +254,11 @@
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php if($type == 1){ ?>
+              <a href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php }elseif($type == 2){ ?>
+                <a href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php } ?>
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -265,7 +283,11 @@
                   $string = substr($string, 0, 18).'...';
                 }
               ?>
-              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php if($type == 1){ ?>
+              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php }elseif($type == 2){ ?>
+                <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php } ?>
               <span class="product-description">
               <div>
 
@@ -302,8 +324,12 @@
                 <div class = "col-xs-12 pad_0"><br></div>
                 <span class="col-xs-12 pad_0" style="height:90px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
-                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-						    <hr class="col-xs-12 pad_0">
+                <?php if($type == 1){ ?>
+                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <?php }elseif($type == 2){ ?>
+                  <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'ICOs/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <?php } ?>
+                <hr class="col-xs-12 pad_0">
                 <div class="col-xs-12 pad_0"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
@@ -322,6 +348,7 @@
     <div class="item">
       <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
         <?php $company_id = $value->cm_id;
+            $type = $value->cm_ctid;
 						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
             $company_reviews = $this->Companies_model->assetLastReview($company_id);
             $total_likes_count = 0;
@@ -371,7 +398,11 @@
             <li class="item center">
             <div class="product_zorder">
               <div class="product-img company_img_width">
-              <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php if($type == 1){ ?>
+              <a href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php }elseif($type == 2){ ?>
+                <a href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+              <?php } ?>
                 <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
                   <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
                 <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -396,7 +427,11 @@
                   $string = substr($string, 0, 18).'...';
                 }
               ?>
-              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php if($type == 1){ ?>
+              <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php }elseif($type == 2){ ?>
+                <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+              <?php } ?>
               <span class="product-description">
               <div>
 
@@ -433,8 +468,12 @@
                 <div class = "col-xs-12 pad_0"><br></div>
                 <span class="col-xs-12 pad_0" style="height:90px;"><?php echo ucfirst($string); ?></span><br>
                 <?php } ?>
-                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-						    <hr class="col-xs-12 pad_0">
+                <?php if($type ==1 ){ ?>
+                <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+						    <?php }elseif($type == 2){ ?>
+                  <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'ICOs/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <?php } ?>
+                <hr class="col-xs-12 pad_0">
                 <div class="col-xs-12 pad_0"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> <?php echo $total_likes_count.' ';?><span class="dis2_block"><?php echo $like_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
@@ -468,6 +507,7 @@
 <div class="scrolling-wrapper big_hide">
   <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
     <?php $company_id = $value->cm_id;
+            $type = $value->cm_ctid;  
 						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
             $company_reviews = $this->Companies_model->assetLastReview($company_id);
             $total_likes_count = 0;
@@ -516,7 +556,11 @@
         <li class="item center">
         <div class="product_zorder">
           <div class="product-img company_img_width">
-          <a href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+          <?php if($type == 1){ ?>
+          <a href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+          <?php }elseif($type == 2){ ?>
+            <a href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>">
+          <?php } ?>  
             <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
               <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
             <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
@@ -541,7 +585,11 @@
               $string = substr($string, 0, 18).'...';
             }
           ?>
-          <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>company-full-view/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+          <?php if($type == 1){ ?>
+          <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+          <?php }elseif($type == 2){ ?>
+            <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
+          <?php } ?>
           <span class="product-description">
           <div>
 
@@ -578,7 +626,11 @@
             <div class = "col-xs-12 pad_0"><br></div>
             <span class="col-xs-12 pad_0" style="height:100px;"><?php echo ucfirst($string); ?></span><br>
             <?php } ?>
-            <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'company-full-view/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <?php if($type == 1){ ?>
+            <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <?php }elseif($type == 2){ ?>
+              <br/><a class="col-xs-12 pad_0" href="<?php echo base_url().'ICOs/'.str_replace(" ","_",$value->cm_name); ?>" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <?php } ?>
             <hr class="col-xs-12 pad_0">
             <div class="col-xs-12 pad_0"><div class="col-xs-4 pad_0"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span><?php echo ' '.$total_likes_count.' ';?><span class="dis_block"><?php echo $like_s; ?></span></span></div>
             <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo ' '.$total_dislikes_count.' ';?><span class="dis_block"><?php echo $dislike_s; ?></span></span></div>
