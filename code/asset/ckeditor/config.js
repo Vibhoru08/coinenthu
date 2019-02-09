@@ -41,7 +41,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;link:target;link:upload;html5video:advanced';
   config.removePlugins = 'PasteFromWord';
   config.removeButtons = 'PasteFromWord,Anchor,SpecialChar,Source';
-  config.extraPlugins = 'wordcount,notification,embed,embedbase';
+  config.extraPlugins = 'wordcount,notification,embed,embedbase,autolink,textmatch';
   config.wordcount = {
 
     // Whether or not you want to show the Paragraphs Count
