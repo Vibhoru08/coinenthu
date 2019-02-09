@@ -1259,10 +1259,13 @@
 			$cm_id_details = $this->Companies_model->getcompanyidfromreview($re_id);
 			foreach ($cm_id_details as $row){
 				$cm_id = $row['re_cmid'];
+				$review_userid = $row['re_uid'];
 			}
 			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 				redirect('login', 'refresh');
 			}else{
+				if(isset($cm_id) && $cm_id != ""){
+					if($review_userid == $this->session->userdata('user_id')){
 				$result = $this->Companies_model->getcompanyinfobycmid($cm_id);
 				if(count($result) > 0){
 					foreach($result as $key=>$details)
@@ -1277,6 +1280,12 @@
 				$results      = $this->Companies_model->editReview($re_id);
 				$data['editReview'] = $results;
 				$this->show('edit-review',$data);
+			}else{
+				show_404();
+			}
+			}else{
+				show_404();
+			}
 			}
 		}
 		public function writeAreview(){
