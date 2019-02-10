@@ -200,7 +200,11 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 		}
 		if($edy == $sdy){
 			if($sdm == $edm){
-				$comdat = $sdmn.' '.$sdd.' - '.$edd.', '.$sdy;
+				if($edd == $sdd){
+					$comdat = $sdmn.' '.$sdd.', '.$sdy;	
+				}else{
+					$comdat = $sdmn.' '.$sdd.' - '.$edd.', '.$sdy;
+				}
 			}else{
 				$comdat = $sdd.' '.$sdmn.' - '.$edd.' '.$edmn.', '.$edy;
 			}

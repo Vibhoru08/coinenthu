@@ -60,6 +60,7 @@
 										<input type="hidden" name="re_cmid" id="re_cmid" value="<?php echo $cm_id; ?>">
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $cm_unique_id; ?>">
 									<input type="hidden" name="company_name" id="company_name" value="<?php echo $cm_name; ?>">
+									<input type = "hidden" name = "company_type" id = "company_type" value = "<?php echo $cm_ctid; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
 										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"></textarea>
 									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;</span>
@@ -277,6 +278,7 @@
 			var re_agree = 0;
 			var re_cmid      = $('#re_cmid').val();
 			var re_rating    = $('#re_rating').val();
+			var cm_ctid      = $('#company_type').val();
 			var re_decript   = CKEDITOR.instances['re_decript'].getData();
 			console.log(re_decript);
 			var cm_unique_id = $('#cm_unique_id').val();
@@ -299,7 +301,11 @@
 						$("#loadSuccess").html('Review successfully submitted.').css("color", "green");;
 						setTimeout(function(){
 							$("#loadSuccess").hide();
-							window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,"_");
+							if(cm_ctid == 1){
+								window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,"_");
+							}else if(cm_ctid == 2){
+								window.location = baseUrl+'ICOs/'+cm_name.replace(/\s/g,"_");
+							}
 						}, 2000);
 					}else if(data.output=='failed')
 					{
@@ -315,7 +321,12 @@
 	function redirectUrlMethod(){
 		var cm_unique_id = $('#cm_unique_id').val();
 		var cm_name = $('#company_name').val();
-		window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,"_");
+		var cm_ctid = $('#company_type').val();
+		if(cm_ctid == 1){
+			window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,"_");
+		}else if (cm_ctid == 2){
+			window.location = baseUrl+'ICOs/'+cm_name.replace(/\s/g,"_");
+		}
 	}
 	function countCharcter()
 	{

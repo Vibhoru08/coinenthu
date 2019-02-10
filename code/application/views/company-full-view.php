@@ -940,6 +940,7 @@ if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != 
 						?>">
 						<input type="hidden" name="company_name" id="company_name" value="<?php echo $companyview['company_name']; ?>">
 						<input type="hidden" id="hid_uniqueid" name="hid_uniqueid" value="<?php echo$companyview['cm_unique_id']; ?>">
+						<input type = "hidden" name = "company_type" id = "company_type" value = "<?php echo $companyview['cm_ctid']; ?>">
 
 
 
@@ -1543,8 +1544,13 @@ function confirmDeleteActions(){
 	}
 	function fullViewFilter(typeee,Pagee){
 		var cm_name = $('#company_name').val();
+		var cm_ctid = $('#company_type').val(); 
 		var hid_uniqueid   = $("#hid_uniqueid").val();
-		window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_')+'&'+typeee;
+		if(cm_ctid == 1){
+			window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,'_')+'&'+typeee;
+		}else if(cm_ctid == 2){
+			window.location = baseUrl+'ICOs/'+cm_name.replace(/\s/g,'_')+'&'+typeee;
+		}
 	}
 	function reviewFilter(type,Pagee){
 		$("#change_btn_name").html('Cancel');
