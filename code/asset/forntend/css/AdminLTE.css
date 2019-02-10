@@ -2344,10 +2344,23 @@ border-radius:5px!important;
   border-color: #e31c77!important;
 }
 .btn-dis{
-  color:#fff;
+
   border-radius: 50%;
-  background-color: #dad8d8;
-  border:none;
+  background-color: #f9f9f9;
+  border:1px solid #dad8d8;
+}
+@media(min-width:990px){
+  .btn-dis:hover,.btn-dis:active{
+      background-color: #dad8d8;
+      border:1px solid gray;
+  }
+}
+@media(max-width:990px){
+  .btn-dis:focus,.btn-dis:active{
+      background-color: #dad8d8;
+      border:1px solid gray;
+  }
+
 }
 .btn-custom{
   background-color: #8e44ad;

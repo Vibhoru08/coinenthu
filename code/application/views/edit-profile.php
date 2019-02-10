@@ -2,11 +2,11 @@
 	<div  class="bread_crumb">
 		<div class="container-fluid banner_margin linear_color">
 			<section class="content-header">
-			<div class="row mmar_t40 mmar_b10 mar_t80 mar_b80">
+			<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						EDIT PROFILE
-						<hr style="width:5%;border:1px solid #ffff">
-						
+						<!--<hr style="width:5%;border:1px solid #ffff">-->
+
 					</div>
 				</div>
 			</section>
@@ -16,10 +16,8 @@
 			<section class="content mar_b20">
 			<div class="row">
 					<div class="col-md-12">
-						<div class="box mar_b50  mar_t20 box_shadow overflow_hidden">
-							<div class="box-header with-border header_bg">
-								<h3 class="box-title">Edit Profile</h3>
-							</div>
+						<div class="box mar_b50  mar_t0  overflow_hidden">
+
 							<div class="box-body pad_t30">
 								<div class="col-md-3 text-center">
 									<div class="add_company">
@@ -92,8 +90,7 @@
 									<span id="successMsg"></span>
 									  <div class="form-group text-right">
 										<div class="col-sm-offset-3 col-sm-9">
-										 <a href="<?php echo base_url();?>" class="btn btn-default">CANCEL
-										</a>
+										 
 										  <button type="submit" class="btn btn-primary">SAVE</button>
 										</div>
 									  </div>

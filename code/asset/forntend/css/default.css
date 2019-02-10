@@ -2966,26 +2966,27 @@ font-family: NoirPro;
 }
 .profile_desx{
   margin-top: 0px;
-  left:-80px;
+  left:-95px;
   color:black;
 }
 #nor ,#no_rev , #nou{
   font-family:NoirPro Medium;
   color:black;
-  font-size:18px;
+  font-size:13px;
 }
-@media(min-width:990px)and (max-width:1200px){
+@media(min-width:990px){
   #nor ,#no_rev , #nou{
     text-align: left;
     padding-left: 7px;
+    display:inline-block;
   }
   .dis_block,.fa{
 
   }
 }
-@media(max-width:1150px){
+@media(max-width:1150px) and (min-width:990px){
   .profile_desx{
-    left:-30px;
+    left:-40px;
   }
 }
 @media(max-width:990px){
@@ -2995,6 +2996,7 @@ font-family: NoirPro;
     color:black;
     margin-top:-10px;
     text-align:center;
+    left:0;
   }
 .profile_image{
   padding:0;
@@ -3006,12 +3008,35 @@ font-family: NoirPro;
     margin-bottom:50px!important;
   }
 }
+.profile_name{
+  font-size: 26px;
+}
+.display_inline{
+  display:inline-block;
+}
+
 .like_upvote{
   padding:10px 0 10px 0;
   margin-top: 0px;
   border-top: none;
-  border-bottom: 1px solid  #bfbfbf;
+  border-bottom: none;
 }
+.mlike{
+  margin-top:-21px;
+}
+.edit_profile{
+  margin-top:5px;
+  padding-right:20px;
+  font-size:13px;
+  color:#e31c77;
+}
+.edit_color{
+  color:#e31c77;
+}
+.you_rating{
+  color:green;
+}
+
 .linear_color{
   background-image: linear-gradient(to right, #000046 , #8e44ad);
   height:10%;
@@ -3043,8 +3068,8 @@ font-family: NoirPro;
 
 }
 .dropdown_style>li>a{
-  text-align: right;
-  padding:5px 10px 5px 20px;
+  text-align: left;
+  padding:5px 10px 5px 10px;
   margin:0;
 }
 .reply_show{
@@ -3086,6 +3111,9 @@ font-family: NoirPro;
 @media(min-width:990px){
   .small_replies_dropdown:hover{
     color:#ff99c2;
+  }
+  .edit_color:hover{
+  color: #ff99c2;
   }
   .reply_show:hover{
     color:#ff99c2;
@@ -3289,19 +3317,19 @@ textarea { resize: vertical; }
  border:12px solid #f9f9f9;
 }
 .profile-image{
- width:130px;
+ width:120px;
  padding:0;
  position:relative;
  margin-top:-79.5px;
- height:130px;
+ height:120px;
 
 }
 @media(max-width:768px){
   .profile-image{
     background-color: #f9f9f9;
     padding:15px;
-    height:200px;
-    width:200px;
+    height:120px;
+    width:120px;
     border-radius: 5px;
     margin-top: -135.5px;
   }
@@ -3317,8 +3345,8 @@ textarea { resize: vertical; }
   .profile-image{
     background-color: #f9f9f9;
     padding:15px;
-    height:200px;
-    width:200px;
+    height:150px;
+    width:150px;
     border-radius: 5px;
   }
 }

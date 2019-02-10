@@ -31,56 +31,59 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-2 col-xs-12 profile_desx m_hide pad_0">
-              <div style = "font-size:15px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
-                <h1 class="mar_t5">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
+            <div class = "col-md-4 col-xs-12 profile_desx m_hide pad_0">
+              <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
+                <h1 class="mar_t5 profile_name">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
+            </div>
+            <div class="col-md-4 text-right edit_profile">
+            <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
             <div class = "col-md-2 col-xs-12 profile_desx pad_0 big_hide">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
             </div>
-            <div class="col-md-6 col-md-offset-1 m_hide like_upvote text-left">
-              <div class = "text-left col-xs-4 col-lg-2">
-                  <div id="no_rev" class = "text-center"><?php echo $nor; ?></div>&nbsp;
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
+            <div class="col-md-8 col-md-offset-3 profile_desx m_hide like_upvote mlike text-left">
+              <div class = "text-left display_inline pad_0">
+                  <div id="no_rev" class = "text-center pad_l0"><?php echo $nor; ?></div>&nbsp;
+                  <!--<i class="fa fa-commenting" aria-hidden="true"></i>-->
                   <span class="dis_block">
           <?php
                   if ($nor == 1){
-                      echo "Review";
+                      echo "Review.";
                   }
                   else{
-                      echo "Reviews";
+                      echo "Reviews.";
                   }
                   ?></span>
          </div>
-              <div class = "text-left col-xs-4 col-lg-2 col-lg-offset-2">
+              <div class = "text-left display_inline pad_0">
                   <div id = "nor" class = "text-center"><?php echo $nore; ?></div>&nbsp;
 
-                  <i class="fa fa-reply" aria-hidden="true"></i>
+                  <!--<i class="fa fa-reply" aria-hidden="true"></i>-->
                   <span class="dis_block">
           <?php
                   if ($nore == 1){
-                      echo "Reply";
+                      echo "Reply.";
                   }
                   else{
-                      echo "Replies";
+                      echo "Replies.";
                   }
                   ?></span>
         </div>
-              <div class = "text-left col-xs-4 col-lg-2 col-lg-offset-2">
+              <div class = "text-left display_inline pad_0">
                   <div id="nou" class = "text-center"><?php echo $nou; ?></div>&nbsp;
-                  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                  <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
                   <span class="dis_block">
                   <?php
                   if ($nou == 1){
-                      echo "Upvote";
+                      echo "Upvote.";
                   }
                   else{
-                      echo "Upvotes";
+                      echo "Upvotes.";
                   }
                   ?></span>
                 </div>
             <div class = "col-md-5 col-xs-12 profile_desx pad_0 big_hide">
-            <span style = "font-size:15px;"><?php echo ucfirst($userinfo->u_about); ?></span>
+            <span style = "font-size:13px;"><?php echo ucfirst($userinfo->u_about); ?></span>
             </div>
           </div>
           <br>
@@ -188,7 +191,7 @@
 									echo $old_date;
 							?>
 							</div>
-							<div>
+							<div class="you_rating">
 								You Rated<br>
 								<?php echo $review->re_rating; ?>&nbsp;<i class="fa fa-star" aria-hidden="true"></i>
 							</div>
@@ -199,9 +202,9 @@
                   <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
                   <span class="fa fa-ellipsis-h"></span></button>
                   <ul class="dropdown-menu display-dropdown dropdown_style">
-                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>">Edit</a></li>
+                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit</a></li>
                     <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
-      								       Delete
+      								      <i class="fa fa-trash" aria-hidden="true"></i> Delete
       							</a></li>
                   </ul>
                 </div>

@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class = "row text-center mar_t30 mmar_t0 mmar_b15 mar_b40">
-                <div class="col-sm-8 col-sm-offset-4 col-xs-10 col-xs-offset-1  col-md-8 col-md-offset-2  su_home">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1  col-md-8 col-md-offset-2  su_home">
                     <input class="form-control1 form-control mar_r10 searchhome" type="text" onkeyup="sreachtermhome();" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets and ICOs"  />
                 </div>
                 <!--<div class = "col-sm-2 col-xs-2 pad_l0 s_home m_hide">
