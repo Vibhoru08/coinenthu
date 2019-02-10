@@ -59,11 +59,13 @@
 										  <div class="form-group" id="milestone_div_1">
 											<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label>
 											<div class="col-sm-9">
-											<div class="row no-margin mailstone_pad_bg">
-												<div class="col-xs-12 pad_0">
+											<div class="row mailstone_pad_bg">
+												<div class="col-md-8">
 													<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
-
+                        <div class="col-md-4 ">
+                          <input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_0">
+                        </div>
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>
 											</div>
@@ -583,11 +585,13 @@
 			$('#milestonesboxesCnt').val(parseInt(TotMileStonesBoxesCnt)+parseInt(1));
 			var html = "";
 			html = '<div class="form-group" id="milestone_div_'+count_mb+'">';
-				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-xs-12 pad_0">';
+				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-md-8 pad_l0">';
 
 				html += '<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
 				html +='</div>';
-
+        html+='<div class="col-md-4">';
+        html+='  <input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+count_mb+'" value="" >';
+        html+='</div>';
 				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 
 					html += '</div>';

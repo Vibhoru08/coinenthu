@@ -81,10 +81,10 @@ $viewTime = date('Ymd') .'_'. date('His');
 						{?>
 							<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
 								<div class="col-md-3 control-label">
-								<label>Milestones</label>
+								<label>Project Updates</label>
 								</div>
 								<div class="col-md-4">
-									<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
+									<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
 								</div>
 
 								<div class="col-md-4">
@@ -126,29 +126,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 						?>
 						<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
 							<div class="col-md-3 control-label">
-							<label>Milestones</label>
+							<label>Project Updates</label>
 							</div>
 							<div class="col-md-4">
-								<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
+								<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
 							</div>
 
 							<div class="col-md-4">
-								<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-								<option value="0">Select Status</option>
-								<?php
-								if(count($milestoneStatuses) > 0){
-									foreach($milestoneStatuses as $mstones)
-									{?>
-										 <option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option>
-									<?php
-
-									}
-
-								}
-								?>
-
-
-								</select>
+									<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="">
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
@@ -341,7 +326,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 											<div class="more_input_boxes col-md-1" id="te_btn_<?php echo $trEx; ?>"><a href="javascript:void('0');" onClick="treading_exchange(<?php echo $trEx; ?>);" class="btn btn-success"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 										 </div>
 									  </span>
-					
+
 					<div class="form-group">
                       <label for="password" class="col-sm-3 control-label">Email ID <span style="color:red;">*</span></label>
                       <div class="col-sm-8">
@@ -405,7 +390,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 							<textarea class="form-control" id="cm_address" name="cm_address" value="" placeholder="Address"><?php echo $digitalData['cm_address']; ?></textarea>
 						</div>
                     </div>
-					
+
 					</div>
                   </div>
 
@@ -956,11 +941,10 @@ function noaMileAddIFile( existingFNo )
 
 		noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"  value=""></textarea>';
 		noaNewRegFileDivHtml +='</div>';
-		noaNewRegFileDivHtml +='<div class="col-md-4"><select class="form-control" name="ms_mss_id[]" id="ms_mss_id_'+noaNewRegFileId+'"><option value="0">Select Status</option>';
+		noaNewRegFileDivHtml +='<div class="col-md-4"><input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+noaNewRegFileId+'"  value="">';
 
-		noaNewRegFileDivHtml += '<?php if(count($milestoneStatuses) > 0){ foreach($milestoneStatuses as $mstones){ ?><option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option><?php }} ?>';
 
-		noaNewRegFileDivHtml +='</select></div>';
+		noaNewRegFileDivHtml +='</div>';
 		noaNewRegFileDivHtml +='<div class="col-md-1"><button type="button" class="btn btn-success btn-add"  OnClick="noaMileAddIFile('+noaNewRegFileId+');" id="noaBtnMileFile_'+noaNewRegFileId+'"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></div>';
 
 
