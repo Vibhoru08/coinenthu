@@ -13,12 +13,12 @@
                 </div>
             </div>
             <div class = "row text-center mar_t30 mmar_t0 mmar_b15 mar_b40">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1  col-md-6 col-md-offset-2  su_home">
+                <div class="col-sm-8 col-sm-offset-4 col-xs-10 col-xs-offset-1  col-md-8 col-md-offset-2  su_home">
                     <input class="form-control1 form-control mar_r10 searchhome" type="text" onkeyup="sreachtermhome();" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Digital Assets and ICOs"  />
                 </div>
-                <div class = "col-sm-2 col-xs-2 pad_l0 s_home m_hide">
+                <!--<div class = "col-sm-2 col-xs-2 pad_l0 s_home m_hide">
                     <button class="btn btn-home" type = "button" style = "width:100%">Search</button>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class= "row text-center mar_t40 mmar_t15 mmar_b15">
@@ -142,7 +142,7 @@
               <?php if($type == 1){ ?>
               <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
               <?php }elseif($type == 2){ ?>
-                <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>  
+                <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
               <?php } ?>
               <span class="product-description">
               <div>
@@ -507,7 +507,7 @@
 <div class="scrolling-wrapper big_hide">
   <?php if(sizeof($digitalAssets)>0){ foreach($digitalAssets as $key=>$value){?>
     <?php $company_id = $value->cm_id;
-            $type = $value->cm_ctid;  
+            $type = $value->cm_ctid;
 						$number_of_reviews = $this->Companies_model->count_reviews($company_id);
             $company_reviews = $this->Companies_model->assetLastReview($company_id);
             $total_likes_count = 0;
@@ -560,7 +560,7 @@
           <a href="<?php echo base_url();?>DigitalAssets/<?php echo str_replace(" ","_",$value->cm_name); ?>">
           <?php }elseif($type == 2){ ?>
             <a href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>">
-          <?php } ?>  
+          <?php } ?>
             <?php if($value->cm_picture!="" && substr( $value->cm_picture, 0, 4 ) === "digi"){ ?>
               <img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$value->cm_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-responsive img-circle digital_box_image" >
             <?php }else if(substr( $value->cm_picture, 0, 3 ) === "ico"){?>
