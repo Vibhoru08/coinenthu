@@ -1433,7 +1433,7 @@
 					if(isset($_POST['searchterms']) && $_POST['searchterms']!=""){
 						// $searchterms  = $_POST['searchterms'];
 						// $getCompanies = $this->Companies_model->getSerachDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
-						$searchterms  = $_POST['searchterms'];
+						$searchterms  = strtolower($_POST['searchterms']);
 						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
 						$cnt = $this->Companies_model->getSearchEventsCnt($limit,$offset,$oderBy,$ascdesc,$searchterms);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);

@@ -1660,7 +1660,7 @@ class Companies_model extends CI_Model
 	public function AddEvent($post,$uid,$ins_fr,$resizeImg){
 		if(isset($post['ev_name']) && $post['ev_name'] != "")
 		{
-			$ev_name = $post['ev_name'];
+			$ev_name = strtolower($post['ev_name']);
 		}else{
 			$ev_name = '';
 		}
