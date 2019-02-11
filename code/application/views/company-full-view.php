@@ -391,9 +391,15 @@
 								$mar_t10 = 'mar_t10';
 							}
 							?>
+							<?php if (strpos($companyview['ms_link'][$key], 'http') !== false) {
+										$msUrl = $companyview['ms_link'][$key];
+									}else{
+										$msUrl = '//'.$companyview['ms_link'][$key];
+									}
+								?>
 							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px 0px;">
 							<!--<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30"></div>-->
-							<div class="mailston_bg" style="border-left:none;"><?php echo $milestones; ?></div></div>
+							<div class="mailston_bg" style="border-left:none;"><a href = "<?php echo $msUrl; ?>" title = "<?php echo $milestones; ?>"><?php echo $milestones; ?></a></div></div>
 							<?php $i++; } } else{ echo "No Project Updates"; } ?>
 						</div>
 						<?php } ?>

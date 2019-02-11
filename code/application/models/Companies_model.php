@@ -1773,7 +1773,7 @@ class Companies_model extends CI_Model
 	{
 		if(isset($post['ev_name']) && $post['ev_name'] != "")
 		{
-			$ev_name = $post['ev_name'];
+			$ev_name = strtolower($post['ev_name']);
 		}else{
 			$ev_name = '';
 		}
@@ -2116,11 +2116,12 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
-	public function addMileStone($companyId,$mileStname,$mssid)
+	public function addMileStone($companyId,$mileStname,$msurl,$mssid)
 	{
 		$data = array(
             'ms_cmid'      	=> $companyId,
-            'ms_title'  	=> $mileStname,
+			'ms_title'  	=> $mileStname,
+			'ms_url'        => $msurl, 
 			'ms_mss_id'   	=> $mssid,
 			'ms_status'   	=> 1,
             'ms_createdat' 	=> date('Y-m-d H:i:s'),

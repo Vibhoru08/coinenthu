@@ -64,7 +64,7 @@
 													<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
                         <div class="col-md-4 ">
-                          <input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_0">
+                          <input class="form-control background_color" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_0">
                         </div>
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>

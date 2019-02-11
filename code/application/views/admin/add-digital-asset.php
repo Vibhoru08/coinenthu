@@ -59,7 +59,7 @@
 							</div>
 
 							<div class="col-md-4">
-								<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_0">
+								<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_0">
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_1" OnClick="noaMileAddIFile(1);">

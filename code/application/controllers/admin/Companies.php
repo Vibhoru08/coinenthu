@@ -394,7 +394,7 @@ class Companies extends MY_Controller {
 				foreach($_POST['ms_title'] as $mkey=>$milestonename)
 				{
 					if($milestonename != ""){
-						$mileStResult 	= $this->Companies_model->addMileStone($companyId,$milestonename,$_POST['ms_mss_id'][$mkey]);
+						$mileStResult 	= $this->Companies_model->addMileStone($companyId,$milestonename,$_POST['ms_link'][$mkey],2);
 					}
 				}
 			}
@@ -757,13 +757,14 @@ class Companies extends MY_Controller {
 				foreach($mileStonesOfCmp  as $m=>$mileStone)
 				{
 					$data['ms_title'][$m]	 	= $mileStone->ms_title;
+					$data['ms_link'][$m]        = $mileStone->ms_url;
 					$data['ms_id'][$m] 		= $mileStone->mss_id;
 					$data['ms_status'][$m] 	= $mileStone->mss_status;
 
 				}
 				}else{
 					$data['ms_title'] 	= '';
-					$data['ms_title'] 	= '';
+					$data['ms_link'] 	= '';
 					$data['ms_id'] 		= '';
 				}
 				//coreteam
@@ -1314,7 +1315,7 @@ class Companies extends MY_Controller {
 				foreach($_POST['ms_title'] as $mkey=>$milestonename)
 				{
 					if($milestonename != ""){
-						$mileStResult 	= $this->Companies_model->addMileStone($this->input->post('companyhidId'),$milestonename,$_POST['ms_mss_id'][$mkey]);
+						$mileStResult 	= $this->Companies_model->addMileStone($this->input->post('companyhidId'),$milestonename,$_POST['ms_link'][$mkey],2);
 					}
 				}
 			}

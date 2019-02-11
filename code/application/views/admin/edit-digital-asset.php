@@ -88,30 +88,8 @@ $viewTime = date('Ymd') .'_'. date('His');
 								</div>
 
 								<div class="col-md-4">
-									<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-									<option value="0">Select Status</option>
-									<?php
-									if(count($milestoneStatuses) > 0){
-										foreach($milestoneStatuses as $mstones)
-										{
-											if($digitalData['ms_id'][$ms] == $mstones->mss_id){
-												$selected = 'selected';
-											}else{
-												$selected = '';
-											}
-											?>
-											 <option value="<?php echo $mstones->mss_id ;?>" <?php echo $selected; ?>><?php echo $mstones->mss_status ;?></option>
-										<?php
-
-										}
-
-									}
-									$valueId = $ms + 1;
-									?>
-
-
-									</select>
-								</div>
+									<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="<?php echo $digitalData['ms_link'][$ms]; ?>">
+							</div>
 								<div class="col-md-1">
 									<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
 										<span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -133,7 +111,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 							</div>
 
 							<div class="col-md-4">
-									<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="">
+									<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="">
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
