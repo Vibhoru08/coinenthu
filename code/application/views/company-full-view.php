@@ -596,9 +596,8 @@
 	                  <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
 	                  <span class="fa fa-ellipsis-h"></span></button>
 	                  <ul class="dropdown-menu display-dropdown dropdown_style">
-	                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>">Edit</span></a></li>
-	                    <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
-	      								       Delete
+	                    <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><span id="review_edit_id_<?php echo $cr; ?>"><i class="fa fa-pencil-square mar_r10" aria-hidden="true"></i>Edit</span></a></li>
+	                    <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');"><i class="fa fa-trash" aria-hidden="true"></i>Delete
 	      							</a></li>
 	                  </ul>
 	                </div>
@@ -1550,7 +1549,7 @@ function confirmDeleteActions(){
 	}
 	function fullViewFilter(typeee,Pagee){
 		var cm_name = $('#company_name').val();
-		var cm_ctid = $('#company_type').val(); 
+		var cm_ctid = $('#company_type').val();
 		var hid_uniqueid   = $("#hid_uniqueid").val();
 		if(cm_ctid == 1){
 			window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,'_')+'&'+typeee;

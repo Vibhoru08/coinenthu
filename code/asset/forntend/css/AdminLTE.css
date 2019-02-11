@@ -1268,13 +1268,7 @@ a:focus {
  * Component: Form
  * ---------------
  */
- .searchhome{
-   font-family:NoirPro Light,fontAwesome;
-   font-size: 16px;
-   font-weight: 300;
-   font-style: italic;
-   color: #231f20;
- }
+
 .form-control {
   border-radius: 5px;
   box-shadow: none;
@@ -1479,6 +1473,42 @@ a:focus {
  * Component: Small Box
  * --------------------
  */
+ .searchhome{
+   font-family:NoirPro Light,fontAwesome;
+   font-size: 16px;
+   font-weight: 300;
+   font-style: italic;
+   color: #231f20;
+   width: 94.66666667%;
+   border-radius:0 5px 5px 0;
+ }
+ .search_total{
+   border-radius:5px;
+   background-color: #fff;
+ }
+ .search_home_icon{
+   padding:8px 0px 0 15px;
+   width: 5.33333333%;
+ }
+@media(max-width:768px){
+  .searchhome{
+    left:5px;
+  }
+  .search_home_icon{
+    font-size: 12px;
+  }
+}
+@media(max-width:480px){
+  .searchhome{
+    left:5px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .search_home_icon{
+    padding-left: 5px;
+    font-size: 12px;
+  }
+}
 .small-box {
   border-radius: 2px;
   position: relative;
@@ -2344,10 +2374,10 @@ border-radius:5px!important;
   border-color: #e31c77!important;
 }
 .btn-dis{
-
+  color:black;
   border-radius: 50%;
   background-color: #f9f9f9;
-  border:1px solid #dad8d8;
+  border:1px solid #f9f9f9;
 }
 @media(min-width:990px){
   .btn-dis:hover,.btn-dis:active{

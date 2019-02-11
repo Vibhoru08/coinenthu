@@ -24,7 +24,7 @@
 			<section class="content mar_b20">
 			<div class="row">
 					<div class="col-md-12">
-						<div class="box mar_b50  mar_t20 no_shadow overflow_hidden">
+						<div class="no_background box mar_b50  mar_t20 no_shadow overflow_hidden">
 							<!--<div class="box-header with-border header_bg">
 								<h3 class="box-title">Add an ICO </h3>
 							</div>-->
@@ -45,14 +45,14 @@
 									  <div class="form-group">
 										<label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">Company  Name <span class="mstar">*</span></label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_name" name="cm_name" placeholder="Company Name" required data-fv-notempty-message="The company name is required and cannot be empty" data-fv-regexp="true"
+										  <input type="text" class="form-control background_color" id="cm_name" name="cm_name" placeholder="Company Name" required data-fv-notempty-message="The company name is required and cannot be empty" data-fv-regexp="true"
 										data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The company name can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="500" data-fv-stringlength-message="The company name must be less than 500 characters">
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label">Description <span class="mstar">*</span></label>
 										<div class="col-sm-9">
-										  <textarea id="cm_decript" name="cm_decript" class="form-control" placeholder="Add organization URL also" required data-fv-notempty-message="The description is required and cannot be empty" data-fv-regexp="true"
+										  <textarea id="cm_decript" name="cm_decript" class="form-control background_color" placeholder="Add organization URL also" required data-fv-notempty-message="The description is required and cannot be empty" data-fv-regexp="true"
 										data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The description can consist of alphanumarical characters" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="The description must be less than 1000 characters"></textarea>
 										</div>
 									  </div>
@@ -62,9 +62,11 @@
 											<div class="col-sm-9">
 											<div class="row no-margin mailstone_pad_bg">
 												<div class="col-md-8">
-													<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
+													<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 												</div>
-
+                        <div class="col-md-4 ">
+                          <input class="form-control background_color background_color" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_0">
+                        </div>
 												<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_1" OnClick="mailstone_boxes(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											  </div>
 											</div>
@@ -83,10 +85,10 @@
 										<div class="col-sm-9 pos_r">
 										<div class="row">
 											<div class="col-md-6">
-											 <input type="text" class="form-control" name="resource_name[]"  id="resource_name_0" placeholder="White Paper">
+											 <input type="text" class="form-control background_color" name="resource_name[]"  id="resource_name_0" placeholder="White Paper">
 											</div>
 											<div class="col-md-6 mmar_t15">
-											  <input type="text" class="form-control" name="resource_url[]" id="resource_url_0" placeholder="URL" >
+											  <input type="text" class="form-control background_color" name="resource_url[]" id="resource_url_0" placeholder="URL" >
 											</div>
 											<div class="more_input_boxes" id="resource_btn_1"><a href="javascript:void('0');" onClick="resources(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 										</div>
@@ -96,7 +98,7 @@
 									  <div class="form-group">
 										<label id="label_mar" for="inputPassword3" class="col-sm-3 control-label">Market Cap (in US$)</label>
 										<div class="col-sm-9">
-										<input type="text" id="cm_marketcap" name="cm_marketcap" class="form-control" placeholder="Market cap"  data-fv-regexp="true"
+										<input type="text" id="cm_marketcap" name="cm_marketcap" class="form-control background_color" placeholder="Market cap"  data-fv-regexp="true"
 										data-fv-regexp-regexp="^\d+(,\d+)*$"onBlur="marketCapFun();">
 										<p id="cm_marketcap_error" style="color:#a94442" name="cm_marketcap_error"></p>
 										</div>
@@ -104,14 +106,14 @@
 									  <div class="form-group">
 										<label for="Contact number" class="col-sm-3 control-label">Total Token supply</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_total_token_supply" name="cm_total_token_supply" placeholder="Total Token Supply" data-fv-regexp="true"
+										  <input type="text" class="form-control background_color" id="cm_total_token_supply" name="cm_total_token_supply" placeholder="Total Token Supply" data-fv-regexp="true"
 										data-fv-regexp-regexp="^\d+(,\d+)*$" data-fv-stringlength="true" data-fv-stringlength-max="20">
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="Contact number" class="col-sm-3 control-label" style="padding-top:0;">Tokens Available for ICO</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_tokens_available_crowd_sale" name="cm_tokens_available_crowd_sale" placeholder="Tokens Available for ICO" data-fv-regexp="true"
+										  <input type="text" class="form-control background_color" id="cm_tokens_available_crowd_sale" name="cm_tokens_available_crowd_sale" placeholder="Tokens Available for ICO" data-fv-regexp="true"
 										data-fv-regexp-regexp="^\d+(,\d+)*$" data-fv-stringlength="true" data-fv-stringlength-max="20">
 										</div>
 									  </div>
@@ -121,10 +123,10 @@
 											<div class="col-sm-9">
 											<div class="row pos_r">
 												<div class="col-md-6">
-												  <input type="text" class="form-control"  placeholder="Core Team" name="cot_name[]"  id="cot_name_0">
+												  <input type="text" class="form-control background_color"  placeholder="Core Team" name="cot_name[]"  id="cot_name_0">
 												</div>
 												<div class="col-md-6 mmar_t15">
-												  <input type="text" class="form-control" name="cot_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
+												  <input type="text" class="form-control background_color" name="cot_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
 												</div>
 												<div class="more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											</div>
@@ -137,10 +139,10 @@
 											<div class="col-sm-9">
 											 <div class="row">
 												<div class="col-md-6">
-												  <input type="text" class="form-control" name="adt_name[]"  id="adt_name_0" placeholder="Advisory Team">
+												  <input type="text" class="form-control background_color" name="adt_name[]"  id="adt_name_0" placeholder="Advisory Team">
 												</div>
 												<div class="col-md-6 mmar_t15">
-												  <input type="text" class="form-control" name="adt_profile_url[]" id="adt_profile_url_0" placeholder="LinkedIn URL" >
+												  <input type="text" class="form-control background_color" name="adt_profile_url[]" id="adt_profile_url_0" placeholder="LinkedIn URL" >
 												</div>
 												<div class="more_input_boxes" id="advisory_btn_1"><a href="javascript:void(0);" OnClick="advisory_team(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											</div>
@@ -153,10 +155,10 @@
 											<div class="col-sm-9">
 											 <div class="row">
 												<div class="col-md-6">
-												  <input type="text" class="form-control" name="escrow_name[]"  id="escrow_name_0" placeholder="Escrow details">
+												  <input type="text" class="form-control background_color" name="escrow_name[]"  id="escrow_name_0" placeholder="Escrow details">
 												</div>
 												<div class="col-md-6 mmar_t15">
-												  <input type="text" class="form-control" name="escrow_profile_url[]" id="escrow_profile_url_0" placeholder="LinkedIn URL/Organization URL" >
+												  <input type="text" class="form-control background_color" name="escrow_profile_url[]" id="escrow_profile_url_0" placeholder="LinkedIn URL/Organization URL" >
 												</div>
 												<div class="more_input_boxes" id="escrow_btn_1"><a href="javascript:void(0);" OnClick="escrow_details(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											</div>
@@ -170,10 +172,10 @@
 											<div class="col-sm-9 pos_r">
 											<div class="row">
 												<div class="col-md-6">
-												 <input type="text" class="form-control" name="te_title[]"  id="te_title_0" placeholder="Additional Links">
+												 <input type="text" class="form-control background_color" name="te_title[]"  id="te_title_0" placeholder="Additional Links">
 												</div>
 												<div class="col-md-6 mmar_t15">
-												  <input type="text" class="form-control" name="trading_exchange_url[]" id="trading_exchange_url_0" placeholder="URL" >
+												  <input type="text" class="form-control background_color" name="trading_exchange_url[]" id="trading_exchange_url_0" placeholder="URL" >
 												</div>
 												 <div class="more_input_boxes" id="te_btn_1"><a href="javascript:void('0');" onClick="treading_exchange(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 											</div>
@@ -187,10 +189,10 @@
 										<div class="col-sm-9">
 											<div class="row">
 												<div class="col-md-6">
-												 <input type="text" class="form-control" id="cm_ico_start_date" name="cm_ico_start_date" class="form-control" placeholder="ICO Start Date " readonly style="background-color:#fff;" required data-fv-notempty-message="The start date is required" >
+												 <input type="text" class="form-control background_color" id="cm_ico_start_date" name="cm_ico_start_date" class="form-control background_color" placeholder="ICO Start Date " readonly style="background-color:#fff;" required data-fv-notempty-message="The start date is required" >
 												</div>
 												<div class="col-md-6 mmar_t15">
-												 <select name="cm_ico_start_time" id="cm_ico_start_time" class="form-control" required data-fv-notempty-message="The start time is required">
+												 <select name="cm_ico_start_time" id="cm_ico_start_time" class="form-control background_color" required data-fv-notempty-message="The start time is required">
 												 <option value="">ICO Start Time (UTC)</option>
 												 <?php
 												$options = array();
@@ -225,10 +227,10 @@
 										<div class="col-sm-9">
 											<div class="row">
 												<div class="col-md-6">
-												 <input type="text" id="cm_ico_end_date" name="cm_ico_end_date" class="form-control" placeholder="ICO End Date "  readonly style="background-color:#fff;" required data-fv-notempty-message="The end date is required">
+												 <input type="text" id="cm_ico_end_date" name="cm_ico_end_date" class="form-control background_color" placeholder="ICO End Date "  readonly style="background-color:#fff;" required data-fv-notempty-message="The end date is required">
 												</div>
 												<div class="col-md-6 mmar_t15">
-												  <select name="cm_ico_end_time" id="cm_ico_end_time" class="form-control" required data-fv-notempty-message="The end time is required">
+												  <select name="cm_ico_end_time" id="cm_ico_end_time" class="form-control background_color" required data-fv-notempty-message="The end time is required">
 												 <option value="">ICO End Time (UTC)</option>
 												 <?php
 												$options = array();
@@ -262,63 +264,63 @@
 									  <div class="form-group">
 										<label for="Email ID " class="col-sm-3 control-label">Email ID <span class="mstar">*</span></label>
 										<div class="col-sm-9">
-										  <input type="text" id="cm_email" name="cm_email" class="form-control" required data-fv-notempty-message="The email is required and cannot be empty" data-fv-emailaddress="true"
+										  <input type="text" id="cm_email" name="cm_email" class="form-control background_color" required data-fv-notempty-message="The email is required and cannot be empty" data-fv-emailaddress="true"
 											data-fv-emailaddress-message="The input is not a valid email address" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The email address must be less than 100 characters" data-fv-regexp="true" data-fv-regexp-regexp="^\d*[a-zA-Z]{1,}\d*" $data-fv-regexp-message="The email can consist of alphanumarical characters" placeholder="Email ID">
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="Slack" class="col-sm-3 control-label">Website Url</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_siteurl" name="cm_siteurl" placeholder="Website Url" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The website url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_siteurl" name="cm_siteurl" placeholder="Website Url" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The website url must be less than 100 characters" >
 										</div>
 									  </div>
 									   <div class="form-group">
 										<label for="Twitter" class="col-sm-3 control-label">Twitter</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_twitter" name="cm_twitter" placeholder="Twitter " data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The twitter url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_twitter" name="cm_twitter" placeholder="Twitter " data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The twitter url must be less than 100 characters" >
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="Slack" class="col-sm-3 control-label">Slack</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_slack" name="cm_slack" placeholder="Slack" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The slack url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_slack" name="cm_slack" placeholder="Slack" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The slack url must be less than 100 characters" >
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="telegram " class="col-sm-3 control-label">Telegram</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_telegram" name="cm_telegram" value="" placeholder="Telegram" data-fv-stringlength-message="The telegram url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_telegram" name="cm_telegram" value="" placeholder="Telegram" data-fv-stringlength-message="The telegram url must be less than 100 characters" >
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="github" class="col-sm-3 control-label">Github </label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_github" name="cm_github" value="" placeholder="Github" data-fv-stringlength-message="The github url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_github" name="cm_github" value="" placeholder="Github" data-fv-stringlength-message="The github url must be less than 100 characters" >
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="github" class="col-sm-3 control-label">Discord </label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_discord" name="cm_discord" value="" placeholder="Discord" data-fv-stringlength-message="The Discord url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_discord" name="cm_discord" value="" placeholder="Discord" data-fv-stringlength-message="The Discord url must be less than 100 characters" >
 										</div>
 									  </div>
 									  <div class="form-group">
 										<label for="Facebook " class="col-sm-3 control-label">Facebook</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_facebook" name="cm_facebook" value="" placeholder="Facebook" data-fv-stringlength-message="The facebook url must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_facebook" name="cm_facebook" value="" placeholder="Facebook" data-fv-stringlength-message="The facebook url must be less than 100 characters" >
 										</div>
 									  </div>
 									   <div class="form-group">
 										<label for="Facebook " class="col-sm-3 control-label">Coinmarketcap</label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control" id="cm_coinmarket_cap" name="cm_coinmarket_cap" value="" placeholder="Coinmarketcap" data-fv-stringlength-message="The Coinmarketcap must be less than 100 characters" >
+										  <input type="text" class="form-control background_color" id="cm_coinmarket_cap" name="cm_coinmarket_cap" value="" placeholder="Coinmarketcap" data-fv-stringlength-message="The Coinmarketcap must be less than 100 characters" >
 										</div>
 									  </div>
 
 									  <div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label">Address</label>
 										<div class="col-sm-9">
-										  <textarea class="form-control" id="cm_address" name="cm_address" value="" placeholder="Address"></textarea>
+										  <textarea class="form-control background_color" id="cm_address" name="cm_address" value="" placeholder="Address"></textarea>
 										</div>
 									  </div>
 
@@ -721,8 +723,11 @@
 			html = '<div class="form-group" id="milestone_div_'+count_mb+'">';
 				html += '<label for="inputPassword3" class="col-sm-3 control-label">Project Updates</label><div class="col-sm-9"><div class="row no-margin mailstone_pad_bg"><div class="col-md-8">';
 
-				html += '<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
+				html += '<textarea class="form-control background_color" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+count_mb+'"  value=""></textarea>';
 				html +='</div>';
+        html+='<div class="col-md-4">';
+        html+='  <input class="form-control background_color background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+count_mb+'" value="" >';
+        html+='</div>';
 				html +='<div class="more_input_boxes"><a href="javascript:void(0);" id="mb_b_'+count_mb+'" OnClick="mailstone_boxes('+count_mb+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 
 					html += '</div>';
@@ -769,9 +774,9 @@
 			var html = "";
 			html = '<div class="form-group" id="core_team_'+count_ct+'">';
 			html += '<label for="Core Team" class="col-sm-3 control-label">Core Team</label><div class="col-sm-9"><div class="row pos_r"><div class="col-md-6">';
-			html += '<input class="form-control" placeholder="Core Team" name="cot_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
+			html += '<input class="form-control background_color" placeholder="Core Team" name="cot_name[]"  id="cot_name_'+count_ct+'" type="text" value="" >';
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +='<input class="form-control" placeholder="Linkden URL" name="cot_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
+			html +='<input class="form-control background_color" placeholder="Linkden URL" name="cot_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
 			html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
@@ -818,9 +823,9 @@
 			var html = "";
 			html = '<div class="form-group" id="advisory_team_'+count_advisory+'">';
 			html += '<label for="CAdvisory Team " class="col-sm-3 control-label">Advisory Team</label><div class="col-sm-9"><div class="row"><div class="col-md-6">';
-			html += '<input class="form-control" placeholder="Advisory Team" name="adt_name[]"  id="adt_name_'+count_advisory+'" type="text" value="">';
+			html += '<input class="form-control background_color" placeholder="Advisory Team" name="adt_name[]"  id="adt_name_'+count_advisory+'" type="text" value="">';
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +='<input class="form-control" placeholder="Linkden URL" name="adt_profile_url[]" id="adt_profile_url_'+count_advisory+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The Linkden URL must be less than 100 characters" ></div>';
+			html +='<input class="form-control background_color" placeholder="Linkden URL" name="adt_profile_url[]" id="adt_profile_url_'+count_advisory+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The Linkden URL must be less than 100 characters" ></div>';
 			html +='<div class="more_input_boxes" id="advisory_btn_'+count_advisory+'"><a href="javascript:void(0);" OnClick="advisory_team('+count_advisory+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
@@ -866,10 +871,10 @@
 			html = '<div class="form-group" id="treading_exchange_'+count_treading+'">';
 			html += '<label for="Contact number" class="col-sm-3 control-label">Additional Links </label><div class="col-sm-9 pos_r"><div class="row"><div class="col-md-6">';
 
-			html += '<input class="form-control" placeholder="Additional Links " name="te_title[]"  id="te_title_'+count_treading+'" type="text" value="">';
+			html += '<input class="form-control background_color" placeholder="Additional Links " name="te_title[]"  id="te_title_'+count_treading+'" type="text" value="">';
 
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +='<input class="form-control" placeholder="URL" name="trading_exchange_url[]" id="trading_exchange_url_'+count_treading+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
+			html +='<input class="form-control background_color" placeholder="URL" name="trading_exchange_url[]" id="trading_exchange_url_'+count_treading+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
 			html +='<div class="more_input_boxes" id="te_btn_'+count_treading+'"><a href="javascript:void(0);" onClick="treading_exchange('+count_treading+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
@@ -913,10 +918,10 @@
 			html = '<div class="form-group" id="resource_'+count_resources+'">';
 			html += '<label for="Contact number" class="col-sm-3 control-label">Resources </label><div class="col-sm-9 pos_r"><div class="row"><div class="col-md-6">';
 
-			html += '<input type="text" class="form-control" name="resource_name[]"  id="resource_name_'+count_resources+'" placeholder="White Paper">';
+			html += '<input type="text" class="form-control background_color" name="resource_name[]"  id="resource_name_'+count_resources+'" placeholder="White Paper">';
 
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +=' <input type="text" class="form-control" name="resource_url[]" id="resource_url_'+count_resources+'" placeholder="URL" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
+			html +=' <input type="text" class="form-control background_color" name="resource_url[]" id="resource_url_'+count_resources+'" placeholder="URL" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
 			html +='<div class="more_input_boxes" id="resource_btn_'+count_resources+'"><a href="javascript:void(0);" onClick="resources('+count_resources+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';
@@ -961,7 +966,7 @@
 			var html = "";
 			html = '<div class="form-group" id="uploads_div_'+count_upload+'">';
 			html += '<label for="telegram " class="col-sm-3 control-label">Upload</label><div class="col-sm-9 pos_r">';
-			html += '<input class="form-control" placeholder="Trading exange" name="cp_picture[]"  id="cp_picture_'+count_upload+'" type="file" value="" style="height:auto;"><p class="small mar_t5 text-right"><em>PDF, IMAGE, WORD, etc... </em></p>';
+			html += '<input class="form-control background_color" placeholder="Trading exange" name="cp_picture[]"  id="cp_picture_'+count_upload+'" type="file" value="" style="height:auto;"><p class="small mar_t5 text-right"><em>PDF, IMAGE, WORD, etc... </em></p>';
 			html +='<div class="more_input_boxes" id="upload_btn_'+count_upload+'"><a href="javascript:void(0);" onClick="upload_muliple_files('+count_upload+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 			html += '</div>';
 			html += '</div>';
@@ -1005,9 +1010,9 @@
 			var html = "";
 			html = '<div class="form-group" id="escrow_team_'+count_escrow+'">';
 			html += '<label for="CAdvisory Team " class="col-sm-3 control-label">Escrow Details</label><div class="col-sm-9"><div class="row"><div class="col-md-6">';
-			html += '<input class="form-control" placeholder="Escrow details" name="escrow_name[]"  id="escrow_name_'+count_escrow+'" type="text" value="">';
+			html += '<input class="form-control background_color" placeholder="Escrow details" name="escrow_name[]"  id="escrow_name_'+count_escrow+'" type="text" value="">';
 			html +='</div><div class="col-md-6 mmar_t15">';
-			html +='<input class="form-control" placeholder="Linkden URL/Organzation URL" name="escrow_profile_url[]" id="escrow_profile_url_'+count_escrow+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
+			html +='<input class="form-control background_color" placeholder="Linkden URL/Organzation URL" name="escrow_profile_url[]" id="escrow_profile_url_'+count_escrow+'" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The url must be less than 100 characters" ></div>';
 			html +='<div class="more_input_boxes" id="escrow_btn_'+count_escrow+'"><a href="javascript:void(0);" OnClick="escrow_details('+count_escrow+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
 				html += '</div>';

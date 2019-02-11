@@ -3071,6 +3071,7 @@ font-family: NoirPro;
   text-align: left;
   padding:5px 10px 5px 10px;
   margin:0;
+  color:black;
 }
 .reply_show{
   margin-left:20px;
@@ -3091,7 +3092,7 @@ font-family: NoirPro;
   width:100%;
   height:40px;
   content:"";
-  border-bottom:2px solid #8e44ad;
+  border-bottom:none;
 }
 .dis_div{
   padding-left:15px;
@@ -3187,7 +3188,7 @@ textarea { resize: vertical; }
 .profile_box_image{
   position:relative;
   border:5px solid white;
-  padding:6px;
+  padding:11px;
   background-color:#f9f9f9;
  }
  .mob_s_register{
@@ -3317,11 +3318,11 @@ textarea { resize: vertical; }
  border:12px solid #f9f9f9;
 }
 .profile-image{
- width:120px;
+ width:110px;
  padding:0;
  position:relative;
  margin-top:-79.5px;
- height:120px;
+ height:110px;
 
 }
 @media(max-width:768px){

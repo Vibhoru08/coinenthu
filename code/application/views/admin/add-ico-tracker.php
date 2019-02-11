@@ -56,26 +56,14 @@
 					<div id="noaSpanMileFileDivs">
 					<div class="form-group" id="noaDivMileFile_1">
 							<div class="col-md-3 control-label">
-							<label>Milestones</label>
+							<label>Project Updates</label>
 							</div>
 							<div class="col-md-4">
-								<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_0"></textarea>
+								<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_0"></textarea>
 							</div>
 
-							<div class="col-md-4">
-								<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_0">
-								<option value="0"> Select Status </option>
-								<?php
-								if(count($milestoneStatuses) > 0){
-									foreach($milestoneStatuses as $mstones)
-									{?>
-										 <option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option>
-									<?php
-
-									}
-								}
-								?>
-								</select>
+							<div class="col-md-4 ">
+								<input class="form-control background_color" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_0">
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_1" OnClick="noaMileAddIFile(1);">
@@ -84,7 +72,7 @@
 							</div>
 					</div>
 					</div>
-				
+
 					<input type="hidden" id="resources_cnt" value="1" />
 				  <span id="resources_divs">
 				  <div class="form-group" id="resource_1">
@@ -132,7 +120,7 @@
 							<div class="col-md-4">
 								<input class="form-control" placeholder="Linkedin URL" name="cot_profile_url[]" id="cot_profile_url_0" type="text" value="" data-fv-stringlength="true" data-fv-stringlength-max="100" data-fv-stringlength-message="The Linkedin URL must be less than 100 characters" >
 							</div>
-							
+
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnRegnFile_1" OnClick="noaRegnAddIFile(1);">
 									<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
@@ -945,15 +933,15 @@ function noaMileAddIFile( existingFNo )
 
 		var noaNewRegFileDivHtml = "";
 		noaNewRegFileDivHtml = '<div class="form-group" id="noaDivMileFile_'+noaNewRegFileId+'">';
-			noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Milestones</label></div><div class="col-md-4">';
+			noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Project Updates</label></div><div class="col-md-4">';
 
-			noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"></textarea>';
+			noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"></textarea>';
 			noaNewRegFileDivHtml +='</div>';
-			noaNewRegFileDivHtml +='<div class="col-md-4"><select class="form-control" name="ms_mss_id[]" id="ms_mss_id_'+noaNewRegFileId+'"><option value="0">Select  Status</option>';
+			noaNewRegFileDivHtml +='<div class="col-md-4">';
 
-			noaNewRegFileDivHtml += '<?php if(count($milestoneStatuses) > 0){ foreach($milestoneStatuses as $mstones){ ?><option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option><?php }} ?>';
+			noaNewRegFileDivHtml+='  <input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+noaNewRegFileId+'" value="" >';
 
-			noaNewRegFileDivHtml +='</select></div>';
+			noaNewRegFileDivHtml +='</div>';
 			noaNewRegFileDivHtml +='<div class="col-md-1"><button type="button" class="btn btn-success btn-add"  OnClick="noaMileAddIFile('+noaNewRegFileId+');" id="noaBtnMileFile_'+noaNewRegFileId+'"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></div>';
 
 

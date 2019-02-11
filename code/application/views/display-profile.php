@@ -33,7 +33,7 @@
             </div>
             <div class = "col-md-4 col-xs-12 profile_desx m_hide pad_0">
               <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
-                <h1 class="mar_t5 profile_name">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
+                <h1 class="mar_t10 profile_name">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
             </div>
             <div class="col-md-4 text-right edit_profile">
             <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
@@ -204,7 +204,7 @@
                   <ul class="dropdown-menu display-dropdown dropdown_style">
                     <li><a href="<?php echo base_url();?>edit-review/<?php echo $review->re_id; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit</a></li>
                     <li><a  onclick="deleteComment('<?php echo $review->re_id; ?>');">
-      								      <i class="fa fa-trash" aria-hidden="true"></i> Delete
+      								      <i class="fa fa-trash" aria-hidden="true"></i>Delete
       							</a></li>
                   </ul>
                 </div>

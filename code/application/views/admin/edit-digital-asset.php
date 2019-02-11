@@ -915,9 +915,9 @@ function noaMileAddIFile( existingFNo )
 
 	var noaNewRegFileDivHtml = "";
 	noaNewRegFileDivHtml = '<div class="voca form-group" id="noaDivMileFile_'+noaNewRegFileId+'">';
-		noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Milestones</label></div><div class="col-md-4">';
+		noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Project Updates</label></div><div class="col-md-4">';
 
-		noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"  value=""></textarea>';
+		noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"  value=""></textarea>';
 		noaNewRegFileDivHtml +='</div>';
 		noaNewRegFileDivHtml +='<div class="col-md-4"><input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+noaNewRegFileId+'"  value="">';
 
