@@ -81,36 +81,15 @@ $viewTime = date('Ymd') .'_'. date('His');
 						{?>
 							<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
 								<div class="col-md-3 control-label">
-								<label>Milestones</label>
+								<label>Project Updates</label>
 								</div>
 								<div class="col-md-4">
-									<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
+									<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
 								</div>
 
 								<div class="col-md-4">
-									<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-									<option value="0">Select Status</option>
-									<?php
-									if(count($milestoneStatuses) > 0){
-										foreach($milestoneStatuses as $mstones)
-										{
-											if($digitalData['ms_id'][$ms] == $mstones->mss_id){
-												$selected = 'selected';
-											}else{
-												$selected = '';
-											}
-											?>
-											 <option value="<?php echo $mstones->mss_id ;?>" <?php echo $selected; ?>><?php echo $mstones->mss_status ;?></option>
-										<?php
+									<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="<?php echo $digitalData['ms_link'][$ms]; ?>">
 
-										}
-
-									}
-									$valueId = $ms + 1;
-									?>
-
-
-									</select>
 								</div>
 								<div class="col-md-1">
 									<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
@@ -126,29 +105,15 @@ $viewTime = date('Ymd') .'_'. date('His');
 						?>
 						<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
 							<div class="col-md-3 control-label">
-							<label>Milestones</label>
+							<label>Project Updates</label>
 							</div>
 							<div class="col-md-4">
-								<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
+								<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
 							</div>
 
 							<div class="col-md-4">
-								<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-								<option value="0">Select Status</option>
-								<?php
-								if(count($milestoneStatuses) > 0){
-									foreach($milestoneStatuses as $mstones)
-									{?>
-										 <option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option>
-									<?php
+								<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="">
 
-									}
-
-								}
-								?>
-
-
-								</select>
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
@@ -159,7 +124,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 
 
 					</div>
-					
+
 					<span id="resources_divs">
 					<?php
 						$Resrc = 1;
@@ -391,7 +356,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 
 						</div>
 				  </span>
-					
+
 
 					 <div class="form-group">
 				<label for="Inflation" class="col-sm-3 control-label">ICO Start Date & Time<sup>*</sup> </label>
@@ -1192,15 +1157,14 @@ function noaMileAddIFile( existingFNo )
 
 		var noaNewRegFileDivHtml = "";
 		noaNewRegFileDivHtml = '<div class="voca form-group" id="noaDivMileFile_'+noaNewRegFileId+'">';
-			noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Milestones</label></div><div class="col-md-4">';
+			noaNewRegFileDivHtml += '<div class="col-md-3 control-label"><label class="">Project Updates</label></div><div class="col-md-4">';
 
-			noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"  value=""></textarea>';
+			noaNewRegFileDivHtml += '<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_'+noaNewRegFileId+'"  value=""></textarea>';
 			noaNewRegFileDivHtml +='</div>';
-			noaNewRegFileDivHtml +='<div class="col-md-4"><select class="form-control" name="ms_mss_id[]" id="ms_mss_id_'+noaNewRegFileId+'"><option value="0">Select Status</option>';
+			noaNewRegFileDivHtml +='<div class="col-md-4"><input class="form-control background_color" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_'+noaNewRegFileId+'"  value="">';
 
-			noaNewRegFileDivHtml += '<?php if(count($milestoneStatuses) > 0){ foreach($milestoneStatuses as $mstones){ ?><option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option><?php }} ?>';
 
-			noaNewRegFileDivHtml +='</select></div>';
+			noaNewRegFileDivHtml +='</div>';
 			noaNewRegFileDivHtml +='<div class="col-md-1"><button type="button" class="btn btn-success btn-add"  OnClick="noaMileAddIFile('+noaNewRegFileId+');" id="noaBtnMileFile_'+noaNewRegFileId+'"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></div>';
 
 

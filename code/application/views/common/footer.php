@@ -82,7 +82,7 @@
    <div class="container-fluid">
      <div class="row mar_b20">
        <div class="col-xs-offset-1 col-xs-10 pad_0">
-   © 2018, Coinenthu. All Rights Reserved. <a href="<?php echo base_url();?>terms-of-use"  data-target="#terms_conditions">Terms & Conditions.</a> <a href="<?php echo base_url();?>privacy-policy"  data-target="#commPolocy_modal">Privacy Policy</a>
+   © 2018, Coinenthu. All Rights Reserved.
    </div>
  </div>
 </div>

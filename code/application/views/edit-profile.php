@@ -75,8 +75,9 @@
 									  <div class="form-group">
 										<label for="inputEmail3" class="col-sm-3 control-label" style="padding-top:0">About<span class="mstar"></span></label>
 										<div class="col-sm-9">
-										  <input type="text" class="form-control"
+										  <input type="text" class="form-control" data-fv-stringlength="true" data-fv-stringlength-max="140" data-fv-stringlength-message="Max 140 characters" onkeyup="countCharcter();"
 										  id="p_u_about" name="p_u_about" placeholder="Something about yourself" value="<?php echo $userinfo->u_about; ?>">
+											<span id="p_char_cnt" style="display:none;color:#00a65a;"> <span id="p_char_count"></span>&nbsp;&nbsp;</span>
 										</div>
 									  </div>
 									  <div class="form-group">
@@ -90,7 +91,7 @@
 									<span id="successMsg"></span>
 									  <div class="form-group text-right">
 										<div class="col-sm-offset-3 col-sm-9">
-										 
+
 										  <button type="submit" class="btn btn-primary">SAVE</button>
 										</div>
 									  </div>
@@ -140,6 +141,7 @@
 <script>
 	$(document).ready(function() {
 		$('#add_user').formValidation();
+		countCharcter();
 	});
 	$(document).ready(function() {
 		$(document).on('change','#edit_user_file',function(){
@@ -165,6 +167,18 @@
 			});
 		});
 	});
+	function countCharcter()
+	{
+		var textLength = $('#p_u_about').val().length;
+		var FinalLength = parseInt(140)-parseInt(textLength);
+		if(parseInt(FinalLength) >=0){
+			$('#p_char_cnt').show();
+			$('#p_char_count').html(FinalLength+ " Character(s) Left");
+		}else{
+			$('#p_char_cnt').hide();
+			$('#p_char_count').html('');
+		}
+	}
 	var _URL = window.URL || window.webkitURL;
 	function showCropPopup(cropType){
 		$("#l_i_c").hide();
