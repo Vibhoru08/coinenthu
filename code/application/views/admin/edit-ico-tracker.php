@@ -80,38 +80,16 @@ $viewTime = date('Ymd') .'_'. date('His');
 						foreach($digitalData['ms_title'] as $ms=>$ms_title)
 						{?>
 							<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
-								<div class="col-md-3 control-label">
-								<label>Milestones</label>
-								</div>
-								<div class="col-md-4">
-									<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
-								</div>
+							<div class="col-md-3 control-label">
+							<label>Project Updates</label>
+							</div>
+							<div class="col-md-4">
+								<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""><?php echo $ms_title; ?></textarea>
+							</div>
 
 								<div class="col-md-4">
-									<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-									<option value="0">Select Status</option>
-									<?php
-									if(count($milestoneStatuses) > 0){
-										foreach($milestoneStatuses as $mstones)
-										{
-											if($digitalData['ms_id'][$ms] == $mstones->mss_id){
-												$selected = 'selected';
-											}else{
-												$selected = '';
-											}
-											?>
-											 <option value="<?php echo $mstones->mss_id ;?>" <?php echo $selected; ?>><?php echo $mstones->mss_status ;?></option>
-										<?php
-
-										}
-
-									}
-									$valueId = $ms + 1;
-									?>
-
-
-									</select>
-								</div>
+									<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="<?php echo $digitalData['ms_link'][$ms]; ?>">
+							</div>
 								<div class="col-md-1">
 									<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
 										<span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -126,29 +104,14 @@ $viewTime = date('Ymd') .'_'. date('His');
 						?>
 						<div class="voca form-group" id="noaDivMileFile_<?php echo $i; ?>">
 							<div class="col-md-3 control-label">
-							<label>Milestones</label>
+							<label>Project Updates</label>
 							</div>
 							<div class="col-md-4">
-								<textarea class="form-control" placeholder="Milestones" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
+								<textarea class="form-control" placeholder="Project Updates" name="ms_title[]"  id="ms_title_<?php echo $i; ?>"  value=""></textarea>
 							</div>
 
 							<div class="col-md-4">
-								<select class="form-control" name="ms_mss_id[]" id="ms_mss_id_<?php echo $i; ?>">
-								<option value="0">Select Status</option>
-								<?php
-								if(count($milestoneStatuses) > 0){
-									foreach($milestoneStatuses as $mstones)
-									{?>
-										 <option value="<?php echo $mstones->mss_id ;?>"><?php echo $mstones->mss_status ;?></option>
-									<?php
-
-									}
-
-								}
-								?>
-
-
-								</select>
+									<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="">
 							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
