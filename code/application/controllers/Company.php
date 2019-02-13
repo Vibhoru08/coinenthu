@@ -734,7 +734,11 @@
 
 					//pagination for editorial board
 					$config = array();
-					$config["base_url"] = base_url().'company-full-view/'.$cm_name_initial.'&'.$results_type;
+					if($details->cm_ctid == 1){
+						$config["base_url"] = base_url().'DigitalAssets/'.$cm_name_initial.'&'.$results_type;
+					}else if ($details->cm_ctid == 2){
+						$config["base_url"] = base_url().'ICOs/'.$cm_name_initial.'&'.$results_type;
+					}
 					$config["total_rows"] = $this->Companies_model->record_count($details->cm_id);
 					$config["per_page"] = 5;
 					$config["uri_segment"] = 3;

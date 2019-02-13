@@ -208,8 +208,14 @@
       							</a></li>
                   </ul>
                 </div>
-
-								<h4><a href = "<?php echo base_url().'company-full-view/'.str_replace(" ","_",$review->cm_name); ?>" title = "<?php echo $review->cm_name; ?>"><?php echo $review->cm_name; ?></a></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
+                  
+                <h4><a href = "<?php 
+                if($review->cm_ctid == 1){
+                  echo base_url().'DigitalAssets/'.str_replace(" ","_",$review->cm_name);
+                }else if($review->cm_ctid == 2){
+                  echo base_url().'ICOs/'.str_replace(" ","_",$review->cm_name);
+                }
+                ?>" title = "<?php echo $review->cm_name; ?>"><?php echo $review->cm_name; ?></a></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 
 							</div>
 							<hr>

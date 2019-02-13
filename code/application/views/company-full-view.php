@@ -96,7 +96,11 @@
 <?php
 	$cm_name = str_replace(' ','_',$companyview['company_name']);
 	$cm_unique_id = $companyview['cm_unique_id'];
-	$shareUrl = base_Url().'company-full-view/'.$cm_name;
+	if($companyview['cm_ctid'] == 1){
+		$shareUrl = base_Url().'DigitalAssets/'.$cm_name;
+	}else if($companyview['cm_ctid'] == 2){
+		$shareUrl = base_Url().'ICOs/'.$cm_name;
+	}
 	$shareVia = '';
 	$shareText = '';
 
@@ -108,7 +112,11 @@
 					<h3  class="company_name mar_t10 mar_b0"><?php echo strtoupper($companyview['company_name']);?>&nbsp;<div style="position:relative;display:inline;cursor:pointer;"><i class="fa fa-share-alt share_icon" onclick="shareCoin();"></i>
 						<ul class="social_share social-network social-circle sharing_img company_box_shadow sharing_img_new m_hide">
 							<?php
-							$whatsappLink = base_url().'company-full-view/'.$cm_name;
+							if($companyview['cm_ctid'] == 1){
+								$whatsappLink = base_url().'DigitalAssets/'.$cm_name;
+							}else if ($companyview['cm_ctid']  == 2){
+								$whatsappLink = base_url().'ICOs/'.$cm_name;
+							}
 							?>
 								<li><a href="<?php echo "https://twitter.com/intent/tweet?url=".$shareUrl."&via=". $shareVia."&text=". $shareText; ?>" target='_blank' class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
 								<li>
@@ -117,13 +125,23 @@
 								<li><a href="<?php echo "https://plus.google.com/share?url=". $shareUrl; ?>" target='_blank' class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
 								<li>
 								<!--<a target="_blank" href="https://web.whatsapp.com/send?text=<?php // echo $whatsappLink; ?>" data-action="share/whatsapp/share" title="Whatsapp" class="icoWhatsapp"><i class="fa fa-whatsapp" ></i></a>-->
-								<a data-text="<?php echo $companyview['company_name']; ?>" data-link="http://Coinenthu.com/company-full-view/<?php echo $companyview['cm_unique_id'];?>"class="icoWhatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+								<a data-text="<?php echo $companyview['company_name']; ?>" data-link="<?php 
+								if($companyview['cm_ctid'] == 1){
+									echo 'http://Coinenthu.com/DigitalAssets/'.$cm_name;
+								}else if($companyview['cm_ctid'] == 2){
+									echo 'http://Coinenthu.com/ICOs/'.$cm_name;
+								}
+								?>" class="icoWhatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
 								</li>
 							</ul>
 					</div>
 					<br>	<ul class="social_share social-network social-circle company_box_shadow sharing_img sharing_img_new big_hide">
 						<?php
-						$whatsappLink = base_url().'company-full-view/'.$cm_name;
+						if($companyview['cm_ctid'] == 1){
+							$whatsappLink = base_url().'DigitalAssets/'.$cm_name;
+						}else if ($companyview['cm_ctid'] == 2){
+							$whatsappLink = base_url().'ICOs/'.$cm_name;
+						}
 						?>
 							<li><a href="<?php echo "https://twitter.com/intent/tweet?url=".$shareUrl."&via=". $shareVia."&text=". $shareText; ?>" target='_blank' class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
 							<li>
@@ -132,7 +150,13 @@
 							<li><a href="<?php echo "https://plus.google.com/share?url=". $shareUrl; ?>" target='_blank' class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
 							<li>
 							<!--<a target="_blank" href="https://web.whatsapp.com/send?text=<?php // echo $whatsappLink; ?>" data-action="share/whatsapp/share" title="Whatsapp" class="icoWhatsapp"><i class="fa fa-whatsapp" ></i></a>-->
-							<a data-text="<?php echo $companyview['company_name']; ?>" data-link="http://Coinenthu.com/company-full-view/<?php echo $companyview['cm_unique_id'];?>"class="icoWhatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+							<a data-text="<?php echo $companyview['company_name']; ?>" data-link="<?php
+							if($companyview['cm_ctid'] == 1){
+								echo 'http://Coinenthu.com/DigitalAssets/'.$cm_name;
+							}else if ($companyview['cm_ctid'] == 2){
+								echo 'http://Coinenthu.com/ICOs/'.$cm_name;
+							}
+							?>"class="icoWhatsapp" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
 							</li>
 						</ul>
 					</h3>

@@ -66,6 +66,7 @@
 										<input type="text" style="border:0;margin-top: 6px;display:none" name="re_rating" id="re_rating" value="<?php echo $re_rating; ?>">
 										<input type="hidden" name="company_name" id="company_name" value="<?php echo $editReview->cm_name; ?>">
 								  <input type="hidden" name="re_id" id="re_id" value="<?php echo $editReview->re_id; ?>">
+								  <input type="hidden" name ="re_ctid" id = "re_ctid" value = "<?php echo $editReview->cm_ctid; ?>">
 								  <input type="hidden" name="re_cmid" id="re_cmid" value="<?php echo $editReview->re_cmid; ?>">
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $editReview->cm_unique_id; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
@@ -269,6 +270,7 @@
 			var cm_unique_id = $('#cm_unique_id').val();
 			var re_id = $('#re_id').val();
 			var cm_name = $('#company_name').val();
+			var cm_ctid = $('#re_ctid').val();
 			if($('#agree_check').prop('checked')) {
 				re_agree =1;
 			}
@@ -287,7 +289,11 @@
 						$("#loadSuccess").html('Review is successfully updated.').css("color", "green");;
 						setTimeout(function(){
 							$("#loadSuccess").hide();
-							window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_');
+							if(cm_ctid == 1){
+								window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,'_');
+							}else if (cm_ctid == 2){
+								window.location = baseUrl+'ICOs/'+cm_name.replace(/\s/g,'_');
+							}
 						}, 2000);
 					}else if(data.output=='failed')
 					{
@@ -301,7 +307,12 @@
 	function redirectUrlMethod(){
 		var cm_name = $('#company_name').val();
 		var cm_unique_id = $('#cm_unique_id').val();
-		window.location = baseUrl+'company-full-view/'+cm_name.replace(/\s/g,'_');
+		var cm_ctid = $('#re_ctid').val();
+		if (cm_ctid == 1){
+			window.location = baseUrl+'DigitalAssets/'+cm_name.replace(/\s/g,'_');
+		}else if (cm_ctid == 2){
+			window.location = baseUrl+'ICOs/'+cm_name.replace(/\s/g,'_');
+		}
 	}
 	function countCharcter()
 	{

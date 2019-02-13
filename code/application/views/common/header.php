@@ -49,7 +49,13 @@ $img =  base_url().'images/logo.png';
 			if(isset($CompanyDetails[0]->cm_unique_id) && $CompanyDetails[0]->cm_unique_id != "")
 			{
 				$cm_unique_id = $CompanyDetails[0]->cm_unique_id;
-				$shareUrl = base_Url().'company-full-view/'.$cm_unique_id;
+				$cm_ctid = $CompanyDetails[0]->cm_ctid;
+				$cm_name_url = str_replace(" ","_",$CompanyDetails[0]->cm_name);
+				if($cm_ctid == 1){
+					$shareUrl = base_Url().'DigitalAssets/'.$cm_name_url;
+				}else if ($cm_ctid == 2){
+					$shareUrl = base_Url().'ICOs/'.$cm_name_url;
+				}
 
 			}else{
 				$shareUrl = base_url();
