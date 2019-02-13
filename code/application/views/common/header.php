@@ -110,17 +110,17 @@ $img =  base_url().'images/logo.png';
 <!--[if !IE]>--><link rel="stylesheet" media="print" title="Print" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><!--<![endif]-->
 	<script src="<?php echo base_url();?>asset/forntend/js/slim-min.js"></script>
 	<script src="<?php echo base_url();?>js/jquery.js"></script>
-<script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>
+  <script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/jquery.cookie.js"></script>
 	<script src="<?php echo base_url();?>js/at-formValidation.js"></script>
-    <script src="<?php echo base_url();?>js/bootstrap.js"></script>
+  <script src="<?php echo base_url();?>js/bootstrap.js"></script>
 	<script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/owl.carousel.js"></script>
-	<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
+	<script async defer src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/app.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/rangeSlider.js"></script>
 	<script src="<?php echo base_url();?>/js/oauthpopup.js"></script>
-    <script src="<?php echo base_url();?>asset/forntend/js/custom.js"></script>
+  <script src="<?php echo base_url();?>asset/forntend/js/custom.js"></script>
 	<script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>
 	<!--<script src="<?php // echo base_url();?>js/jquery-scroll-bottom.js"></script>-->
 
@@ -128,10 +128,8 @@ $img =  base_url().'images/logo.png';
 	<!--<script src="<?php echo base_url();?>js/xds-ui-timepicker.js"></script>-->
 	<script src="<?php echo base_url();?>asset/forntend/js/star-ratingss.min.js"></script>
 	<script src="<?php echo base_url();?>asset/forntend/js/star-rating.min.js"></script>
-    <script src="<?php echo base_url();?>asset/forntend/js/dk-scripts.js?type='<?php echo time(); ?>'"></script>
+  <script src="<?php echo base_url();?>asset/forntend/js/dk-scripts.js?type='<?php echo time(); ?>'"></script>
 	<script async src="<?php echo base_url(); ?>js/twitter.js" charset="utf-8"></script>
-	<script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
-	<script src="<?php echo base_url(); ?>asset/ckfinder/ckfinder.js" type="text/javascript"></script>
 
 <script> var baseUrl      = '<?php echo base_url(); ?>';$(document).ready(function() {
     FastClick.attach(document.body);
