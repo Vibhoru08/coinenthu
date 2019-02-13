@@ -173,10 +173,14 @@
 
   function readURL(input) {
       if (input.files && input.files[0]) {
+				$('.add_company').html('<i class=""></i>');
+					$('.add_company').addClass('loader');
           var reader = new FileReader();
 					var file=input.files[0];
           reader.onload = function (e) {
 						setTimeout(function() {
+							$('.add_company').removeClass('loader');
+								$('.add_company').html('<img style="width:100%;height:100%" id="image" name="image" class="img-responsive" src="<?php echo $imagepath; ?>" />');
 								$('#image').attr('src', e.target.result);
 						}, 2000);
           }
