@@ -163,6 +163,8 @@
 					//alert(data.output);return false;
 					var imgName = data.output;
 					$('#userhidImage').val(imgName);
+
+
 				}
 			});
 		});
@@ -174,7 +176,9 @@
           var reader = new FileReader();
 					var file=input.files[0];
           reader.onload = function (e) {
-              $('#image').attr('src', e.target.result);
+						setTimeout(function() {
+								$('#image').attr('src', e.target.result);
+						}, 2000);
           }
 					if (file) {
 	 					reader.readAsDataURL(file);
