@@ -34,7 +34,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 					</div>
 					<div class="text-center" style="padding-top:10px;">
 						<!--<a href="javascript:void(0);" class="text-center" onclick="showCropPopup1(1)">Update Photo <i class="fa fa-edit"></i></a>-->
-						<input name="digital_uploaded_file" id="digital_uploaded_file" type="file" accept="image/x-png,image/jpeg"/><br/>
+						<input name="digital_uploaded_file" id="digital_uploaded_file" type="file" onchange="readURL(this);" accept="image/x-png,image/jpeg"/><br/>
 
 					</div>
 				  </div>
@@ -88,7 +88,7 @@ $viewTime = date('Ymd') .'_'. date('His');
 								</div>
 
 								<div class="col-md-4">
-									<input class="form-control" type="text" required placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="<?php echo $digitalData['ms_link'][$ms]; ?>">
+									<input class="form-control" type="text" placeholder="URL" name="ms_link[]"  id="ms_link_<?php echo $i; ?>"  value="<?php echo $digitalData['ms_link'][$ms]; ?>">
 							</div>
 								<div class="col-md-1">
 									<button type="button" class="btn btn-success btn-add"  id="noaBtnMileFile_<?php echo $i; ?>" OnClick="noaMileAddIFile(<?php echo $i; ?>);">
@@ -433,6 +433,18 @@ $viewTime = date('Ymd') .'_'. date('His');
 	});
 	var userId = '<?php echo $this->session->userdata('user_id'); ?>';
 	var _URL = window.URL || window.webkitURL;
+	function readURL(input) {
+			if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					var file=input.files[0];
+					reader.onload = function (e) {
+							$('#image').attr('src', e.target.result);
+					}
+					if (file) {
+						reader.readAsDataURL(file);
+					}
+	}
+	}
 	function showCropPopup1(cropType){
 		$("#l_i_c").hide();
 		$('#cropSrcImgContainer').html('<img alt="" src="" id="cropbox" class="img-responsive"/>');

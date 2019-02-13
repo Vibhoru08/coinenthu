@@ -35,11 +35,14 @@
               <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
                 <h1 class="mar_t10 profile_name">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
             </div>
-            <div class="col-md-4 text-right edit_profile">
+            <div class="col-md-4 text-right edit_profile m_hide">
             <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
             <div class = "col-md-2 col-xs-12 profile_desx pad_0 big_hide">
                 <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
+            </div>
+            <div class="col-xs-12 text-center edit_profile big_hide">
+            <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
             <div class="col-md-8 col-md-offset-3 profile_desx m_hide like_upvote mlike text-left">
               <div class = "text-left display_inline pad_0">
@@ -208,8 +211,8 @@
       							</a></li>
                   </ul>
                 </div>
-                  
-                <h4><a href = "<?php 
+
+                <h4><a href = "<?php
                 if($review->cm_ctid == 1){
                   echo base_url().'DigitalAssets/'.str_replace(" ","_",$review->cm_name);
                 }else if($review->cm_ctid == 2){
@@ -635,6 +638,7 @@
 <script>
 $(document).ready(function() {
 
+  
 
 
 });

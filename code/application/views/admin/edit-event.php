@@ -34,7 +34,7 @@
           <div class="pad_t20 text-center">
           <!--<a href="javascript:void(0);" onclick="showCropPopup1(1)" class="btn btn-default btn_like"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ADD LOGO</a>-->
             <!--<label for="digital_uploaded_file" class="btn btn-default">Upload an image</label>-->
-          <input name="event_uploaded_file" id="digital_uploaded_file" type="file" accept="image/x-png,image/jpeg" /><br/>
+          <input name="event_uploaded_file" id="digital_uploaded_file" type="file" onchange="readURL(this);" accept="image/x-png,image/jpeg" /><br/>
           </div>
         </div>
         <div class="col-md-7">
@@ -192,7 +192,7 @@
             </div>
             <span id="core_team_divs">
 			<?php foreach($speakers as $n=>$speaker){ ?>
-							<input type = "hidden" id = "speaker_images" name = "speaker_images[]" value = "<?php echo $speakers_images[$n]; ?>" > 	
+							<input type = "hidden" id = "speaker_images" name = "speaker_images[]" value = "<?php echo $speakers_images[$n]; ?>" >
               <div class="form-group" id="core_team_<?php echo $n + 1; ?>">
               <label for="Core Team" class="col-sm-3 control-label">Speakers<span class="mstar">*</span></label>
               <div class="col-sm-9">
@@ -390,6 +390,18 @@
 	var time 	= d.getTime();
 	var userId = '<?php echo $this->session->userdata('user_id'); ?>';
 	var _URL = window.URL || window.webkitURL;
+  function readURL(input) {
+			if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					var file=input.files[0];
+					reader.onload = function (e) {
+							$('#image').attr('src', e.target.result);
+					}
+					if (file) {
+						reader.readAsDataURL(file);
+					}
+	}
+	}
 	function showCropPopup1(cropType){
 		$("#l_i_c").hide();
 		$('#cropSrcImgContainer').html('<img alt="" src="" id="cropbox" class="img-responsive"/>');

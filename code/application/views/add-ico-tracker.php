@@ -37,7 +37,7 @@
 									</div>
 									<div class="pad_t20">
 									<!--<a href="javascript:void(0);" onclick="showCropPopup1(1)" class="btn btn-default btn_like"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ADD LOGO</a>-->
-									<input name="ico_uploaded_file" id="ico_uploaded_file" type="file" accept="image/x-png,image/jpeg"/><br/>
+									<input name="ico_uploaded_file" id="ico_uploaded_file" type="file" onchange="readURL(this);" accept="image/x-png,image/jpeg"/><br/>
 									</div>
 								</div>
 								<div class="col-md-7">
@@ -436,6 +436,18 @@
 			});
 		});
 	}); */
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          var file=input.files[0];
+          reader.onload = function (e) {
+              $('#image').attr('src', e.target.result);
+          }
+          if (file) {
+            reader.readAsDataURL(file);
+          }
+  }
+  }
 	function icoDateChnge(DtValue)
 	{
 		// var fromDt 	= $("#cm_ico_start_date").val();
