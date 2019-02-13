@@ -122,47 +122,8 @@
 									<?php
 										$event_id = $event->ev_id;
 										$eventSpeakersCount = $this->Companies_model->CountSpeakers($event_id);
-										$dateBreak = explode('/',$event->ev_ed);
-										$edm = $dateBreak[0];
-										$edd = $dateBreak[1];
-										$edy = $dateBreak[2];
-										if($edm == '01'){
-											$edmn = 'Jan';
-										}
-										elseif($edm == '02'){
-											$edmn = 'Feb';
-										}
-										elseif($edm == '03'){
-											$edmn = 'Mar';
-										}
-										elseif($edm == '04'){
-											$edmn = 'Apr';
-										}
-										elseif($edm == '05'){
-											$edmn = 'May';
-										}
-										elseif($edm == '06'){
-											$edmn = 'Jun';
-										}
-										elseif($edm == '07'){
-											$edmn = 'Jul';
-										}
-										elseif($edm == '08'){
-											$edmn = 'Aug';
-										}
-										elseif($edm == '09'){
-											$edmn = 'Sept';
-										}
-										elseif($edm == '10'){
-											$edmn = 'Oct';
-										}
-										elseif($edm == '11'){
-											$edmn = 'Nov';
-										}
-										else{
-											$edmn = 'Dec';
-										}
-										$eventDate = $edd.' '.$edmn.', '.$edy;
+										$this->load->helper('common');
+										$eventDate = ConvertDateFormat($event->ev_sd);
 									?>
 									<p><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;Location:<?php echo ' '.ucfirst($event->ev_city);?></p>
 									<p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Date:<?php echo ' '.$eventDate; ?></p>

@@ -116,6 +116,52 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 		}
 	
 	}
+
+	function ConvertDateFormat($startdate){
+		$dateBreak = explode('/',$startdate);
+		$edm = $dateBreak[0];
+		$edd = $dateBreak[1];
+		$edy = $dateBreak[2];
+		if($edm == '01'){
+			$edmn = 'Jan';
+		}
+		elseif($edm == '02'){
+			$edmn = 'Feb';
+		}
+		elseif($edm == '03'){
+			$edmn = 'Mar';
+		}
+		elseif($edm == '04'){
+			$edmn = 'Apr';
+		}
+		elseif($edm == '05'){
+			$edmn = 'May';
+		}
+		elseif($edm == '06'){
+			$edmn = 'Jun';
+		}
+		elseif($edm == '07'){
+			$edmn = 'Jul';
+		}
+		elseif($edm == '08'){
+			$edmn = 'Aug';
+		}
+		elseif($edm == '09'){
+			$edmn = 'Sept';
+		}
+		elseif($edm == '10'){
+			$edmn = 'Oct';
+		}
+		elseif($edm == '11'){
+			$edmn = 'Nov';
+		}
+		else{
+			$edmn = 'Dec';
+		}
+		$eventDate = $edd.' '.$edmn.', '.$edy;
+		return $eventDate;
+	}
+
 	function CombineDate($startdate,$enddate){
 		$kaboom1 = explode('/',$startdate);
 		$sdm = $kaboom1[0];
