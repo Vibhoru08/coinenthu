@@ -167,9 +167,7 @@
 		</div>
 
 
-<script src="<?php echo base_url();?>asset/forntend/js/jquery.validate.min.js"></script>
-<script src="<?php echo base_url();?>asset/tinymce/tinymce.min.js"></script>
-<script src="<?php echo base_url();?>asset/tinymce/jquery.tinymce.min.js"></script>
+
 
 <script>
 

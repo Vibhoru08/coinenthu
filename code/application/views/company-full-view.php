@@ -125,7 +125,7 @@
 								<li><a href="<?php echo "https://plus.google.com/share?url=". $shareUrl; ?>" target='_blank' class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
 								<li>
 								<!--<a target="_blank" href="https://web.whatsapp.com/send?text=<?php // echo $whatsappLink; ?>" data-action="share/whatsapp/share" title="Whatsapp" class="icoWhatsapp"><i class="fa fa-whatsapp" ></i></a>-->
-								<a data-text="<?php echo $companyview['company_name']; ?>" data-link="<?php 
+								<a data-text="<?php echo $companyview['company_name']; ?>" data-link="<?php
 								if($companyview['cm_ctid'] == 1){
 									echo 'http://Coinenthu.com/DigitalAssets/'.$cm_name;
 								}else if($companyview['cm_ctid'] == 2){
@@ -408,7 +408,7 @@
 						<div class="mar_t10">
 						<hr>
 						<h4 class="no-margin asset-heading pad_b10">Project Updates</h4>
-							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; foreach($companyview['ms_title'] as $key=>$milestones){
+							<?php if(sizeof($companyview['ms_title'])>0){ $i=1; echo '<ul style="padding-left:20px;">';foreach($companyview['ms_title'] as $key=>$milestones){
 							if($i==1){
 								$mar_t10 = '';
 							}else{
@@ -421,10 +421,10 @@
 										$msUrl = '//'.$companyview['ms_link'][$key];
 									}
 								?>
-							<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px 0px;">
-							<!--<div class="pending_b"><img src="<?php echo base_url(); ?>images/pending.png" width="30"></div>-->
-							<div class="mailston_bg" style="border-left:none;"><a href = "<?php echo $msUrl; ?>" title = "<?php echo $milestones; ?>" target = "_blank"><?php echo $milestones; ?></a></div></div>
-							<?php $i++; } } else{ echo "No Project Updates"; } ?>
+							<!--<div class="pending_bg pos_r <?php echo $mar_t10; ?>" style="padding:10px 0px;">-->
+							<!--<div class="pending_b"><img src="<?php// echo base_url(); ?>images/pending.png" width="30"></div>-->
+							<!--<div class="mailston_bg" style="border-left:none;">--><li><a href = "<?php echo $msUrl; ?>" title = "<?php echo $milestones; ?>" target = "_blank"><?php echo $milestones; ?></a></li><!--</div></div>-->
+							<?php $i++; }echo '</ul>' ;} else{ echo "No Project Updates"; } ?>
 						</div>
 						<?php } ?>
 						<div class="mar_t10 text-center">
