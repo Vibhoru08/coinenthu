@@ -1,5 +1,5 @@
 <script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
-<script src="<?php echo base_url(); ?>asset/ckfinder/ckfinder.js" type="text/javascript"></script>
+
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color">
 				<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
@@ -168,11 +168,42 @@
 
 
 <script src="<?php echo base_url();?>asset/forntend/js/jquery.validate.min.js"></script>
+<script src="<?php echo base_url();?>asset/tinymce/tinymce.min.js"></script>
+<script src="<?php echo base_url();?>asset/tinymce/jquery.tinymce.min.js"></script>
+
 <script>
 
 	$(document).ready(function() {
 
-		CKFinder.setupCKEditor();
+		/*tinymce.init({
+    selector: "textarea",
+
+    paste_data_images: true,
+    plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table directionality",
+      " template paste  textpattern"
+    ],
+    toolbar1: " styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media ",
+		menubar:false,
+    image_advtab: false,
+    file_picker_callback: function(callback, value, meta) {
+      if (meta.filetype == 'image') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            callback(e.target.result, {
+              alt: ''
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    }
+  });*/
 		CKEDITOR.replace('re_decript', {
 			disallowedContent: 'img{width,height,border*,margin*,alignment,float,htmlPreview};',
 			filebrowserBrowseUrl :'', //baseUrl +'asset/ckfinder/ckfinder.html',
@@ -267,6 +298,8 @@
 		var text=CKEDITOR.instances.re_decript.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/\&nbsp;/g, '').replace(/^\s+|\s+$/g, '');
 		console.log(text.length );
 		debugger;
+
+	//var text=tinyMCE.activeEditor.getContent();
 		if(text.length==0 || text==""){
 			$('#r_char_cnt').show();
 			$('#review_char_count').html('<span style="color:red;">The review is required</span>');

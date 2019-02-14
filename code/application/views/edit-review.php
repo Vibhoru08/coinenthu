@@ -1,5 +1,5 @@
 <script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
-<script src="<?php echo base_url(); ?>asset/ckfinder/ckfinder.js" type="text/javascript"></script>
+
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color">
 				<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">

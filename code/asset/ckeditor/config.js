@@ -41,7 +41,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;link:target;link:upload;html5video:advanced';
   config.removePlugins = 'PasteFromWord';
   config.removeButtons = 'PasteFromWord,Anchor,SpecialChar,Source';
-  config.extraPlugins = 'wordcount,notification,embed,embedbase,autolink,textmatch';
+  config.extraPlugins = 'wordcount,notification,embed,embedbase,autolink,textmatch,image2';//,easyimage,cloudservices,balloontoolbar,ajax,balloonpanel,imagebase,filetools,xml';
   config.wordcount = {
 
     // Whether or not you want to show the Paragraphs Count
@@ -92,14 +92,37 @@ CKEDITOR.on('dialogDefinition', function(e) {
         targetField['default'] = '_blank';
     }
 
-		if (e.data.name == 'img') {
-				var dialog = e.data.definition;
-        var oldOnShow = dialog.onShow;
-        dialog.onShow = function() {
-             oldOnShow.apply(this, arguments);
-             this.selectPage('upload');
-        };
 
-        //Remove tab Link
+
+});
+CKEDITOR.on( 'dialogDefinition', function( ev ) {
+    // Take the dialog window name and its definition from the event data.
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+
+    if ( dialogName == 'image' ) {
+        dialogDefinition.onShow = function() {
+            // This code will open the Link tab.
+            this.selectPage( 'Upload' );
+
+        };
     }
+});
+CKEDITOR.on( 'dialogDefinition', function( ev ) {
+    // Take the dialog window name and its definition from the event data.
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+    var uploadTab = dialogDefinition.getContents('Upload');
+    var uploadButton = uploadTab.get('uploadButton');
+    var dialog = dialogDefinition.dialog;
+    console.log(dialog);
+if ( dialogName === 'image2') {
+  var infoTab = dialogDefinition.getContents( 'info' );
+  var filebrowserSe = dialog.getParentEditor()._.filebrowserSe = uploadButton;
+  filebrowserSe.getDialog = function() {return dialog};
+  infoTab.remove('height');
+  infoTab.remove('width');
+           infoTab.remove('lock');
+  //code ...
+}
 });
