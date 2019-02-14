@@ -72,7 +72,7 @@
 								  <input type="hidden" name="re_cmid" id="re_cmid" value="<?php echo $editReview->re_cmid; ?>">
 								  <input type="hidden" name="cm_unique_id" id="cm_unique_id" value="<?php echo $editReview->cm_unique_id; ?>">
 										<label for="inputPassword3" class="control-label">Add your review</label>
-										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo @strip_tags(str_replace(' ','&nbsp;',$editReview->re_decript),'<br />'); ?></textarea>
+										<textarea class="form-control" placeholder="Review" style="min-height:270px;" required data-fv-notempty-message="The review is required" id="re_decript" name="re_decript" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Review should have less than 1000 characters" onkeyup="countCharcter();"><?php echo @htmlspecialchars($editReview->re_decript); ?></textarea>
 									 <span id="r_char_cnt" style="display:none;"> <span id="review_char_count"></span>&nbsp;&nbsp;character(s) left</span>
 									 <div class = "mar_t30" style= "border:1px solid black;border-radius:10px;padding:10px 10px 10px 10px;">
 									 <label>

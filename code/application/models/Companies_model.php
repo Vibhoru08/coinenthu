@@ -38,14 +38,24 @@ class Companies_model extends CI_Model
 		return $query->result();
 	}
 	public function getEventList($limit,$offset,$order_by,$ascdesc)
-	{
-		$this->db->select('*');
-		$this->db->from('bop_events');
-		$this->db->where('ev_status',1);
-		$this->db->order_by($order_by,$ascdesc);
-    	$this->db->limit($limit,$offset);
-		$query = $this->db->get();
-		return $query->result();
+	{	if($order_by == 'ev_price'){
+			$this->db->select('*');
+			$this->db->from('bop_events');
+			$this->db->where('ev_status',1);
+			$this->db->order_by($order_by,$ascdesc);
+    		$this->db->limit($limit,$offset);
+			$query = $this->db->get();
+			return $query->result();
+		}else{
+			$sql = "
+					SELECT *, DATEDIFF(`ev_ed`, CURDATE()) AS
+					diff FROM `bop_events` JOIN `bop_users` ON `bop_users`.`u_uid` = `bop_events`.`ev_uid`
+					WHERE ev_status !=2 AND `ev_status` = 1 AND `bop_users`.`u_status` = 1 ORDER BY CASE WHEN diff < 0 THEN 1 ELSE 0 END, diff
+					ASC LIMIT ".$offset.",".$limit;
+
+			$query = $this->db->query($sql);
+			return $query->result();
+		}
 	}
   public function totalCountEvents($status){
     $this->db->select('*');
@@ -1750,9 +1760,9 @@ class Companies_model extends CI_Model
 			'ev_picture'    					=> $resizeImg,
 			'ev_url'                            => $ev_url,  
 			'ev_loc'                            => $ev_loc,
-			'ev_sd'                             => $ev_sd,
+			'ev_sd'                             => date('Y-m-d',strtotime($ev_sd)),
 			'ev_st'                             => $ev_st,
-			'ev_ed'                             => $ev_ed,
+			'ev_ed'                             => date('Y-m-d',strtotime($ev_ed)),
 			'ev_et'                             => $ev_et,
 			'ev_price'                          => $ev_price,
 			'ev_num'                            => $ev_num,
@@ -1854,9 +1864,9 @@ class Companies_model extends CI_Model
 			'ev_picture'    					=> $resizeImg,
 			'ev_url'                            => $ev_url,
 			'ev_loc'                            => $ev_loc,
-			'ev_sd'                             => $ev_sd,
+			'ev_sd'                             => date('Y-m-d',strtotime($ev_sd)),
 			'ev_st'                             => $ev_st,
-			'ev_ed'                             => $ev_ed,
+			'ev_ed'                             => date('Y-m-d',strtotime($ev_ed)),
 			'ev_et'                             => $ev_et,
 			'ev_price'                          => $ev_price,
 			'ev_num'                            => $ev_num,

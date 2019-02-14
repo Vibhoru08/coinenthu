@@ -804,7 +804,7 @@
 				foreach($result as $key=>$value){
 					$startdate = $value->ev_sd;
 					$enddate = $value->ev_ed;
-					$data['event_date'] = CombineDate($startdate,$enddate);
+					$data['event_date'] = CombineDate(date('m/d/Y',strtotime($startdate)),date('m/d/Y',strtotime($enddate)));
 					$data['event_name'] = $value->ev_name;
 					$data['event_location'] = $value->ev_loc;
 					$data['event_url']      = $value->ev_url;
@@ -1403,8 +1403,8 @@
 			$data = array();
 			$limit    = 9;
 			$offset   = 0;
-			$order_by = 'ev_price';
-			$ascdesc = 'asc';
+			$order_by = 'price';
+			$ascdesc = 'desc';
 			$data['totCntEvents'] = $this->Companies_model->totalCountEvents(1);
 			$data['event_list'] = $this->Companies_model->getEventList($limit,$offset,$order_by,$ascdesc);
 			$data['cities'] = $this->Companies_model->getCities(1);

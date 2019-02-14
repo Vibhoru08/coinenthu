@@ -97,7 +97,7 @@
              <div class="col-sm-9">
                <div class="row">
                  <div class="col-md-6">
-                  <input type="text" class="form-control" id="cm_ico_start_date" name="ev_sd" value = "<?php echo $event_sd; ?>" class="form-control" placeholder="Event Start Date " readonly style="background-color:#fff;" required data-fv-notempty-message="The start date is required" >
+                  <input type="text" class="form-control" id="cm_ico_start_date" name="ev_sd" value = "<?php echo date('m/d/Y',strtotime($event_sd)); ?>" class="form-control" placeholder="Event Start Date " readonly style="background-color:#fff;" required data-fv-notempty-message="The start date is required" >
                  </div>
                  <div class="col-md-6 mmar_t15">
                   <select name="ev_st" value = "<?php echo $event_st; ?>" id="cm_ico_start_time" class="form-control" required data-fv-notempty-message="The start time is required">
@@ -140,7 +140,7 @@
              <div class="col-sm-9">
                <div class="row">
                  <div class="col-md-6">
-                  <input type="text" id="cm_ico_end_date" name="ev_ed" value = "<?php echo $event_ed; ?>" class="form-control" placeholder="Event End Date "  readonly style="background-color:#fff;" required data-fv-notempty-message="The end date is required">
+                  <input type="text" id="cm_ico_end_date" name="ev_ed" value = "<?php echo date('m/d/Y',strtotime($event_ed)); ?>" class="form-control" placeholder="Event End Date "  readonly style="background-color:#fff;" required data-fv-notempty-message="The end date is required">
                  </div>
                  <div class="col-md-6 mmar_t15">
                    <select name="ev_et" id="cm_ico_end_time" class="form-control" required data-fv-notempty-message="The end time is required">
