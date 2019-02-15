@@ -263,6 +263,63 @@
 				$this->show('display-profile',$data);
 			}
 		}
+
+		public function viewProfile()
+		{
+			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
+				redirect('login','refresh');
+			}else{
+				$this->load->helper(array('common'));
+				$username_url = $this->uri->segment(2); 
+				$username = str_replace('_',' ',$username_url);
+				$data = array();
+				$u_uid = $_SESSION["user_id"];
+				$data['current_userinfo'] = $this->User_model->getUserDetails($u_uid);
+				$user_review_details = $this->Companies_model->userReviewsFromUsername($username);
+				$no_of_reviews = $user_review_details->num_rows();
+				$total_review_upvotes = 0;
+				$total_reply_upvotes = 0;
+				foreach($user_review_details->result_array() as $row){
+					if(isset($row['re_likes_cnt'])){
+						$review_likes_cnt = $row['re_likes_cnt'];
+					}
+					else{
+						$review_likes_cnt = 0;
+					}
+					$total_review_upvotes = $total_review_upvotes + $review_likes_cnt;
+				}
+				$user_reply_details = $this->Companies_model->userRepliesFromUsername($username);
+				$no_of_replies = $user_reply_details->num_rows();
+				foreach($user_reply_details->result_array() as $row){
+					if(isset($row['crr_likes_cnt'])){
+						$reply_likes_cnt = $row['crr_likes_cnt'];
+					}
+					else{
+						$reply_likes_cnt = 0;
+					}
+					$total_reply_upvotes = $total_reply_upvotes + $reply_likes_cnt;
+				}
+				$total_upvotes = $total_review_upvotes + $total_reply_upvotes;
+				$data['nore'] = $no_of_replies;
+				$data['nou'] = $total_upvotes;
+				$data['nor'] = $no_of_reviews;
+				$data['userinfo'] = $this->User_model->getUserDetailsFromUsername($username);
+				$user_id = $data['userinfo']->u_uid;
+				$data['type'] = 'other';
+				$data['reviews'] = array();
+				$data['replies'] = array();
+				$reviewlist = $this->User_model->myProfileReview($user_id);
+				foreach($reviewlist as $cr=>$review){
+					$data['reviews'][$cr] = $review;
+					$data['replies'][$review->re_id] = $this->User_model->myProfileReplies($review->re_id);
+					foreach($data['replies'][$review->re_id] as $crr=>$reply){
+						$data['replies'][$review->re_id][$crr] = $reply;
+					}
+				}
+				$this->show('display-profile',$data);
+			}
+		}
+
 		public function upload_profile_image(){
 			$fileExtentios 	= explode(".", $_POST['imageName']);
 			$extention 		= end($fileExtentios);

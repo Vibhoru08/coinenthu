@@ -97,6 +97,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+
+	public function userReviewsFromUsername($username){
+		$this->db->select('*');
+		$this->db->from('bop_users');
+		$this->db->join('bop_company_reviews','bop_company_reviews.re_uid = bop_users.u_uid');
+		$this->db->where('u_username',$username);
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function userReplies($user_id){
 		$this->db->select('*');
 		$this->db->from('bop_company_review_replies');
@@ -104,6 +114,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+
+	public function userRepliesFromUsername($username){
+		$this->db->select('*');
+		$this->db->from('bop_users');
+		$this->db->join('bop_company_review_replies','bop_company_review_replies.crr_uid = bop_users.u_uid');
+		$this->db->where('u_username',$username);
+		$query = $this->db->get();
+		return $query;
+	} 
+
 	public function getLastReply($date,$hour,$minute,$post){
 		$this->db->select('*');
         $this->db->from('bop_company_review_replies');

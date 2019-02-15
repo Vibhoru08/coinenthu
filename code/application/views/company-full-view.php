@@ -594,6 +594,24 @@
 					?>
 					<div class="row border_bottom asset-padding mar_0" id="review_<?php echo $review->re_id; ?>">
 					<div class = "col-md-2 col-xs-12">
+					<a href = "<?php
+									if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
+										$uid = $_SESSION['user_id'];
+									}else{
+										$uid = "";
+									}
+									if ($uid == $review->u_uid){
+										echo base_url().'display-profile';
+									}else{
+										echo base_url().'view-profile/'.str_replace(' ','_',$review->u_username);
+									}									
+									?>" title = "<?php
+									if($uid == $review->u_uid){
+										echo 'View Your Profile';
+									}else{
+										echo 'Visit '.$review->u_username.'\'s Profile';
+									}
+									?>">
 						<?php if($review->u_picture!=""){ ?>
 						<img class="img-circle review-image" src="<?php echo base_url().'asset/img/users/'.$review->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 						<?php }else if($review->u_social_pic!=""){ ?>
@@ -601,17 +619,11 @@
 						<?php }else{?>
 						<img class="img-circle review-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 						<?php } ?>
+					</a>	
 					</div>
 					<div class = "col-md-10 col-xs-12">
 						<div class = "col-xs-12" style="padding-top:15px;">
 							<span class="pull-right">
-									<?php
-									if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
-										$uid = $_SESSION['user_id'];
-									}else{
-										$uid = "";
-									}
-									?>
 									<?php
 										if($uid!=""){
 											if($uid == $review->re_uid){
@@ -629,7 +641,13 @@
 									<?php } } ?>
 							</span>
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
-							<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
+							<?php 
+							if($uid == $review->u_uid){
+								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
+							}else{
+								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'view-profile/'.str_replace(' ','_',$review->u_username).'">'.$u_username.'</a></span>';
+							}
+							?>
 							<?php
 									$old_date = timeago($review->re_createdat);
 									echo '<div class="time_stamp">'.$old_date.'</div>';

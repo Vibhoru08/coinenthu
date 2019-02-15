@@ -3,7 +3,13 @@
         <div class = "container-fluid banner_margin photo_margin linear_color mob_height_banner">
             <div class="row mmar_t40 mar_t60 mar_b10 smar_b50 xsmar_b50">
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
-						MY PROFILE
+          <?php
+          if(isset($type) && $type == 'other'){
+            echo strtoupper($userinfo->u_firstname).'\'S PROFILE';
+          }else{
+            echo 'MY PROFILE';
+          }
+          ?>
 						<!--<hr style="width:5%;border:2px solid #ffff">-->
                         <div class = "mar_t30 text-left row">
                           <div class = "col-md-9 col-xs-12 mar_l40 profile_desx m_hide pad_0">
@@ -33,17 +39,33 @@
             </div>
             <div class = "col-md-4 col-xs-12 profile_desx m_hide pad_0">
               <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
-                <h1 class="mar_t10 profile_name">Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h1>
+                <h1 class="mar_t10 profile_name"><?php
+                if(isset($type) && $type == 'other'){
+                  echo ucfirst($userinfo->u_firstname).' '.ucfirst($userinfo->u_lastname);
+                }else{
+                  echo 'Hi '.ucfirst($userinfo->u_firstname).'!';
+                }
+                ?></h1>
             </div>
+            <?php if($type != 'other'){ ?>
             <div class="col-md-4 text-right edit_profile m_hide">
             <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
+            <?php } ?>
             <div class = "col-md-2 col-xs-12 profile_desx pad_0 big_hide">
-                <h2>Hi <?php echo ucfirst($userinfo->u_firstname); ?>!</h2>
+                <h2><?php
+                if(isset($type) && $type == 'other'){
+                  echo ucfirst($userinfo->u_firstname).' '.ucfirst($userinfo->u_lastname);
+                }else{
+                  echo 'Hi '.ucfirst($userinfo->u_firstname).'!';
+                }
+                ?></h2>
             </div>
+            <?php if($type != 'other'){ ?>
             <div class="col-xs-12 text-center edit_profile big_hide">
             <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
+            <?php } ?>
             <div class="col-md-8 col-md-offset-3 profile_desx m_hide like_upvote mlike text-left">
               <div class = "text-left display_inline pad_0">
                   <div id="no_rev" class = "text-center pad_l0"><?php echo $nor; ?></div>&nbsp;
@@ -195,12 +217,19 @@
 							?>
 							</div>
 							<div class="you_rating">
-								You Rated<br>
+                <?php
+                if(isset($type) && $type == 'other'){
+                  echo ucfirst($userinfo->u_firstname);
+                }else{
+                  echo 'You';
+                }
+                ?> rated<br>
 								<?php echo $review->re_rating; ?>&nbsp;<i class="fa fa-star" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class = "col-md-10">
 							<div>
+              <?php if($type != 'other'){ ?>
                 <div class="dropdown edde_hover" style="float:right;">
                   <button class="btn btn-dis dropdown-toggle" type="button" data-toggle="dropdown">
                   <span class="fa fa-ellipsis-h"></span></button>
@@ -211,7 +240,7 @@
       							</a></li>
                   </ul>
                 </div>
-
+            <?php } ?>
                 <h4><a href = "<?php
                 if($review->cm_ctid == 1){
                   echo base_url().'DigitalAssets/'.str_replace(" ","_",$review->cm_name);
@@ -383,13 +412,23 @@
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
 											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
-                if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
-		            $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
-		        }else if(isset($userinfo->u_social_pic) && $userinfo->u_social_pic!=""){
-		            $imagepath = $userinfo->u_social_pic;
-		        }else{
-			        $imagepath = base_url().'asset/img/alt.jpg';
-		        }
+                if(!isset($type)){
+                  if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
+		                $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
+		              }else if(isset($userinfo->u_social_pic) && $userinfo->u_social_pic!=""){
+		                $imagepath = $userinfo->u_social_pic;
+		              }else{
+			              $imagepath = base_url().'asset/img/alt.jpg';
+                  }
+                }else{
+                  if(isset($current_userinfo->u_picture) && $current_userinfo->u_picture!=""){
+		                $imagepath = base_url().'asset/img/users/'.$current_userinfo->u_picture.'?id='.$viewTime;
+		              }else if(isset($current_userinfo->u_social_pic) && $current_userinfo->u_social_pic!=""){
+		                $imagepath = $current_userinfo->u_social_pic;
+		              }else{
+			              $imagepath = base_url().'asset/img/alt.jpg';
+                  }
+                }
 		    ?>
 		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
 											 <div class="col-xs-10" >

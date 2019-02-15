@@ -496,6 +496,16 @@ class User_model extends CI_Model
 		$query = $this->db->get();
 		return $result = $query->row(); 
 	}
+
+	public function getUserDetailsFromUsername($username)
+	{
+		$this->db->select('*');
+        $this->db->from('bop_users');
+		$this->db->where('u_username',$username);
+		$query = $this->db->get();
+		return $result = $query->row(); 
+	}
+
 	public function getCountryName($countryid){
 		$this->db->select('name');
         $this->db->from('bop_countries');
