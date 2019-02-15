@@ -796,6 +796,13 @@
 								}
 							?>
 							<div class = "col-md-2 col-xs-4 pad_0">
+									<a href = "<?php
+									if($uid == $reviewReplay->crr_uid){
+										echo base_url().'display-profile';
+									}else{
+										echo base_url().'view-profile/'.str_replace(' ','_',$reviewReplay->u_username);
+									}	
+									?>">	
 							        <?php if($reviewReplay->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reviewReplay->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 									<?php }else if($reviewReplay->u_social_pic!=""){ ?>
@@ -803,10 +810,17 @@
 									<?php }else{?>
 									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 									<?php } ?>
+									</a>
 							</div>
 							<div class = "col-md-10 col-xs-12 pad_0">
 								<div class = "col-xs-12 mar_0 pad_0" style="padding-top:5px;padding-bottom:5px;">
-									<?php echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;">'.$u_username.'</span>'; ?>
+									<?php 
+									if($uid == $reviewReplay->crr_uid){
+										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
+									}else{
+										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'view-profile/'.str_replace(' ','_',$reviewReplay->u_username).'">'.$u_username.'</a></span>';
+									}
+									?>
 									<?php
 											$old_date = timeago($reviewReplay->crr_createdat);
 											echo '<div class="time_stamp">'.$old_date.'</div>';

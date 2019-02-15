@@ -326,6 +326,13 @@
                  <label  id="save<?php echo $reply->crr_id; ?>" for="submit-form<?php echo $reply->crr_id; ?>" tabindex="0" class="btn btn-default btn_dislike_new btn-small" style="display:none;" value="">Save</label>
                  <!--<button id="save<?php //echo $reply->crr_id; ?>" type="submit" class="btn btn-default btn_dislike btn-small" style="display:none;" value="">Save</button> -->
                  <button id="reply_reply_pop<?php echo $reply->crr_id; ?>" onClick="replyReplyMessage('<?php echo $reply->crr_id; ?>','<?php echo $reply->crr_reid; ?>');" class="btn btn-default btn_dislike_new btn-small pad_l0"><i class="fa fa-pencil-square" aria-hidden="true"></i><span class="r-report-button-text">Edit</span></button>
+                 <span class="btn btn-default btn_dislike_new btn-small prof_reply_delte" id="prof_reply_delete" onclick="showDelete(<?php echo $reply->crr_id; ?>);">
+                   <!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                   <span style="float:right;font-size:13px;">--><?php
+                     echo "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span>";
+                     
+                   ?>
+                 </span>
                  <?php } else{ ?>
                    <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
 							$checkedRow1 = $this->Companies_model->checkUserReplyLiked($uid,$reply->crr_id,'like');
@@ -386,15 +393,7 @@
                    echo " Likes";
                  }?>
                  </span>
-                 <span class="btn btn-default btn_dislike_new btn-small prof_reply_delte" id="prof_reply_delete" onclick="showDelete(<?php echo $reply->crr_id; ?>);">
-                   <!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-                   <span style="float:right;font-size:13px;">--><?php
-                     if($reply->crr_uid == $userinfo->u_uid){
-                       echo "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span>";
-                     }
-                   ?>
-                 </span>
-                 <span id="reply_delte_confirm<?php echo $reply->crr_id; ?>" style="padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
+                  <span id="reply_delte_confirm<?php echo $reply->crr_id; ?>" style="padding:4px 9px;font-size:12.5px;border:1px solid transparent;display:none;">Are you sure ?
                    <a style="color:red;cursor:pointer;" onclick="reply_delete(<?php echo $reply->crr_id; ?>);">Yes</a>
                    <a id="no_delete<?php echo $reply->crr_id; ?>" onclick="hideDelete(<?php echo $reply->crr_id; ?>);" style="color:green;cursor:pointer;">No</a>
                  </span>
