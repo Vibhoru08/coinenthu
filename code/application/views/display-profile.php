@@ -405,6 +405,7 @@
 							}}
 							?>
             </div>
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){ ?>
             <div class="col-xs-12 pad_0 mar_t30" id="replypopup_m<?php echo $review->re_id; ?>" style="">
 									 <form  onSubmit="wirteareplySubmit(<?php echo $review->re_id; ?>);"  class="form-horizontal replypopup" id="replypopup<?php echo $review->re_id; ?>" name="replypopup" method="POST" data-fv-message="This value is not valid" data-fv-icon-valid="glyphicon" data-fv-icon-invalid="glyphicon" data-fv-icon-validating="glyphicon glyphicon-refresh" >
 									 <div class="col-xs-10 pad_l0">
@@ -447,6 +448,7 @@
                    </div>
 									 </form>
 								 </div>
+              <?php } ?>
 							</div>
 					</div>
 					<div class="mar_b80"></div>

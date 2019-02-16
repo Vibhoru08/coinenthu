@@ -266,9 +266,6 @@
 
 		public function viewProfile()
 		{
-			if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
-				redirect('login','refresh');
-			}else{
 				$this->load->helper(array('common'));
 				$username_url = $this->uri->segment(2); 
 				$username = str_replace('_',' ',$username_url);
@@ -317,7 +314,7 @@
 					}
 				}
 				$this->show('display-profile',$data);
-			}
+			
 		}
 
 		public function upload_profile_image(){
