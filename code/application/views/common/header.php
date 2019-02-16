@@ -142,7 +142,7 @@ $img =  base_url().'images/logo.png';
 	    <nav class="navbar navbar-static-top">
 		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
-			<a href="javascript:void(0);" onClick="return redirectPage('home');" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
+			<a href="<?php echo base_url(); ?>" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -243,7 +243,7 @@ $img =  base_url().'images/logo.png';
 
 
 							<ul class="nav navbar-nav mar_t0 margin-right">
-			  <li class="<?php echo $home;?> h_hover"><a href="javascript:void(0);" onClick="return redirectPage('home');">Home</a></li>
+			  <li class="<?php echo $home;?> h_hover"><a href="<?php echo base_url(); ?>">Home</a></li>
 			   <li class="<?php echo $assets;?> h_hover">
 					<a href="javascript:void(0);" onClick="return redirectPage('digi');" id="company">Digital Assets</a>
 				</li>

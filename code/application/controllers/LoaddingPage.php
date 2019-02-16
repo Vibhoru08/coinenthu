@@ -16,11 +16,6 @@ class LoaddingPage extends MY_Controller {
 	}*/
 	public function index()
 	{
-		$redirectUrl = base_url().'home';
-		redirect($redirectUrl);
-	}
-	public function Home()
-	{
 		$data = array();
 		$cm_cpid  = 1;
 		$limit    = 9;
