@@ -500,7 +500,7 @@
 					foreach($mileStonesOfCmp  as $m=>$mileStone)
 					{
 						$data['ms_title'][$m]	 	= $mileStone->ms_title;
-						$data['ms_link'][$m]        = $mileStone->ms_url; 
+						$data['ms_link'][$m]        = $mileStone->ms_url;
 						$data['ms_id'][$m] 		= $mileStone->mss_id;
 						$data['ms_status'][$m] 	= $mileStone->mss_status;
 
@@ -900,8 +900,8 @@
 				$html.='<span class = "pull-right" style = "margin-top:7px;">'.$crr_likes_cnt.' Likes</span>';
 				$html.='</div></div></div>';
 
-				$html2 .='<div class="row mar_t20" id = "individualReplies_'.$row['crr_id'].'">';
-				$html2 .='<div class = "col-md-2">';
+				$html2 .='<div class="col-xs-12 pad_l0 mar_t20 br_height" id = "individualReplies_'.$row['crr_id'].'">';
+				$html2 .='<div class = "col-md-2 col-xs-4 pad_0">';
 				if($row['u_picture']!=""){
 						$html2 .= '<img class="img-circle reply-image" src="'.base_url().'asset/img/users/'.$row['u_picture'].'" alt="'.$u_username.'">';
 				}else if($row['u_social_pic']!=""){
@@ -909,10 +909,10 @@
 				}else{
 						$html2 .= '<img class="img-circle reply-image" src="'. base_url().'asset/img/alt.jpg" alt="user image">';
 				}
-				$html2 .='</div><div class="col-md-10">';
+				$html2 .='</div><div class="col-md-10 col-xs-12 pad_0">';
 				$old_date = timeago($row['crr_createdat']);
 				$html2 .="<p><span class = 'time_stamp' style = 'float:right;'>".$old_date."</span>";
-				$html2 .="<span>".$u_username."</span><br style='margin-bottom:0px;'>";
+				$html2 .="<span>".$u_username."</span><br>";
 				$html2 .="<span class='NoirProLight' style= 'font-size:11px;color:#424242;'>".$row['u_about']."</span></p>";
 				$html2 .="<p id='replyreview_".$row['crr_id']."'>";
 				$html2 .="".strip_tags($row['crr_decript'])."</p>";
@@ -1697,12 +1697,12 @@
 								  if($value->cm_ctid == 1){
 								$html.='<a href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 								  }elseif($value->cm_ctid == 2){
-									$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';	  
+									$html.='<a href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'"><img src="'.base_url().'images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-responsive img-circle digital_box_image"></a>';
 								  }
 							  }
 						$html.='</div>
 							  <div class="product-info text-left">';
-						if($value->cm_ctid == 1){	  
+						if($value->cm_ctid == 1){
 							$html.='<a title="'.$value->cm_name.'" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 						}elseif($value->cm_ctid == 2){
 							$html.='<a title="'.$value->cm_name.'" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
@@ -1987,7 +1987,7 @@
 							  if($value->cm_ctid == 1){
 									$html.='<a title="'.$value->cm_name.'" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 							  }elseif($value->cm_ctid == 2){
-								$html.='<a title="'.$value->cm_name.'" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">'; 
+								$html.='<a title="'.$value->cm_name.'" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" class="product-title NoirProSemiBold">'.$value->cm_name.'</a><input id="rating_val" name="input-6" class="rating rating-loading" value="'.$value->cm_overallrating.'" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">';
 							  }
 						$html.='<span class="product-description">';
 						$html.='<div class="star_in"><div class="rating_value">
@@ -2017,12 +2017,12 @@
 							}
 						$html.='<div class="col-xs-12 NoirProMedium">DESCRIPTION</div><div><span class="col-xs-12 set_height_br"></span></div><span class="col-xs-12" style="height:90px;">'.ucfirst($string).'</span><br>';
 
-						
+
 						}
 						if($value->cm_ctid == 1){
 							$html.='<br/><a class="col-xs-12" href="'.base_url().'DigitalAssets/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 						}elseif($value->cm_ctid ==2){
-							$html.='<br/><a class="col-xs-12" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';			
+							$html.='<br/><a class="col-xs-12" href="'.base_url().'ICOs/'.str_replace(" ","_",$value->cm_name).'" style="color:black;">Read More &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 						}
 						$html.='<hr class="col-xs-12">';
 
