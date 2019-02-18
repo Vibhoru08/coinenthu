@@ -1,5 +1,6 @@
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
 
+
 <footer >
  <div class="container-fluid pad_b10">
    <div class="row" >

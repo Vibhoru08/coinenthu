@@ -1,3 +1,5 @@
+<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jquery.ui.timepicker.css">
 <div class="content-wrapper">
 <div class = "content about-bg text-color">
     <section class = "content">

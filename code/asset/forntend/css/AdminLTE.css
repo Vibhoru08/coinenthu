@@ -1480,7 +1480,7 @@ a:focus {
    font-style: italic;
    color: #231f20;
    width: 94.66666667%;
-   border-radius:0 5px 5px 0;
+   border-radius:5px 5px 5px 5px;
  }
  .search_total{
    border-radius:5px;

@@ -87,6 +87,14 @@ $img =  base_url().'images/logo.png';
 	<meta property="og:site_name" content="<?php echo $title; ?>"/>
 	<meta property="og:description" content="<?php echo $desc; ?>"/>
 	<meta property="og:type" content="website"/>
+<link rel='preload' href="<?php echo base_url();?>asset/forntend/fonts/NoirPro-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='preload' href="<?php echo base_url();?>asset/forntend/fonts/NoirPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='preload' href="<?php echo base_url();?>asset/forntend/fonts/fontawesome-webfont.woff2?v=4.4.0" as="font" type="font/woff2" crossorigin>
+<link rel='preload' href="<?php echo base_url();?>asset/forntend/fonts/NoirPro-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='preload' href="<?php echo base_url();?>asset/forntend/fonts/NoirPro-Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
 
 	<link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/forntend/images/favicon.png"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -94,39 +102,41 @@ $img =  base_url().'images/logo.png';
     <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bootstrap.css">
     <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/AdminLTE.css?type='<?php echo time(); ?>'">
 	 <link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/default.css?type='<?php echo time(); ?>'">
-    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/_all-skins.css">
-	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/rangeSlider.css">
-	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bscarousel.css">
+<!--    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/_all-skins.css">-->
+<!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/rangeSlider.css">-->
+<!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bscarousel.css">-->
 
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/star-rating.css">
-	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/star-rating.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/owl.carousel.min.css">
+<!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/star-rating.css">-->
+<!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/star-rating.min.css">-->
+<!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/owl.carousel.min.css">-->
 
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jcrop.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jquery.ui.timepicker.css">
+<!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jcrop.min.css">-->
+<!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jquery.ui.timepicker.css">-->
 
 	<!--[if IE 11]> <link rel="stylesheet" media="print" title="Print" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><![endif]-->
 <!--[if lte IE 10]> <link rel="stylesheet" media="print" title="Print" type="text/css" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><![endif]-->
 <!--[if !IE]>--><link rel="stylesheet" media="print" title="Print" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><!--<![endif]-->
-	<script src="<?php echo base_url();?>asset/forntend/js/slim-min.js"></script>
-	<script src="<?php echo base_url();?>js/jquery.js"></script>
+<!--	<script src="<?php echo base_url();?>asset/forntend/js/slim-min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="<?php echo base_url();?>js/jquery.js"><\/script>')</script>
+<!--	<script src="<?php echo base_url();?>js/jquery.js"></script>-->
   <script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>
-	<script src="<?php echo base_url();?>asset/forntend/js/jquery.cookie.js"></script>
+<!--	<script src="<?php echo base_url();?>asset/forntend/js/jquery.cookie.js"></script>-->
 	<script src="<?php echo base_url();?>js/at-formValidation.js"></script>
   <script src="<?php echo base_url();?>js/bootstrap.js"></script>
 	<script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url();?>asset/forntend/js/owl.carousel.js"></script>
-	<script async defer src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
+	<!--<script src="<?php echo base_url();?>asset/forntend/js/owl.carousel.js"></script>-->
+	<!--<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>-->
 	<script src="<?php echo base_url();?>asset/forntend/js/app.js"></script>
-	<script src="<?php echo base_url();?>asset/forntend/js/rangeSlider.js"></script>
+<!--	<script src="<?php echo base_url();?>asset/forntend/js/rangeSlider.js"></script>-->
 	<script src="<?php echo base_url();?>/js/oauthpopup.js"></script>
-  <script src="<?php echo base_url();?>asset/forntend/js/custom.js"></script>
+<!--  <script src="<?php echo base_url();?>asset/forntend/js/custom.js"></script>-->
 	<script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>
 	<!--<script src="<?php // echo base_url();?>js/jquery-scroll-bottom.js"></script>-->
 
-	<script src="<?php echo base_url();?>js/jcrop.min.js"></script>
+	<!--<script src="<?php echo base_url();?>js/jcrop.min.js"></script>-->
 	<!--<script src="<?php echo base_url();?>js/xds-ui-timepicker.js"></script>-->
-	<script src="<?php echo base_url();?>asset/forntend/js/star-ratingss.min.js"></script>
+<!--	<script src="<?php echo base_url();?>asset/forntend/js/star-ratingss.min.js"></script>-->
 	<script src="<?php echo base_url();?>asset/forntend/js/star-rating.min.js"></script>
   <script src="<?php echo base_url();?>asset/forntend/js/dk-scripts.js?type='<?php echo time(); ?>'"></script>
 	<script async src="<?php echo base_url(); ?>js/twitter.js" charset="utf-8"></script>
@@ -142,7 +152,7 @@ $img =  base_url().'images/logo.png';
 	    <nav class="navbar navbar-static-top">
 		  <div class="container-fluid pos_r logo_one">
             <div class="navbar-header">
-			<a href="<?php echo base_url(); ?>" class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
+			<a href="<?php echo base_url(); ?>"  class="navbar-brand navbar-brand-logo"><img src="<?php echo base_url();?>asset/forntend/images/logo.png"/></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>

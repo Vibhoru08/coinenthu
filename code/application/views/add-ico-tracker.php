@@ -1,3 +1,5 @@
+<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jquery.ui.timepicker.css">
  <div class="content-wrapper">
    <div class="container-fluid banner_margin linear_color">
  		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">

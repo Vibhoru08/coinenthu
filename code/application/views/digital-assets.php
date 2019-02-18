@@ -389,24 +389,24 @@ $viewTime = date('Ymd') .'_'. date('His');
 
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			var owl = $('.owl-carousel');
-				owl.owlCarousel({
+			/*	owl.owlCarousel({
 				items: 1,
 				loop: true,
 				margin: 20,
 				autoplay: true,
 				autoplayTimeout: 4000,
 				autoplayHoverPause: false
-			});
+			});*/
 		}else{
 			var owl = $('.owl-carousel');
-				owl.owlCarousel({
+			/*	owl.owlCarousel({
 				items: 4,
 				loop: true,
 				margin: 20,
 				autoplay: true,
 				autoplayTimeout: 4000,
 				autoplayHoverPause: false
-			});
+			});*/
 		}
 	});
 

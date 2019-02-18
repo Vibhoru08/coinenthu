@@ -1,3 +1,456 @@
+/*!
+ CUSTOM.JS
+ */
+
+ $(document).ready(function(){
+ 	  $('.collapsed').click(function(){
+ 		$('body').toggleClass('body_h');
+ 	});
+
+ 	// if menu is open then true, if closed then false
+ 	// we start with false
+ 	var open = false;
+ 	// just a function to print out message
+ 	function isOpen(){
+ 			if(open)
+ 				 return "menu is open";
+ 			else
+ 				 return "menu is closed";
+ 	}
+ 	// on each click toggle the "open" variable
+ 	$("#type").on("click", function() {
+ 				open = !open;
+ 				if(isOpen()=="menu is open"){
+ 					$("#type").css("border-radius","10px 10px 0 0");
+ 				}else if(isOpen()=="menu is closed"){
+ 					$("#type").css("border-radius","10px 10px 10px 10px");
+ 				}
+ 				console.log(isOpen());
+ 	});
+ 	// on each blur toggle the "open" variable
+ 	// fire only if menu is already in "open" state
+ 	$("#type").on("blur", function() {
+ 				if(open){
+ 					 open = !open;
+ 					 if(isOpen()=="menu is open"){
+ 	 					$("#type").css("border-radius","10px 10px 0 0");
+ 	 				}else if(isOpen()=="menu is closed"){
+ 	 					$("#type").css("border-radius","10px 10px 10px 10px");
+ 	 				}
+
+ 				}
+ 	});
+ 	// on ESC key toggle the "open" variable only if menu is in "open" state
+ 	$(document).keyup(function(e) {
+ 			if (e.keyCode == 27) {
+ 				if(open){
+ 					 open = !open;
+ 					 if(isOpen()=="menu is open"){
+ 	 					$("#type").css("border-radius","10px 10px 0 0");
+ 	 				}else if(isOpen()=="menu is closed"){
+ 	 					$("#type").css("border-radius","10px 10px 10px 10px");
+ 	 				}
+
+ 				}
+ 			}
+ 	});
+
+
+
+
+ 	$(window).resize(function(){
+ 		var y=window.matchMedia("(max-width: 990px)");
+ 		if (y.matches){
+ 			if( $("#mob_register").hasClass("register_design") ){
+ 			$(".mob_login").removeClass('login_design');
+ 			$(".mob_s_login").fadeIn();
+ 			$(".mob_s_register").hide();
+ 			$(".socila_img").hide();
+ 		}else if( $("#mob_login").hasClass("login_design") ){
+ 			$(".mob_register").removeClass('register_design');
+ 			$(".mob_s_login").hide();
+ 		}else{
+ 			$(".mob_register").addClass('register_design');
+ 			$(".mob_s_register").hide();
+ 			$(".socila_img").hide();
+ 		}
+
+ 			$(".mob_login").click(function(){
+ 				$(".mob_login").removeClass('login_design');
+ 				$(".mob_register").addClass('register_design');
+ 				$(".mob_s_login").fadeIn();
+ 				$(".mob_s_register").hide();
+ 				$(".socila_img").hide();
+ 			});
+
+ 			$(".mob_register").click(function(){
+ 				$(".mob_register").removeClass('register_design');
+ 				$(".mob_login").addClass('login_design');
+ 				$(".mob_s_login").hide();
+ 				$(".mob_s_register").fadeIn();
+ 				$(".socila_img").fadeIn();
+ 			});
+ 		}
+ 		else{
+ 			$(".mob_s_register").show();
+ 			$(".socila_img").show();
+ 			$(".mob_s_login").show();
+ 		}
+ 	});
+
+     $(".dropdown_hover").hover(
+         function() {
+             $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+             $(this).toggleClass('open');
+         },
+         function() {
+             $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).hide();
+             $(this).toggleClass('open');
+         }
+     );
+
+ var y=window.matchMedia("(max-width: 990px)");
+ if (y.matches){
+ 	$(".mob_register").addClass('register_design');
+ 	$(".mob_s_register").hide();
+ 	$(".socila_img").hide();
+
+ 	$(".mob_login").click(function(){
+ 		$(".mob_login").removeClass('login_design');
+ 		$(".mob_register").addClass('register_design');
+ 		$(".mob_s_login").fadeIn();
+ 		$(".mob_s_register").hide();
+ 		$(".socila_img").hide();
+ 	});
+
+ 	$(".mob_register").click(function(){
+ 		$(".mob_register").removeClass('register_design');
+ 		$(".mob_login").addClass('login_design');
+ 		$(".mob_s_login").hide();
+ 		$(".mob_s_register").fadeIn();
+ 		$(".socila_img").fadeIn();
+ 	});
+ }
+
+
+ var x = window.matchMedia("(max-width: 990px)");
+
+ if (x.matches) {
+ 	  $(".select_dropdown").click(
+         function() {
+ 				/*	var classList = $('.dropdown-menu').attr('class').split(/\s+/);
+ 					$.each(classList, function(index, item) {
+ 						//	if (item === 'someClass') {
+ 									//do something
+ 							//}
+ 							console.log(item);
+ 					});
+ 					//console.log(classList); */
+ 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).toggle();
+ 					$(this).toggleClass('open');
+ 					$('#sort_by').hide();
+ 					localStorage.setItem('sortby_status',0);
+ 					//	$(".select_dropdown").toggleClass('open');
+         }
+     );
+ 	$(".dropdown-menu").bind('click', function(){
+ 		// $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+      $(this).toggle();
+ 	});
+ }
+ else {
+ 	$(".p_hover").hover(
+ 			function() {
+ 					$('.ul_left_m').show();
+ 					$(".caret_change").html('<span class="caret-up"></span>');
+ 			},
+ 			function() {
+ 					$('.ul_left_m').hide();
+ 					$(".caret_change").html('<span class="caret "></span>');
+ 			}
+ 	);
+ 	$(".p_hover").bind('click', function(){
+ 	// $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+ 			$('.ul_left_m').hide();
+ 	});
+
+
+
+ 	$(".select_dropdown").hover(
+ 			function() {
+ 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+ 					$(this).toggleClass('open');
+ 						$('#sort_by').hide();
+ 						localStorage.setItem('sortby_status',0);
+ 			},
+ 			function() {
+ 					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).hide();
+ 					$(this).toggleClass('open');
+ 			}
+ 	);
+ 	$(".select_dropdown").bind('click', function(){
+ 	// $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+ 			$(this).toggleClass('open');
+ 	});
+
+ $(".edde_hover").hover(
+ 	function(){
+ 		$(this).toggleClass('open');
+
+ 	},
+ 	function(){
+ 		$(this).toggleClass('open');
+
+ 	}
+ );
+ $(".edde_hover").bind('click', function(){
+ 	$(this).toggleClass('open');
+ });
+ }
+
+
+
+ 	$('.more_images').click(function(){
+ 		$('.moreandless').slideDown("400");
+ 		$('.more_images').slideUp("400");
+ 	});
+ 	$('.makePlain').hover(function(){
+ 		$('option').show();
+ 	});
+ });
+ $('#search_show').click(function(){
+ 		$('#msearch_show').addClass('msearch_show');
+ 	});
+
+
+
+ $(document).ready(function(){
+
+     loadGallery(true, 'a.thumbnail');
+
+     //This function disables buttons when needed
+     function disableButtons(counter_max, counter_current){
+         $('#show-previous-image, #show-next-image').show();
+         if(counter_max == counter_current){
+             $('#show-next-image').hide();
+         } else if (counter_current == 1){
+             $('#show-previous-image').hide();
+         }
+     }
+
+     /**
+      *
+      * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+      * @param setClickAttr  Sets the attribute for the click handler.
+      */
+
+     function loadGallery(setIDs, setClickAttr){
+         var current_image,
+             selector,
+             counter = 0;
+
+         $('#show-next-image, #show-previous-image').click(function(){
+             if($(this).attr('id') == 'show-previous-image'){
+                 current_image--;
+             } else {
+                 current_image++;
+             }
+
+             selector = $('[data-image-id="' + current_image + '"]');
+             updateGallery(selector);
+         });
+
+         function updateGallery(selector) {
+             var $sel = selector;
+             current_image = $sel.data('image-id');
+             $('#image-gallery-caption').text($sel.data('caption'));
+             $('#image-gallery-title').text($sel.data('title'));
+             $('#image-gallery-image').attr('src', $sel.data('image'));
+             disableButtons(counter, $sel.data('image-id'));
+         }
+
+         if(setIDs == true){
+             $('[data-image-id]').each(function(){
+                 counter++;
+                 $(this).attr('data-image-id',counter);
+             });
+         }
+         $(setClickAttr).on('click',function(){
+             updateGallery($(this));
+         });
+     }
+ });
+
+
+ (function () {
+ 	/* if($('input[type="range"]').val()!=undefined){
+ 		$('input[type="range"]').val(0).change();
+ 		var  selector = '[data-rangeSlider]';
+ 		var  elements = document.querySelectorAll(selector);
+ 		function valueOutput(element) {
+ 			var value = element.value;
+ 			var output = $("#re_rating").val(value);
+ 		}
+
+ 		for (var i = elements.length - 1; i >= 0; i--) {
+ 			valueOutput(elements[i]);
+ 		}
+
+ 		Array.prototype.slice.call(document.querySelectorAll('input[type="range"]')).forEach(function (el) {
+ 			el.addEventListener('input', function (e) {
+ 				valueOutput(e.target);
+ 			}, false);
+ 		});
+ 		rangeSlider.create(elements, { });
+ 	} */
+ })();
+
+
+/*
+*
+*
+*
+--------------------------------------------END OF CUSTOM.JS------------------------------
+*
+*
+*
+*/
+
+
+
+
+
+
+/*!
+ * jQuery Cookie Plugin v1.4.0
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as anonymous module.
+		define(['jquery'], factory);
+	} else {
+		// Browser globals.
+		factory(jQuery);
+	}
+}(function ($) {
+
+	var pluses = /\+/g;
+
+	function encode(s) {
+		return config.raw ? s : encodeURIComponent(s);
+	}
+
+	function decode(s) {
+		return config.raw ? s : decodeURIComponent(s);
+	}
+
+	function stringifyCookieValue(value) {
+		return encode(config.json ? JSON.stringify(value) : String(value));
+	}
+
+	function parseCookieValue(s) {
+		if (s.indexOf('"') === 0) {
+			// This is a quoted cookie as according to RFC2068, unescape...
+			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+
+		try {
+			// Replace server-side written pluses with spaces.
+			// If we can't decode the cookie, ignore it, it's unusable.
+			s = decodeURIComponent(s.replace(pluses, ' '));
+		} catch(e) {
+			return;
+		}
+
+		try {
+			// If we can't parse the cookie, ignore it, it's unusable.
+			return config.json ? JSON.parse(s) : s;
+		} catch(e) {}
+	}
+
+	function read(s, converter) {
+		var value = config.raw ? s : parseCookieValue(s);
+		return $.isFunction(converter) ? converter(value) : value;
+	}
+
+	var config = $.cookie = function (key, value, options) {
+
+		// Write
+		if (value !== undefined && !$.isFunction(value)) {
+			options = $.extend({}, config.defaults, options);
+
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setDate(t.getDate() + days);
+			}
+
+			return (document.cookie = [
+				encode(key), '=', stringifyCookieValue(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+				options.path    ? '; path=' + options.path : '',
+				options.domain  ? '; domain=' + options.domain : '',
+				options.secure  ? '; secure' : ''
+			].join(''));
+		}
+
+		// Read
+
+		var result = key ? undefined : {};
+
+		// To prevent the for loop in the first place assign an empty array
+		// in case there are no cookies at all. Also prevents odd result when
+		// calling $.cookie().
+		var cookies = document.cookie ? document.cookie.split('; ') : [];
+
+		for (var i = 0, l = cookies.length; i < l; i++) {
+			var parts = cookies[i].split('=');
+			var name = decode(parts.shift());
+			var cookie = parts.join('=');
+
+			if (key && key === name) {
+				// If second argument (value) is a function it's a converter...
+				result = read(cookie, value);
+				break;
+			}
+
+			// Prevent storing a cookie that we couldn't decode.
+			if (!key && (cookie = read(cookie)) !== undefined) {
+				result[name] = cookie;
+			}
+		}
+
+		return result;
+	};
+
+	config.defaults = {};
+
+	$.removeCookie = function (key, options) {
+		if ($.cookie(key) !== undefined) {
+			// Must not alter options, thus extending a fresh object...
+			$.cookie(key, '', $.extend({}, options, { expires: -1 }));
+			return true;
+		}
+		return false;
+	};
+
+}));
+
+
+
+/*
+*
+*
+*
+--------------------------------------------END OF JQUERY.COOKIE------------------------------
+*
+*
+*
+*/
+
 var d = new Date();
 var time = d.getTime();
 function redirectPage(pageName){

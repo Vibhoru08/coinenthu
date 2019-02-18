@@ -1,4 +1,7 @@
 <script src="<?php echo base_url(); ?>asset/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/star-rating.css">
+<script src="<?php echo base_url();?>asset/forntend/js/star-ratingss.min.js"></script>
+
 
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin linear_color">
