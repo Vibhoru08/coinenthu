@@ -45,27 +45,36 @@
             <div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">Location<span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
+              <textarea class="form-control background_color" required rows="1" id="cm_address" name="ev_loc" value="" placeholder="Event Address" data-fv-notempty-message="The event location is required and cannot be empty"></textarea>
             </div>
             </div>
-            <div class="form-group">
-            <label for="inputPassword3" class="col-sm-3 control-label">Event Url<span class="mstar">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty"
-             >
-            </div>
-            </div>
+
 			<div class="form-group">
             <label for="inputPassword3" class="col-sm-3 control-label">City<span class="mstar">*</span></label>
             <div class="col-sm-9">
-              <select name = "ev_city" required>
+            <!--  <select name = "ev_city" required>
 				<option value = "">None</option>
 				<?php
 				foreach($cities as $city){
 					echo '<option value = "'.$city->ci_value.'">'.$city->ci_name.'</option>';
 				}
 				?>
-			  </select>
+      </select>-->
+          <div class="row">
+              <div class="col-md-6">
+                  <input type="text" class="form-control background_color" id="ev_city" name="ev_city" placeholder="Event City" required data-fv-notempty-message="The event city is required and cannot be empty">
+              </div>
+              <div class="col-md-6">
+                  <input type="text" class="form-control background_color" id="ev_country" name="ev_country" placeholder="Event Country" required data-fv-notempty-message="The event country is required and cannot be empty">
+              </div>
+            </div>
+          </div>
+            </div>
+            <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">Event Url<span class="mstar">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control background_color" id="ev_url" name="ev_url" placeholder="Website Link/FB Page" required data-fv-notempty-message="The event URL is required and cannot be empty"
+             >
             </div>
             </div>
             <div class="form-group">
