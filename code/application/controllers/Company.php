@@ -2150,7 +2150,11 @@
 				}
 				$user_id = $this->session->userdata('user_id');
 				$insert_from = 'User';
-				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg);
+				$city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from  );
+				$country_id= $this->Companies_model->AddEventCountry($this->input->post(),$insert_from  );
+				//echo $city_id;exit;
+				$event_id =  $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg,$city_id,$country_id);
+
 				if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
 					{

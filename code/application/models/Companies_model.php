@@ -61,7 +61,7 @@ class Companies_model extends CI_Model
     $this->db->select('*');
     $this->db->from('bop_events');
     $this->db->where('ev_status',$status);
-      
+
     return $this->db->count_all_results();
   }
 	public function CountSpeakers($event_id)
@@ -122,7 +122,7 @@ class Companies_model extends CI_Model
 		$this->db->where('u_username',$username);
 		$query = $this->db->get();
 		return $query;
-	} 
+	}
 
 	public function getLastReply($date,$hour,$minute,$post){
 		$this->db->select('*');
@@ -1160,7 +1160,7 @@ class Companies_model extends CI_Model
 		$this->db->order_by($order_by,$ascdesc);
 		return $this->db->count_all_results();
 
-	}	
+	}
 
 	public function getSerachDigitalIcosCount($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm,$uuid,$checkQuery){
 		$this->db->select('*');
@@ -1209,7 +1209,7 @@ class Companies_model extends CI_Model
 	}
 
 	public function getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms=null,$city)
-	{	
+	{
 		if(isset($offset) && $offset != '')
 		{
 			$off = $offset;
@@ -1226,11 +1226,11 @@ class Companies_model extends CI_Model
 		$this->db->where('ev_status',1);
 		$this->db->where('bop_users.u_status',1);
 		$this->db->like('ev_name',$searchterms);
-		$this->db->order_by($oderBy,$ascdesc); 
+		$this->db->order_by($oderBy,$ascdesc);
 		$this->db->limit($limit,$off);
 		$query = $this->db->get();
 		return $query->result();
-		
+
 	}
 
 	public function getSearchDgtlIcos($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)
@@ -1331,13 +1331,13 @@ class Companies_model extends CI_Model
 			$this->db->like('cm_name', $serachTerm);
 
 			$this->db->order_by($order_by,$ascDesc);
-			
+
 			$this->db->limit($limit,$off);
 			// echo $this->db->get_compiled_select();exit;
 			$query = $this->db->get();
 			return $query->result();
 
-		
+
 
 
 	}
@@ -1442,13 +1442,13 @@ class Companies_model extends CI_Model
 			$this->db->like('cm_name', $serachTerm);
 
 			$this->db->order_by($order_by,$ascDesc);
-			
+
 			// $this->db->limit($limit,$offset);
 			// echo $this->db->get_compiled_select();exit;
 			$query = $this->db->get();
 			return $query->result();
 
-		
+
 
 
 	}
@@ -1557,7 +1557,7 @@ class Companies_model extends CI_Model
 			}
 		// }
 		return $this->db->count_all_results();
-	}	
+	}
 
 	public function getMilestoneStatuses(){
 
@@ -1687,7 +1687,7 @@ class Companies_model extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
-	public function AddEvent($post,$uid,$ins_fr,$resizeImg){
+	public function AddEvent($post,$uid,$ins_fr,$resizeImg,$city_id,$country_id){
 		if(isset($post['ev_name']) && $post['ev_name'] != "")
 		{
 			$ev_name = strtolower($post['ev_name']);
@@ -1757,11 +1757,17 @@ class Companies_model extends CI_Model
 			$ev_num = '';
 		}
 
-		if(isset($post['ev_city']) && $post['ev_city'] != "")
+		if(isset($city_id) && $city_id != "")
 		{
-			$ev_city = $post['ev_city'];
+			$city = $city_id;
 		}else{
-			$ev_city = '';
+			$city = '';
+		}
+    if(isset($country_id) && $country_id != "")
+		{
+			$country = $country_id;
+		}else{
+			$country = '';
 		}
 		if(isset($ins_fr) && $ins_fr == 'Admin')
 		{
@@ -1778,7 +1784,7 @@ class Companies_model extends CI_Model
             'ev_name'  							=> $ev_name,
 			'ev_decript'   						=> $ev_decript,
 			'ev_picture'    					=> $resizeImg,
-			'ev_url'                            => $ev_url,  
+			'ev_url'                            => $ev_url,
 			'ev_loc'                            => $ev_loc,
 			'ev_sd'                             => date('Y-m-d',strtotime($ev_sd)),
 			'ev_st'                             => $ev_st,
@@ -1786,7 +1792,8 @@ class Companies_model extends CI_Model
 			'ev_et'                             => $ev_et,
 			'ev_price'                          => $ev_price,
 			'ev_num'                            => $ev_num,
-			'ev_city'                           => $ev_city,
+			'ev_city'                           => $city,
+      'ev_country'                        => $country,
 			'ev_status'     					=> $status,
             'ev_cd' 				        	=> date('Y-m-d H:i:s'),
             'ev_md'  					        => date('Y-m-d H:i:s'),
@@ -1798,7 +1805,82 @@ class Companies_model extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
+  public function AddEventCity($post,$ins_fr){
+    if(isset($ins_fr) && $ins_fr == 'Admin')
+		{
+			$status = '1';
+		}elseif(isset($ins_fr) && $ins_fr == 'User')
+		{
+			$status = '0';
+		}else{
+			$status = '0';
+		}
+    $city=$post['ev_city'];
+    $this->db->select('ci_id');
+    $this->db->from('bop_event_cities');
+    $this->db->where('ci_name',$city);
+    $query = $this->db->get();
+    if ($query->num_rows()==1){
+      $data2 = $query ->result_array();
+      if(isset($ins_fr) && $ins_fr == 'Admin')
+      {
+        $data = array(
+                'ci_status'     					=> $status
+                );
+        $this->db->where('ci_id',$data2[0]['ci_id']);
+		    $this->db->update('bop_event_cities',$data);
+      }
+      return ($data2[0]['ci_id']);
+    }
+    else{
+      $data = array(
+              'ci_name'      						=> $city,
+              'ci_value'  							=> $city,
+              'ci_status'     					=> $status
 
+          );
+        $this->db->insert('bop_event_cities', $data);
+        return $this->db->insert_id();
+    }
+  }
+  public function AddEventCountry($post,$ins_fr){
+    if(isset($ins_fr) && $ins_fr == 'Admin')
+		{
+			$status = '1';
+		}elseif(isset($ins_fr) && $ins_fr == 'User')
+		{
+			$status = '0';
+		}else{
+			$status = '0';
+		}
+    $country=$post['ev_country'];
+    $this->db->select('co_id');
+    $this->db->from('bop_event_countries');
+    $this->db->where('co_name',$country);
+    $query = $this->db->get();
+    if ($query->num_rows()==1){
+      $data2 = $query ->result_array();
+      if(isset($ins_fr) && $ins_fr == 'Admin')
+      {
+        $data = array(
+                'co_status'     					=> $status
+                );
+        $this->db->where('co_id',$data2[0]['co_id']);
+		    $this->db->update('bop_event_countries',$data);
+      }
+      return ($data2[0]['co_id']);
+    }
+    else{
+      $data = array(
+              'co_name'      						=> $country,
+
+              'co_status'     					=> $status
+
+          );
+        $this->db->insert('bop_event_countries', $data);
+        return $this->db->insert_id();
+    }
+  }
 	public function UpdateEvent($post,$uid,$resizeImg)
 	{
 		if(isset($post['ev_name']) && $post['ev_name'] != "")
@@ -1871,13 +1953,8 @@ class Companies_model extends CI_Model
 			$ev_num = '';
 		}
 
-		if(isset($post['ev_city']) && $post['ev_city'] != "")
-		{
-			$ev_city = $post['ev_city'];
-		}else{
-			$ev_city = '';
-		}
-		
+
+
 		$data = array(
             'ev_name'  							=> $ev_name,
 			'ev_decript'   						=> $ev_decript,
@@ -1900,8 +1977,94 @@ class Companies_model extends CI_Model
 		}else{
 			return TRUE;
 		}
-	}	
+	}
+  public function UpdateEventCity($post)
+	{
+    $status=1;
+    $city=$post['ev_city'];
+    $this->db->select('ci_id');
+    $this->db->from('bop_event_cities');
+    $this->db->where('ci_name',$city);
+    $query = $this->db->get();
+    if ($query->num_rows()==1){
+      $data2 = $query ->result_array();
 
+      $data = array(
+                'ci_status'     					=> $status
+                );
+      $this->db->where('ci_id',$data2[0]['ci_id']);
+		  $this->db->update('bop_event_cities',$data);
+      $ev_city_id = $data2[0]['ci_id'];
+      $data3 = array(
+                'ev_city'      						=> $ev_city_id
+
+          );
+      $this->db->where('ev_id',$post['event_unique_id']);
+      $this->db->update('bop_events',$data3);
+      //return ($data2[0]['ci_id']);
+    }
+    else{
+      $data = array(
+              'ci_name'      						=> $city,
+              'ci_value'  							=> $city,
+              'ci_status'     					=> $status
+
+          );
+      $this->db->insert('bop_event_cities', $data);
+      $ev_city_id = $this->db->insert_id();
+      $data3 = array(
+                'ev_city'      						=> $ev_city_id
+
+          );
+      $this->db->where('ev_id',$post['event_unique_id']);
+  		$this->db->update('bop_events',$data3);
+      //  return $this->db->insert_id();
+    }
+
+  }
+  public function UpdateEventCountry($post)
+  	{
+      $status=1;
+      $country=$post['ev_country'];
+      $this->db->select('co_id');
+      $this->db->from('bop_event_countries');
+      $this->db->where('co_name',$country);
+      $query = $this->db->get();
+      if ($query->num_rows()==1){
+        $data2 = $query ->result_array();
+
+        $data = array(
+                  'co_status'     					=> $status
+                  );
+        $this->db->where('co_id',$data2[0]['co_id']);
+        $this->db->update('bop_event_countries',$data3);
+        $ev_country_id = $data2[0]['co_id'];
+        $data3 = array(
+                  'ev_country'     						=> $ev_country_id
+
+            );
+        $this->db->where('ev_id',$post['event_unique_id']);
+        $this->db->update('bop_events',$data3);
+        //return ($data2[0]['ci_id']);
+      }
+      else{
+        $data = array(
+                'co_name'      						=> $country,
+                'co_status'     					=> $status
+
+            );
+        $this->db->insert('bop_event_countries', $data);
+        $ev_country_id = $this->db->insert_id();
+        $data3 = array(
+                  'ev_country'     						=> $ev_country_id
+
+            );
+        $this->db->where('ev_id',$post['event_unique_id']);
+        $this->db->update('bop_events',$data3);
+        //  return $this->db->insert_id();
+      }
+
+    }
 	public function UpdateDigitalAsset($post,$uid,$resizeImg)
 	{
 		if(isset($post['cm_total_token_supply']) && $post['cm_total_token_supply'] != "")
@@ -2044,7 +2207,7 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
-	
+
 	public function addAdvosries($companyId,$adtname,$url)
 	{
 		$data = array(
@@ -2151,7 +2314,7 @@ class Companies_model extends CI_Model
 		$data = array(
             'ms_cmid'      	=> $companyId,
 			'ms_title'  	=> $mileStname,
-			'ms_url'        => $msurl, 
+			'ms_url'        => $msurl,
 			'ms_mss_id'   	=> $mssid,
 			'ms_status'   	=> 1,
             'ms_createdat' 	=> date('Y-m-d H:i:s'),
@@ -2447,13 +2610,23 @@ class Companies_model extends CI_Model
 		return $query->result();
 	}
 
-	public function getCities($status)
+	public function getCities($id)
 	{
-		$this->db->select('*');
+		$this->db->select('ci_name');
 		$this->db->from('bop_event_cities');
-		$this->db->where('ci_status',$status);
+		$this->db->where('ci_id',$id);
 		$query = $this->db->get();
-		return $query->result();
+    $data = $query->result_array();
+		return ($data[0]['ci_name']);
+	}
+  public function getCountry($id)
+	{
+		$this->db->select('co_name');
+		$this->db->from('bop_event_countries');
+		$this->db->where('co_id',$id);
+		$query = $this->db->get();
+    $data = $query->result_array();
+		return ($data[0]['co_name']);
 	}
 	public function getcompanyinfo($cm_unique_id){
 		$this->db->select('*');

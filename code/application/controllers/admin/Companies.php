@@ -465,7 +465,9 @@ class Companies extends MY_Controller {
 				}
 				$user_id = $this->session->userdata('user_id');
 				$insert_from = 'Admin';
-				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg);
+        $city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from  );
+        $country_id= $this->Companies_model->AddEventCountry($this->input->post(),$insert_from  );
+				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg,$city_id,$country_id);
 				if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
 					{
@@ -702,11 +704,11 @@ class Companies extends MY_Controller {
 			$tcm_id 	= $_POST['id'];
 			$statusMode = $_POST['statusMode'];
 			//Overall Rating
-			
+
 			// $deleteStatus = $this->Companies_model->UpdateDigitalstatus($tcm_id,$statusMode);
 			$deleteStatus = $this->Companies_model->UpdateEventStatus($tcm_id,$statusMode);
 			//Mail
-				
+
 				// echo $message;exit;
 			echo json_encode(array('status'=>TRUE,'data'=>'success'));
 		}else{
@@ -979,7 +981,7 @@ class Companies extends MY_Controller {
 		$data = array();
 		$ev_id = $this->uri->segment(3);
 		$result = $this->Companies_model->getEventInfoForAdmin($ev_id);
-		$data['cities'] = $this->Companies_model->getCities(1);
+
 		$data['event_id'] = $ev_id;
 		if (count($result) > 0)
 		{
@@ -995,11 +997,18 @@ class Companies extends MY_Controller {
 				}else{
 					$data['event_location'] = '';
 				}
+        $data['city'] = $this->Companies_model->getCities($v->ev_city);
+        $data['country'] = $this->Companies_model->getCountry($v->ev_country);
 				if (isset($v->ev_city) && $v->ev_city != ''){
 					$data['event_city'] = $v->ev_city;
 				}else{
 					$data['event_city'] = '';
 				}
+        if (isset($v->ev_country) && $v->ev_country != ''){
+          $data['event_country'] = $v->ev_country;
+        }else{
+          $data['event_country'] = '';
+        }
 
 				if (isset($v->ev_url) && $v->ev_url != ''){
 					$data['event_url'] = $v->ev_url;
@@ -1098,6 +1107,8 @@ class Companies extends MY_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		$updateEventStatus = $this->Companies_model->UpdateEvent($this->input->post(),$user_id,$resizeImg);
+    $this->Companies_model->UpdateEventCity($this->input->post() );
+    $this->Companies_model->UpdateEventCountry($this->input->post() );
 		$event_id = $_POST['event_unique_id'];
 		if(!empty($_POST['sp_name'])){
 			$deleteSpkrs = $this->Companies_model->deleteSpeakers($event_id);
@@ -1127,8 +1138,8 @@ class Companies extends MY_Controller {
 				}
 				$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
 			}
-		}		
-		
+		}
+
 		$deleteAgendaStatus = $this->Companies_model->deleteAgenda($event_id);
 		$day_of_agenda = 1;
 				if(!empty($_POST['time1'])){
@@ -1252,7 +1263,7 @@ class Companies extends MY_Controller {
 						}
 					}
 					$day_of_agenda++;
-				}	
+				}
 	}
 
 	public function updateDigitalAsset()
