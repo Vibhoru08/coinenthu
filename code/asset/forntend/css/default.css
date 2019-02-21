@@ -2941,6 +2941,10 @@ font-family: NoirPro;
 #searchterms,#searchterms1{
   border:2px solid #e31c77;
 }
+.validate_c{
+  float:left;
+  padding:0 0 0 15px;
+}
 .forgot_password{
     text-decoration: underline;
     float: right;

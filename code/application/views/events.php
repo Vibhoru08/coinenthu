@@ -68,7 +68,7 @@
 							<form class="form-inline">
 							<div class="form-group"><nobr>
 								<ul class="nav navbar-nav ">
-								 <li class="dropdown mpull_right select_dropdown" id="change_u"><span class="for-border">
+								 <li class="dropdown mpull_right selects_dropdown" id="change_u"><span class="for-border">
 								  <span id="sort_by">Sort By</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								  Select</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
@@ -76,17 +76,18 @@
 								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;overflow-y:scroll;height: 200px;">
 									<?php
 								 	foreach($countries as $country){?>
-										<div class="dropdown">
-	  									<button class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $country['co_name']; ?>
-	  									<span class="caret"></span></button>
-	  								<ul class="dropdown-menu">
+										<li class="dropdown-submenu">
+	  									<a class="test" tabindex="-1" href="#"><?php echo $country['co_name']; ?>
+	  									<span class="caret"></span></a>
+	  								<ul class="dropdown-menu" style="position:relative;">
 											<?php
 										 	foreach($cities as $city){
 												if($city['ci_country_id']==$country['co_id']){?>
-											<li><a href="#"><?php echo $city['ci_name']; ?></a></li>
-	    							<?php }}?>
+											<li><a class="close_selects" tabindex="-1" onClick="filterEvents('<?php echo $city['ci_name']; ?>','<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $city['ci_name']; ?></a></li>
+	    							<?php }
+												}?>
 	  									</ul>
-										</div>
+										</li>
 									<!--<li><a onClick="filterEvents('<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $country['co_name']; ?></a></li>-->
 									<?php } ?>
 

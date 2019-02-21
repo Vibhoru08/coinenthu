@@ -2284,6 +2284,14 @@ a:focus {
   cursor: inherit;
   display: block;
 }
+.selects_dropdown{
+  background-color: #f2f2f2;
+  border:0;
+  font-size:16px;
+  width:231px;
+  padding-left:10px;
+      cursor: pointer;
+}
 .select_dropdown{
   background-color: #f2f2f2;
   border:0;
