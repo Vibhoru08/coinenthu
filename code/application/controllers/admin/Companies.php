@@ -465,8 +465,9 @@ class Companies extends MY_Controller {
 				}
 				$user_id = $this->session->userdata('user_id');
 				$insert_from = 'Admin';
-        $city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from  );
         $country_id= $this->Companies_model->AddEventCountry($this->input->post(),$insert_from  );
+        $city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from,$country_id  );
+
 				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg,$city_id,$country_id);
 				if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
@@ -1107,8 +1108,10 @@ class Companies extends MY_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		$updateEventStatus = $this->Companies_model->UpdateEvent($this->input->post(),$user_id,$resizeImg);
-    $this->Companies_model->UpdateEventCity($this->input->post() );
-    $this->Companies_model->UpdateEventCountry($this->input->post() );
+    $country_id = $this->Companies_model->UpdateEventCountry($this->input->post() );
+	 // echo $country_id;exit;
+    $city_id    = $this->Companies_model->UpdateEventCity($this->input->post(),$country_id );
+
 		$event_id = $_POST['event_unique_id'];
 		if(!empty($_POST['sp_name'])){
 			$deleteSpkrs = $this->Companies_model->deleteSpeakers($event_id);

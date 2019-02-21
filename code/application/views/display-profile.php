@@ -250,7 +250,7 @@
                 ?>" title = "<?php echo $review->cm_name; ?>"><?php echo $review->cm_name; ?></a></h4><input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
 
 							</div>
-							<hr>
+							<hr class="mar_b10">
 							<div>
 								<p class="<?php echo $review->re_id; ?>" id="<?php echo $review->re_id; ?>"><?php echo $review->re_decript; ?></p>
 							</div>
@@ -330,11 +330,11 @@
                    <!--	<span><?php echo $crr_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span><span style="margin-left:15px;"><?php echo $crr_dislike_cnt; ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
                    <span style="float:right;font-size:13px;">--><?php
                      echo "<i class='fa fa-trash' aria-hidden='true'></i><span class='r-report-button-text'>Delete</span>";
-                     
+
                    ?>
                  </span>
                  <?php } else{ ?>
-                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
+                   <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small pad_l0" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"><?php
 							$checkedRow1 = $this->Companies_model->checkUserReplyLiked($uid,$reply->crr_id,'like');
 							if(isset($checkedRow1->rrr_id) && $checkedRow1->rrr_id!=''){
 								echo '<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i><span class = "r-like-button-text" style="color:#065FD4;">Liked</span>';
@@ -362,7 +362,7 @@
                  <span id="replyReportId_<?php echo $reply->crr_id; ?>"><button onclick="reviewReportMethod('<?php echo $reply->crr_id; ?>','replypreport','');" class="btn btn-default btn_dislike_new btn-small"><i class="fa fa-flag" aria-hidden="true"></i></i><span class="r-report-button-text">Report</span></button></span>
                  <?php } ?>
                  <?php }}else{ ?>
-                 <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
+                 <button id="reply_btn_like_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small pad_l0" onClick="reviewLikeDisLike('<?php echo $crr_likes_cnt; ?>','<?php echo $reply->crr_id; ?>','like','replies','<?php echo $crr; ?>');"> <i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="r-like-button-text">Like</span>
                  </button>
                  <button id="reply_btn_dislike_<?php echo $reply->crr_id; ?>" class="btn btn-default btn_dislike_new btn-small" onClick="reviewLikeDisLikee('<?php echo $crr_dislike_cnt; ?>','<?php echo $reply->crr_id; ?>','dislike','replies','<?php echo $crr; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></i><span class="r-dislike-button-text">Dislike</span>
                  </button>
@@ -411,7 +411,7 @@
 									 <div class="col-xs-10 pad_l0">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
-											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
+											 <label for="inputEmail3" class="col-xs-2 col-sm-1 no_padding_label control-label validate_c"><?php
                 if(!isset($type)){
                   if(isset($userinfo->u_picture) && $userinfo->u_picture!=""){
 		                $imagepath = base_url().'asset/img/users/'.$userinfo->u_picture.'?id='.$viewTime;
@@ -431,14 +431,14 @@
                 }
 		    ?>
 		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
-											 <div class="col-xs-10" >
+											 <div class="col-xs-10 col-sm-11" >
 												 <textarea class="form-control crr_decript" rows="1" id="crr_decript<?php echo $review->re_id; ?>" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2(<?php echo $review->re_id; ?>);"></textarea>
 												 <span id="r_char_cnt<?php echo $review->re_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $review->re_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
 												 <span id="errorNotes<?php echo $review->re_id; ?>" style="color:#a94442;"></span>
 											 </div>
 										 </div>
 									 </div>
-									 <div class="col-xs-2 pad_0">
+									 <div class="col-xs-2 pad_0" style="padding-left:4px;">
 										 <span id="successmessage<?php echo $review->re_id; ?>" style="color:green"></span>
 										 <span class="vwdTitleError" style="color:#a94442;"></span>
 											 <span id="tp7<?php echo $review->re_id; ?>" style="display:none;">
@@ -678,7 +678,7 @@
 <script>
 $(document).ready(function() {
 
-  
+
 
 
 });

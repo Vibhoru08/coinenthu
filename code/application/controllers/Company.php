@@ -1407,7 +1407,8 @@
 			$ascdesc = 'desc';
 			$data['totCntEvents'] = $this->Companies_model->totalCountEvents(1);
 			$data['event_list'] = $this->Companies_model->getEventList($limit,$offset,$order_by,$ascdesc);
-			$data['cities'] = $this->Companies_model->getCities(1);
+			$data['cities'] = $this->Companies_model->getCitiesSort(1);
+			$data['countries'] = $this->Companies_model->getCountriesSort(1);
 			$this->show('events',$data);
 		}
 		public function loadmoreEvents(){
@@ -2119,7 +2120,8 @@
 			$data = Array();
 			$this->session->set_userdata('redirect_page', 0);
 			if($this->session->userdata('user_id') != ""){
-				$data['cities'] = $this->Companies_model->getCities(1);
+				$data['cities'] = $this->Companies_model->getCitiesSort(1);
+				$data['countries'] = $this->Companies_model->getCountriesSort(1);
 				$this->show('add-event',$data);
 			}else{
 				$this->session->set_userdata('redirect_page', 3);
@@ -2150,8 +2152,9 @@
 				}
 				$user_id = $this->session->userdata('user_id');
 				$insert_from = 'User';
-				$city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from  );
 				$country_id= $this->Companies_model->AddEventCountry($this->input->post(),$insert_from  );
+				$city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from,$country_id  );
+
 				//echo $city_id;exit;
 				$event_id =  $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg,$city_id,$country_id);
 

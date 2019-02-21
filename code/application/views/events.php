@@ -18,7 +18,7 @@
 		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
 			<div class="col-xs-12 text-center banner_head">
 				WELCOME TO THE CRYPTO WORLD
-		<hr style="width:5%;border:2px solid #ffff">
+		<!--<hr style="width:5%;border:2px solid #ffff">-->
 				<div class="banner_desc m_hide">
 				Let’s not invest blindly, get the correct information on your Digital Assets.
 				<div>Search for them.</div>
@@ -73,10 +73,21 @@
 								  Select</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="Select">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;overflow-y:scroll;height: 200px;">
 									<?php
-								 	foreach($cities as $city){?>
-									<li><a onClick="filterEvents('<?php echo $city->ci_value; ?>','1');" href = "javascript:void('0');"><?php echo $city->ci_name; ?></a></li>
+								 	foreach($countries as $country){?>
+										<div class="dropdown">
+	  									<button class="dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $country['co_name']; ?>
+	  									<span class="caret"></span></button>
+	  								<ul class="dropdown-menu">
+											<?php
+										 	foreach($cities as $city){
+												if($city['ci_country_id']==$country['co_id']){?>
+											<li><a href="#"><?php echo $city['ci_name']; ?></a></li>
+	    							<?php }}?>
+	  									</ul>
+										</div>
+									<!--<li><a onClick="filterEvents('<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $country['co_name']; ?></a></li>-->
 									<?php } ?>
 
 

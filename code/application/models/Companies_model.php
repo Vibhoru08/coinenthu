@@ -1805,7 +1805,7 @@ class Companies_model extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
-  public function AddEventCity($post,$ins_fr){
+  public function AddEventCity($post,$ins_fr,$coid){
     if(isset($ins_fr) && $ins_fr == 'Admin')
 		{
 			$status = '1';
@@ -1816,25 +1816,53 @@ class Companies_model extends CI_Model
 			$status = '0';
 		}
     $city=$post['ev_city'];
-    $this->db->select('ci_id');
+    $this->db->select('*');
     $this->db->from('bop_event_cities');
     $this->db->where('ci_name',$city);
     $query = $this->db->get();
-    if ($query->num_rows()==1){
+    if ($query->num_rows()>0){
       $data2 = $query ->result_array();
-      if(isset($ins_fr) && $ins_fr == 'Admin')
-      {
-        $data = array(
-                'ci_status'     					=> $status
-                );
-        $this->db->where('ci_id',$data2[0]['ci_id']);
-		    $this->db->update('bop_event_cities',$data);
+      $n=0;//number of cities that have exist in database that have same country id as the user has entered
+
+      foreach($query ->result_array() as $ci){
+        if ($ci['ci_country_id'] == $coid){
+            if($ci['ci_status']==1){$status=1;}
+            $data = array(
+
+                    'ci_status'     					=> $status
+                    );
+            $this->db->where('ci_id',$ci['ci_id']);
+            $this->db->update('bop_event_cities',$data);
+
+          $n=$n+1;
+          return ($ci['ci_id']);
+        }
       }
-      return ($data2[0]['ci_id']);
-    }
-    else{
+      if($n==0){
+        $data = array(
+                'ci_name'      						=> $city,
+                'ci_country_id'           =>$coid,
+                'ci_value'  							=> $city,
+                'ci_status'     					=> $status
+
+            );
+          $this->db->insert('bop_event_cities', $data);
+          return $this->db->insert_id();
+      }
+    //  if(isset($ins_fr) && $ins_fr == 'Admin')
+    //  {
+    //    $data = array(
+    //            'ci_country_id'           =>$country_id,
+    //            'ci_status'     					=> $status
+    //            );
+    //    $this->db->where('ci_id',$data2[0]['ci_id']);
+		//    $this->db->update('bop_event_cities',$data);
+    //  }
+    //  return ($data2[0]['ci_id']);
+    }else{
       $data = array(
               'ci_name'      						=> $city,
+              'ci_country_id'           =>$country_id,
               'ci_value'  							=> $city,
               'ci_status'     					=> $status
 
@@ -1978,34 +2006,75 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
-  public function UpdateEventCity($post)
+  public function UpdateEventCity($post,$coid)
 	{
     $status=1;
     $city=$post['ev_city'];
-    $this->db->select('ci_id');
+    $this->db->select('*');
     $this->db->from('bop_event_cities');
     $this->db->where('ci_name',$city);
     $query = $this->db->get();
-    if ($query->num_rows()==1){
+    if ($query->num_rows()>0){
       $data2 = $query ->result_array();
+      $n=0;//number of cities that have exist in database that have same country id as the user has entered
 
-      $data = array(
-                'ci_status'     					=> $status
+      foreach($query ->result_array() as $ci){
+        //$test=$ci['ci_country_id'];
+        if ($ci['ci_country_id'] == $coid){
+            if($ci['ci_status']==1){$status=1;}
+            $data = array(
+
+                    'ci_status'     					=> $status
+                    );
+            $this->db->where('ci_id',$ci['ci_id']);
+            $this->db->update('bop_event_cities',$data);
+            $ev_city_id = $ci['ci_id'];
+            $data3 = array(
+                      'ev_city'      						=> $ev_city_id
+
                 );
-      $this->db->where('ci_id',$data2[0]['ci_id']);
-		  $this->db->update('bop_event_cities',$data);
-      $ev_city_id = $data2[0]['ci_id'];
-      $data3 = array(
-                'ev_city'      						=> $ev_city_id
+            $this->db->where('ev_id',$post['event_unique_id']);
+            $this->db->update('bop_events',$data3);
+          $n=$n+1;
+          return ($ci['ci_id']);
+        }
+      }
+      if($n==0){
+        $data = array(
+                'ci_name'      						=> $city,
+                'ci_country_id'           => $coid,
+                'ci_value'  							=>   $city,
+                'ci_status'     					=> $status
 
-          );
-      $this->db->where('ev_id',$post['event_unique_id']);
-      $this->db->update('bop_events',$data3);
+            );
+          $this->db->insert('bop_event_cities', $data);
+          $ev_city_id = $this->db->insert_id();
+          $data3 = array(
+                    'ev_city'      						=> $ev_city_id
+
+              );
+          $this->db->where('ev_id',$post['event_unique_id']);
+      		$this->db->update('bop_events',$data3);
+          return $this->db->insert_id();
+      }
+    //  $data = array(
+    //            'ci_status'     					=> $status
+    //            );
+    //  $this->db->where('ci_id',$data2[0]['ci_id']);
+		//  $this->db->update('bop_event_cities',$data);
+    //  $ev_city_id = $data2[0]['ci_id'];
+    //  $data3 = array(
+    //            'ev_city'      						=> $ev_city_id
+//
+    //      );
+    //  $this->db->where('ev_id',$post['event_unique_id']);
+    //  $this->db->update('bop_events',$data3);
       //return ($data2[0]['ci_id']);
     }
     else{
       $data = array(
               'ci_name'      						=> $city,
+              'ci_country_id'           =>$coid,
               'ci_value'  							=> $city,
               'ci_status'     					=> $status
 
@@ -2018,7 +2087,7 @@ class Companies_model extends CI_Model
           );
       $this->db->where('ev_id',$post['event_unique_id']);
   		$this->db->update('bop_events',$data3);
-      //  return $this->db->insert_id();
+      return $this->db->insert_id();
     }
 
   }
@@ -2037,7 +2106,7 @@ class Companies_model extends CI_Model
                   'co_status'     					=> $status
                   );
         $this->db->where('co_id',$data2[0]['co_id']);
-        $this->db->update('bop_event_countries',$data3);
+        $this->db->update('bop_event_countries',$data);
         $ev_country_id = $data2[0]['co_id'];
         $data3 = array(
                   'ev_country'     						=> $ev_country_id
@@ -2045,7 +2114,7 @@ class Companies_model extends CI_Model
             );
         $this->db->where('ev_id',$post['event_unique_id']);
         $this->db->update('bop_events',$data3);
-        //return ($data2[0]['ci_id']);
+        return ($data2[0]['co_id']);
       }
       else{
         $data = array(
@@ -2061,7 +2130,7 @@ class Companies_model extends CI_Model
             );
         $this->db->where('ev_id',$post['event_unique_id']);
         $this->db->update('bop_events',$data3);
-        //  return $this->db->insert_id();
+        return $ev_country_id;
       }
 
     }
@@ -2609,7 +2678,24 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-
+  public function getCitiesSort($status)
+  {
+    $this->db->select('*');
+    $this->db->from('bop_event_cities');
+    $this->db->where('ci_status',$status);
+    $query = $this->db->get();
+    $data = $query->result_array();
+    return ($query->result_array());
+  }
+  public function getCountriesSort($status)
+  {
+    $this->db->select('*');
+    $this->db->from('bop_event_countries');
+    $this->db->where('co_status',$status);
+    $query = $this->db->get();
+    $data = $query->result_array();
+    return ($query->result_array());
+  }
 	public function getCities($id)
 	{
 		$this->db->select('ci_name');
