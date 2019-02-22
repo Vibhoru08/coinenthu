@@ -1427,6 +1427,14 @@
 					$city = $_POST['filterId'];
 				}
 
+
+				if($_POST['filterCountryId'] == 'Select')
+				{
+					$country = '';
+				}else{
+					$country = $_POST['filterCountryId'];
+				}
+
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 					$uuid = "";
 				}else{
@@ -1440,7 +1448,7 @@
 						// $searchterms  = $_POST['searchterms'];
 						// $getCompanies = $this->Companies_model->getSerachDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
 						$searchterms  = strtolower($_POST['searchterms']);
-						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country);
 						$cnt = $this->Companies_model->getSearchEventsCnt($limit,$offset,$oderBy,$ascdesc,$searchterms);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
 
@@ -1448,7 +1456,7 @@
 						// $searchterms = '';
 						// $getCompanies = $this->Companies_model->getDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$uuid,$checkQuery);
 						$searchterms = '';
-						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city);
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country);
 						$cnt = $this->Companies_model->getEventsCount($limit,$offset,$oderBy,$ascdesc);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
 					}

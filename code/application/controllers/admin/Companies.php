@@ -222,12 +222,14 @@ class Companies extends MY_Controller {
 			redirect('admin', 'refresh');
 		}else{
 			$data = array();
-			$result = $this->Companies_model->getEventsList(2);
+			$result    = $this->Companies_model->getEventsList(2);
+      $countries = $this->Companies_model->getCountriesEvent(1);
+      $cities    = $this->Companies_model->getCitiesEvent(1);
 			if(count($result) != 0){
 				foreach($result as $key=>$ad){
 					if(isset($ad->ev_name) && $ad->ev_name != "")
 					{
-						$data[$key]['ev_name']  = ucfirst($ad->ev_name);
+						$data[$key]['ev_name']  = ucfirst($ad->ev_name);//$cities[0]['ci_name'];
 					}else{
 						$data[$key]['ev_name']  = "";
 					}
@@ -257,7 +259,21 @@ class Companies extends MY_Controller {
 						$imagePath = base_url().'asset/img/no_image.png';
 					} */
 					/* $data[$key]['u_picture']  = '<img style="width:60px;height:60px;" class="img-thumbnail" src="'.$imagePath.'">'; */
-					if($ad->ev_status=='1'){
+
+          foreach($countries as $country){
+            if($country['co_id'] == $ad->ev_country){
+              $ev_tcountry=$country['co_name'];
+              $ev_tcountryId =$country['co_id'];
+            }
+          }
+          foreach($cities as $city){
+            if(($city['ci_id'] == $ad->ev_city) && ($city['ci_country_id'] == $ev_tcountryId)){
+              $ev_tcity = $city['ci_name'];
+            }
+          }
+          $ev_tcity="'$ev_tcity'";
+          $ev_tcountry="'$ev_tcountry'";
+          if($ad->ev_status=='1'){
 						$fqf_status						=	'<a href="javascript:void(0);" title="Approved" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>';
 					}else if($ad->ev_status=='2'){
 						$fqf_status						=	'<a href="javascript:void(0);" title="Delete" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
@@ -271,12 +287,12 @@ class Companies extends MY_Controller {
 
 					if($ad->ev_status == 1){
 						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
-												<a href="javascript:void(0);" title="Disapprove" onclick="userConfirmation('.$ad->ev_id.',0,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>
-												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+												<a href="javascript:void(0);" title="Disapprove" onclick="userConfirmation('.$ad->ev_id.',0,'.$whitchPage.','.$ev_tcountry.','."$ev_tcity".');" data-toggle="tooltip" data-placement="top" class="color_r"><i class="fa fa-times-circle"></i></a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.','.$ev_tcountry.','."$ev_tcity".');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
 					}else{
 						$data[$key]['action']   = '<a href="'.base_url().'admin/'.$goUrl.'/'.$ad->ev_id.'"  title="Edit" class="color_b" data-toggle="tooltip" data-placement="top"><i class="fa fa-edit"></i> </a>
-												<a href="javascript:void(0);" title="Approve" onclick="userConfirmation('.$ad->ev_id.',1,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>
-												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
+												<a href="javascript:void(0);" title="Approve" onclick="userConfirmation('.$ad->ev_id.',1,'.$whitchPage.','.$ev_tcountry.','."$ev_tcity".');" data-toggle="tooltip" data-placement="top" class="color_g"><i class="fa fa-check-circle"></i> </a>
+												<a href="javascript:void(0);" title="Delete" onclick="userConfirmation('.$ad->ev_id.',2,'.$whitchPage.','.$ev_tcountry.','."$ev_tcity".');" data-toggle="tooltip" data-placement="top" style="color:red"><i class="fa fa-trash-o"></i></a>';
 					}
 				}
 				$faqqstns['aaData'] = $data;
@@ -465,11 +481,16 @@ class Companies extends MY_Controller {
 				}
 				$user_id = $this->session->userdata('user_id');
 				$insert_from = 'Admin';
+
+
         $country_id= $this->Companies_model->AddEventCountry($this->input->post(),$insert_from  );
         $city_id =   $this->Companies_model->AddEventCity($this->input->post(),$insert_from,$country_id  );
 
 				$event_id = $this->Companies_model->AddEvent($this->input->post(),$user_id,$insert_from,$resizeImg,$city_id,$country_id);
-				if(!empty($_POST['sp_name'])){
+        $country_id2 = $this->Companies_model->UpdateEventCountry($this->input->post() );
+    	 // echo $country_id;exit;
+        $city_id2    = $this->Companies_model->UpdateEventCity($this->input->post(),$country_id2 );
+      	if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
 					{
 						if(isset($_FILES['sp_profile_image']['name'][$key]) && $_FILES['sp_profile_image']['name'][$key] != ""){
@@ -708,7 +729,11 @@ class Companies extends MY_Controller {
 
 			// $deleteStatus = $this->Companies_model->UpdateDigitalstatus($tcm_id,$statusMode);
 			$deleteStatus = $this->Companies_model->UpdateEventStatus($tcm_id,$statusMode);
-			//Mail
+      $country_id = $this->Companies_model->UpdateEventCountry($this->input->post() );
+  	 // echo $country_id;exit;
+      $city_id    = $this->Companies_model->UpdateEventCity($this->input->post(),$country_id );
+
+      //Mail
 
 				// echo $message;exit;
 			echo json_encode(array('status'=>TRUE,'data'=>'success'));
@@ -1110,7 +1135,7 @@ class Companies extends MY_Controller {
 		$updateEventStatus = $this->Companies_model->UpdateEvent($this->input->post(),$user_id,$resizeImg);
     $country_id = $this->Companies_model->UpdateEventCountry($this->input->post() );
 	 // echo $country_id;exit;
-    $city_id    = $this->Companies_model->UpdateEventCity($this->input->post(),$country_id );
+    $city_id    = $this->Companies_model->UpdateEventCity($this->input->post(),$country_id,'ad-add' );
 
 		$event_id = $_POST['event_unique_id'];
 		if(!empty($_POST['sp_name'])){

@@ -9206,6 +9206,10 @@ color:#8e44ad;
     display: none !important;
   }
 }
+.close_selects{
+  padding-left:30px !important;
+  color:#000 !important;
+}
 /*Font Awesome css */
 
 /*!

@@ -69,21 +69,22 @@
 							<div class="form-group"><nobr>
 								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right selects_dropdown" id="change_u"><span class="for-border">
-								  <span id="sort_by">Sort By</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
+								  <span id="sort_by">Filter By</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								  Select</span><div class="arrow_down"><span class="caret"></span></div>
 								  </button>
 								  <input type="hidden" id="filter_id" value="Select">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu" role="menu" style="width:auto;overflow-y:scroll;height: 200px;">
+									<input type="hidden" id="filter_countryid" value="Select">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu user_dropdown_t_event" role="menu">
 									<?php
 								 	foreach($countries as $country){?>
 										<li class="dropdown-submenu">
-	  									<a class="test" tabindex="-1" href="#"><?php echo $country['co_name']; ?>
-	  									<span class="caret"></span></a>
-	  								<ul class="dropdown-menu" style="position:relative;">
+	  									<a class="test" tabindex="-1" href="#"><?php echo $country['co_name'].' ('.$country['co_cnt'].')'; ?>
+	  									<span class="caret" style="float:right;"></span></a>
+	  								<ul class="dropdown-menu drop_style_event">
 											<?php
 										 	foreach($cities as $city){
 												if($city['ci_country_id']==$country['co_id']){?>
-											<li><a class="close_selects" tabindex="-1" onClick="filterEvents('<?php echo $city['ci_name']; ?>','<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $city['ci_name']; ?></a></li>
+											<li><a class="close_selects" tabindex="-1" onClick="filterEvents('<?php echo $city['ci_id']; ?>','<?php echo $country['co_id']; ?>','<?php echo $city['ci_name']; ?>','<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $city['ci_name'].' ('.$city['ci_cnt'].')'; ?></a></li>
 	    							<?php }
 												}?>
 	  									</ul>

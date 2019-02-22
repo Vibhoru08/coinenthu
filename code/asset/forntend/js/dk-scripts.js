@@ -805,18 +805,21 @@ function changePassword() {
         e.preventDefault();
     });
 }
-function filterEvents(type) {
+function filterEvents(type,country,cityName,countryName) {
 	$("#offsetpage").val(1);
     $("#limitpage").val(9);
     var filterTitle = type;
+    var cityName  = cityName;
+    var countryName  = countryName;
     $("#filter_id").val(type);
-
-    var htmlReload = filterTitle + '<div class="arrow_down"><span class="caret"></span></div>';
+    $("#filter_countryid").val(country);
+    var htmlReload = cityName+' ('+countryName+')' + '<div class="arrow_down"><span class="caret"></span></div>';
     $("#filtername").html(htmlReload);
     var offsetpage = 0;
     var limitpage = $("#limitpage").val();
     var pageMode = $("#pageMode").val();
     var filterId = $("#filter_id").val();
+    var filterCountryId = $("#filter_countryid").val();
 		if($("#searchterms1").val() ==""){
 				var searchterms = $("#searchterms").val();
 			} else {
@@ -841,6 +844,7 @@ function filterEvents(type) {
             offsetpage: offsetpage,
             pageMode: pageMode,
             filterId: filterId,
+           filterCountryId: filterCountryId,
             filter: "filetrfrom",
             searchterms: searchterms
         },

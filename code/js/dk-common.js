@@ -622,6 +622,8 @@ function confirmActions() {
     id = $('#confrm_u_id').val();
     statusMode = $('#confrm_type').val();
     whitchPage = $('#whitchPage').val();
+    var ev_country = $('#ev_country').val();
+    var ev_city = $('#ev_city').val();
     if (whitchPage == "usermanag") {
         $.ajax({
             type: "POST",
@@ -695,7 +697,7 @@ function confirmActions() {
             type: "POST",
             cache: false,
             url: baseUrl + '/Companies/EventActions?srch=' + time,
-            data: { id: id, statusMode: statusMode },
+            data: { id: id, statusMode: statusMode,event_unique_id:id , ev_country:ev_country,ev_city:ev_city },
             success: function(res) {
                 $('#confirmationDeleteModal').modal('hide');
                 if (statusMode == 1) {
@@ -704,7 +706,7 @@ function confirmActions() {
                     loadEventsList(1);
                 }
             }
-        });    
+        });
     } else if (whitchPage == "reviewsReply") {
         $.ajax({
             type: "POST",
@@ -741,10 +743,12 @@ function confirmActions() {
     }
 }
 
-function userConfirmation(uid, actionmode, whitchPage) {
+function userConfirmation(uid, actionmode, whitchPage , ev_country , ev_city) {
     $('#confrm_u_id').val(uid);
     $('#confrm_type').val(actionmode);
     $('#whitchPage').val(whitchPage);
+    $('#ev_country ').val(ev_country );
+    $('#ev_city').val(ev_city);
     if (actionmode != 2) {
         $("#myModalLabels").html('Status Confirmation');
         $("#statusmesg").html('Are you sure you want to continue?');
@@ -894,7 +898,7 @@ function loadEventsList(companyType) {
                 "iDisplayLength": 25,
                 "paging": true,
                 "lengthChange": true,
-                
+
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
@@ -1973,7 +1977,7 @@ function emailConforms(id, type) {
 function emailconfActions() {
     var email_u_id = $('#email_u_id').val();
     var email_confrm_type = $('#email_confrm_type').val();
-    //alert(email_confrm_type);	
+    //alert(email_confrm_type);
     var flag = true;
     if (flag == true) {
         $('#conftp11').show();

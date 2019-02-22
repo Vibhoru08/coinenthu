@@ -58,6 +58,8 @@
 			<input type="hidden" name="confrm_u_id" id="confrm_u_id">
 			<input type="hidden" name="confrm_type" id="confrm_type">
 			<input type="hidden" name="whitchPage" id="whitchPage">
+			<input type="hidden" name="ev_country" id="ev_country">
+			<input type="hidden" name="ev_city"    id="ev_city">
 		  </div>
         </form>
       </div>
@@ -368,4 +370,3 @@
     </div>
   </div>
 </div>
-
