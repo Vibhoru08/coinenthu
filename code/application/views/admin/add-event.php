@@ -267,12 +267,15 @@
 </div>
 <input type="hidden" name="coreTeamBoxesCnt"     id="coreTeamBoxesCnt"     value="1">
 <input type="hidden" name="dayBoxesCnt"     id="dayBoxesCnt"     value="1">
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo base_url();?>asset/css/jquery.ui.timepicker.css">
+<script src="<?php echo base_url();?>js/xds-ui-timepicker.js"></script>
 <script>
 	$(document).ready(function() {
 		$('#add_digital_asset').formValidation();
+      $( "#cm_ico_start_date" ).datepicker();
     $( "#cm_ico_start_date" ).datepicker({
-  		 minDate: 0,
+  		// minDate: 0,
   		onClose: function (selectedDate) {
               $("#cm_ico_end_date").datepicker("option", "minDate", selectedDate);
   			$('#add_digital_asset').formValidation('revalidateField', 'ev_sd');

@@ -75,6 +75,7 @@
 								  <input type="hidden" id="filter_id" value="Select">
 									<input type="hidden" id="filter_countryid" value="Select">
 								  <ul class="dropdown-menu user_dropdown_t hide_menu user_dropdown_t_event" role="menu">
+											<li><a class="close_selects_select" tabindex="-1" onClick="filterEvents('de','de','de','de','1');" href = "javascript:void('0');">Select</a></li>
 									<?php
 								 	foreach($countries as $country){?>
 										<li class="dropdown-submenu">

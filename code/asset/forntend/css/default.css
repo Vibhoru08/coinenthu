@@ -3558,10 +3558,10 @@ border-radius:5px!important;
  }
 }
 .drop_style_event{
-  position:relative;
-  background-color:#b6bac9;
-  color:#000;
-  width:100%;
+  position:relative !important;
+  background-color:#b6bac9 !important;
+  color:#000 !important;
+  width:100% !important;
 }
 .user_dropdown_t_event{
   width:auto;

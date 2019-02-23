@@ -1420,7 +1420,7 @@
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
-				if($_POST['filterId'] == 'Select')
+				if($_POST['filterId'] == 'Select' ||  $_POST['filterId'] == 'de') //default
 				{
 					$city = '';
 				}else{
@@ -1428,7 +1428,7 @@
 				}
 
 
-				if($_POST['filterCountryId'] == 'Select')
+				if(($_POST['filterCountryId'] == 'Select') || ($_POST['filterCountryId'] == 'de')) //default
 				{
 					$country = '';
 				}else{

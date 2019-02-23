@@ -220,6 +220,7 @@
 
   $(".selects_dropdown").hover(
      function() {
+          //$(".selects_dropdown .for-border .dropdown-menu").first().removeClass('open');
           $(".selects_dropdown .for-border .dropdown-menu").first().show();
            $('#sort_by').hide();
            localStorage.setItem('sortby_status',0);
@@ -808,12 +809,24 @@ function changePassword() {
 function filterEvents(type,country,cityName,countryName) {
 	$("#offsetpage").val(1);
     $("#limitpage").val(9);
-    var filterTitle = type;
-    var cityName  = cityName;
-    var countryName  = countryName;
+    if(type=='de'){
+      var filterTitle="Select";
+    }else{
+      var filterTitle = type;
+    }
+    if(cityName=='de'){
+      var cityName ="Select";
+    }else{
+      var cityName  = cityName;
+    }
+    if(countryName=='de'){
+      var countryName ="";
+    }else{
+      var countryName  = ' ('+countryName+')';
+    }
     $("#filter_id").val(type);
     $("#filter_countryid").val(country);
-    var htmlReload = cityName+' ('+countryName+')' + '<div class="arrow_down"><span class="caret"></span></div>';
+    var htmlReload = cityName+countryName + '<div class="arrow_down"><span class="caret"></span></div>';
     $("#filtername").html(htmlReload);
     var offsetpage = 0;
     var limitpage = $("#limitpage").val();
