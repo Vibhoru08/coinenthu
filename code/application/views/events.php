@@ -79,13 +79,13 @@
 									<?php
 								 	foreach($countries as $country){?>
 										<li class="dropdown-submenu">
-	  									<a class="test" tabindex="-1" href="#"><?php echo $country['co_name'].' ('.$country['co_cnt'].')'; ?>
+	  									<a class="test" tabindex="-1" href="#"><?php echo ucwords($country['co_name']).' ('.$country['co_cnt'].')'; ?>
 	  									<span class="caret" style="float:right;"></span></a>
 	  								<ul class="dropdown-menu drop_style_event">
 											<?php
 										 	foreach($cities as $city){
 												if($city['ci_country_id']==$country['co_id']){?>
-											<li><a class="close_selects" tabindex="-1" onClick="filterEvents('<?php echo $city['ci_id']; ?>','<?php echo $country['co_id']; ?>','<?php echo $city['ci_name']; ?>','<?php echo $country['co_name']; ?>','1');" href = "javascript:void('0');"><?php echo $city['ci_name'].' ('.$city['ci_cnt'].')'; ?></a></li>
+											<li><a class="close_selects" tabindex="-1" onClick="filterEvents('<?php echo $city['ci_id']; ?>','<?php echo $country['co_id']; ?>','<?php echo ucwords($city['ci_name']); ?>','<?php echo ucwords($country['co_name']); ?>','1');" href = "javascript:void('0');"><?php echo ucwords($city['ci_name']).' ('.$city['ci_cnt'].')'; ?></a></li>
 	    							<?php }
 												}?>
 	  									</ul>

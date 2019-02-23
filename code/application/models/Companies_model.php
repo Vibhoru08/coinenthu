@@ -1819,7 +1819,7 @@ class Companies_model extends CI_Model
 		}else{
 			$status = '0';
 		}
-    $city=$post['ev_city'];
+    $city=strtolower($post['ev_city']);
     $this->db->select('*');
     $this->db->from('bop_event_cities');
     $this->db->where('ci_name',$city);
@@ -1887,7 +1887,7 @@ class Companies_model extends CI_Model
 		}else{
 			$status = '0';
 		}
-    $country=$post['ev_country'];
+    $country=strtolower($post['ev_country']);
     $this->db->select('co_id');
     $this->db->from('bop_event_countries');
     $this->db->where('co_name',$country);
@@ -2015,7 +2015,7 @@ class Companies_model extends CI_Model
   public function UpdateEventCity($post,$coid,$adadd=NULL)
 	{
     $status=1;
-    $city=$post['ev_city'];
+    $city=strtolower($post['ev_city']);
     $this->db->select('*');
     $this->db->from('bop_event_cities');
     $this->db->where('ci_name',$city);
@@ -2109,7 +2109,7 @@ class Companies_model extends CI_Model
   public function UpdateEventCountry($post)
   	{
       $status=1;
-      $country=$post['ev_country'];
+      $country=strtolower($post['ev_country']);
       $this->db->select('co_id');
       $this->db->from('bop_event_countries');
       $this->db->where('co_name',$country);

@@ -262,13 +262,13 @@ class Companies extends MY_Controller {
 
           foreach($countries as $country){
             if($country['co_id'] == $ad->ev_country){
-              $ev_tcountry=$country['co_name'];
+              $ev_tcountry=strtolower($country['co_name']);
               $ev_tcountryId =$country['co_id'];
             }
           }
           foreach($cities as $city){
             if(($city['ci_id'] == $ad->ev_city) && ($city['ci_country_id'] == $ev_tcountryId)){
-              $ev_tcity = $city['ci_name'];
+              $ev_tcity =strtolower($city['ci_name']);
             }
           }
           $ev_tcity="'$ev_tcity'";
