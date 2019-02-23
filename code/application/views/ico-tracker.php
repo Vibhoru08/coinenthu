@@ -17,7 +17,11 @@ $viewTime = date('Ymd') .'_'. date('His');
       <div class="row mar_t10">
       <div class="col-xs-10 col-xs-offset-1 msearch_bg big_hide">
         <div class = "col-xs-10 col-xs-offset-1">
-        <input class="form-control brg_focus_n searchhome" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search ICOs">
+          <div class="row search_total">
+						<label class="col-xs-1 search_hme_icon" for="searchterms"><i class="fa fa-search searchtrem_style" aria-hidden="true"></i></label>
+
+              <input class="form-control brg_focus_n searchhome col-xs-11" onkeyup="sreachterm();" type="text" name="searchterms" id="searchterms" placeholder="Search ICOs">
+            </div>
       </div>
     </div>
       </div>

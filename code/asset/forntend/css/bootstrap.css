@@ -6774,6 +6774,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     display:none;
   }
   .margin-right{
+    margin:10px 30px 0px 0px!important;
+  }
+}
+@media(min-width:1150px){
+
+  .margin-right{
     margin:10px 120px 0px 0px!important;
   }
 }
@@ -6900,12 +6906,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-    margin-right: 40px;
+    margin-right: 10px;
     margin-top:8px;
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }
+}
+@media (min-width: 1160px) {
+  .navbar-right {
+    margin-right: 40px;
+  }
+
 }
 .navbar-default {
   background-color: #f8f8f8;

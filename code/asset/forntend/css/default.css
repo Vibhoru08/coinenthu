@@ -2941,6 +2941,32 @@ font-family: NoirPro;
 #searchterms,#searchterms1{
   border:2px solid #e31c77;
 }
+.searchtrem_style{
+  z-index:11111111111;
+  position: absolute;
+  font-size:14px;
+  color:#424242;
+}
+.search_hme_icon{
+  width:5.333333%;
+  padding:10px 0 0 10px;
+}
+@media(max-width:768px){
+  .search_hme_icon{
+    padding:12px 0 0 5px;
+  }
+  .searchtrem_style{
+    font-size:12px;
+  }
+}
+@media(max-width:480px){
+  .search_hme_icon{
+    padding:12px 0 0 3px;
+  }
+  .searchtrem_style{
+    font-size:10px;
+  }
+}
 .validate_c{
   float:left;
   padding:0 0 0 15px;
