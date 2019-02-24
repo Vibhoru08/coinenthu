@@ -147,8 +147,8 @@
               <?php }elseif($type == 2){ ?>
                 <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
               <?php } ?>
-              <span class="product-description">
-              <div>
+
+              <div class="product-description">
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -193,7 +193,7 @@
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
                </div>
-              </span>
+
               </div>
               </div>
             </li>
@@ -291,8 +291,8 @@
               <?php }elseif($type == 2){ ?>
                 <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
               <?php } ?>
-              <span class="product-description">
-              <div>
+
+              <div class="product-description">
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -337,7 +337,7 @@
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
               </div>
-              </span>
+
               </div>
               </div>
             </li>
@@ -435,8 +435,8 @@
               <?php }elseif($type == 2){ ?>
                 <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
               <?php } ?>
-              <span class="product-description">
-              <div>
+
+              <div class="product-description">
 
 
                 <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -481,7 +481,7 @@
                 <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span> <?php echo $total_dislikes_count.' ';?><span class="dis2_block"><?php echo $dislike_s; ?></span></span></div>
                 <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis2_block"><?php echo $review_s; ?></span></span></div></div>
               </div>
-              </span>
+
               </div>
               </div>
             </li>
@@ -593,8 +593,8 @@
           <?php }elseif($type == 2){ ?>
             <a title="<?php echo $value->cm_name; ?>" href="<?php echo base_url();?>ICOs/<?php echo str_replace(" ","_",$value->cm_name); ?>" class="product-title"><?php echo $string; ?></a>
           <?php } ?>
-          <span class="product-description">
-          <div>
+
+          <div class="product-description">
 
 
             <input id="input-7" name="input-7" class="rating rating-loading" value="<?php echo $value->cm_overallrating; ?>" data-min="0" data-max="5" data-step="1" data-size="xs" data-readonly="true">
@@ -639,7 +639,7 @@
             <div class="col-xs-4 pad_0"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span><?php echo ' '.$total_dislikes_count.' ';?><span class="dis_block"><?php echo $dislike_s; ?></span></span></div>
             <div class="col-xs-4 pad_0"><i class="fa fa-commenting" aria-hidden="true"></i><span> <?php echo $number_of_reviews.' ';?><span class="dis_block"><?php echo $review_s; ?></span></span></div></div>
           </div>
-          </span>
+
           </div>
           </div>
         </li>
@@ -651,8 +651,8 @@
 </div>
 
 <div class="row text-center mar_t80">
- <div class=""><a href="<?php echo base_url();?>digital-assets" class="btn btn-cstm btn-lg font_s22 div">Digital Assets</a>
-   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:10px">Upcoming ICOs</a></div>
+ <a href="<?php echo base_url();?>digital-assets" class="btn btn-cstm btn-lg font_s22 div">Digital Assets</a>
+   <a href="<?php echo base_url();?>ico-tracker" class="btn btn-cstm btn-lg font_s22 div" style="margin-left:10px">Upcoming ICOs</a>
  </div>
 
 

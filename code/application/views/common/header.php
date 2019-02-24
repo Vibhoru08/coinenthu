@@ -79,6 +79,7 @@ $img =  base_url().'images/logo.png';
   <title>Coinenthu.com – Community based crypto reviews!</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="Description" content="Community based crypto reviews.">
 	<meta property="og:title" content="<?php echo $title; ?>"/>
 	<meta property="og:url" content="https://coinenthu.org/"/>
 	<meta property="og:image" content="<?php echo $img; ?>" />
@@ -98,10 +99,10 @@ $img =  base_url().'images/logo.png';
 
 	<link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/forntend/images/favicon.png"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/at-formValidation.css">
-    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bootstrap.css">
+<!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/at-formValidation.css">-->
+<!--    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bootstrap.css">-->
     <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/AdminLTE.css?type='<?php echo time(); ?>'">
-	 <link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/default.css?type='<?php echo time(); ?>'">
+<!--	 <link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/default.css?type='<?php echo time(); ?>'">-->
 <!--    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/_all-skins.css">-->
 <!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/rangeSlider.css">-->
 <!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bscarousel.css">-->
@@ -120,24 +121,24 @@ $img =  base_url().'images/logo.png';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url();?>js/jquery.js"><\/script>')</script>
 <!--	<script src="<?php echo base_url();?>js/jquery.js"></script>-->
-  <script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>
+<!--  <script type="application/javascript" src="<?php echo base_url();?>js/fastclick.js"></script>-->
 <!--	<script src="<?php echo base_url();?>asset/forntend/js/jquery.cookie.js"></script>-->
-	<script src="<?php echo base_url();?>js/at-formValidation.js"></script>
-  <script src="<?php echo base_url();?>js/bootstrap.js"></script>
-	<script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
+<!--	<script src="<?php echo base_url();?>js/at-formValidationMinified.js"></script>-->
+<!--   <script src="<?php echo base_url();?>js/bootstrap.js"></script>-->
+<!-- 	<script src="<?php echo base_url();?>js/bootstrap.min.js"></script>-->
 	<!--<script src="<?php echo base_url();?>asset/forntend/js/owl.carousel.js"></script>-->
 	<!--<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>-->
-	<script src="<?php echo base_url();?>asset/forntend/js/app.js"></script>
+<!-- 	<script src="<?php echo base_url();?>asset/forntend/js/app.js"></script>-->
 <!--	<script src="<?php echo base_url();?>asset/forntend/js/rangeSlider.js"></script>-->
 	<script src="<?php echo base_url();?>/js/oauthpopup.js"></script>
 <!--  <script src="<?php echo base_url();?>asset/forntend/js/custom.js"></script>-->
-	<script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>
+<!-- 	<script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>-->
 	<!--<script src="<?php // echo base_url();?>js/jquery-scroll-bottom.js"></script>-->
 
 	<!--<script src="<?php echo base_url();?>js/jcrop.min.js"></script>-->
 	<!--<script src="<?php echo base_url();?>js/xds-ui-timepicker.js"></script>-->
 <!--	<script src="<?php echo base_url();?>asset/forntend/js/star-ratingss.min.js"></script>-->
-	<script src="<?php echo base_url();?>asset/forntend/js/star-rating.min.js"></script>
+<!--	<script src="<?php echo base_url();?>asset/forntend/js/star-rating.min.js"></script>-->
   <script src="<?php echo base_url();?>asset/forntend/js/dk-scripts.js?type='<?php echo time(); ?>'"></script>
 	<script async src="<?php echo base_url(); ?>js/twitter.js" charset="utf-8"></script>
 

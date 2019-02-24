@@ -3100,8 +3100,14 @@ font-family: NoirPro;
   height:10%;
   color:#ffff;
 }
-.linear_color_home{
+.no-webp .linear_color_home{
   background-image:url('../images/homebanner.png');
+  background-repeat:no-repeat;
+  background-size:105% 100%;
+  background-position: -1px 0;
+}
+.webp .linear_color_home{
+  background-image:url('../images/homebanner.webp');
   background-repeat:no-repeat;
   background-size:105% 100%;
   background-position: -1px 0;

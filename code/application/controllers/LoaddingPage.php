@@ -29,8 +29,8 @@ class LoaddingPage extends MY_Controller {
 		$reviewsIcoscount = Array();
 		$data['totCntDigitals'] = $this->Companies_model->totalCountCompainesHome($uuid);
 		$data['digitalAssets']  = $this->Companies_model->getDigitalIcosHome($limit,$offset,$oderBy,$ascDesc);
-		
 
+		 
 		$this->show('home',$data);
 	}
 	public function aboutUs()
