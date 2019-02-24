@@ -100,9 +100,9 @@ $img =  base_url().'images/logo.png';
 	<link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/forntend/images/favicon.png"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!--	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/at-formValidation.css">-->
-<!--    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bootstrap.css">-->
+    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bootstrap.css">
     <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/AdminLTE.css?type='<?php echo time(); ?>'">
-<!--	 <link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/default.css?type='<?php echo time(); ?>'">-->
+	 <link rel="stylesheet" href="<?php echo base_url();?>asset/forntend/css/default.css?type='<?php echo time(); ?>'">
 <!--    <link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/_all-skins.css">-->
 <!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/rangeSlider.css">-->
 <!--	<link rel="stylesheet"  href="<?php echo base_url();?>asset/forntend/css/bscarousel.css">-->
