@@ -1416,7 +1416,7 @@
 			$checkRecords = 0;
 			$cnt = 0;
 			$counts = "";
-
+			$this->load->helper('common');
 			if(isset($_POST['pageMode']) && $_POST['pageMode']!=""){
 				$limit   = $_POST['limitpage'];
 				$offset  = $_POST['offsetpage'];
@@ -1467,47 +1467,7 @@
 						$data = array();
 						$event_id = $value->ev_id;
 						$speakers_num =  $this->Companies_model->CountSpeakers($event_id);
-						$dateBreak = explode('/',$value->ev_sd);
-										$edm = $dateBreak[0];
-										$edd = $dateBreak[1];
-										$edy = $dateBreak[2];
-										if($edm == '01'){
-											$edmn = 'Jan';
-										}
-										elseif($edm == '02'){
-											$edmn = 'Feb';
-										}
-										elseif($edm == '03'){
-											$edmn = 'Mar';
-										}
-										elseif($edm == '04'){
-											$edmn = 'Apr';
-										}
-										elseif($edm == '05'){
-											$edmn = 'May';
-										}
-										elseif($edm == '06'){
-											$edmn = 'Jun';
-										}
-										elseif($edm == '07'){
-											$edmn = 'Jul';
-										}
-										elseif($edm == '08'){
-											$edmn = 'Aug';
-										}
-										elseif($edm == '09'){
-											$edmn = 'Sept';
-										}
-										elseif($edm == '10'){
-											$edmn = 'Oct';
-										}
-										elseif($edm == '11'){
-											$edmn = 'Nov';
-										}
-										else{
-											$edmn = 'Dec';
-										}
-										$eventDate = $edd.' '.$edmn.', '.$edy;
+						$eventDate = ConvertDateFormat(date('m/d/Y',strtotime($value->ev_sd))); 
 						$html .='<div class="col-md-4 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
@@ -1722,7 +1682,11 @@
 						$html.='<div class="row">';
 
 						if(isset($last_review)){
-						$html.='<div class="col-xs-12 NoirProMedium">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';
+						if($uuid == $last_review_details->u_uid){	
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
+						}else{
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
+						}
 						if($last_review_details->u_about != ""){
 							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{
@@ -2004,7 +1968,11 @@
 						$html.='<div class="row">';
 
 						if(isset($last_review)){
-						$html.='<div class="col-xs-12 NoirProMedium">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</div>';
+						if($uuid == $last_review_details->u_uid){	
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
+						}else{
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';	
+						}
 						if($last_review_details->u_about != ""){
 							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
 						}else{

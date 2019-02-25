@@ -267,8 +267,7 @@
 		public function viewProfile()
 		{
 				$this->load->helper(array('common'));
-				$username_url = $this->uri->segment(2); 
-				$username = str_replace('_',' ',$username_url);
+				$username = $this->uri->segment(2); 
 				$data = array();
 				$u_uid = $_SESSION["user_id"];
 				$data['current_userinfo'] = $this->User_model->getUserDetails($u_uid);

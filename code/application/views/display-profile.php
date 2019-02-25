@@ -277,6 +277,14 @@
 
               <div class = "col-xs-12 pad_l0 mar_t20 br_height" id="individualReplies_<?php echo $reply->crr_id; ?>">
 									<div class = "col-md-2 col-xs-4 pad_0">
+                  <a href = "<?php
+                  if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $reply->u_uid ){
+                    echo base_url().'display-profile';
+                  }
+                  else{
+                    echo base_url().'Profile/'.$reply->u_username;
+                  }
+                  ?>">
 									<?php if($reply->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reply->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 									<?php }else if($reply->u_social_pic!=""){ ?>
@@ -284,6 +292,7 @@
 									<?php }else{?>
 									<img class="img-circle reply-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 									<?php } ?>
+                  </a>
 									</div>
 									<div class = "col-md-10 col-xs-12 pad_0">
 									<p>
@@ -293,6 +302,13 @@
 										 echo $old_date;
 
 									?></span>
+                  <a href = "<?php
+                  if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $reply->u_uid ){
+                    echo base_url().'display-profile';
+                  }else{
+                    echo base_url().'Profile/'.$reply->u_username;
+                  }
+                  ?>">
 									<?php
 										if($reply->u_username!=""){
 											$u_username = ucfirst($reply->u_username);
@@ -302,7 +318,7 @@
 											$u_username = "Guest User";
 										}
 										echo $u_username;
-									?><br>
+									?></a><br>
                   <?php
                   if($reply->u_about != ""){
                     echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">'.$reply->u_about.'</span>';

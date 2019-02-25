@@ -603,7 +603,7 @@
 									if ($uid == $review->u_uid){
 										echo base_url().'display-profile';
 									}else{
-										echo base_url().'view-profile/'.str_replace(' ','_',$review->u_username);
+										echo base_url().'Profile/'.$review->u_username;
 									}									
 									?>" title = "<?php
 									if($uid == $review->u_uid){
@@ -645,7 +645,7 @@
 							if($uid == $review->u_uid){
 								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
 							}else{
-								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'view-profile/'.str_replace(' ','_',$review->u_username).'">'.$u_username.'</a></span>';
+								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'Profile/'.$review->u_username.'">'.$u_username.'</a></span>';
 							}
 							?>
 							<?php
@@ -800,7 +800,7 @@
 									if($uid == $reviewReplay->crr_uid){
 										echo base_url().'display-profile';
 									}else{
-										echo base_url().'view-profile/'.str_replace(' ','_',$reviewReplay->u_username);
+										echo base_url().'Profile/'.$reviewReplay->u_username;
 									}	
 									?>">	
 							        <?php if($reviewReplay->u_picture!=""){ ?>
@@ -818,7 +818,7 @@
 									if($uid == $reviewReplay->crr_uid){
 										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
 									}else{
-										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'view-profile/'.str_replace(' ','_',$reviewReplay->u_username).'">'.$u_username.'</a></span>';
+										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'Profile/'.$reviewReplay->u_username.'">'.$u_username.'</a></span>';
 									}
 									?>
 									<?php

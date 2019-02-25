@@ -155,7 +155,13 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
+                  echo base_url().'display-profile';
+                }else{
+                  echo base_url().'Profile/'.$last_review_details->u_username;
+                }
+                ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
@@ -299,7 +305,13 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
+                  echo base_url().'display-profile';
+                }else{
+                  echo base_url().'Profile/'.$last_review_details->u_username;
+                }
+                ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
@@ -443,7 +455,13 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></div>
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
+                  echo base_url().'display-profile';
+                }else{
+                  echo base_url().'Profile/'.$last_review_details->u_username;
+                }
+                ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
                 <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
                 <?php }else{ ?>
