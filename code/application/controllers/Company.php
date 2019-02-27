@@ -430,7 +430,7 @@
 			if(isset($exploded[1]) && $exploded[1] != ''){
 				$results_type = $exploded[1];
 			}else{
-				$results_type = 'likes';
+				$results_type = 'newest';
 			}
 			$this->load->helper(array('common'));
 			/* if(isset($_POST) && !empty($_POST)){

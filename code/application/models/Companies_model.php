@@ -778,7 +778,7 @@ class Companies_model extends CI_Model
 			$this->db->order_by('bop_company_reviews.re_dislike_cnt','DESC');
 		}else if($order_by=='oldest'){
 			$this->db->order_by('bop_company_reviews.re_id','ASC');
-		}else if($order_by=='newlist'){
+		}else if($order_by=='newest'){
 			$this->db->order_by('bop_company_reviews.re_id','DESC');
 		}
 		$this->db->limit($limit,$offset);

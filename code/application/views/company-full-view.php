@@ -562,21 +562,22 @@
 		   							}else if($companyview['results_type'] == 'oldest')
 		   							{
 										echo 'Oldest';
-		   							}else if($companyview['results_type'] == 'newlist')
+		   							}else if($companyview['results_type'] == 'newest')
 		   							{
 										echo 'Newest';
 		   							}else{
 
-			   							echo 'Up Votes';
+			   							echo 'Newest';
 		   							}
 		   					?></span>
 							<div class="arrow_down"><span class="caret"></span></div>
 		  					</button>
 		  					<ul class="dropdown-menu user_dropdown_t" role="menu" style="left:0px;">
+							  	<li><a onClick="fullViewFilter('newest',1);" href="javascript:void('0')">Newest</a></li>	   
 								<li><a onClick="fullViewFilter('likes',1);" href="javascript:void('0')">Up Votes</a></li>
 								<li><a onClick="fullViewFilter('dislikes',1);" href="javascript:void('0')">Down Votes</a></li>
 								<li><a onClick="fullViewFilter('oldest',1);" href="javascript:void('0')">Oldest</a></li>
-								<li><a onClick="fullViewFilter('newlist',1);" href="javascript:void('0')">Newest</a></li>
+								
 		  					</ul>
 							</li>
 					</ul>
