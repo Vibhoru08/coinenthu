@@ -3480,7 +3480,7 @@ margin:0 -15%;
 @media(max-width:768px){
 .review-asset-image{
  height:100px!important;
- margin-top:-50px!important;
+ margin-top:0px!important;
  }
 
  .su_home{
@@ -3526,10 +3526,13 @@ margin:0 -15%;
   .m_hide{
     display: none!important;
   }
-  .asset-image{
+  .asset-image,.review-asset-image{
     left:0;
     margin-top:-45px;
     margin-bottom:10px;
+  }
+  .review-asset-image{
+    margin-top:-40px;
   }
   .mar_l30{
   margin-left: 0px!important;
@@ -4189,7 +4192,9 @@ a.left_panel_desc{
  .mm_no_padding{
 		padding:0 7px;
 	}
-
+  .dis_block{
+    display: block;
+  }
   .dis2_block{
     display: block;
   }

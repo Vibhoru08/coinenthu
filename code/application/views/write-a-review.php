@@ -9,35 +9,69 @@
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
 						YOUR REVIEW
 						<!--<hr style="width:5%;border:1px solid #ffff">-->
+						<div class="row lg_hide m_height">
+						<div class="text-center">
+						<?php if($company_picture !=""){
+												//print_r($companyview['cm_ctid']);exit;
+												if($cm_ctid == 2){ ?>
+													<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.''; ?>" class="img-rounded review-asset-image"/>
+											<?php }else if($cm_ctid == 1){
+											if($company_picture !="" && substr( $company_picture, 0, 4 ) === "digi"){ ?>
+													<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+												<?php }else if(substr( $company_picture, 0, 3 ) === "ico"){?>
+													<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+												<?php } else if($company_picture !=""){
+									$srcc= base_url().'asset/img/companies/digitalasset/'.$company_picture;
+													if (@getimagesize($srcc)){
+												?>
+													<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+												<?php }else{ ?>
+														<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+													<?php }?>
+												<?php } else { ?>
+													<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+												<?php } ?>
+
+											<?php }	}
+											else { ?>
+											<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
+											<?php } ?>
+										</div>
+									</div>
 					</div>
 				</div>
 		</div>
-		<?php if($company_picture !=""){
-								//print_r($companyview['cm_ctid']);exit;
-								if($cm_ctid == 2){ ?>
-									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.''; ?>" class="img-rounded review-asset-image"/>
-							<?php }else if($cm_ctid == 1){
-							if($company_picture !="" && substr( $company_picture, 0, 4 ) === "digi"){ ?>
-									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
-								<?php }else if(substr( $company_picture, 0, 3 ) === "ico"){?>
-									<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
-								<?php } else if($company_picture !=""){
-					$srcc= base_url().'asset/img/companies/digitalasset/'.$company_picture;
-									if (@getimagesize($srcc)){
-								?>
-									<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
-								<?php }else{ ?>
+		<div class="row sm_hide">
+		<div class="text-center col-md-3 col-md-offset-1">
+			<?php if($company_picture !=""){
+									//print_r($companyview['cm_ctid']);exit;
+									if($cm_ctid == 2){ ?>
+										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.''; ?>" class="img-rounded review-asset-image"/>
+								<?php }else if($cm_ctid == 1){
+								if($company_picture !="" && substr( $company_picture, 0, 4 ) === "digi"){ ?>
+										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+									<?php }else if(substr( $company_picture, 0, 3 ) === "ico"){?>
+										<img src="<?php echo base_url().'asset/img/companies/icotracker/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+									<?php } else if($company_picture !=""){
+						$srcc= base_url().'asset/img/companies/digitalasset/'.$company_picture;
+										if (@getimagesize($srcc)){
+									?>
+										<img src="<?php echo base_url().'asset/img/companies/digitalasset/'.$company_picture.'?id='.$viewTime; ?>" alt="Coinenthu" class="img-rounded review-asset-image"/>
+									<?php }else{ ?>
+											<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+										<?php }?>
+									<?php } else { ?>
 										<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
-									<?php }?>
-								<?php } else { ?>
-									<img src="<?php echo base_url();?>images/Felix_the_Cat.jpg" alt="Coinenthu" class="img-rounded review-asset-image"/>
+									<?php } ?>
+
+								<?php }	}
+								else { ?>
+								<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
 								<?php } ?>
 
-							<?php }	}
-							else { ?>
-							<img src="<?php echo base_url(); ?>images/Felix_the_Cat.jpg" class="img-rounded review-asset-image"/>
-							<?php } ?>
-	  <div class = "container-fluid mar_t10">
+		</div>
+	</div>
+	  <div class = "container-fluid mar_t10 mmar_t20">
 			<div class = "row">
 					<div class = "col-md-4 col-md-offset-1 mar_b10 text-left review_head">
 								<span><h3>Your review will help others make the right decision!</h3></span>
