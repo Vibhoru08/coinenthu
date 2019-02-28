@@ -188,6 +188,13 @@
            localStorage.setItem('sortby_status',0);
      }
  );
+ $(".sorts_dropdown").click(
+    function() {
+         $(".sorts_dropdown .dropdown-menu").toggle();
+          $('#sort_by2').hide();
+          localStorage.setItem('sortby_status',0);
+    }
+);
  $(".close_selects").bind('click', function(){
  // $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
   //   $(".selects_dropdown .for-border .dropdown-menu").first().toggle();
@@ -233,6 +240,17 @@
  			$(this).toggleClass('open');
  	});
 
+  $(".sorts_dropdown").hover(
+     function() {
+          //$(".selects_dropdown .for-border .dropdown-menu").first().removeClass('open');
+          $(".sorts_dropdown .dropdown-menu").show();
+           $('#sort_by2').hide();
+           localStorage.setItem('sortby_status',0);
+     },
+     function() {
+         $(".sorts_dropdown .dropdown-menu").hide();
+     }
+  );
 
   $(".selects_dropdown").hover(
      function() {
@@ -832,7 +850,9 @@ function filterEvents(type,country,cityName,countryName) {
     }
     if(cityName=='de'){
       var cityName ="Select";
+      $("#filter_cityName").val(cityName);
     }else{
+      $("#filter_cityName").val(cityName);
       var cityName  = cityName;
     }
     if(countryName=='de'){
@@ -840,14 +860,29 @@ function filterEvents(type,country,cityName,countryName) {
     }else{
       var countryName  = ' ('+countryName+')';
     }
-    $("#filter_id").val(type);
+
     $("#filter_countryid").val(country);
+    if(type=='ends'){
+      var texs='Ending Soon';
+      var htmlReload2 = texs + '<div class="arrow_down"><span class="caret"></span></div>';
+      $("#filter_type").val(type);
+    }else if(type=='lprice'){
+      var texs='Lowest Price';
+      $("#filter_type").val(type);
+      var htmlReload2 = texs + '<div class="arrow_down"><span class="caret"></span></div>';
+    }else{
+      $("#filter_id").val(type);
+    }
+    if(cityName!='' && cityName!=undefined){
     var htmlReload = cityName+countryName + '<div class="arrow_down"><span class="caret"></span></div>';
+      }
+    $("#filtername2").html(htmlReload2);
     $("#filtername").html(htmlReload);
     var offsetpage = 0;
     var limitpage = $("#limitpage").val();
     var pageMode = $("#pageMode").val();
     var filterId = $("#filter_id").val();
+    var filterType = $("#filter_type").val();
     var filterCountryId = $("#filter_countryid").val();
 		if($("#searchterms1").val() ==""){
 				var searchterms = $("#searchterms").val();
@@ -874,6 +909,7 @@ function filterEvents(type,country,cityName,countryName) {
             pageMode: pageMode,
             filterId: filterId,
            filterCountryId: filterCountryId,
+           filterType:filterType,
             filter: "filetrfrom",
             searchterms: searchterms
         },

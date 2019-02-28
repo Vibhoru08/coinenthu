@@ -822,6 +822,8 @@
 					}
 					$finalData['event'] = $data;
 				}
+
+
 				$this->show('event-full-view',$finalData);
 			}else{
 				show_404();
@@ -1435,20 +1437,30 @@
 					$country = $_POST['filterCountryId'];
 				}
 
+
+				$filterType = $_POST['filterType'];
+
+
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 					$uuid = "";
 				}else{
 					$uuid = $this->session->userdata('user_id');
 				}
 				// $oderBy = "cm_overallrating";
+				if($_POST['filterType']=='lprice'){
 				$oderBy 	= "ev_price";
 				$ascDesc 	= "asc";
+			}elseif ($_POST['filterType']=='ends') {
+				$oderBy 	= "ev_sd";
+				$ascDesc 	= "desc";
+			}
+
 
 					if(isset($_POST['searchterms']) && $_POST['searchterms']!=""){
 						// $searchterms  = $_POST['searchterms'];
 						// $getCompanies = $this->Companies_model->getSerachDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$searchterms,$uuid,$checkQuery);
 						$searchterms  = strtolower($_POST['searchterms']);
-						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country);
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country,$filterType);
 						$cnt = $this->Companies_model->getSearchEventsCnt($limit,$offset,$oderBy,$ascdesc,$searchterms);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
 
@@ -1467,7 +1479,7 @@
 						$data = array();
 						$event_id = $value->ev_id;
 						$speakers_num =  $this->Companies_model->CountSpeakers($event_id);
-						$eventDate = ConvertDateFormat(date('m/d/Y',strtotime($value->ev_sd))); 
+						$eventDate = ConvertDateFormat(date('m/d/Y',strtotime($value->ev_sd)));
 						$html .='<div class="col-md-4 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">
@@ -1682,7 +1694,7 @@
 						$html.='<div class="row">';
 
 						if(isset($last_review)){
-						if($uuid == $last_review_details->u_uid){	
+						if($uuid == $last_review_details->u_uid){
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}else{
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
@@ -1968,10 +1980,10 @@
 						$html.='<div class="row">';
 
 						if(isset($last_review)){
-						if($uuid == $last_review_details->u_uid){	
+						if($uuid == $last_review_details->u_uid){
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}else{
-							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';	
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}
 						if($last_review_details->u_about != ""){
 							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';

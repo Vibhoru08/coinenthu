@@ -3173,6 +3173,15 @@ font-family: NoirPro;
   margin-top:-10px;
   margin-bottom: 5px;
   line-height:22px; }
+  .sort_by_align_forbig{
+
+    padding-right:0px;
+  }
+  .sorts_by_align_forbig{
+
+    margin-bottom: 20px;
+    padding-right:0px;
+  }
 @media(min-width:990px){
   .small_replies_dropdown:hover{
     color:#ff99c2;
@@ -3186,6 +3195,11 @@ font-family: NoirPro;
   .sort_by_align_forbig{
     float:right;
     padding-right:25px;
+  }
+  .sorts_by_align_forbig{
+    float:right;
+    margin-bottom: 0px;
+    padding-right:0px;
   }
   .sort_by_align_forbigico{
     float:right;
@@ -3204,6 +3218,15 @@ textarea { resize: vertical; }
   background-color: #f9f9f9;
 }
 @media(max-width:992px){
+  .own_t_event{
+    position: relative!important;
+    left:-10px!important;
+  }
+  .user_dropdown_t_event{
+    position: relative!important;
+    left:-10px!important;
+    width:231px!important;
+  }
   .new_boxes{
 	  margin-bottom:90px;
 
@@ -3394,6 +3417,10 @@ textarea { resize: vertical; }
 
 }
 @media(max-width:768px){
+  .sorts_by_align_forbig{
+    margin-bottom: 0px;
+    padding-right:0px;
+  }
   .event_head_info{
     text-align: left;
   }
@@ -3788,6 +3815,10 @@ a.left_panel_desc{
   padding-left:15px;
 }
 @media(min-width:768px) and (max-width:990px){
+  .set_styleforsore{
+    padding-left:0px;
+    width:240px;
+  }
   .ss_width{
     width:220px;
     margin-right:10px;
