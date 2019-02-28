@@ -79,8 +79,8 @@
 									 <input type="hidden" id="filter_type" value="ends">
 								  <ul class="dropdown-menu user_dropdown_t hide_menu own_t_event" role="menu">
 
-			    						<li><a href="#" onClick="filterEvents('ends','1');">Ending Soon</a></li>
-			    						<li><a href="#" onClick="filterEvents('lprice','1');">Lowest Price</a></li>
+			    						<li><a href="#" onClick="filterEvents('ends','');">Ending Soon</a></li>
+			    						<li><a href="#" onClick="filterEvents('lprice','');">Lowest Price</a></li>
 
 
 

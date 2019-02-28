@@ -860,8 +860,11 @@ function filterEvents(type,country,cityName,countryName) {
     }else{
       var countryName  = ' ('+countryName+')';
     }
-
+    if(country=='' || country==undefined){
+      $("#filter_countryid").val('Select');
+    }else{
     $("#filter_countryid").val(country);
+    }
     if(type=='ends'){
       var texs='Ending Soon';
       var htmlReload2 = texs + '<div class="arrow_down"><span class="caret"></span></div>';
