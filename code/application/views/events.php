@@ -26,7 +26,11 @@
 			<div class="row mar_t10">
 			<div class="col-xs-10 col-xs-offset-1 msearch_bg big_hide">
 				<div class = "col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-				<input class="form-control brg_focus_n searchhome" type="text" onkeyup="sreachterm2();" type="text" name="searchterms" id="searchterms" placeholder="&nbsp;&#xF002; &nbsp;&nbsp;Search for your Events">
+					<div class="row search_total">
+						<label class="col-xs-1 search_hme_icon" for="searchterms"><i class="fa fa-search searchtrem_style" aria-hidden="true"></i></label>
+
+				<input class="form-control brg_focus_n searchhome col-xs-11" type="text" onkeyup="sreachterm2();" type="text" name="searchterms" id="searchterms" placeholder="Search for your Events">
+				</div>
 			</div>
 			</div>
 			</div>
@@ -36,7 +40,7 @@
 	<div class="row mobile_login NoirProSemiBold big_hide text-center">
 		<div class="col-xs-12">
 			<div class="col-xs-6 pad_t10 pad_b10 text-center review_log" id="review_log">
-				REVIEWS
+				EVENTS
 			</div>
 			<div class="col-xs-6 pad_t10 pad_b10 text-center news_log" id="news_log">
 				NEWS
@@ -262,6 +266,80 @@
 	</div>
     </div>
 <script>
+
+$(window).resize(function(){
+	var y=window.matchMedia("(max-width: 990px)");
+	if (y.matches){
+		if( $("#news_log").hasClass("register_design") ){
+		$(".review_log").removeClass('login_design');
+		$(".company_list").fadeIn();
+		$("#sort_by_main").fadeIn();
+		$(".carousel_id").hide();
+		$("#loadingHash1").fadeIn();
+	}else if( $("#review_log").hasClass("login_design") ){
+		$(".news_log").removeClass('register_design');
+		$(".company_list").hide();
+		$("#loadingHash1").hide();
+		$("#sort_by_main").hide();
+	}else{
+		$(".news_log").addClass('register_design');
+		$(".carousel_id").hide();
+	}
+
+		$(".review_log").click(function(){
+			$(".review_log").removeClass('login_design');
+			$(".news_log").addClass('register_design');
+			$(".company_list").fadeIn();
+			$("#loadingHash1").fadeIn();
+			$("#sort_by_main").fadeIn();
+			$(".carousel_id").hide();
+		});
+
+		$(".news_log").click(function(){
+			$(".news_log").removeClass('register_design');
+			$(".review_log").addClass('login_design');
+			$(".company_list").hide();
+			$("#loadingHash1").hide();
+			$("#sort_by_main").hide();
+			$(".carousel_id").fadeIn();
+		});
+	}
+	else{
+		$(".carousel_id").show();
+		$("#loadingHash1").show();
+		$(".socila_img").show();
+		$(".company_list").show();
+		$("#sort_by_main").show();
+	}
+});
+
+var y=window.matchMedia("(max-width: 990px)");
+if (y.matches){
+$(".news_log").addClass('register_design');
+$(".carousel_id").hide();
+
+$(".review_log").click(function(){
+	$(".review_log").removeClass('login_design');
+	$(".news_log").addClass('register_design');
+	$(".company_list").fadeIn();
+	$("#loadingHash1").fadeIn();
+	$("#sort_by_main").fadeIn();
+	$(".carousel_id").hide();
+});
+
+$(".news_log").click(function(){
+	$(".news_log").removeClass('register_design');
+	$(".review_log").addClass('login_design');
+	$(".company_list").hide();
+	$("#loadingHash1").hide();
+	$("#sort_by_main").hide();
+	$(".carousel_id").fadeIn();
+});
+}
+
+
+
+
 $( "#searchterms" ).keypress(function( event ) {
 	if ( event.which == 13 ) {
 		sreachterm2();

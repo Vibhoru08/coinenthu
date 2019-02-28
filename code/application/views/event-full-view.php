@@ -2,13 +2,13 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
 <div class = "content about-bg text-color">
 
         <div class = "container-fluid banner_margin linear_color" style = "padding-top:30px;">
-            <div class = "row mmar_t40 mmar_b10 mar_t30">
+            <div class = "row mmar_b10 mar_t30 mmar_t10">
                 <div class = "col-xs-12 text-center banner_head" style="text-transform: uppercase;">
                     <?php echo $event['event_name']; ?>
                   <!--  <hr style="width:2%;border:2px solid #ffff">-->
                 </div>
                 <div class="col-xs-10 col-xs-offset-1">
-                  <div class="col-xs-2">
+                  <div class="col-md-2 col-xs-12 event_picture">
                 <?php
                 if(isset($event['event_picture']) && $event['event_picture'] != '' ){
                     $imagepath = base_url().'asset/img/events/main/'.$event['event_picture'];
@@ -18,11 +18,11 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                 ?>
                 <img class="img-rounded event-image" src = "<?php echo $imagepath; ?>" alt = "<?php echo $event['event_name']; ?>">
               </div>
-                <div class="col-xs-10 mar_t30 NoirProLight event_head_info text-center">
+                <div class="col-md-10 col-xs-12 mar_t30 mmar_t10 NoirProLight event_head_info text-center">
                     <!--<span class="col-xs-3">location - <?php echo $event['event_location']; ?></span>-->
-                    <span class="col-xs-4" title="Event Location"><i class="fa fa-map-marker"></i>&nbsp; <?php echo $event['event_location']; ?></span>
-                    <span class="col-xs-4" title="Event Date"><i class="fa fa-calendar"></i>&nbsp; <?php echo $event['event_date']; ?></span>
-                    <span class="col-xs-4" title="Price in USD"><i class="fa fa-money"></i>&nbsp; <?php echo '$'.$event['event_price'];?></span>
+                    <span class="col-sm-4 col-xs-12" title="Event Location"><i class="fa fa-map-marker"></i>&nbsp; <?php echo $event['event_location']; ?></span>
+                    <span class="col-sm-4 col-xs-12" title="Event Date"><i class="fa fa-calendar"></i>&nbsp; <?php echo $event['event_date']; ?></span>
+                    <span class="col-sm-4 col-xs-12" title="Price in USD"><i class="fa fa-money"></i>&nbsp; <?php echo '$'.$event['event_price'];?></span>
 
                   </div>
                 </div>
@@ -57,13 +57,13 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                         }
                         echo '<p><img class="speaker-image" src = "'.$spimage.'" alt = "'.$speaker->sp_name.'"></p>';
                         echo '<h5 class="speaker_name">'.$speaker->sp_name.'</h5>';
-                        if(isset($speaker->sp_desig) && $speaker->sp_desig != ""){ 
+                        if(isset($speaker->sp_desig) && $speaker->sp_desig != ""){
                           echo '<div>'.ucfirst($speaker->sp_desig).'</div>';
                         }else{
-                          echo '<div>&nbsp;</div>';    
+                          echo '<div>&nbsp;</div>';
                         }
                         if (strpos($speaker->sp_url,'http') !== false){
-                          $speaker_linkedin = $speaker->sp_url;                          
+                          $speaker_linkedin = $speaker->sp_url;
                         }else{
                           $speaker_linkedin = '//'.$speaker->sp_url;
                         }

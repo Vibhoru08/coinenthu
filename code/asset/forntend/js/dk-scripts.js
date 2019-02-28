@@ -190,7 +190,7 @@
  );
  $(".close_selects").bind('click', function(){
  // $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
-     $(".selects_dropdown .for-border .dropdown-menu").first().toggle();
+  //   $(".selects_dropdown .for-border .dropdown-menu").first().toggle();
  });
  $('.dropdown-submenu a.test').on("click", function(e){
      $(this).next('ul').toggle();
