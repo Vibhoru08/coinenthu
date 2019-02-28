@@ -1405,10 +1405,8 @@
 			$data = array();
 			$limit    = 9;
 			$offset   = 0;
-			$order_by = 'price';
-			$ascdesc = 'desc';
 			$data['totCntEvents'] = $this->Companies_model->totalCountEvents(1);
-			$data['event_list'] = $this->Companies_model->getEventList($limit,$offset,$order_by,$ascdesc);
+			$data['event_list'] = $this->Companies_model->getEventList($limit,$offset);
 			$data['cities'] = $this->Companies_model->getCitiesSort(1);
 			$data['countries'] = $this->Companies_model->getCountriesSort(1);
 			$this->show('events',$data);
@@ -1438,22 +1436,16 @@
 				}
 
 
-				$filterType = $_POST['filterType'];
-
-
 				if($this->session->userdata('user_id') == "" && $this->session->userdata('usertype') == ""){
 					$uuid = "";
 				}else{
 					$uuid = $this->session->userdata('user_id');
 				}
-				// $oderBy = "cm_overallrating";
-				if($_POST['filterType']=='lprice'){
+				// lprice,ends
+				$filterType = $_POST['filterType'];
 				$oderBy 	= "ev_price";
-				$ascDesc 	= "asc";
-			}elseif ($_POST['filterType']=='ends') {
-				$oderBy 	= "ev_sd";
-				$ascDesc 	= "desc";
-			}
+				$ascdesc 	= "asc";
+	
 
 
 					if(isset($_POST['searchterms']) && $_POST['searchterms']!=""){
@@ -1468,7 +1460,7 @@
 						// $searchterms = '';
 						// $getCompanies = $this->Companies_model->getDigitalIcos($cm_cpid,$limit,$offset,$oderBy,$ascDesc,$uuid,$checkQuery);
 						$searchterms = '';
-						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country);
+						$getEvents = $this->Companies_model->getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms,$city,$country,$filterType);
 						$cnt = $this->Companies_model->getEventsCount($limit,$offset,$oderBy,$ascdesc);
 						$counts = $this->Companies_model->getSearchEventsCount($oderBy,$ascdesc,$searchterms,$city);
 					}

@@ -37,25 +37,16 @@ class Companies_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function getEventList($limit,$offset,$order_by,$ascdesc)
-	{	if($order_by == 'ev_price'){
-			$this->db->select('*');
-			$this->db->from('bop_events');
-			$this->db->where('ev_status',1);
-			$this->db->order_by($order_by,$ascdesc);
-    		$this->db->limit($limit,$offset);
-			$query = $this->db->get();
-			return $query->result();
-		}else{
-			$sql = "
-					SELECT *, DATEDIFF(`ev_ed`, CURDATE()) AS
-					diff FROM `bop_events` JOIN `bop_users` ON `bop_users`.`u_uid` = `bop_events`.`ev_uid`
-					WHERE ev_status !=2 AND `ev_status` = 1 AND `bop_users`.`u_status` = 1 ORDER BY CASE WHEN diff < 0 THEN 1 ELSE 0 END, diff
-					ASC LIMIT ".$offset.",".$limit;
+	public function getEventList($limit,$offset)
+	{	$sql = "
+				SELECT *, DATEDIFF(`ev_ed`, CURDATE()) AS
+				diff FROM `bop_events` JOIN `bop_users` ON `bop_users`.`u_uid` = `bop_events`.`ev_uid`
+				WHERE ev_status !=2 AND `ev_status` = 1 AND `bop_users`.`u_status` = 1 ORDER BY CASE WHEN diff < 0 THEN 1 ELSE 0 END, diff
+				ASC LIMIT ".$offset.",".$limit;
 
-			$query = $this->db->query($sql);
-			return $query->result();
-		}
+		$query = $this->db->query($sql);
+		return $query->result();
+		
 	}
   public function totalCountEvents($status){
     $this->db->select('*');
@@ -1208,7 +1199,7 @@ class Companies_model extends CI_Model
 		 return $this->db->count_all_results();
 	}
 
-	public function getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms=null,$city,$country)
+	public function getSearchEvents($limit,$offset,$oderBy,$ascdesc,$searchterms=null,$city,$country,$filter)
 	{
 		if(isset($offset) && $offset != '')
 		{
@@ -1216,25 +1207,49 @@ class Companies_model extends CI_Model
 		}else{
 			$off = 0;
 		}
-		$this->db->select('*');
-		$this->db->from('bop_events');
-		$this->db->join('bop_users','bop_users.u_uid=bop_events.ev_uid');
-		if(isset($city) && $city != '')
-		{
-			$this->db->where('ev_city',$city);
+		if(isset($filter) && $filter != ''){
+			$fil = $filter;
+		}else{
+			$fil = 'ends';
 		}
-    if(isset($country) && $country != '')
-		{
-			$this->db->where('ev_country',$country);
-		}
-		$this->db->where('ev_status',1);
-		$this->db->where('bop_users.u_status',1);
-		$this->db->like('ev_name',$searchterms);
-		$this->db->order_by($oderBy,$ascdesc);
-		$this->db->limit($limit,$off);
-		$query = $this->db->get();
-		return $query->result();
+		if($fil == 'lprice'){
+			$this->db->select('*');
+			$this->db->from('bop_events');
+			$this->db->join('bop_users','bop_users.u_uid=bop_events.ev_uid');
+			if(isset($city) && $city != '')
+			{
+				$this->db->where('ev_city',$city);
+			}
+    		
+			$this->db->where('ev_status',1);
+			$this->db->where('bop_users.u_status',1);
+			$this->db->like('ev_name',$searchterms);
+			$this->db->order_by($oderBy,$ascdesc);
+			$this->db->limit($limit,$off);
+			$query = $this->db->get();
+		}else{
+			if(isset($city) && $city != ''){
+				$sql = "
+						SELECT *, DATEDIFF(`ev_ed`, CURDATE()) AS
+						diff FROM `bop_events` JOIN `bop_users` ON `bop_users`.`u_uid` = `bop_events`.`ev_uid`
+						WHERE ev_status !=2 AND `ev_status` = 1 AND `ev_city` = '$city' AND `bop_users`.`u_status` = 1 AND
+						`ev_name` LIKE '%$searchterms%' ESCAPE '!' ORDER BY CASE WHEN diff < 0 THEN 1 ELSE 0 END, diff
+						ASC LIMIT ".$offset.",".$limit;
 
+				$query = $this->db->query($sql);
+			}else{
+				$sql = "
+						SELECT *, DATEDIFF(`ev_ed`, CURDATE()) AS
+						diff FROM `bop_events` JOIN `bop_users` ON `bop_users`.`u_uid` = `bop_events`.`ev_uid`
+						WHERE ev_status !=2 AND `ev_status` = 1 AND `bop_users`.`u_status` = 1 AND
+						`ev_name` LIKE '%$searchterms%' ESCAPE '!' ORDER BY CASE WHEN diff < 0 THEN 1 ELSE 0 END, diff
+						ASC LIMIT ".$offset.",".$limit;
+
+				$query = $this->db->query($sql);
+			}
+		}	
+		return $query->result();
+		
 	}
 
 	public function getSearchDgtlIcos($cm_cpid,$limit,$offset,$order_by,$ascDesc,$serachTerm=null,$uuid,$checkQuery,$filterId)
