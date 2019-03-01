@@ -1471,7 +1471,7 @@
 						$data = array();
 						$event_id = $value->ev_id;
 						$speakers_num =  $this->Companies_model->CountSpeakers($event_id);
-						$eventDate = ConvertDateFormat(date('m/d/Y',strtotime($value->ev_sd)));
+						$eventDate = CombineDate(date('m/d/Y',strtotime($value->ev_sd)),date('m/d/Y',strtotime($value->ev_ed)));
 						$html .='<div class="col-md-4 mar_t80">
 						<ul class="products-list product-list-in-box">
 							<li class="item center">

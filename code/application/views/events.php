@@ -169,7 +169,7 @@
 										$event_id = $event->ev_id;
 										$eventSpeakersCount = $this->Companies_model->CountSpeakers($event_id);
 										$this->load->helper('common');
-										$eventDate = ConvertDateFormat(date('m/d/Y',strtotime($event->ev_sd)));
+										$eventDate = CombineDate(date('m/d/Y',strtotime($event->ev_sd)),date('m/d/Y',strtotime($event->ev_ed)));
 									?>
 									<p><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;Location:<?php echo ' '.ucfirst($event->ev_city);?></p>
 									<p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Date:<?php echo ' '.$eventDate; ?></p>
