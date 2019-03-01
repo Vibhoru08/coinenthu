@@ -5,7 +5,7 @@
 					<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 text-center banner_head">
           <?php
           if(isset($type) && $type == 'other'){
-            echo strtoupper($userinfo->u_firstname).'\'S PROFILE';
+            echo strtoupper($userinfo->u_username).'\'S PROFILE';
           }else{
             echo 'MY PROFILE';
           }
@@ -467,13 +467,17 @@
               <?php } ?>
 							</div>
 					</div>
-					<div class="mar_b80"></div>
+					<div class="mar_b50"></div>
 					<?php
 					}}else{
 					?>
           <div class = "pad_l25 mar_b40" style="color:black;">
           <div class = "row">
+          <?php if(isset($type)){?>
+          <span><h2><?php echo ucfirst($userinfo->u_username); ?> has not written<br> any reviews yet.</h2></span>
+          <?php }else{ ?>
           <span><h2>You have not written<br> any reviews yet.</h2></span>
+          <?php } ?>
           <hr align="left" style="width:10%;border:4px solid black;">
           </div>
           <div class = "row">
@@ -485,6 +489,16 @@
           </div>
           </div>
           <?php } ?>
+          <?php
+					if(isset($links) && $links != ""){ ?>
+					<nav aria-label="Page navigation example" style="text-align:center;margin-top:20px;margin-bottom:40px;" id="fullviewPagy">
+
+						<?php echo $links;?>
+
+					</nav>
+					<?php
+					 }
+					 ?>
 				</div>
         <div class="big_hide"  data-toggle="modal" data-target="#myModal_upcoming">
             <div class="button_placemnt">

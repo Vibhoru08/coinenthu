@@ -250,9 +250,44 @@
 				$data['nou'] = $total_upvotes;
 				$data['nor'] = $no_of_reviews;
 				$data['userinfo'] = $this->User_model->getUserDetails($u_uid);
+				$config = array();
+				$config['base_url'] = base_url().'display-profile';
+				$config['total_rows'] = $this->User_model->myProfileReviewCount($u_uid);
+				$config['per_page'] = 5;
+				$config["uri_segment"] = 2;
+				$config['num_links'] = 2;
+				//sample
+				$config['display_pages'] =TRUE;
+				$config['use_page_numbers'] =TRUE;
+				$config['full_tag_open'] = '<ul class="pagination">';
+				$config['full_tag_close'] = '</ul>';
+				$config['first_link'] = false;
+				$config['last_link'] = false;
+				$config['first_tag_open'] = '<li>';
+				$config['first_tag_close'] = '</li>';
+				$config['prev_link'] = '&laquo';
+				$config['prev_tag_open'] = '<li class="prev">';
+				$config['prev_tag_close'] = '</li>';
+				$config['next_link'] = '&raquo';
+				$config['next_tag_open'] = '<li>';
+				$config['next_tag_close'] = '</li>';
+				$config['last_tag_open'] = '<li>';
+				$config['last_tag_close'] = '</li>';
+				$config['cur_tag_open'] = '<li class="active"><a href="#">';
+				$config['cur_tag_close'] = '</a></li>';
+				$config['num_tag_open'] = '<li>';
+				$config['num_tag_close'] = '</li>';
+				$this->pagination->initialize($config);
+				$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+				if($page > 0){
+					$start=($page-1)*$config["per_page"];
+				}else{
+					$start = $page;
+				}
 				$data['reviews'] = array();
 				$data['replies'] = array();
-				$reviewlist = $this->User_model->myProfileReview($u_uid);
+				$reviewlist = $this->User_model->myProfileReviewPagi($config["per_page"],$start,$u_uid);
+					$data['links'] = $this->pagination->create_links();
 				foreach($reviewlist as $cr=>$review){
 					$data['reviews'][$cr] = $review;
 					$data['replies'][$review->re_id] = $this->User_model->myProfileReplies($review->re_id);
@@ -304,9 +339,44 @@
 					$data['nor'] = $no_of_reviews;
 					$user_id = $data['userinfo']->u_uid;
 					$data['type'] = 'other';
+					$config = array();
+					$config['base_url'] = base_url().'Profile/'.$username;
+					$config['total_rows'] = $this->User_model->myProfileReviewCount($user_id);
+					$config['per_page'] = 5;
+					$config["uri_segment"] = 3;
+					$config['num_links'] = 2;
+					//sample
+					$config['display_pages'] =TRUE;
+					$config['use_page_numbers'] =TRUE;
+					$config['full_tag_open'] = '<ul class="pagination">';
+					$config['full_tag_close'] = '</ul>';
+					$config['first_link'] = false;
+					$config['last_link'] = false;
+					$config['first_tag_open'] = '<li>';
+					$config['first_tag_close'] = '</li>';
+					$config['prev_link'] = '&laquo';
+					$config['prev_tag_open'] = '<li class="prev">';
+					$config['prev_tag_close'] = '</li>';
+					$config['next_link'] = '&raquo';
+					$config['next_tag_open'] = '<li>';
+					$config['next_tag_close'] = '</li>';
+					$config['last_tag_open'] = '<li>';
+					$config['last_tag_close'] = '</li>';
+					$config['cur_tag_open'] = '<li class="active"><a href="#">';
+					$config['cur_tag_close'] = '</a></li>';
+					$config['num_tag_open'] = '<li>';
+					$config['num_tag_close'] = '</li>';
+					$this->pagination->initialize($config);
+					$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+					if($page > 0){
+						$start=($page-1)*$config["per_page"];
+					}else{
+						$start = $page;
+					}
 					$data['reviews'] = array();
 					$data['replies'] = array();
-					$reviewlist = $this->User_model->myProfileReview($user_id);
+					$reviewlist = $this->User_model->myProfileReviewPagi($config["per_page"],$start,$user_id);
+					$data['links'] = $this->pagination->create_links();
 					foreach($reviewlist as $cr=>$review){
 						$data['reviews'][$cr] = $review;
 						$data['replies'][$review->re_id] = $this->User_model->myProfileReplies($review->re_id);

@@ -81,6 +81,7 @@ $route['add-digital-asset']         = 'Company/addDigitalAsset';
 $route['add-event']                 = 'Company/addEvent';  
 $route['edit-profile']              = 'User/editProfile';
 $route['display-profile']           = 'User/showProfile';
+$route['display-profile/(:num)']  = 'User/showProfile/$1';
 $route['social-sign-in/(:any)']     = 'Login/socialSignIn';
 $route['twitter-login-auth/(:any)'] = 'Login/twitterLoginAuth';
 $route['subscribe']     			= 'Careers/addEmail';
