@@ -1,3 +1,4 @@
+	<script src="<?php echo base_url();?>asset/forntend/js/jQuery-ui.js"></script>
 <div class="content-wrapper">
 	<div class="container-fluid banner_margin photo_margin linear_color banner-asset-margin mob_height_banner">
 		<div class="row mmar_t40 mmar_b10 mar_t30 mar_b40">
@@ -573,11 +574,11 @@
 							<div class="arrow_down"><span class="caret"></span></div>
 		  					</button>
 		  					<ul class="dropdown-menu user_dropdown_t" role="menu" style="left:0px;">
-							  	<li><a onClick="fullViewFilter('newest',1);" href="javascript:void('0')">Newest</a></li>	   
+							  	<li><a onClick="fullViewFilter('newest',1);" href="javascript:void('0')">Newest</a></li>
 								<li><a onClick="fullViewFilter('likes',1);" href="javascript:void('0')">Up Votes</a></li>
 								<li><a onClick="fullViewFilter('dislikes',1);" href="javascript:void('0')">Down Votes</a></li>
 								<li><a onClick="fullViewFilter('oldest',1);" href="javascript:void('0')">Oldest</a></li>
-								
+
 		  					</ul>
 							</li>
 					</ul>
@@ -605,7 +606,7 @@
 										echo base_url().'display-profile';
 									}else{
 										echo base_url().'Profile/'.$review->u_username;
-									}									
+									}
 									?>" title = "<?php
 									if($uid == $review->u_uid){
 										echo 'View Your Profile';
@@ -620,7 +621,7 @@
 						<?php }else{?>
 						<img class="img-circle review-image" src="<?php echo base_url(); ?>asset/img/alt.jpg" alt="user image">
 						<?php } ?>
-					</a>	
+					</a>
 					</div>
 					<div class = "col-md-10 col-xs-12">
 						<div class = "col-xs-12" style="padding-top:15px;">
@@ -642,7 +643,7 @@
 									<?php } } ?>
 							</span>
 							<input id="input-6" name="input-6" class="rating rating-loading" value="<?php echo $review->re_rating; ?>" data-min="0" data-max="5" data-step="1" data-size="xss" data-readonly="true" style="font-size:16px">
-							<?php 
+							<?php
 							if($uid == $review->u_uid){
 								echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
 							}else{
@@ -802,8 +803,8 @@
 										echo base_url().'display-profile';
 									}else{
 										echo base_url().'Profile/'.$reviewReplay->u_username;
-									}	
-									?>">	
+									}
+									?>">
 							        <?php if($reviewReplay->u_picture!=""){ ?>
 									<img class="img-circle reply-image" src="<?php echo base_url().'asset/img/users/'.$reviewReplay->u_picture.''; ?>" alt="<?php echo $u_username; ?>">
 									<?php }else if($reviewReplay->u_social_pic!=""){ ?>
@@ -815,7 +816,7 @@
 							</div>
 							<div class = "col-md-10 col-xs-12 pad_0">
 								<div class = "col-xs-12 mar_0 pad_0" style="padding-top:5px;padding-bottom:5px;">
-									<?php 
+									<?php
 									if($uid == $reviewReplay->crr_uid){
 										echo 'By'.' '.'<span style="font-family:NoirPro Medium;font-weight: 500;"><a href = "'.base_url().'display-profile">'.$u_username.'</a></span>';
 									}else{
@@ -978,7 +979,7 @@
 
 
 <input type="hidden" id="hid_sessionid" name="hid_sessionid" value="<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){ echo $_SESSION['user_id']; }else{}?>">
-<input type="hidden" id="hid_filter" name="hid_filter" value="1">
+<input type="hidden" id="hid_filter" name="hid_filter" value="4">
 <?php
 if(isset($companyview['cm_ico_end_date']) && $companyview['cm_ico_end_date'] != "" && $companyview['cm_ico_end_time'] != "")
 {

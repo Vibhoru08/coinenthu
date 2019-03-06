@@ -268,8 +268,27 @@
 										$re_dislike_cnt = 0;
 									}
 							?>
-							<span><?php echo $re_likes_cnt ?>&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span style="margin-left:20px;"><?php echo $re_dislike_cnt ?>&nbsp;<i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+							<span class="btn btn-default btn_dislike_newp" id="btn_like_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLike('<?php echo $re_likes_cnt; ?>','<?php echo $review->re_id; ?>','like','review','<?php echo $cr; ?>');">
+                <?php $checkedRes1 = $this->Companies_model->checkUserLiked($uid,$review->re_id,'like');
+  							      if(isset($checkedRes1->rr_id) && $checkedRes1->rr_id!=''){
+  									echo '<span style="color:#065FD4;">'. $re_likes_cnt.'</span> <i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i>';
+  									}
+  								  else{
+  									echo $re_likes_cnt.' <i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+  								  }
+  							?>
+              </span>
+              <span class="btn btn-default btn_dislike_newp" id="btn_dislike_<?php echo $review->re_id; ?>" onClick="reviewLikeDisLikee('<?php echo $re_dislike_cnt; ?>','<?php echo $review->re_id; ?>','dislike','review','<?php echo $cr; ?>');" style="margin-left:20px;">
+                <?php
+  							$checkedRes2 = $this->Companies_model->checkUserLiked($uid,$review->re_id,'dislike');
+  							if(isset($checkedRes2->rr_id) && $checkedRes2->rr_id!=''){
+  								echo '<span style="color:#065FD4;">'. $re_dislike_cnt.'</span> <i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i>';
+  							   }
+  							else{
+  								echo $re_dislike_cnt.' <i class="fa fa-thumbs-down" aria-hidden="true"></i>';
+  							}
+  							?>
+              </span>
               <span class="reply_show" onclick="reply_show('<?php echo $review->re_id; ?>')"><?php echo sizeof($replies[$review->re_id]);?>&nbsp;<i class="fa fa-reply reply" aria-hidden="true"></i></span>
 							</div>
               <div id="repliesDiv_<?php echo $review->re_id; ?>" style="display:none;">
@@ -1544,11 +1563,11 @@ function confirmDeleteActions(){
                 }else{
                   if(typeMode=='review'){
                     if(type=='like'){
-                      $("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
-                      $("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+                      $("#btn_like_"+reviewid).html('<span style="color:#065FD4;">'+ data.cntLikeDislikes+'</span> '+'<i class="fa fa-thumbs-up" aria-hidden="true" style="color:#065FD4;"></i>');
+                      $("#btn_dislike_"+reviewid).html('<span>'+ data.dislikescnt+'</span> '+'<i class="fa fa-thumbs-down" aria-hidden="true"></i>');
                     }else{
-                      $("#btn_like_"+reviewid).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="like-button-text">Like</span>');
-                      $("#btn_dislike_"+reviewid).html('<i class="fa fa-thumbs-down" aria-hidden="true"></i><span class ="dislike-button-text">Dislike</span>');
+                      $("#btn_like_"+reviewid).html('<span>'+ data.cntLikeDislikes+'</span> '+'<i class="fa fa-thumbs-up" aria-hidden="true"></i>');
+                      $("#btn_dislike_"+reviewid).html('<span style="color:#065FD4;">'+ data.dislikescnt+'</span> '+'<i class="fa fa-thumbs-down" aria-hidden="true" style="color:#065FD4;"></i>');
                     }
                   }else if(typeMode=='replies'){
                     if(type=='like'){

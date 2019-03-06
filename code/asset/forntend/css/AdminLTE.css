@@ -2674,11 +2674,23 @@ border-radius:5px!important;
 .btn_dislike_new:active:focus{
   color:rgb(53, 120, 229);;
 }
+.btn_dislike_newp{
+  font-size:14px;
+  	border:none;
+    padding:0 8px 0 0;
+    background-color: #f9f9f9;
+}
+.btn_dislike_newp:active:focus{
+  color:rgb(53, 120, 229);;
+}
 @media(min-width:990px){
   .digi_height{
     height:90px;
   }
   .btn_dislike_new:hover{
+    background-color: #ffff;
+  }
+  .btn_dislike_newp:hover{
     background-color: #ffff;
   }
 }
