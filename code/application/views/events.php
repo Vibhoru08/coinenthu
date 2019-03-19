@@ -72,32 +72,6 @@
 							<form class="form-inline">
 							<div class="form-group"><nobr>
 								<ul class="nav navbar-nav ">
-								 <li class="dropdown mpull_right sorts_dropdown" id="change_u"><span class="for-border">
-								  <span id="sort_by2">Sort By </span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername2">
-								  Ending Soon</span><div class="arrow_down"><span class="caret"></span></div>
-								  </button>
-									 <input type="hidden" id="filter_type" value="ends">
-								  <ul class="dropdown-menu user_dropdown_t hide_menu own_t_event" role="menu">
-
-			    						<li><a href="#" onClick="filterEvents('ends','');">Ending Soon</a></li>
-			    						<li><a href="#" onClick="filterEvents('lprice','');">Lowest Price</a></li>
-
-
-
-								</ul>
-							</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				</div>
-					<div class="col-md-4 col-md-offset-0	col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width">
-						<div class="row sort_by_align_forbig">
-							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 pad_0 centered ">
-						<div class="select_style">
-							<form class="form-inline">
-							<div class="form-group"><nobr>
-								<ul class="nav navbar-nav ">
 								 <li class="dropdown mpull_right selects_dropdown" id="change_u"><span class="for-border">
 								  <span id="sort_by">Select</span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername">
 								  Location</span><div class="arrow_down"><span class="caret"></span></div>
@@ -128,7 +102,36 @@
 
 								  </ul>
 								  </li>
-								</ul></nobr>
+								</ul>
+							</nobr>
+
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				</div>
+					<div class="col-md-4 col-md-offset-0	col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0 msearch_bg mpad_b3 pad_l0 a_width">
+						<div class="row sort_by_align_forbig">
+							<div class="col-md-8 col-sm-9 col-sm-offset-1 col-md-offset-0 col-xs-12 col-xs-offset-0 pad_0 centered ">
+						<div class="select_style">
+							<form class="form-inline">
+							<div class="form-group"><nobr>
+								<ul class="nav navbar-nav ">
+								 <li class="dropdown mpull_right sorts_dropdown" id="change_u"><span class="for-border">
+								  <span id="sort_by2">Sort By </span><button class="btn btn-default dropdown-toggle no-border" type="button" data-toggle="dropdown" aria-expanded="true" style="text-align:left;padding:6px 13px;" id="filtername2">
+								  Ending Soon</span><div class="arrow_down"><span class="caret"></span></div>
+								  </button>
+									 <input type="hidden" id="filter_type" value="ends">
+								  <ul class="dropdown-menu user_dropdown_t hide_menu own_t_event" role="menu">
+
+			    						<li><a href="#" onClick="filterEvents('ends','');">Ending Soon</a></li>
+			    						<li><a href="#" onClick="filterEvents('lprice','');">Lowest Price</a></li>
+
+
+
+								</ul>
+								</nobr>
 							</div>
 							</form>
 						</div>
