@@ -38,7 +38,16 @@
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
             <div class = "col-md-4 col-xs-12 profile_desx m_hide pad_0">
-              <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($userinfo->u_about); ?></div>
+            <?php
+            if(strlen($userinfo->u_about) > 50){
+              $shortabout = strip_tags($userinfo->u_about);
+              $short = substr($shortabout,0,50);
+              $shortabout = substr($short,0,strrpos($short,' ')).' .....';
+            }else{
+              $shortabout = strip_tags($userinfo->u_about);
+            }           
+            ?>
+              <div style = "font-size:13px;margin-top:-25px;color:#fff;height:22px;"><?php echo ucfirst($shortabout); ?></div>
                 <h1 class="mar_t10 profile_name"><?php
                 if(isset($type) && $type == 'other'){
                   echo ucfirst($userinfo->u_firstname).' '.ucfirst($userinfo->u_lastname);
@@ -301,7 +310,7 @@
                     echo base_url().'display-profile';
                   }
                   else{
-                    echo base_url().'Profile/'.$reply->u_username;
+                    echo base_url().'profile/'.$reply->u_username;
                   }
                   ?>">
 									<?php if($reply->u_picture!=""){ ?>
@@ -325,7 +334,7 @@
                   if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $reply->u_uid ){
                     echo base_url().'display-profile';
                   }else{
-                    echo base_url().'Profile/'.$reply->u_username;
+                    echo base_url().'profile/'.$reply->u_username;
                   }
                   ?>">
 									<?php
@@ -340,7 +349,14 @@
 									?></a><br>
                   <?php
                   if($reply->u_about != ""){
-                    echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">'.$reply->u_about.'</span>';
+                    if(strlen($reply->u_about) > 50){
+                      $userabout = strip_tags($reply->u_about);
+                      $short2 = substr($userabout,0,50);
+                      $userabout = substr($short2,0,strrpos($short2,' ')).' ....';
+                    }else{
+                      $userabout = strip_tags($reply->u_about);
+                    }
+                    echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">'.$userabout.'</span>';
                   }
                   else{
                     echo '<span class="NoirProLight" style= "font-size:11px;color:#424242">&nbsp</span><br>';

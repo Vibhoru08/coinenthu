@@ -915,7 +915,14 @@
 				$old_date = timeago($row['crr_createdat']);
 				$html2 .="<p><span class = 'time_stamp' style = 'float:right;'>".$old_date."</span>";
 				$html2 .="<span>".$u_username."</span><br>";
-				$html2 .="<span class='NoirProLight' style= 'font-size:11px;color:#424242;'>".$row['u_about']."</span></p>";
+				if(strlen($row['u_about']) > 50){
+					$shortabout = strip_tags($row['u_about']);
+					$short = substr($shortabout,0,50);
+					$shortabout = substr($short,0,strrpos($short,' ')).' ....';
+				}else{
+					$shortabout = stip_tags($row['u_about']);
+				}
+				$html2 .="<span class='NoirProLight' style= 'font-size:11px;color:#424242;'>".$shortabout."</span></p>";
 				$html2 .="<p id='replyreview_".$row['crr_id']."'>";
 				$html2 .="".strip_tags($row['crr_decript'])."</p>";
 				$replylikeval    = "'like'";
@@ -1689,10 +1696,17 @@
 						if($uuid == $last_review_details->u_uid){
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}else{
-							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}
 						if($last_review_details->u_about != ""){
-							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
+							if(strlen($last_review_details->u_about) > 50){
+								$shortabout = strip_tags($last_review_details->u_about);
+								$short = substr($shortabout,0,50);
+								$shortabout = substr($short,0,strrpos($short,' ')).' ....';
+							}else{
+								$shortabout = strip_tags($last_review_details->u_about);
+							}
+							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($shortabout).'</div>';
 						}else{
 							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}
@@ -1975,10 +1989,17 @@
 						if($uuid == $last_review_details->u_uid){
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'display-profile">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}else{
-							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'Profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
+							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}
 						if($last_review_details->u_about != ""){
-							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($last_review_details->u_about).'</div>';
+							if(strlen($last_review_details->u_about) > 50){
+								$shortabout = strip_tags($last_review_details->u_about);
+								$short = substr($shortabout,0,50);
+								$shortabout = substr($short,0,strrpos($short,' ')).' .....';
+							}else{
+								$shortabout = strip_tags($last_review_details->u_about);
+							}
+							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($shortabout).'</div>';
 						}else{
 							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}

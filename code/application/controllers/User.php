@@ -340,7 +340,7 @@
 					$user_id = $data['userinfo']->u_uid;
 					$data['type'] = 'other';
 					$config = array();
-					$config['base_url'] = base_url().'Profile/'.$username;
+					$config['base_url'] = base_url().'profile/'.$username;
 					$config['total_rows'] = $this->User_model->myProfileReviewCount($user_id);
 					$config['per_page'] = 5;
 					$config["uri_segment"] = 3;

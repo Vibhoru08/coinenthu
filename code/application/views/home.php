@@ -159,11 +159,20 @@
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
-                  echo base_url().'Profile/'.$last_review_details->u_username;
+                  echo base_url().'profile/'.$last_review_details->u_username;
                 }
                 ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
+                <?php
+                if(strlen($last_review_details->u_about) >50){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $short = substr($shortabout,0,50);
+                  $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                }else{
+                  $shortabout = strip_tags($last_review_details->u_about);
+                }  
+                ?>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -309,11 +318,20 @@
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
-                  echo base_url().'Profile/'.$last_review_details->u_username;
+                  echo base_url().'profile/'.$last_review_details->u_username;
                 }
                 ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
+                  <?php
+                if(strlen($last_review_details->u_about) > 50){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $short = substr($shortabout,0,50);
+                  $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                }else{
+                  $shortabout = strip_tags($last_review_details->u_about);
+                }  
+                ?>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -459,11 +477,20 @@
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
-                  echo base_url().'Profile/'.$last_review_details->u_username;
+                  echo base_url().'profile/'.$last_review_details->u_username;
                 }
                 ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $last_review_details->u_about; ?></div>
+                  <?php
+                if(strlen($last_review_details->u_about) > 50){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $short = substr($shortabout,0,50);
+                  $shortabout = substr($short,0,strrpos($short,' ')).' .....';
+                }else{
+                  $shortabout = strip_tags($last_review_details->u_about);
+                }  
+                ?>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
