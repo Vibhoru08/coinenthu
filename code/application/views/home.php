@@ -155,7 +155,7 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
@@ -168,11 +168,14 @@
                   $shortabout = strip_tags($last_review_details->u_about);
                   $short = substr($shortabout,0,50);
                   $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
                 }else{
                   $shortabout = strip_tags($last_review_details->u_about);
-                }  
+                }
                 ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><span class="hide1150"><?php echo $shortabout; ?></span><span class="show1150"><?php echo $newshortabout; ?></span></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -314,7 +317,7 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
@@ -329,7 +332,7 @@
                   $shortabout = substr($short,0,strrpos($short,' ')).' ....';
                 }else{
                   $shortabout = strip_tags($last_review_details->u_about);
-                }  
+                }
                 ?>
                 <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
                 <?php }else{ ?>
@@ -473,7 +476,7 @@
                 <?php
                 if(isset($last_review)){
                 ?>
-                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php 
+                <div class = "col-xs-12 NoirProMedium pad_0"><a href = "<?php
                 if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $last_review_details->u_uid){
                   echo base_url().'display-profile';
                 }else{
@@ -488,7 +491,7 @@
                   $shortabout = substr($short,0,strrpos($short,' ')).' .....';
                 }else{
                   $shortabout = strip_tags($last_review_details->u_about);
-                }  
+                }
                 ?>
                 <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
                 <?php }else{ ?>

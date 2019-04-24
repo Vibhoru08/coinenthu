@@ -4228,6 +4228,14 @@ a.left_panel_desc{
    .dis2_block{
      display: block;
    }
+   .hide1150{
+   display:none;
+   }
+ }
+ @media(min-width:1150px){
+   .show1150{
+     display:none;
+   }
  }
  @media(min-width:481px) and (max-width:990px){
    .dis2_block{
