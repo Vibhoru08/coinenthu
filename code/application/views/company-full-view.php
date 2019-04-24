@@ -756,7 +756,7 @@
 									 <div class="col-xs-10 pad_l0">
 										 <input type="hidden" id="crr_reid<?php echo $review->re_id; ?>" name="crr_reid" value="">
 										 <div class="form-group">
-											 <label for="inputEmail3" class="col-xs-2 no_padding_label control-label validate_c"><?php
+											 <label for="inputEmail3" class="col-xs-2 col-sm-1 no_padding_label control-label validate_c"><?php
                 if(isset($companyview['user_profile_info']->u_picture) && $companyview['user_profile_info']->u_picture!=""){
 		            $imagepath = base_url().'asset/img/users/'.$companyview['user_profile_info']->u_picture.'?id='.$viewTime;
 		        }else if(isset($companyview['user_profile_info']->u_social_pic) && $companyview['user_profile_info']->u_social_pic!=""){
@@ -766,7 +766,7 @@
 		        }
 		    ?>
 		        <img class = "img-circle reply-image" src="<?php echo $imagepath; ?>" /></label>
-											 <div class="col-xs-10" >
+											 <div class="col-xs-10 col-sm-11" >
 												 <textarea class="form-control crr_decript" rows="1" id="crr_decript<?php echo $review->re_id; ?>" name="crr_decript" required data-fv-notempty-message="Required" placeholder="Reply" data-fv-stringlength="true" data-fv-stringlength-max="1000" data-fv-stringlength-message="Reply should have less than 1000 characters" onkeyup="countCharcter2(<?php echo $review->re_id; ?>);"></textarea>
 												 <span id="r_char_cnt<?php echo $review->re_id; ?>" style="display:none;"> <span id="review_char_count<?php echo $review->re_id; ?>"></span>&nbsp;&nbsp;character(s) left</span>
 												 <span id="errorNotes<?php echo $review->re_id; ?>" style="color:#a94442;"></span>
