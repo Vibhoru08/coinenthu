@@ -37,11 +37,11 @@
 		    ?>
 		        <img class = "img-rounded profile-image" src="<?php echo $imagepath; ?>" />
             </div>
-            <div class = "col-md-4 col-xs-12 profile_desx m_hide pad_0">
+            <div class = "col-md-5 col-xs-12 profile_desx m_hide pad_0">
             <?php
-            if(strlen($userinfo->u_about) > 50){
+            if(strlen($userinfo->u_about) > 100){
               $shortabout = strip_tags($userinfo->u_about);
-              $short = substr($shortabout,0,50);
+              $short = substr($shortabout,0,100);
               $shortabout = substr($short,0,strrpos($short,' ')).' .....';
             }else{
               $shortabout = strip_tags($userinfo->u_about);
@@ -57,7 +57,7 @@
                 ?></h1>
             </div>
             <?php if($type != 'other'){ ?>
-            <div class="col-md-4 text-right edit_profile m_hide">
+            <div class="col-md-3 text-right edit_profile m_hide">
             <a class="edit_color" href="<?php echo base_url().'edit-profile'; ?>"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Profile</a>
             </div>
             <?php } ?>
@@ -349,9 +349,9 @@
 									?></a><br>
                   <?php
                   if($reply->u_about != ""){
-                    if(strlen($reply->u_about) > 50){
+                    if(strlen($reply->u_about) > 75){
                       $userabout = strip_tags($reply->u_about);
-                      $short2 = substr($userabout,0,50);
+                      $short2 = substr($userabout,0,75);
                       $userabout = substr($short2,0,strrpos($short2,' ')).' ....';
                     }else{
                       $userabout = strip_tags($reply->u_about);
