@@ -164,14 +164,20 @@
                 ?>"><?php echo ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname); ?></a></div>
                 <?php if ($last_review_details->u_about != ""){ ?>
                 <?php
-                if(strlen($last_review_details->u_about) >50){
+                if(strlen($last_review_details->u_about) > 50){
                   $shortabout = strip_tags($last_review_details->u_about);
                   $short = substr($shortabout,0,50);
                   $shortabout = substr($short,0,strrpos($short,' ')).' ....';
                   $newshortabout = strip_tags($last_review_details->u_about);
                   $newshort = substr($newshortabout,0,30);
                   $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+                }elseif(strlen($last_review_details->u_about) < 50 && strlen($last_review_details->u_about) > 30){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
                 }else{
+                  $newshortabout = strip_tags($last_review_details->u_about);
                   $shortabout = strip_tags($last_review_details->u_about);
                 }
                 ?>
@@ -330,11 +336,20 @@
                   $shortabout = strip_tags($last_review_details->u_about);
                   $short = substr($shortabout,0,50);
                   $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+                }elseif(strlen($last_review_details->u_about) < 50 && strlen($last_review_details->u_about) > 30){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
                 }else{
+                  $newshortabout = strip_tags($last_review_details->u_about);
                   $shortabout = strip_tags($last_review_details->u_about);
                 }
                 ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><span class="hide1150"><?php echo $shortabout; ?></span><span class="show1150"><?php echo $newshortabout; ?></span></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>
@@ -488,12 +503,21 @@
                 if(strlen($last_review_details->u_about) > 50){
                   $shortabout = strip_tags($last_review_details->u_about);
                   $short = substr($shortabout,0,50);
-                  $shortabout = substr($short,0,strrpos($short,' ')).' .....';
+                  $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+                }elseif(strlen($last_review_details->u_about) < 50 && strlen($last_review_details->u_about) > 30){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
                 }else{
+                  $newshortabout = strip_tags($last_review_details->u_about);
                   $shortabout = strip_tags($last_review_details->u_about);
                 }
                 ?>
-                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><?php echo $shortabout; ?></div>
+                <div class = "col-xs-12 NoirProLight pad_0" style= "font-size:11px;color:#424242;"><span class="hide1150"><?php echo $shortabout; ?></span><span class="show1150"><?php echo $newshortabout; ?></span></div>
                 <?php }else{ ?>
                   <br/><br/>
                 <?php } ?>

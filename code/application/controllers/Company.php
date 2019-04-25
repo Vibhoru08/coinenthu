@@ -1699,14 +1699,26 @@
 							$html.='<div class="col-xs-12 NoirProMedium"><a href = "'.base_url().'profile/'.$last_review_details->u_username.'">'.ucfirst($last_review_details->u_firstname).' '.ucfirst($last_review_details->u_lastname).'</a></div>';
 						}
 						if($last_review_details->u_about != ""){
-							if(strlen($last_review_details->u_about) > 50){
-								$shortabout = strip_tags($last_review_details->u_about);
-								$short = substr($shortabout,0,50);
-								$shortabout = substr($short,0,strrpos($short,' ')).' ....';
-							}else{
-								$shortabout = strip_tags($last_review_details->u_about);
-							}
-							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($shortabout).'</div>';
+								
+                if(strlen($last_review_details->u_about) > 50){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $short = substr($shortabout,0,50);
+                  $shortabout = substr($short,0,strrpos($short,' ')).' ....';
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+                }elseif(strlen($last_review_details->u_about) < 50 && strlen($last_review_details->u_about) > 30){
+                  $shortabout = strip_tags($last_review_details->u_about);
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $newshort = substr($newshortabout,0,30);
+                  $newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+                }else{
+                  $newshortabout = strip_tags($last_review_details->u_about);
+                  $shortabout = strip_tags($last_review_details->u_about);
+                }
+                
+                
+							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;"><span class = "hide1150">'.ucfirst($shortabout).'</span><span class = "show1150">'.ucfirst($newshortabout).'</span></div>';
 						}else{
 							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}
@@ -1995,11 +2007,22 @@
 							if(strlen($last_review_details->u_about) > 50){
 								$shortabout = strip_tags($last_review_details->u_about);
 								$short = substr($shortabout,0,50);
-								$shortabout = substr($short,0,strrpos($short,' ')).' .....';
-							}else{
+								$shortabout = substr($short,0,strrpos($short,' ')).' ....';
+								$newshortabout = strip_tags($last_review_details->u_about);
+								$newshort = substr($newshortabout,0,30);
+								$newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+							  }elseif(strlen($last_review_details->u_about) < 50 && strlen($last_review_details->u_about) > 30){
 								$shortabout = strip_tags($last_review_details->u_about);
-							}
-							$html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;">'.ucfirst($shortabout).'</div>';
+								$newshortabout = strip_tags($last_review_details->u_about);
+								$newshort = substr($newshortabout,0,30);
+								$newshortabout = substr($newshort,0,strrpos($newshort,' ')).' ....';
+							  }else{
+								$newshortabout = strip_tags($last_review_details->u_about);
+								$shortabout = strip_tags($last_review_details->u_about);
+							  }
+							  
+							  
+										  $html.='<div class="col-xs-12 NoirProLight" style="font-size:11px;color:#424242;"><span class = "hide1150">'.ucfirst($shortabout).'</span><span class = "show1150">'.ucfirst($newshortabout).'</span></div>';
 						}else{
 							$html.='<div><span class="col-xs-12 set_height_br"></span></div>';
 						}
