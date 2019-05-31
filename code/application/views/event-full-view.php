@@ -51,7 +51,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                     foreach($event['speakers'] as $speaker){ ?>
                       <div class="col-md-3 individual_speaker_div"><?php
                         if(isset($speaker->sp_image) && $speaker->sp_image != ''){
-                            $spimage = base_url().'asset/img/events/speakers/'.$speaker->sp_image;
+                            $spimage ="https://twitter.com/coinenthu/profile_image?size=original"; //base_url().'asset/img/events/speakers/'.$speaker->sp_image;
                         }else{
                             $spimage = base_url().'asset/img/alt.jpg';
                         }

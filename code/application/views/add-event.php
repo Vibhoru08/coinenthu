@@ -191,8 +191,9 @@
                 <div class="col-md-4 mmar_t15">
                   <input type="text" class="form-control background_color" name="sp_profile_url[]" id="cot_profile_url_0" placeholder="LinkedIn URL" >
                 </div>
-                <div class="col-md-12 mar_t15">
-                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />
+                <div class="col-md-12 mar_t15 mmar_t0">
+                  <input type="text" class="form-control background_color" name="sp_profile_twurl[]" id="cot_profile_twurl_0" placeholder="Twitter Handle (eg - coinenthu)" >
+                <!--  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_0" accept="image/x-png,image/jpeg" />-->
                 </div>
                 <div class="more_input_boxes" id="coreteam_1"><a href="javascript:void(0);" onClick="coreTeam(1);" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
               </div>
@@ -783,8 +784,8 @@
       html +='</div>';
       html +='<div class="col-md-4 mmar_t15">';
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
-      html +='<div class="col-md-12 mar_t15">';
-      html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
+      html +='<div class="col-md-12 mar_t15 mmar_t0">';
+      html +='  <input type="text" class="form-control background_color" name="sp_profile_twurl[]"  placeholder="Twitter Handle (eg - coinenthu)" id="cot_profile_twurl_'+count_ct+'">';
       html += '</div>';
       html +='<div  class="more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-primary"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
 					html += '</div>';
