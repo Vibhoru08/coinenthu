@@ -2278,14 +2278,14 @@ class Companies_model extends CI_Model
 			return TRUE;
 		}
 	}
-	public function addEventSpeakers($event_id,$spname,$spdesig,$url,$spimage)
+	public function addEventSpeakers($event_id,$spname,$spdesig,$url,$twitter)
 	{
 		$data = array(
 			'sp_evid'           => $event_id,
 			'sp_name'           => $spname,
 			'sp_desig'          => $spdesig,
 			'sp_url'            => $url,
-			'sp_image'          => $spimage,
+			'sp_twitter'        => $twitter,
 			'sp_status'         => 1,
 			'sp_md'             => date('Y-m-d H:i:s'),
 		);

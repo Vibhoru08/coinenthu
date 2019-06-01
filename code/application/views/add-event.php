@@ -783,7 +783,7 @@
       html +='<input type="text" class="form-control background_color" name="sp_designation[]" id="cot_designation_'+count_ct+'" placeholder="Designation" >';
       html +='</div>';
       html +='<div class="col-md-4 mmar_t15">';
-			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
+			html +='<input class="form-control background_color" placeholder="Linkedin URL" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
       html +='<div class="col-md-12 mar_t15 mmar_t0">';
       html +='  <input type="text" class="form-control background_color" name="sp_profile_twurl[]"  placeholder="Twitter Handle (eg - coinenthu)" id="cot_profile_twurl_'+count_ct+'">';
       html += '</div>';
