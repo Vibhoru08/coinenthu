@@ -62,12 +62,7 @@ event_<div class = "content-wrapper" style = "padding-top:0px;">
                         }else{
                           echo '<div>&nbsp;</div>';
                         }
-                        if (strpos($speaker->sp_url,'http') !== false){
-                          $speaker_linkedin = $speaker->sp_url;
-                        }else{
-                          $speaker_linkedin = '//'.$speaker->sp_url;
-                        }
-                        echo '<a href="'.$speaker_linkedin.'" target = "_blank">Linkedin</a>';
+                        echo '<a href="https://twitter.com/'.$speaker->sp_twitter.'" target = "_blank">Twitter</a>';
                         ?>
                       </div><?php
                     }
