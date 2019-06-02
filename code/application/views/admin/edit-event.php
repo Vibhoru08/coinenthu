@@ -201,8 +201,7 @@
             </div>
             <span id="core_team_divs">
 			<?php foreach($speakers as $n=>$speaker){ ?>
-							<input type = "hidden" id = "speaker_images" name = "speaker_images[]" value = "<?php echo $speakers_images[$n]; ?>" >
-              <div class="form-group" id="core_team_<?php echo $n + 1; ?>">
+							<div class="form-group" id="core_team_<?php echo $n + 1; ?>">
               <label for="Core Team" class="col-sm-3 control-label">Speakers<span class="mstar">*</span></label>
               <div class="col-sm-9">
               <div class="row pos_r">
@@ -221,7 +220,7 @@
                 <div class="col-md-12 mar_t15">
                 <!--  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $n + 1; ?>" accept="image/x-png,image/jpeg" />
                 -->
-                <input type="text" class="form-control background_color" name="sp_profile_twurl[]" id="cot_profile_twurl_<?php echo $n + 1; ?>" placeholder="Twitter Handle (eg - coinenthu)" >
+                <input type="text" value = "<?php echo $speakers_twitter[$n]; ?>" class="form-control background_color" name="sp_profile_twurl[]" id="cot_profile_twurl_<?php echo $n + 1; ?>" placeholder="Twitter Handle (eg - coinenthu)" >
               </div>
                   </div>
               </div>
