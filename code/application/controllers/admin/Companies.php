@@ -493,29 +493,8 @@ class Companies extends MY_Controller {
       	if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
 					{
-						if(isset($_FILES['sp_profile_image']['name'][$key]) && $_FILES['sp_profile_image']['name'][$key] != ""){
-							$spkrName = $_POST['sp_name'][$key];
-							$speakerName = strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','_', $spkrName));
-							$fileName2 = $_FILES["sp_profile_image"]["name"][$key];
-							$fileTmpLoc2 = $_FILES["sp_profile_image"]["tmp_name"][$key];
-							$target_dir2     = base_url().'asset/img/events/speakers/';
-							$temp2           = explode(".", $_FILES['sp_profile_image']["name"][$key]);
-							$newfilename2    = date('Ymd_His') . '.' . end($temp2);
-							move_uploaded_file($_FILES["sp_profile_image"]["tmp_name"][$key], 'asset/img/events/speakers/'.$newfilename2);
-							// move_uploaded_file( $_FILES['digital_uploaded_file']["tmp_name"],$target_file);
-							$kaboom2 = explode(".", $fileName2);
-							$fileExt2 = end($kaboom2);
-							$target_file2 = 'asset/img/events/speakers/'.$newfilename2;
-							$resized_file2 = 'asset/img/events/speakers/speaker_'.$speakerName.'_'.$newfilename2;
-							$wmax2 = 160;
-							$getImagNames2 = ak_img_resize($target_file2, $resized_file2, $wmax2, $fileExt2);
-							$reImage2 = explode('/',$getImagNames2);
-							$spimage = $reImage2[4];
-
-						}else{
-							$spimage = '';
-						}
-						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$spimage);
+						
+						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$_POST['sp_profile_twurl'][$key]);
 					}
 				}
 				$day_of_agenda = 1;
