@@ -274,7 +274,7 @@
 <script>
 	$(document).ready(function() {
 		$('#add_digital_asset').formValidation();
-      $( "#cm_ico_start_date" ).datepicker();
+      //$( "#cm_ico_start_date" ).datepicker();
     $( "#cm_ico_start_date" ).datepicker({
   		// minDate: 0,
   		onClose: function (selectedDate) {
@@ -287,7 +287,7 @@
       $( "#cm_ico_end_date" ).datepicker({
   		minDate: 0,
   		onClose: function (selectedDate) {
-              /* $("#cm_ico_start_date").datepicker("option", "maxDate", selectedDate); */
+            /*   $("#cm_ico_start_date").datepicker("option", "maxDate", selectedDate);*/
   			$('#add_digital_asset').formValidation('revalidateField', 'ev_ed');
           },
   		dateFormat: 'mm/dd/yy',
@@ -1044,6 +1044,7 @@
 		$("#cm_marketcap_error").html('');
 		$('#add_digital_asset').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
+      $('#loadAddDigital').show();
 			$('#loadAddDigital').html("Inserting...");
 				var flag = true;
 				var filesNotGiven = false;
@@ -1103,10 +1104,16 @@
 							    $('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
-									window.location = baseUrl+'my-digital-assets';
+									window.location = baseUrl+'/events';
 								}, 3000);
 							}
-						}
+						},error:function(jqXHR,textStatus, errorThrown){
+  						console.log( jqXHR);
+  							console.log( textStatus);
+  								console.log(errorThrown);
+  							console.log(jqXHR.output);
+  		        console.log('ERROR: ' + jqXHR.status);
+  		    }
 
 					});
 				}

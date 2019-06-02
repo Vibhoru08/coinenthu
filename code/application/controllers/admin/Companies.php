@@ -493,7 +493,7 @@ class Companies extends MY_Controller {
       	if(!empty($_POST['sp_name'])){
 					foreach($_POST['sp_name'] as $key=>$spname)
 					{
-						
+
 						$ctResult 	= $this->Companies_model->addEventSpeakers($event_id,$spname,$_POST['sp_designation'][$key],$_POST['sp_profile_url'][$key],$_POST['sp_profile_twurl'][$key]);
 					}
 				}
@@ -620,8 +620,9 @@ class Companies extends MY_Controller {
 					}
 					$day_of_agenda++;
 				}
-
+          echo json_encode(array('status'=>TRUE,'data'=>'success'));
 			}else{
+        echo json_encode(array('status'=>TRUE,'data'=>'success'));
 			$data = Array();
 			$data['cities'] = $this->Companies_model->getCities(1);
 			$this->show_admin('admin/add-event',$data);

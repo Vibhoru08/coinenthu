@@ -219,8 +219,10 @@
                 <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $n + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $n + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-minus" aria-hidden="true"></span></a></div>
 
                 <div class="col-md-12 mar_t15">
-                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $n + 1; ?>" accept="image/x-png,image/jpeg" />
-                </div>
+                <!--  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $n + 1; ?>" accept="image/x-png,image/jpeg" />
+                -->
+                <input type="text" class="form-control background_color" name="sp_profile_twurl[]" id="cot_profile_twurl_<?php echo $n + 1; ?>" placeholder="Twitter Handle (eg - coinenthu)" >
+              </div>
                   </div>
               </div>
               </div>
@@ -242,7 +244,8 @@
                 <div class="col-md-1 form-group more_input_boxes" id="coreteam_<?php echo $speaker_count + 1; ?>"><a href="javascript:void(0);" onClick="coreTeam(<?php echo $speaker_count + 1; ?>);" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>
 
                 <div class="col-md-12 mar_t15">
-                  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $speaker_count + 1; ?>" accept="image/x-png,image/jpeg" />
+                <!--  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_<?php echo $speaker_count + 1; ?>" accept="image/x-png,image/jpeg" />
+                -->  <input type="text" class="form-control background_color" name="sp_profile_twurl[]" id="cot_profile_twurl_<?php echo $speaker_count + 1; ?>" placeholder="Twitter Handle (eg - coinenthu)" >
                 </div>
                   </div>
               </div>
@@ -860,7 +863,7 @@
 			html +='<input class="form-control background_color" placeholder="Linkden url" name="sp_profile_url[]" id="cot_profile_url_'+count_ct+'" type="text" value="" ></div>';
       html +='<div  class="col-md-1 form-group more_input_boxes" id="coreteam_'+count_ct+'"><a href="javascript:void(0);" onClick="coreTeam('+count_ct+');" class="btn btn-success btn-add"><span class="fa fa-plus" aria-hidden="true"></span></a></div>';
       html +='<div class="col-md-12 mar_t15">';
-      html +='  Upload Image &nbsp;<input style="display:inline;" type="file" placeholder="Name" name="sp_profile_image[]" id="cot_profile_image_'+count_ct+'" accept="image/x-png,image/jpeg" />';
+      html +='  <input type="text" class="form-control background_color" name="sp_profile_twurl[]"  placeholder="Twitter Handle (eg - coinenthu)" id="cot_profile_twurl_'+count_ct+'" >';
       html += '</div>';
       html += '</div>';
 				html += '</div>';
