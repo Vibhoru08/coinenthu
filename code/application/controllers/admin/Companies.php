@@ -622,7 +622,6 @@ class Companies extends MY_Controller {
 				}
           echo json_encode(array('status'=>TRUE,'data'=>'success'));
 			}else{
-        echo json_encode(array('status'=>TRUE,'data'=>'success'));
 			$data = Array();
 			$data['cities'] = $this->Companies_model->getCities(1);
 			$this->show_admin('admin/add-event',$data);
