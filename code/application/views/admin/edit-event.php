@@ -1118,6 +1118,7 @@
 		$("#cm_marketcap_error").html('');
 		$('#add_digital_asset').formValidation().on('success.form.fv', function(e) {
 			e.stopImmediatePropagation();
+      $('#loadAddDigital').show();
 			$('#loadAddDigital').html("Inserting...");
 				var flag = true;
 				var filesNotGiven = false;
@@ -1177,7 +1178,7 @@
 							    $('#loadAddDigital').html("Successfully added.").css('color','green');
 								setTimeout(function(){
 									$("#loadAddDigital").hide();
-									window.location = baseUrl+'my-digital-assets';
+									window.location = baseUrl+'/events';
 								}, 3000);
 							}
 						}
